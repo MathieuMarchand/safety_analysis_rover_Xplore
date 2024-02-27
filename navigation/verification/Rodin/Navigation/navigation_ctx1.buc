@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd;de.prob.symbolic.ctxBase" version="3">
+    <org.eventb.core.extendsContext name="'" org.eventb.core.target="navigation_ctx"/>
+    <org.eventb.core.carrierSet name="(" org.eventb.core.identifier="GAMEPAD_FUNCTIONS"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name=")" org.eventb.core.identifier="func_gamepad"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="*" org.eventb.core.identifier="func_shutdown_gamepad"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="+" org.eventb.core.identifier="func_destroy_gamepad"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="," org.eventb.core.identifier="func_speed_filter"/>
+    <org.eventb.core.axiom name="-" org.eventb.core.label="axm1" org.eventb.core.predicate="partition(GAMEPAD_FUNCTIONS, {func_gamepad_none}, {func_gamepad}, {func_shutdown_gamepad}, {func_destroy_gamepad}, {func_speed_filter}, {func_gamepad_twist})"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="." org.eventb.core.identifier="func_gamepad_twist"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="/" org.eventb.core.identifier="func_gamepad_none"/>
+    <org.eventb.core.carrierSet name="0" org.eventb.core.identifier="GAMEPAD_SPEED_FROM"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="1" org.eventb.core.identifier="gamepad_control_station"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="2" org.eventb.core.identifier="gamepad_from_other"/>
+    <org.eventb.core.axiom name="3" org.eventb.core.label="axm2" org.eventb.core.predicate="partition(GAMEPAD_SPEED_FROM, {gamepad_control_station}, {gamepad_from_other})"/>
+</org.eventb.core.contextFile>

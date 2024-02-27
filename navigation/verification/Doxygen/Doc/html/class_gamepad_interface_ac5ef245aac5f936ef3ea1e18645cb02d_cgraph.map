@@ -1,0 +1,11 @@
+<map id="GamepadInterface::GamepadInterface" name="GamepadInterface::GamepadInterface">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,72,196,115"/>
+<area shape="rect" id="Node000002" href="$class_gamepad_interface.html#ac64d166423ef1bcf8f1fec540887f4db" title=" " alt="" coords="244,5,426,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="177,69,242,50,243,55,178,74"/>
+<area shape="rect" id="Node000004" href="$class_gamepad_interface.html#a455c120badc70d7dff44636888643bcd" title=" " alt="" coords="244,72,426,115"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="196,91,228,91,228,96,196,96"/>
+<area shape="rect" id="Node000005" href="$class_gamepad_interface.html#a3386e08bc8705565da86e508b5452180" title=" " alt="" coords="246,139,424,181"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="178,113,243,131,242,136,177,118"/>
+<area shape="rect" id="Node000003" href="$class_gamepad_interface.html#a780a9d34cb5b4c791d83b1b72fd53853" title=" " alt="" coords="474,13,632,40"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="426,24,458,24,458,29,426,29"/>
+</map>

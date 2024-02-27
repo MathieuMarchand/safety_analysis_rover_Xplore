@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd;de.prob.symbolic.ctxBase" version="3">
+    <org.eventb.core.extendsContext name="'" org.eventb.core.target="drill_ctx"/>
+    <org.eventb.core.carrierSet name="(" org.eventb.core.comment="State machine of the drill" org.eventb.core.identifier="STATES"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name=")" org.eventb.core.comment="idle state" org.eventb.core.identifier="idle"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="*" org.eventb.core.comment="lowering of the drill state" org.eventb.core.identifier="down"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="+" org.eventb.core.comment="drilling state" org.eventb.core.identifier="drill"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="," org.eventb.core.comment="retracting the drill state" org.eventb.core.identifier="retract"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="true" name="-" org.eventb.core.comment="moving the drill up state" org.eventb.core.identifier="up"/>
+    <org.eventb.core.axiom name="." org.eventb.core.label="state_set" org.eventb.core.predicate="partition(STATES, {idle}, {down}, {drill}, {retract}, {up})"/>
+</org.eventb.core.contextFile>

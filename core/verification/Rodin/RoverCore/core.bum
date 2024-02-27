@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+    <org.eventb.core.event name="'" org.eventb.core.comment="Initialisation of variables" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="cur_task ≔ idle" org.eventb.core.label="init_cur_task"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="instances ≔ {idle↦1, science↦0, maintenance↦0,navigation↦0,manual↦0, undefined_task↦0}" org.eventb.core.label="init_instances"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="nbModules ≔ 0" org.eventb.core.label="init_nbModules"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="moduleAborted ≔ {idle↦FALSE, science↦FALSE, maintenance↦FALSE, navigation↦FALSE, manual↦FALSE, undefined_task↦FALSE}" org.eventb.core.label="init_moduleAborted"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="beforeAbort ≔ idle" org.eventb.core.label="init_beforeAbort"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="launchedModule ≔ idle" org.eventb.core.label="init_launchedModule"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="(" org.eventb.core.comment="current task executing on the rover" org.eventb.core.identifier="cur_task"/>
+    <org.eventb.core.invariant name=")" org.eventb.core.label="type_cur_task" org.eventb.core.predicate="cur_task ∈ TASKS"/>
+    <org.eventb.core.seesContext name="*" org.eventb.core.target="core_ctx"/>
+    <org.eventb.core.event name="+" org.eventb.core.comment="Launch task event" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="launchTask">
+        <org.eventb.core.parameter name="'" org.eventb.core.comment="Task to launch" org.eventb.core.identifier="task"/>
+        <org.eventb.core.guard name="(" org.eventb.core.label="grd1" org.eventb.core.predicate="task ∈ TASKS∖{idle}"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="instances(task) ≔ newVal" org.eventb.core.label="act1"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd2" org.eventb.core.predicate="newVal ∈ ℕ "/>
+        <org.eventb.core.guard name="2" org.eventb.core.label="grd3" org.eventb.core.predicate="newTask ∈ TASKS"/>
+        <org.eventb.core.parameter name="+" org.eventb.core.comment="New number of instances launched for the task" org.eventb.core.identifier="newVal"/>
+        <org.eventb.core.action name="0" org.eventb.core.assignment="cur_task ≔ newTask" org.eventb.core.label="act2"/>
+        <org.eventb.core.parameter name="1" org.eventb.core.comment="New value the current task will task" org.eventb.core.identifier="newTask"/>
+        <org.eventb.core.guard name="6" org.eventb.core.label="grd4" org.eventb.core.predicate="newNbModules ∈ ℕ "/>
+        <org.eventb.core.parameter name="7" org.eventb.core.comment="New number of modules launched" org.eventb.core.identifier="newNbModules"/>
+        <org.eventb.core.action name="8" org.eventb.core.assignment="nbModules ≔ newNbModules" org.eventb.core.label="act3"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd5" org.eventb.core.predicate="task ∈ {idle,science,maintenance, undefined_task} ⇒ newVal = instances(task) ∧ newNbModules = nbModules"/>
+        <org.eventb.core.guard name="4" org.eventb.core.label="grd6" org.eventb.core.predicate="task ∈ {navigation, manual} ∧ cur_task = idle ⇒ newVal = instances(task) + 1 ∧ newNbModules = nbModules + 1"/>
+        <org.eventb.core.guard name="5" org.eventb.core.label="grd7" org.eventb.core.predicate="task ∈ {navigation, manual} ∧ ¬cur_task = idle ⇒ newVal = instances(task) ∧ newNbModules = nbModules"/>
+        <org.eventb.core.guard name="/" org.eventb.core.comment="Set current task to the task" org.eventb.core.label="grd8" org.eventb.core.predicate="((cur_task = idle ∨ task = science) ∧ ¬ task = undefined_task)⇒ newTask = task"/>
+        <org.eventb.core.guard name="3" org.eventb.core.comment="Don't change the value of the current task" org.eventb.core.label="grd9" org.eventb.core.predicate="¬((cur_task = idle ∨ task = science) ∧ ¬ task = undefined_task)⇒ newTask = cur_task"/>
+        <org.eventb.core.action name=":" org.eventb.core.assignment="moduleAborted ≔ {idle↦FALSE, science↦FALSE, maintenance↦FALSE, navigation↦FALSE, manual↦FALSE, undefined_task↦FALSE}" org.eventb.core.comment="temporary variable reset" org.eventb.core.label="act5"/>
+        <org.eventb.core.action name=";" org.eventb.core.assignment="beforeAbort ≔ idle" org.eventb.core.label="act6"/>
+        <org.eventb.core.action name="=" org.eventb.core.assignment="launchedModule ≔ task" org.eventb.core.label="act7"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="," org.eventb.core.comment="list of the number of instances of each module" org.eventb.core.identifier="instances"/>
+    <org.eventb.core.invariant name="-" org.eventb.core.label="type_instances" org.eventb.core.predicate="instances ∈ TASKS→ℕ"/>
+    <org.eventb.core.event name="0" org.eventb.core.comment="Abort task event" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="abortTask">
+        <org.eventb.core.parameter name="'" org.eventb.core.comment="task to abort" org.eventb.core.identifier="task"/>
+        <org.eventb.core.guard name="(" org.eventb.core.label="grd1" org.eventb.core.predicate="task ∈ TASKS∖{idle}"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="cur_task ≔ idle" org.eventb.core.comment="Set the current task to idle" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="moduleAborted(task) ≔ TRUE" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="beforeAbort ≔ cur_task" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="launchedModule ≔ idle" org.eventb.core.label="act4"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="1" org.eventb.core.comment="Manually launch the science task" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="manualLaunchScience">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="instances(science) ≔ instances(science) + 1" org.eventb.core.comment="Add one instance of the task" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="nbModules ≔ nbModules + 1" org.eventb.core.comment="Add one instance module to the total running" org.eventb.core.label="act2"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="2" org.eventb.core.comment="Manually launch the maintenance task" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="manualLaunchMaintenance">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="instances(maintenance) ≔ instances(maintenance) + 1" org.eventb.core.comment="Add one instance of the task" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="nbModules ≔ nbModules + 1" org.eventb.core.comment="Add one instance module to the total running" org.eventb.core.label="act2"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="3" org.eventb.core.comment="Manually launch the navigation task" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="manualLaunchNavigation">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="instances(navigation) ≔ instances(navigation) + 1" org.eventb.core.comment="Add one instance of the task" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="nbModules ≔ nbModules + 1" org.eventb.core.comment="Add one instance module to the total running" org.eventb.core.label="act2"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="4" org.eventb.core.comment="Manually launch the manual task" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="manualLaunchManual">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="instances(manual) ≔ instances(manual) + 1" org.eventb.core.comment="Add one instance of the task" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="nbModules ≔ nbModules + 1" org.eventb.core.comment="Add one instance module to the total running" org.eventb.core.label="act2"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="7" org.eventb.core.comment="Total number of modules (except idle)" org.eventb.core.identifier="nbModules"/>
+    <org.eventb.core.variable name="B" org.eventb.core.comment="List of aborted state for each task" org.eventb.core.identifier="moduleAborted"/>
+    <org.eventb.core.invariant name="8" org.eventb.core.label="type_nbModules" org.eventb.core.predicate="nbModules ∈ ℕ "/>
+    <org.eventb.core.invariant name="C" org.eventb.core.label="type_moduleAborted" org.eventb.core.predicate="moduleAborted ∈ TASKS→BOOL"/>
+    <org.eventb.core.invariant name="J" org.eventb.core.label="type_beforeAbort" org.eventb.core.predicate="beforeAbort ∈ TASKS"/>
+    <org.eventb.core.event name="H" org.eventb.core.comment="Manually launch an undefined task" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="manualLaunchUndefinedTask">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="instances(undefined_task) ≔ instances(undefined_task) + 1" org.eventb.core.comment="Add one instance of the task" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="nbModules ≔ nbModules + 1" org.eventb.core.comment="Add one instance module to the total running" org.eventb.core.label="act2"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="I" org.eventb.core.comment="Which module was running before the abort" org.eventb.core.identifier="beforeAbort"/>
+    <org.eventb.core.variable name="M" org.eventb.core.comment="List of modules, keeps track of which module is currently launched" org.eventb.core.identifier="launchedModule"/>
+    <org.eventb.core.invariant name="N" org.eventb.core.label="type_launchedModule" org.eventb.core.predicate="launchedModule ∈ TASKS"/>
+    <org.eventb.core.invariant name="O" org.eventb.core.comment="SR2 : Modules asked to launch are launched" org.eventb.core.label="module_launched_is_launched" org.eventb.core.predicate="¬ launchedModule = idle ∧ ¬ launchedModule = undefined_task ⇒ instances(launchedModule) &gt; 0"/>
+    <org.eventb.core.invariant name="P" org.eventb.core.comment="SR2 : Modules not asked to launch are not launched" org.eventb.core.label="modules_not_launched_not_launched" org.eventb.core.predicate="∀task·task∈TASKS∖{launchedModule, idle} ∧ ¬ launchedModule = idle ⇒ instances(task) = 0"/>
+    <org.eventb.core.invariant name="D" org.eventb.core.comment="SR3 : Aborting stops the module" org.eventb.core.label="aborted_module_stopped" org.eventb.core.predicate="∀task·task∈TASKS ∧ moduleAborted(task) = TRUE ⇒ instances(task) = 0"/>
+    <org.eventb.core.invariant name=":" org.eventb.core.comment="SR1 &amp; SR4 : When in idle, no module is launched" org.eventb.core.label="when_in_idle_no_module" org.eventb.core.predicate="cur_task = idle ⇒ nbModules = 0"/>
+    <org.eventb.core.invariant name="9" org.eventb.core.comment="SR5 : There is maximum one module running at the same time" org.eventb.core.label="no_two_modules_atst" org.eventb.core.predicate="nbModules ≤ 1"/>
+    <org.eventb.core.invariant name="6" org.eventb.core.comment="SR6 : No more than one instance of a same module can be launched" org.eventb.core.label="no_more_than_one_instance" org.eventb.core.predicate="∀task·task∈dom(instances) ⇒ instances(task) ≤1"/>
+    <org.eventb.core.invariant name=";" org.eventb.core.comment="SR7 : current taskof the rover is valid" org.eventb.core.label="cur_task_in_set" org.eventb.core.predicate="cur_task = idle ∨ cur_task = science ∨ cur_task = maintenance ∨ cur_task = navigation ∨ cur_task = manual"/>
+    <org.eventb.core.invariant name="G" org.eventb.core.comment="SR8 : rover never in undefined task" org.eventb.core.label="not_in_undefined_taks" org.eventb.core.predicate="¬cur_task = undefined_task"/>
+    <org.eventb.core.invariant name="=" org.eventb.core.comment="SR9 : current task is running" org.eventb.core.label="cur_task_is_launched" org.eventb.core.predicate="∀task·task∈TASKS ∧ task = cur_task ⇒ instances(task) ≥ 1"/>
+    <org.eventb.core.invariant name="E" org.eventb.core.comment="SR10 : The idle module is always running" org.eventb.core.label="idle_is_always_launched" org.eventb.core.predicate="instances(idle) = 1"/>
+    <org.eventb.core.invariant name="&gt;" org.eventb.core.comment="SR11  : Manual module not launched while science is" org.eventb.core.label="no_sc_and_man" org.eventb.core.predicate="instances(science) = 1 ⇒ instances(manual) = 0"/>
+    <org.eventb.core.invariant name="@" org.eventb.core.comment="SR11 : Science module not launched while manual is" org.eventb.core.label="no_man_and_sc" org.eventb.core.predicate="instances(manual) = 1 ⇒ instances(science) = 0"/>
+    <org.eventb.core.invariant name="?" org.eventb.core.comment="SR12 : Maintenance module not launched while manual is" org.eventb.core.label="no_hd_and_man" org.eventb.core.predicate="instances(maintenance) = 1 ⇒ instances(manual) = 0"/>
+    <org.eventb.core.invariant name="A" org.eventb.core.comment="SR12 : Manual module not launched while maintenance is" org.eventb.core.label="no_man_and_hd" org.eventb.core.predicate="instances(manual) = 1 ⇒ instances(maintenance) = 0"/>
+    <org.eventb.core.invariant name="F" org.eventb.core.comment=" No instance of unknown tasks" org.eventb.core.label="no_undefined_tasks_launched" org.eventb.core.predicate="instances(undefined_task) = 0"/>
+    <org.eventb.core.invariant name="K" org.eventb.core.comment="SR13 : If a module is asked to abort, it aborts" org.eventb.core.label="aborted_module_has_aborted" org.eventb.core.predicate="¬ beforeAbort = idle ⇒ moduleAborted(beforeAbort) = TRUE"/>
+    <org.eventb.core.invariant name="L" org.eventb.core.comment="SR14 : If a module is not asked to abort, , it does not abort" org.eventb.core.label="non_aborted_module_not_aborted" org.eventb.core.predicate="∀task·task∈TASKS∖{beforeAbort} ∧ ¬ beforeAbort = idle ⇒ moduleAborted(task) = FALSE"/>
+</org.eventb.core.machineFile>

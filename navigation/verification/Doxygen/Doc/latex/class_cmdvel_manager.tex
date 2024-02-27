@@ -1,0 +1,229 @@
+\doxysection{Cmdvel\+Manager Class Reference}
+\hypertarget{class_cmdvel_manager}{}\label{class_cmdvel_manager}\index{CmdvelManager@{CmdvelManager}}
+
+
+Inheritance diagram for Cmdvel\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=165pt]{class_cmdvel_manager__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Cmdvel\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=165pt]{class_cmdvel_manager__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_cmdvel_manager_aab325475d7310cfa5b897b03b42a63f4}{Cmdvel\+Manager}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_cmdvel_manager_a52b64e32ea9acf7bfca63afdfba9e6a5}{callback\+\_\+shutdown}} (std\+\_\+msgs\+::msg\+::\+String\+::\+Shared\+Ptr msg)
+\item 
+void \mbox{\hyperlink{class_cmdvel_manager_a359a176ea948f58108d9b97b386ed152}{callback\+\_\+mode\+\_\+nav}} (std\+\_\+msgs\+::msg\+::\+String\+::\+Shared\+Ptr msg)
+\item 
+void \mbox{\hyperlink{class_cmdvel_manager_ac8e39194f2c111e25441ec052f42f530}{callback\+\_\+nav\+\_\+auto\+\_\+state}} (std\+\_\+msgs\+::msg\+::\+String\+::\+Shared\+Ptr msg)
+\item 
+void \mbox{\hyperlink{class_cmdvel_manager_ac9e9353aac8a037cd20a77d86a39c0d1}{callback\+\_\+cmd\+\_\+vel\+\_\+manual}} (const geometry\+\_\+msgs\+::msg\+::\+Twist\+::\+Shared\+Ptr msg)
+\item 
+void \mbox{\hyperlink{class_cmdvel_manager_aeae21deb42a18e1cbf58f14d09e4e821}{destroy\+\_\+callback}} (const std\+\_\+msgs\+::msg\+::\+String\+::\+Shared\+Ptr msg)
+\item 
+void \mbox{\hyperlink{class_cmdvel_manager_a02ce7bebfd242cbfdcb8da0d5ca5cc29}{callback\+\_\+cmd\+\_\+vel\+\_\+auto}} (const geometry\+\_\+msgs\+::msg\+::\+Twist\+::\+Shared\+Ptr msg)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+rclcpp\+::\+Publisher$<$ geometry\+\_\+msgs\+::msg\+::\+Twist $>$\+::\+Shared\+Ptr \mbox{\hyperlink{class_cmdvel_manager_a6f9c251c8ae64a1916f993fdbf00fa3a}{pub\+\_\+cmd\+\_\+vel}}
+\item 
+rclcpp\+::\+Subscription$<$ geometry\+\_\+msgs\+::msg\+::\+Twist $>$\+::\+Shared\+Ptr \mbox{\hyperlink{class_cmdvel_manager_a3a874ddffff4b24ded34112d5bd5f212}{sub\+\_\+cmd\+\_\+vel\+\_\+auto}}
+\item 
+rclcpp\+::\+Subscription$<$ geometry\+\_\+msgs\+::msg\+::\+Twist $>$\+::\+Shared\+Ptr \mbox{\hyperlink{class_cmdvel_manager_a6ea62a0f77fc9c97b22a6d8db5b4ce04}{sub\+\_\+cmd\+\_\+vel\+\_\+manual}}
+\item 
+rclcpp\+::\+Subscription$<$ std\+\_\+msgs\+::msg\+::\+String $>$\+::\+Shared\+Ptr \mbox{\hyperlink{class_cmdvel_manager_a45beb7a191f98ebc32511808ab02f263}{sub\+\_\+nav\+\_\+nodes\+\_\+state}}
+\item 
+rclcpp\+::\+Subscription$<$ std\+\_\+msgs\+::msg\+::\+String $>$\+::\+Shared\+Ptr \mbox{\hyperlink{class_cmdvel_manager_a03719e055cb6d16a8c5e766b9a7c16e6}{sub\+\_\+cmd\+\_\+shutdown}}
+\item 
+rclcpp\+::\+Subscription$<$ std\+\_\+msgs\+::msg\+::\+String $>$\+::\+Shared\+Ptr \mbox{\hyperlink{class_cmdvel_manager_aebc4d50818285a5d4d66471bbd6c5647}{sub\+\_\+mode\+\_\+nav}}
+\item 
+rclcpp\+::\+Subscription$<$ std\+\_\+msgs\+::msg\+::\+String $>$\+::\+Shared\+Ptr \mbox{\hyperlink{class_cmdvel_manager_a8fe18e008389bc520e0d0f10443dee50}{destroy\+\_\+sub\+\_\+}}
+\item 
+size\+\_\+t \mbox{\hyperlink{class_cmdvel_manager_a7c7cd471a457cbf22f4a8cdc9a932822}{count\+\_\+}}
+\item 
+bool \mbox{\hyperlink{class_cmdvel_manager_aa502b3f15e1cfd714fd7e1201a773002}{autonomous\+\_\+navigation}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_cmdvel_manager_aab325475d7310cfa5b897b03b42a63f4}\label{class_cmdvel_manager_aab325475d7310cfa5b897b03b42a63f4} 
+\index{CmdvelManager@{CmdvelManager}!CmdvelManager@{CmdvelManager}}
+\index{CmdvelManager@{CmdvelManager}!CmdvelManager@{CmdvelManager}}
+\doxysubsubsection{\texorpdfstring{CmdvelManager()}{CmdvelManager()}}
+{\footnotesize\ttfamily Cmdvel\+Manager\+::\+Cmdvel\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_cmdvel_manager_aab325475d7310cfa5b897b03b42a63f4_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_cmdvel_manager_a02ce7bebfd242cbfdcb8da0d5ca5cc29}\label{class_cmdvel_manager_a02ce7bebfd242cbfdcb8da0d5ca5cc29} 
+\index{CmdvelManager@{CmdvelManager}!callback\_cmd\_vel\_auto@{callback\_cmd\_vel\_auto}}
+\index{callback\_cmd\_vel\_auto@{callback\_cmd\_vel\_auto}!CmdvelManager@{CmdvelManager}}
+\doxysubsubsection{\texorpdfstring{callback\_cmd\_vel\_auto()}{callback\_cmd\_vel\_auto()}}
+{\footnotesize\ttfamily void Cmdvel\+Manager\+::callback\+\_\+cmd\+\_\+vel\+\_\+auto (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Twist\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_cmdvel_manager_a02ce7bebfd242cbfdcb8da0d5ca5cc29_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_cmdvel_manager_ac9e9353aac8a037cd20a77d86a39c0d1}\label{class_cmdvel_manager_ac9e9353aac8a037cd20a77d86a39c0d1} 
+\index{CmdvelManager@{CmdvelManager}!callback\_cmd\_vel\_manual@{callback\_cmd\_vel\_manual}}
+\index{callback\_cmd\_vel\_manual@{callback\_cmd\_vel\_manual}!CmdvelManager@{CmdvelManager}}
+\doxysubsubsection{\texorpdfstring{callback\_cmd\_vel\_manual()}{callback\_cmd\_vel\_manual()}}
+{\footnotesize\ttfamily void Cmdvel\+Manager\+::callback\+\_\+cmd\+\_\+vel\+\_\+manual (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Twist\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_cmdvel_manager_ac9e9353aac8a037cd20a77d86a39c0d1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_cmdvel_manager_a359a176ea948f58108d9b97b386ed152}\label{class_cmdvel_manager_a359a176ea948f58108d9b97b386ed152} 
+\index{CmdvelManager@{CmdvelManager}!callback\_mode\_nav@{callback\_mode\_nav}}
+\index{callback\_mode\_nav@{callback\_mode\_nav}!CmdvelManager@{CmdvelManager}}
+\doxysubsubsection{\texorpdfstring{callback\_mode\_nav()}{callback\_mode\_nav()}}
+{\footnotesize\ttfamily void Cmdvel\+Manager\+::callback\+\_\+mode\+\_\+nav (\begin{DoxyParamCaption}\item[{std\+\_\+msgs\+::msg\+::\+String\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_cmdvel_manager_a359a176ea948f58108d9b97b386ed152_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_cmdvel_manager_ac8e39194f2c111e25441ec052f42f530}\label{class_cmdvel_manager_ac8e39194f2c111e25441ec052f42f530} 
+\index{CmdvelManager@{CmdvelManager}!callback\_nav\_auto\_state@{callback\_nav\_auto\_state}}
+\index{callback\_nav\_auto\_state@{callback\_nav\_auto\_state}!CmdvelManager@{CmdvelManager}}
+\doxysubsubsection{\texorpdfstring{callback\_nav\_auto\_state()}{callback\_nav\_auto\_state()}}
+{\footnotesize\ttfamily void Cmdvel\+Manager\+::callback\+\_\+nav\+\_\+auto\+\_\+state (\begin{DoxyParamCaption}\item[{std\+\_\+msgs\+::msg\+::\+String\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_cmdvel_manager_ac8e39194f2c111e25441ec052f42f530_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_cmdvel_manager_a52b64e32ea9acf7bfca63afdfba9e6a5}\label{class_cmdvel_manager_a52b64e32ea9acf7bfca63afdfba9e6a5} 
+\index{CmdvelManager@{CmdvelManager}!callback\_shutdown@{callback\_shutdown}}
+\index{callback\_shutdown@{callback\_shutdown}!CmdvelManager@{CmdvelManager}}
+\doxysubsubsection{\texorpdfstring{callback\_shutdown()}{callback\_shutdown()}}
+{\footnotesize\ttfamily void Cmdvel\+Manager\+::callback\+\_\+shutdown (\begin{DoxyParamCaption}\item[{std\+\_\+msgs\+::msg\+::\+String\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_cmdvel_manager_a52b64e32ea9acf7bfca63afdfba9e6a5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_cmdvel_manager_aeae21deb42a18e1cbf58f14d09e4e821}\label{class_cmdvel_manager_aeae21deb42a18e1cbf58f14d09e4e821} 
+\index{CmdvelManager@{CmdvelManager}!destroy\_callback@{destroy\_callback}}
+\index{destroy\_callback@{destroy\_callback}!CmdvelManager@{CmdvelManager}}
+\doxysubsubsection{\texorpdfstring{destroy\_callback()}{destroy\_callback()}}
+{\footnotesize\ttfamily void Cmdvel\+Manager\+::destroy\+\_\+callback (\begin{DoxyParamCaption}\item[{const std\+\_\+msgs\+::msg\+::\+String\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_cmdvel_manager_aeae21deb42a18e1cbf58f14d09e4e821_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_cmdvel_manager_aa502b3f15e1cfd714fd7e1201a773002}\label{class_cmdvel_manager_aa502b3f15e1cfd714fd7e1201a773002} 
+\index{CmdvelManager@{CmdvelManager}!autonomous\_navigation@{autonomous\_navigation}}
+\index{autonomous\_navigation@{autonomous\_navigation}!CmdvelManager@{CmdvelManager}}
+\doxysubsubsection{\texorpdfstring{autonomous\_navigation}{autonomous\_navigation}}
+{\footnotesize\ttfamily bool Cmdvel\+Manager\+::autonomous\+\_\+navigation\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_cmdvel_manager_a7c7cd471a457cbf22f4a8cdc9a932822}\label{class_cmdvel_manager_a7c7cd471a457cbf22f4a8cdc9a932822} 
+\index{CmdvelManager@{CmdvelManager}!count\_@{count\_}}
+\index{count\_@{count\_}!CmdvelManager@{CmdvelManager}}
+\doxysubsubsection{\texorpdfstring{count\_}{count\_}}
+{\footnotesize\ttfamily size\+\_\+t Cmdvel\+Manager\+::count\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_cmdvel_manager_a8fe18e008389bc520e0d0f10443dee50}\label{class_cmdvel_manager_a8fe18e008389bc520e0d0f10443dee50} 
+\index{CmdvelManager@{CmdvelManager}!destroy\_sub\_@{destroy\_sub\_}}
+\index{destroy\_sub\_@{destroy\_sub\_}!CmdvelManager@{CmdvelManager}}
+\doxysubsubsection{\texorpdfstring{destroy\_sub\_}{destroy\_sub\_}}
+{\footnotesize\ttfamily rclcpp\+::\+Subscription$<$std\+\_\+msgs\+::msg\+::\+String$>$\+::\+Shared\+Ptr Cmdvel\+Manager\+::destroy\+\_\+sub\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_cmdvel_manager_a6f9c251c8ae64a1916f993fdbf00fa3a}\label{class_cmdvel_manager_a6f9c251c8ae64a1916f993fdbf00fa3a} 
+\index{CmdvelManager@{CmdvelManager}!pub\_cmd\_vel@{pub\_cmd\_vel}}
+\index{pub\_cmd\_vel@{pub\_cmd\_vel}!CmdvelManager@{CmdvelManager}}
+\doxysubsubsection{\texorpdfstring{pub\_cmd\_vel}{pub\_cmd\_vel}}
+{\footnotesize\ttfamily rclcpp\+::\+Publisher$<$geometry\+\_\+msgs\+::msg\+::\+Twist$>$\+::\+Shared\+Ptr Cmdvel\+Manager\+::pub\+\_\+cmd\+\_\+vel\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_cmdvel_manager_a03719e055cb6d16a8c5e766b9a7c16e6}\label{class_cmdvel_manager_a03719e055cb6d16a8c5e766b9a7c16e6} 
+\index{CmdvelManager@{CmdvelManager}!sub\_cmd\_shutdown@{sub\_cmd\_shutdown}}
+\index{sub\_cmd\_shutdown@{sub\_cmd\_shutdown}!CmdvelManager@{CmdvelManager}}
+\doxysubsubsection{\texorpdfstring{sub\_cmd\_shutdown}{sub\_cmd\_shutdown}}
+{\footnotesize\ttfamily rclcpp\+::\+Subscription$<$std\+\_\+msgs\+::msg\+::\+String$>$\+::\+Shared\+Ptr Cmdvel\+Manager\+::sub\+\_\+cmd\+\_\+shutdown\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_cmdvel_manager_a3a874ddffff4b24ded34112d5bd5f212}\label{class_cmdvel_manager_a3a874ddffff4b24ded34112d5bd5f212} 
+\index{CmdvelManager@{CmdvelManager}!sub\_cmd\_vel\_auto@{sub\_cmd\_vel\_auto}}
+\index{sub\_cmd\_vel\_auto@{sub\_cmd\_vel\_auto}!CmdvelManager@{CmdvelManager}}
+\doxysubsubsection{\texorpdfstring{sub\_cmd\_vel\_auto}{sub\_cmd\_vel\_auto}}
+{\footnotesize\ttfamily rclcpp\+::\+Subscription$<$geometry\+\_\+msgs\+::msg\+::\+Twist$>$\+::\+Shared\+Ptr Cmdvel\+Manager\+::sub\+\_\+cmd\+\_\+vel\+\_\+auto\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_cmdvel_manager_a6ea62a0f77fc9c97b22a6d8db5b4ce04}\label{class_cmdvel_manager_a6ea62a0f77fc9c97b22a6d8db5b4ce04} 
+\index{CmdvelManager@{CmdvelManager}!sub\_cmd\_vel\_manual@{sub\_cmd\_vel\_manual}}
+\index{sub\_cmd\_vel\_manual@{sub\_cmd\_vel\_manual}!CmdvelManager@{CmdvelManager}}
+\doxysubsubsection{\texorpdfstring{sub\_cmd\_vel\_manual}{sub\_cmd\_vel\_manual}}
+{\footnotesize\ttfamily rclcpp\+::\+Subscription$<$geometry\+\_\+msgs\+::msg\+::\+Twist$>$\+::\+Shared\+Ptr Cmdvel\+Manager\+::sub\+\_\+cmd\+\_\+vel\+\_\+manual\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_cmdvel_manager_aebc4d50818285a5d4d66471bbd6c5647}\label{class_cmdvel_manager_aebc4d50818285a5d4d66471bbd6c5647} 
+\index{CmdvelManager@{CmdvelManager}!sub\_mode\_nav@{sub\_mode\_nav}}
+\index{sub\_mode\_nav@{sub\_mode\_nav}!CmdvelManager@{CmdvelManager}}
+\doxysubsubsection{\texorpdfstring{sub\_mode\_nav}{sub\_mode\_nav}}
+{\footnotesize\ttfamily rclcpp\+::\+Subscription$<$std\+\_\+msgs\+::msg\+::\+String$>$\+::\+Shared\+Ptr Cmdvel\+Manager\+::sub\+\_\+mode\+\_\+nav\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_cmdvel_manager_a45beb7a191f98ebc32511808ab02f263}\label{class_cmdvel_manager_a45beb7a191f98ebc32511808ab02f263} 
+\index{CmdvelManager@{CmdvelManager}!sub\_nav\_nodes\_state@{sub\_nav\_nodes\_state}}
+\index{sub\_nav\_nodes\_state@{sub\_nav\_nodes\_state}!CmdvelManager@{CmdvelManager}}
+\doxysubsubsection{\texorpdfstring{sub\_nav\_nodes\_state}{sub\_nav\_nodes\_state}}
+{\footnotesize\ttfamily rclcpp\+::\+Subscription$<$std\+\_\+msgs\+::msg\+::\+String$>$\+::\+Shared\+Ptr Cmdvel\+Manager\+::sub\+\_\+nav\+\_\+nodes\+\_\+state\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/marm/\+Documents/git/rover/navigation/codebase/wheels\+\_\+control/src/\mbox{\hyperlink{_cmd__vel__manager__node_8cpp}{Cmd\+\_\+vel\+\_\+manager\+\_\+node.\+cpp}}\end{DoxyCompactItemize}

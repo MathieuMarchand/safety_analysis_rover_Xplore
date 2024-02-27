@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+    <org.eventb.core.refinesMachine name="'" org.eventb.core.target="coreR1"/>
+    <org.eventb.core.seesContext name="*" org.eventb.core.target="core_ctx1"/>
+    <org.eventb.core.variable name="(" org.eventb.core.comment="current task executing on the rover" org.eventb.core.identifier="cur_task"/>
+    <org.eventb.core.variable name="," org.eventb.core.comment="list of the number of instances of each module" org.eventb.core.identifier="instances"/>
+    <org.eventb.core.variable name="7" org.eventb.core.comment="Total number of modules (except idle)" org.eventb.core.identifier="nbModules"/>
+    <org.eventb.core.variable name="B" org.eventb.core.comment="Which module has been aborted" org.eventb.core.identifier="moduleAborted"/>
+    <org.eventb.core.variable name="`" org.eventb.core.comment="Which module was running before the abort" org.eventb.core.identifier="beforeAbort"/>
+    <org.eventb.core.variable name="L" org.eventb.core.comment="Boolean : Is the control station connected" org.eventb.core.identifier="CS_connected"/>
+    <org.eventb.core.variable name="T" org.eventb.core.comment="List of modules, keeps track of which module is currently doing something" org.eventb.core.identifier="moduleOperating"/>
+    <org.eventb.core.variable name="V" org.eventb.core.comment="List of modules, keeps track of which module is currently canceled" org.eventb.core.identifier="moduleCanceled"/>
+    <org.eventb.core.variable name="[" org.eventb.core.comment="List of all tasks saying if the module is in initial state" org.eventb.core.identifier="moduleInInitPos"/>
+    <org.eventb.core.variable name="a" org.eventb.core.comment="List of modules, keeps track of which module is currently launched" org.eventb.core.identifier="launchedModule"/>
+    <org.eventb.core.event name="b" org.eventb.core.comment="Initialisation of variables" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="modulePaused ≔ {idle↦FALSE, science↦FALSE, maintenance↦FALSE, navigation↦FALSE, manual↦FALSE, undefined_task↦FALSE}" org.eventb.core.label="act6"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="moduleResumed ≔ {idle↦FALSE, science↦FALSE, maintenance↦FALSE, navigation↦FALSE, manual↦FALSE, undefined_task↦FALSE}" org.eventb.core.label="act7"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="moduleUnknownInstr ≔ {idle↦FALSE, science↦FALSE, maintenance↦FALSE, navigation↦FALSE, manual↦FALSE, undefined_task↦FALSE}" org.eventb.core.label="act8"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="pauseReq ≔ idle" org.eventb.core.label="act9"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="resumeReq ≔ idle" org.eventb.core.label="act10"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="unknownReq ≔ idle" org.eventb.core.label="act11"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="messageHandled ≔ FALSE" org.eventb.core.label="act12"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="needClear ≔ FALSE" org.eventb.core.label="act13"/>
+        <org.eventb.core.action name="/" org.eventb.core.assignment="navigationGoalChanged ≔ FALSE" org.eventb.core.label="act14"/>
+        <org.eventb.core.action name="0" org.eventb.core.assignment="navigationGoalCalled ≔ FALSE" org.eventb.core.label="act15"/>
+        <org.eventb.core.action name="1" org.eventb.core.assignment="fwState ≔ {HD_mode↦FALSE, HD_semiauto_id↦FALSE, HD_element_id↦FALSE, HD_toggle_camera↦FALSE, HD_cancel_goal↦FALSE, CS_state↦FALSE, CS_telemetry↦FALSE, CS_instruction↦FALSE, NAV_goal↦FALSE, NAV_cancel_goal↦FALSE, HD_goal_id↦FALSE, undefined_func↦FALSE}" org.eventb.core.label="act16"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="c" org.eventb.core.comment="Launch task event" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="launchTask">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="launchTask"/>
+        <org.eventb.core.guard name="(" org.eventb.core.comment="Disables event if parameters need to be cleared" org.eventb.core.label="grd10" org.eventb.core.predicate="needClear = FALSE"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="needClear ≔ TRUE" org.eventb.core.comment="Asks to clear the variables" org.eventb.core.label="act8"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="messageHandled ≔ TRUE" org.eventb.core.label="act9"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="fwState(CS_instruction) ≔ TRUE" org.eventb.core.comment="Message processed by the core" org.eventb.core.label="act10"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="d" org.eventb.core.comment="Abort task event" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="abortTask">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="abortTask"/>
+        <org.eventb.core.guard name="(" org.eventb.core.comment="Disables event if parameters need to be cleared" org.eventb.core.label="grd2" org.eventb.core.predicate="needClear = FALSE"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="messageHandled ≔ TRUE" org.eventb.core.label="act5"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="needClear ≔ TRUE" org.eventb.core.comment="Asks to clear the variables" org.eventb.core.label="act6"/>
+        <org.eventb.core.parameter name="+" org.eventb.core.identifier="newBool"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd3" org.eventb.core.predicate="instances(task) &gt; 0 ⇒ newBool = TRUE"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd4" org.eventb.core.predicate="¬(instances(task) &gt; 0) ⇒ newBool = FALSE"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="fwState(CS_instruction) ≔ newBool" org.eventb.core.comment="Message processed by the core (or no if not running)" org.eventb.core.label="act7"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="e" org.eventb.core.comment="Manual launch of the science module" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="manualLaunchScience">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="manualLaunchScience"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="f" org.eventb.core.comment="Manual launch of the maintenance module" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="manualLaunchMaintenance">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="manualLaunchMaintenance"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="g" org.eventb.core.comment="Manual launch of the navigation module" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="manualLaunchNavigation">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="manualLaunchNavigation"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="h" org.eventb.core.comment="Manual launch of the manual module" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="manualLaunchManual">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="manualLaunchManual"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="i" org.eventb.core.comment="Manual launch of the undefined module" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="manualLaunchUndefinedTask">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="manualLaunchUndefinedTask"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="j" org.eventb.core.comment="Cancel task instruction" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="cancelTask">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="cancelTask"/>
+        <org.eventb.core.guard name="(" org.eventb.core.comment="Disables event if parameters need to be cleared" org.eventb.core.label="grd4" org.eventb.core.predicate="needClear = FALSE"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="needClear ≔ TRUE" org.eventb.core.comment="Asks to clear the variables" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="messageHandled ≔ TRUE" org.eventb.core.label="act4"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="fwState(CS_instruction) ≔ canceled" org.eventb.core.comment="Message processed by the core (or no if not running)" org.eventb.core.label="act5"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="k" org.eventb.core.comment="Connection to the control station event" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="connectionRequestCS">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="connectionRequestCS"/>
+        <org.eventb.core.guard name="(" org.eventb.core.comment="Disables event if parameters need to be cleared" org.eventb.core.label="grd1" org.eventb.core.predicate="needClear = FALSE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="l" org.eventb.core.comment="Forward of the navigation goal to the nav module" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="forwardNavigationGoal">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="forwardNavigationGoal"/>
+        <org.eventb.core.guard name="(" org.eventb.core.comment="Disables event if parameters need to be cleared" org.eventb.core.label="grd4" org.eventb.core.predicate="needClear = FALSE"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="messageHandled ≔ TRUE" org.eventb.core.label="act4"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="needClear ≔ TRUE" org.eventb.core.comment="Asks to clear the variables" org.eventb.core.label="act5"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="navigationGoalCalled ≔ TRUE" org.eventb.core.label="act6"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="navigationGoalChanged ≔ newBool" org.eventb.core.label="act7"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="fwState(NAV_goal) ≔ newBool" org.eventb.core.comment="Message processed by the module (or no if not running)" org.eventb.core.label="act8"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="m" org.eventb.core.comment="Forward of the maintenance goal to the maintenance module" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="forwardHDID">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="forwardHDID"/>
+        <org.eventb.core.guard name="(" org.eventb.core.comment="Disables event if parameters need to be cleared" org.eventb.core.label="grd6" org.eventb.core.predicate="needClear = FALSE"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="needClear ≔ TRUE" org.eventb.core.comment="Asks to clear the variables" org.eventb.core.label="act4"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="messageHandled ≔ TRUE" org.eventb.core.label="act5"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="fwState(HD_goal_id) ≔ newBool" org.eventb.core.comment="Message processed by the module (or no if not running)" org.eventb.core.label="act6"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="n" org.eventb.core.comment="Start the drill" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="launchDrill">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="launchDrill"/>
+        <org.eventb.core.guard name="(" org.eventb.core.comment="Disables event if parameters need to be cleared" org.eventb.core.label="grd6" org.eventb.core.predicate="needClear = FALSE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="o" org.eventb.core.comment="At an arbitrary time, the drill finished his job" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="drillEnded">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="drillEnded"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="p" org.eventb.core.comment="At an arbitrary time, the hd finished his job" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="hdToInit">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="hdToInit"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="q" org.eventb.core.comment="Pause a task event" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="pauseTask">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="task"/>
+        <org.eventb.core.guard name="(" org.eventb.core.label="grd1" org.eventb.core.predicate="task ∈ TASKS∖{idle}"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="pauseReq ≔ task" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="messageHandled ≔ FALSE" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="needClear ≔ TRUE" org.eventb.core.comment="Asks to clear the variables" org.eventb.core.label="act4"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="modulePaused(task) ≔ FALSE" org.eventb.core.label="act2"/>
+        <org.eventb.core.guard name="+" org.eventb.core.comment="Disables event if parameters need to be cleared" org.eventb.core.label="grd2" org.eventb.core.predicate="needClear = FALSE"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="fwState(CS_instruction) ≔ FALSE" org.eventb.core.comment="Message not processed" org.eventb.core.label="act5"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="r" org.eventb.core.comment="Resume a task event" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="resumeTask">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="task"/>
+        <org.eventb.core.guard name="(" org.eventb.core.label="grd1" org.eventb.core.predicate="task ∈ TASKS∖{idle}"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="resumeReq ≔ task" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="messageHandled ≔ FALSE" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="needClear ≔ TRUE" org.eventb.core.comment="Asks to clear the variables" org.eventb.core.label="act4"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="moduleResumed(task) ≔ FALSE" org.eventb.core.label="act2"/>
+        <org.eventb.core.guard name="+" org.eventb.core.comment="Disables event if parameters need to be cleared" org.eventb.core.label="grd2" org.eventb.core.predicate="needClear = FALSE"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="fwState(CS_instruction) ≔ FALSE" org.eventb.core.comment="Message not processed" org.eventb.core.label="act5"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="s" org.eventb.core.comment="Receives an unknown instruction for a module" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="unknownInstrTask">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="task"/>
+        <org.eventb.core.guard name="(" org.eventb.core.label="grd1" org.eventb.core.predicate="task∈TASKS∖{idle}"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="unknownReq ≔ task" org.eventb.core.label="act1"/>
+        <org.eventb.core.guard name="*" org.eventb.core.comment="Disables event if parameters need to be cleared" org.eventb.core.label="grd2" org.eventb.core.predicate="needClear = FALSE"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="messageHandled ≔ FALSE" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="needClear ≔ TRUE" org.eventb.core.comment="Asks to clear the variables" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="fwState(CS_instruction) ≔ FALSE" org.eventb.core.comment="Message not processed" org.eventb.core.label="act4"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="t" org.eventb.core.comment="List of modules, keeps track of which module is currently paused" org.eventb.core.identifier="modulePaused"/>
+    <org.eventb.core.invariant name="u" org.eventb.core.label="type_modulePaused" org.eventb.core.predicate="modulePaused ∈ TASKS→BOOL"/>
+    <org.eventb.core.variable name="v" org.eventb.core.comment="List of modules, keeps track of which module is currently resumed" org.eventb.core.identifier="moduleResumed"/>
+    <org.eventb.core.invariant name="w" org.eventb.core.label="type_moduleResumed" org.eventb.core.predicate="moduleResumed ∈ TASKS → BOOL"/>
+    <org.eventb.core.variable name="x" org.eventb.core.comment="List of modules, keeps track of which module is currently unknown instr" org.eventb.core.identifier="moduleUnknownInstr"/>
+    <org.eventb.core.invariant name="y" org.eventb.core.label="type_moduleUnknownInst" org.eventb.core.predicate="moduleUnknownInstr ∈ TASKS → BOOL"/>
+    <org.eventb.core.variable name="z" org.eventb.core.comment="Task that has been requested for pause" org.eventb.core.identifier="pauseReq"/>
+    <org.eventb.core.invariant name="{" org.eventb.core.label="type_pauseReq" org.eventb.core.predicate="pauseReq ∈ TASKS"/>
+    <org.eventb.core.variable name="|" org.eventb.core.comment="Task that has been requested for resume" org.eventb.core.identifier="resumeReq"/>
+    <org.eventb.core.invariant name="}" org.eventb.core.label="type_resumeReq" org.eventb.core.predicate="resumeReq ∈ TASKS"/>
+    <org.eventb.core.variable name="~" org.eventb.core.comment="Task that has been requested for unknown" org.eventb.core.identifier="unknownReq"/>
+    <org.eventb.core.invariant name="''" org.eventb.core.label="type_unknownReq" org.eventb.core.predicate="unknownReq ∈ TASKS"/>
+    <org.eventb.core.invariant name="'/" org.eventb.core.label="type_messageHandled" org.eventb.core.predicate="messageHandled ∈ BOOL"/>
+    <org.eventb.core.invariant name="'1" org.eventb.core.label="type_needClear" org.eventb.core.predicate="needClear ∈ BOOL"/>
+    <org.eventb.core.invariant name="'6" org.eventb.core.label="type_navGoalChanged" org.eventb.core.predicate="navigationGoalChanged ∈ BOOL"/>
+    <org.eventb.core.invariant name="'8" org.eventb.core.label="type_navGoalCalled" org.eventb.core.predicate="navigationGoalCalled ∈ BOOL"/>
+    <org.eventb.core.invariant name="'E" org.eventb.core.label="type_fwState" org.eventb.core.predicate="fwState ∈ FORWARD_FUNCTIONS → BOOL"/>
+    <org.eventb.core.invariant name="'J" org.eventb.core.comment="After the clear of the variables, modulePaused and moduleResumed are cleared" org.eventb.core.label="cleared_variables_pause_resume" org.eventb.core.predicate="∀task·task∈TASKS ∧ needClear = FALSE ⇒ modulePaused(task) = FALSE ∧ moduleResumed(task) = FALSE"/>
+    <org.eventb.core.invariant name="'(" org.eventb.core.comment="No task executes unknown instruction" org.eventb.core.label="unknown_instr_no_effect" org.eventb.core.predicate="∀task·task∈TASKS ⇒ moduleUnknownInstr(task) = FALSE"/>
+    <org.eventb.core.invariant name="'+" org.eventb.core.comment="Modules not asked to be paused are not paused" org.eventb.core.label="not_paused_task_not_paused" org.eventb.core.predicate="∀task·task∈TASKS∖{pauseReq,idle} ∧ ¬ pauseReq = idle ⇒ modulePaused(task) = FALSE"/>
+    <org.eventb.core.invariant name="';" org.eventb.core.comment="Message handled cleared" org.eventb.core.label="not_needClear_cleared2" org.eventb.core.predicate="needClear = FALSE ⇒ messageHandled = FALSE"/>
+    <org.eventb.core.invariant name="'F" org.eventb.core.comment="undefined functions never send messages" org.eventb.core.label="never_unknown_state" org.eventb.core.predicate="fwState(undefined_func) = FALSE"/>
+    <org.eventb.core.invariant name="':" org.eventb.core.comment="Navigation variable cleared" org.eventb.core.label="not_needClear_cleared" org.eventb.core.predicate="needClear = FALSE ⇒ navigationGoalChanged = FALSE ∧ navigationGoalCalled = FALSE"/>
+    <org.eventb.core.invariant name="'9" org.eventb.core.comment="R24: Navigation goal changes when asked to" org.eventb.core.label="navGoal_correctly_forwarded" org.eventb.core.predicate="navigationGoalCalled = TRUE ∧ messageHandled = TRUE ⇒ navigationGoalChanged = TRUE"/>
+    <org.eventb.core.invariant name="'," org.eventb.core.comment="R25: Modules not asked to be resumed are not resumed" org.eventb.core.label="not_resumed_task_not_resumed" org.eventb.core.predicate="∀task·task∈TASKS∖{resumeReq} ∧ ¬ resumeReq = idle⇒ moduleResumed(task) = FALSE"/>
+    <org.eventb.core.invariant name="')" org.eventb.core.comment="R26 : If a module is asked to pause, it is paused" org.eventb.core.label="paused_task_is_paused" org.eventb.core.predicate="¬ pauseReq = idle ⇒ modulePaused(pauseReq) = TRUE"/>
+    <org.eventb.core.invariant name="'*" org.eventb.core.comment="R27 : If a module is asked to resume, it is resumed" org.eventb.core.label="resumed_task_is_resumed" org.eventb.core.predicate="¬ resumeReq = idle ⇒ moduleResumed(resumeReq) = TRUE"/>
+    <org.eventb.core.variable name="'." org.eventb.core.comment="Boolean : Has the message been handled" org.eventb.core.identifier="messageHandled"/>
+    <org.eventb.core.variable name="'0" org.eventb.core.comment="Boolean : Need to clear temporary values, done after each ROS message process" org.eventb.core.identifier="needClear"/>
+    <org.eventb.core.event name="'2" org.eventb.core.comment="Clear temporary variable for verification" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="clear">
+        <org.eventb.core.guard name="'" org.eventb.core.comment="Enabled if we need to clear the variables" org.eventb.core.label="grd1" org.eventb.core.predicate="needClear = TRUE"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="needClear ≔ FALSE" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="messageHandled ≔ FALSE" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="navigationGoalChanged ≔ FALSE" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="navigationGoalCalled ≔ FALSE" org.eventb.core.label="act4"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="moduleResumed ≔ {idle↦FALSE, science↦FALSE, maintenance↦FALSE, navigation↦FALSE, manual↦FALSE, undefined_task↦FALSE}" org.eventb.core.label="act5"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="resumeReq ≔ idle" org.eventb.core.label="act7"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="modulePaused ≔ {idle↦FALSE, science↦FALSE, maintenance↦FALSE, navigation↦FALSE, manual↦FALSE, undefined_task↦FALSE}" org.eventb.core.label="act6"/>
+        <org.eventb.core.action name="/" org.eventb.core.assignment="pauseReq ≔ idle" org.eventb.core.label="act8"/>
+        <org.eventb.core.action name="0" org.eventb.core.assignment="fwState ≔ {HD_mode↦FALSE, HD_semiauto_id↦FALSE, HD_element_id↦FALSE, HD_toggle_camera↦FALSE, HD_cancel_goal↦FALSE, CS_state↦FALSE, CS_telemetry↦FALSE, CS_instruction↦FALSE, NAV_goal↦FALSE, NAV_cancel_goal↦FALSE, HD_goal_id↦FALSE, undefined_func↦FALSE}" org.eventb.core.label="act9"/>
+    </org.eventb.core.event>
+    <org.eventb.core.invariant name="'3" org.eventb.core.comment="R28 : No message is handled if the control station is not connected" org.eventb.core.label="no_message_handled_when_not_connected" org.eventb.core.predicate="CS_connected = FALSE ⇒ messageHandled = FALSE"/>
+    <org.eventb.core.variable name="'5" org.eventb.core.comment="Boolean : Has the navigation goal been changed" org.eventb.core.identifier="navigationGoalChanged"/>
+    <org.eventb.core.variable name="'7" org.eventb.core.comment="Boolean : Has the navigation goal been called" org.eventb.core.identifier="navigationGoalCalled"/>
+    <org.eventb.core.event name="'=" org.eventb.core.comment="Forward the HD mode message" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="fwHDmode">
+        <org.eventb.core.guard name="'" org.eventb.core.comment="Disables event if parameters need to be cleared" org.eventb.core.label="grd1" org.eventb.core.predicate="needClear = FALSE"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="needClear ≔ TRUE" org.eventb.core.comment="Asks to clear the variables" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="fwState(HD_mode) ≔ newBool" org.eventb.core.comment="Message processed by the module (or no if not running)" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="messageHandled ≔ TRUE" org.eventb.core.label="act3"/>
+        <org.eventb.core.parameter name="+" org.eventb.core.identifier="newBool"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd2" org.eventb.core.predicate="instances(maintenance) &gt; 0 ⇒ newBool = TRUE"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd3" org.eventb.core.predicate="¬(instances(maintenance) &gt; 0) ⇒ newBool = FALSE"/>
+        <org.eventb.core.parameter name="." org.eventb.core.identifier="HDmode"/>
+        <org.eventb.core.guard name="/" org.eventb.core.label="grd4" org.eventb.core.predicate="HDmode ∈ ℤ"/>
+        <org.eventb.core.guard name="0" org.eventb.core.label="grd5" org.eventb.core.predicate="HDmode ≤ 3 ∧ HDmode ≥ 0"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'&gt;" org.eventb.core.comment="Forward the HD semi auto id message" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="fwHDSemiautoID">
+        <org.eventb.core.guard name="'" org.eventb.core.comment="Disables event if parameters need to be cleared" org.eventb.core.label="grd1" org.eventb.core.predicate="needClear = FALSE"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="needClear ≔ TRUE" org.eventb.core.comment="Asks to clear the variables" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="fwState(HD_semiauto_id) ≔ newBool" org.eventb.core.comment="Message processed by the module (or no if not running)" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="messageHandled ≔ TRUE" org.eventb.core.label="act3"/>
+        <org.eventb.core.parameter name="+" org.eventb.core.identifier="newBool"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd3" org.eventb.core.predicate="instances(maintenance) &gt; 0 ⇒ newBool = TRUE"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd2" org.eventb.core.predicate="¬(instances(maintenance) &gt; 0) ⇒ newBool = FALSE"/>
+        <org.eventb.core.parameter name="." org.eventb.core.identifier="ID"/>
+        <org.eventb.core.guard name="/" org.eventb.core.label="grd4" org.eventb.core.predicate="ID ∈ ℤ"/>
+        <org.eventb.core.guard name="0" org.eventb.core.label="grd5" org.eventb.core.predicate="ID ≥ 0 ∧ ID ≤ 14"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'?" org.eventb.core.comment="Forward the HD element id message" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="fwHDelementID">
+        <org.eventb.core.guard name="'" org.eventb.core.comment="Disables event if parameters need to be cleared" org.eventb.core.label="grd1" org.eventb.core.predicate="needClear = FALSE"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="needClear ≔ TRUE" org.eventb.core.comment="Asks to clear the variables" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="fwState(HD_element_id) ≔ newBool" org.eventb.core.comment="Message processed by the module (or no if not running)" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="messageHandled ≔ TRUE" org.eventb.core.label="act3"/>
+        <org.eventb.core.parameter name="+" org.eventb.core.identifier="newBool"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd2" org.eventb.core.predicate="instances(maintenance) &gt; 0 ⇒ newBool = TRUE"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd3" org.eventb.core.predicate="¬(instances(maintenance) &gt; 0) ⇒ newBool = FALSE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'@" org.eventb.core.comment="Forward the HD toggle camera state message" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="fwHDtoggleCamera">
+        <org.eventb.core.guard name="'" org.eventb.core.comment="Disables event if parameters need to be cleared" org.eventb.core.label="grd1" org.eventb.core.predicate="needClear = FALSE"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="needClear ≔ TRUE" org.eventb.core.comment="Asks to clear the variables" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="fwState(HD_toggle_camera) ≔ newBool" org.eventb.core.comment="Message processed by the module (or no if not running)" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="messageHandled ≔ TRUE" org.eventb.core.label="act3"/>
+        <org.eventb.core.parameter name="+" org.eventb.core.identifier="newBool"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd3" org.eventb.core.predicate="instances(maintenance) &gt; 0 ⇒ newBool = TRUE"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd2" org.eventb.core.predicate="¬(instances(maintenance) &gt; 0) ⇒ newBool = FALSE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'A" org.eventb.core.comment="Forward the HD cancel goal message" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="fwHDCancelGoal">
+        <org.eventb.core.guard name="'" org.eventb.core.comment="Disables event if parameters need to be cleared" org.eventb.core.label="grd1" org.eventb.core.predicate="needClear = FALSE"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="needClear ≔ TRUE" org.eventb.core.comment="Asks to clear the variables" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="fwState(HD_cancel_goal) ≔ newBool" org.eventb.core.comment="Message processed by the module (or no if not running)" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="messageHandled ≔ TRUE" org.eventb.core.label="act3"/>
+        <org.eventb.core.parameter name="+" org.eventb.core.identifier="newBool"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd3" org.eventb.core.predicate="instances(maintenance) &gt; 0 ⇒ newBool = TRUE"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd2" org.eventb.core.predicate="¬(instances(maintenance) &gt; 0) ⇒ newBool = FALSE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'B" org.eventb.core.comment="Forward the state message" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="fwCSstate">
+        <org.eventb.core.guard name="'" org.eventb.core.comment="Disables event if parameters need to be cleared" org.eventb.core.label="grd1" org.eventb.core.predicate="needClear = FALSE"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="needClear ≔ TRUE" org.eventb.core.comment="Asks to clear the variables" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="fwState(CS_state) ≔ newBool" org.eventb.core.comment="Message processed by the module (or no if not running)" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="messageHandled ≔ TRUE" org.eventb.core.label="act3"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd2" org.eventb.core.predicate="CS_connected = TRUE ⇒ newBool = TRUE"/>
+        <org.eventb.core.parameter name="," org.eventb.core.identifier="newBool"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd3" org.eventb.core.predicate="CS_connected = FALSE ⇒ newBool = FALSE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'C" org.eventb.core.comment="Forward the telemetry message" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="fwCStelemetry">
+        <org.eventb.core.guard name="'" org.eventb.core.comment="Disables event if parameters need to be cleared" org.eventb.core.label="grd1" org.eventb.core.predicate="needClear = FALSE"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="needClear ≔ TRUE" org.eventb.core.comment="Asks to clear the variables" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="fwState(CS_telemetry) ≔ newBool" org.eventb.core.comment="Message processed by the module (or no if not running)" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="messageHandled ≔ TRUE" org.eventb.core.label="act3"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd2" org.eventb.core.predicate="CS_connected = TRUE ⇒ newBool = TRUE"/>
+        <org.eventb.core.parameter name="-" org.eventb.core.identifier="newBool"/>
+        <org.eventb.core.guard name="." org.eventb.core.label="grd3" org.eventb.core.predicate="CS_connected = FALSE ⇒ newBool = FALSE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="'D" org.eventb.core.identifier="fwState"/>
+    <org.eventb.core.event name="'H" org.eventb.core.comment="Forward the navigation goal message" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="fwNAVCancelGoal">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="newBool"/>
+        <org.eventb.core.guard name="(" org.eventb.core.comment="Disables event if parameters need to be cleared" org.eventb.core.label="grd1" org.eventb.core.predicate="needClear = FALSE"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd2" org.eventb.core.predicate="instances(navigation) &gt; 0 ⇒ newBool = TRUE"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd3" org.eventb.core.predicate="¬(instances(navigation) &gt; 0) ⇒ newBool = FALSE"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="needClear ≔ TRUE" org.eventb.core.comment="Asks to clear the variables" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="fwState(NAV_cancel_goal) ≔ FALSE" org.eventb.core.comment="Message not processed by navigation module (not forwarded)" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="messageHandled ≔ TRUE" org.eventb.core.label="act3"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'G" org.eventb.core.comment="Undefined topic message" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="handleUndefinedFunctions">
+        <org.eventb.core.guard name="'" org.eventb.core.comment="Disables event if parameters need to be cleared" org.eventb.core.label="grd1" org.eventb.core.predicate="needClear = FALSE"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="needClear ≔ TRUE" org.eventb.core.comment="Asks to clear the variables" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+</org.eventb.core.machineFile>

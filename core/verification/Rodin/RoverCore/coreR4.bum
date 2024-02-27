@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+    <org.eventb.core.refinesMachine name="'" org.eventb.core.target="coreR3"/>
+    <org.eventb.core.seesContext name="*" org.eventb.core.target="core_ctx2"/>
+    <org.eventb.core.variable name="(" org.eventb.core.comment="current task executing on the rover" org.eventb.core.identifier="cur_task"/>
+    <org.eventb.core.variable name="," org.eventb.core.comment="list of the number of instances of each module" org.eventb.core.identifier="instances"/>
+    <org.eventb.core.variable name="7" org.eventb.core.comment="Total number of modules (except idle)" org.eventb.core.identifier="nbModules"/>
+    <org.eventb.core.variable name="B" org.eventb.core.comment="Which module has been aborted" org.eventb.core.identifier="moduleAborted"/>
+    <org.eventb.core.variable name="`" org.eventb.core.comment="Which module was running before the abort" org.eventb.core.identifier="beforeAbort"/>
+    <org.eventb.core.variable name="L" org.eventb.core.comment="Boolean : Is the control station connected" org.eventb.core.identifier="CS_connected"/>
+    <org.eventb.core.variable name="T" org.eventb.core.comment="List of modules, keeps track of which module is currently doing something" org.eventb.core.identifier="moduleOperating"/>
+    <org.eventb.core.variable name="V" org.eventb.core.comment="List of modules, keeps track of which module is currently canceled" org.eventb.core.identifier="moduleCanceled"/>
+    <org.eventb.core.variable name="[" org.eventb.core.comment="List of all tasks saying if the module is in initial state" org.eventb.core.identifier="moduleInInitPos"/>
+    <org.eventb.core.variable name="a" org.eventb.core.comment="List of modules, keeps track of which module is currently launched" org.eventb.core.identifier="launchedModule"/>
+    <org.eventb.core.variable name="t" org.eventb.core.comment="List of modules, keeps track of which module is currently paused" org.eventb.core.identifier="modulePaused"/>
+    <org.eventb.core.variable name="v" org.eventb.core.comment="List of modules, keeps track of which module is currently resumed" org.eventb.core.identifier="moduleResumed"/>
+    <org.eventb.core.variable name="x" org.eventb.core.comment="List of modules, keeps track of which module is currently unknown instr" org.eventb.core.identifier="moduleUnknownInstr"/>
+    <org.eventb.core.variable name="z" org.eventb.core.comment="Task that has been requested for pause" org.eventb.core.identifier="pauseReq"/>
+    <org.eventb.core.variable name="|" org.eventb.core.comment="Task that has been requested for resume" org.eventb.core.identifier="resumeReq"/>
+    <org.eventb.core.variable name="~" org.eventb.core.comment="Task that has been requested for unknown" org.eventb.core.identifier="unknownReq"/>
+    <org.eventb.core.variable name="'." org.eventb.core.comment="Boolean : Has the message been handled" org.eventb.core.identifier="messageHandled"/>
+    <org.eventb.core.variable name="'0" org.eventb.core.comment="Boolean : Need to clear temporary values, done after each ROS message process" org.eventb.core.identifier="needClear"/>
+    <org.eventb.core.variable name="'5" org.eventb.core.comment="Boolean : Has the navigation goal been changed" org.eventb.core.identifier="navigationGoalChanged"/>
+    <org.eventb.core.variable name="'7" org.eventb.core.comment="Boolean : Has the navigation goal been called" org.eventb.core.identifier="navigationGoalCalled"/>
+    <org.eventb.core.variable name="'D" org.eventb.core.comment="List of functions, has the message been transmited by the function" org.eventb.core.identifier="fwState"/>
+    <org.eventb.core.variable name="'_" org.eventb.core.comment="Function to forward the message to" org.eventb.core.identifier="forwardTo"/>
+    <org.eventb.core.variable name="'b" org.eventb.core.comment="Boolean : Used to deactivate all events except the receive message function, then only activates the right event" org.eventb.core.identifier="needForward"/>
+    <org.eventb.core.variable name="'d" org.eventb.core.comment="Function to which the message has been forwarded" org.eventb.core.identifier="forwardedTo"/>
+    <org.eventb.core.event name="'e" org.eventb.core.comment="Initialisation of variables" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="messageFrom ≔ p_none" org.eventb.core.label="act20"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="shouldHandleMessage ≔ FALSE" org.eventb.core.label="act22"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="beforeLaunch ≔ idle" org.eventb.core.label="act23"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'f" org.eventb.core.comment="Launch task event" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="launchTask">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="launchTask"/>
+        <org.eventb.core.guard name="/" org.eventb.core.label="grd14" org.eventb.core.predicate="((cur_task = idle ∨ task = science) ∧ ¬ task = undefined_task)⇒ newTask = task ∧ currentTask = cur_task"/>
+        <org.eventb.core.guard name="3" org.eventb.core.label="grd15" org.eventb.core.predicate="¬((cur_task = idle ∨ task = science) ∧ ¬ task = undefined_task)⇒ newTask = cur_task ∧ currentTask = idle"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="beforeLaunch ≔ currentTask" org.eventb.core.comment="Task before the launch of the new task" org.eventb.core.label="act12"/>
+        <org.eventb.core.parameter name=")" org.eventb.core.comment="Current task at the moment of the launch call" org.eventb.core.identifier="currentTask"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'g" org.eventb.core.comment="Abort task event" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="abortTask">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="abortTask"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'h" org.eventb.core.comment="Manual launch of the science module" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="manualLaunchScience">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="manualLaunchScience"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'i" org.eventb.core.comment="Manual launch of the maintenance module" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="manualLaunchMaintenance">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="manualLaunchMaintenance"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'j" org.eventb.core.comment="Manual launch of the navigation module" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="manualLaunchNavigation">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="manualLaunchNavigation"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'k" org.eventb.core.comment="Manual launch of the manual module" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="manualLaunchManual">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="manualLaunchManual"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'l" org.eventb.core.comment="Manual launch of the undefined module" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="manualLaunchUndefinedTask">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="manualLaunchUndefinedTask"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'m" org.eventb.core.comment="Cancel task instruction" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="cancelTask">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="cancelTask"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'n" org.eventb.core.comment="Connection to the control station event" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="connectionRequestCS">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="connectionRequestCS"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'o" org.eventb.core.comment="Forward of the navigation goal to the nav module" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="forwardNavigationGoal">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="forwardNavigationGoal"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'p" org.eventb.core.comment="Forward of the maintenance goal to the maintenance module" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="forwardHDID">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="forwardHDID"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'q" org.eventb.core.comment="Start the drill" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="launchDrill">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="launchDrill"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'r" org.eventb.core.comment="At an arbitrary time, the drill finished his job" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="drillEnded">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="drillEnded"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'s" org.eventb.core.comment="At an arbitrary time, the hd finished his job" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="hdToInit">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="hdToInit"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'t" org.eventb.core.comment="Pause a task event" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="pauseTask">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="pauseTask"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'u" org.eventb.core.comment="Resume a task event" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="resumeTask">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="resumeTask"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'v" org.eventb.core.comment="Receives an unknown instruction for a module" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="unknownInstrTask">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="unknownInstrTask"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'w" org.eventb.core.comment="Clear temporary variable for verification" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="clear">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="clear"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="messageFrom ≔ p_none" org.eventb.core.label="act13"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="shouldHandleMessage ≔ FALSE" org.eventb.core.label="act14"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="beforeLaunch ≔ idle" org.eventb.core.label="act15"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'x" org.eventb.core.comment="Forward the HD mode message" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="fwHDmode">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="fwHDmode"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'y" org.eventb.core.comment="Forward the HD semi auto id message" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="fwHDSemiautoID">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="fwHDSemiautoID"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'z" org.eventb.core.comment="Forward the HD element id message" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="fwHDelementID">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="fwHDelementID"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'{" org.eventb.core.comment="Forward the HD toggle camera state message" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="fwHDtoggleCamera">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="fwHDtoggleCamera"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'|" org.eventb.core.comment="Forward the HD cancel goal message" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="fwHDCancelGoal">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="fwHDCancelGoal"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'}" org.eventb.core.comment="Forward the state message" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="fwCSstate">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="fwCSstate"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="'~" org.eventb.core.comment="Forward the telemetry message" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="fwCStelemetry">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="fwCStelemetry"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="('" org.eventb.core.comment="Forward the navigation goal message" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="fwNAVCancelGoal">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="fwNAVCancelGoal"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="((" org.eventb.core.comment="Undefined topic message" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="handleUndefinedFunctions">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="handleUndefinedFunctions"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="()" org.eventb.core.comment="Forward a ROS message to the corresponding function (to mimic the ROS behavior)" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="rosMessage">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="rosMessage"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.comment="Sender of the message" org.eventb.core.identifier="from"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd4" org.eventb.core.predicate="from ∈ PARTS"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="messageFrom ≔ from" org.eventb.core.label="act3"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd6" org.eventb.core.predicate="duplicateMessage = TRUE ⇒ newMessage = FALSE"/>
+        <org.eventb.core.parameter name="2" org.eventb.core.comment="Boolean, has the message already been received" org.eventb.core.identifier="duplicateMessage"/>
+        <org.eventb.core.parameter name="." org.eventb.core.comment="Boolean, is the message new" org.eventb.core.identifier="newMessage"/>
+        <org.eventb.core.guard name="/" org.eventb.core.label="grd7" org.eventb.core.predicate="duplicateMessage = FALSE ⇒ newMessage = TRUE"/>
+        <org.eventb.core.action name="0" org.eventb.core.assignment="shouldHandleMessage ≔ newMessage" org.eventb.core.label="act4"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="(*" org.eventb.core.comment="Sender of the message" org.eventb.core.identifier="messageFrom"/>
+    <org.eventb.core.invariant name="(+" org.eventb.core.label="type_messageFrom" org.eventb.core.predicate="messageFrom ∈ PARTS"/>
+    <org.eventb.core.invariant name="(2" org.eventb.core.label="type_shouldHandleMessage" org.eventb.core.predicate="shouldHandleMessage ∈ BOOL"/>
+    <org.eventb.core.variable name="(1" org.eventb.core.comment="Boolean : Is the message supposed to be handled" org.eventb.core.identifier="shouldHandleMessage"/>
+    <org.eventb.core.variable name="(4" org.eventb.core.comment="State of the rover before launching a new task" org.eventb.core.identifier="beforeLaunch"/>
+    <org.eventb.core.invariant name="(5" org.eventb.core.label="type_beforeLaunch" org.eventb.core.predicate="beforeLaunch ∈ TASKS"/>
+    <org.eventb.core.invariant name="(." org.eventb.core.comment="There is only one forwarded to to true at a time" org.eventb.core.label="only_one_forwarded_to" org.eventb.core.predicate="∀f,g·f∈FORWARD_FUNCTIONS ∧ g∈FORWARD_FUNCTIONS∖{f} ∧ forwardedTo(f) = TRUE ⇒ forwardedTo(g) = FALSE "/>
+    <org.eventb.core.invariant name="(3" org.eventb.core.comment="R44 : Duplicated messages are only handled once" org.eventb.core.label="message_handling" org.eventb.core.predicate="needClear = TRUE ⇒ shouldHandleMessage = messageHandled"/>
+    <org.eventb.core.invariant name="(," org.eventb.core.comment="R45 : All messages received from the CS should be handeled" org.eventb.core.label="message_handled_CS" org.eventb.core.predicate="∀f·f∈FORWARD_FUNCTIONS∖{undefined_func,CS_state,CS_telemetry} ∧ messageFrom = p_control_station ∧ forwardedTo(f) = TRUE ∧ needClear = TRUE ⇒ messageHandled = TRUE"/>
+    <org.eventb.core.invariant name="(-" org.eventb.core.comment="R45 : All messages received from others than CS should not be handled" org.eventb.core.label="message_not_handled_CS" org.eventb.core.predicate="∀f·f∈FORWARD_FUNCTIONS∖{undefined_func,CS_state,CS_telemetry} ∧ ¬ messageFrom = p_control_station ∧ forwardedTo(f) = TRUE  ∧ needClear = TRUE ⇒ messageHandled = FALSE"/>
+    <org.eventb.core.invariant name="(6" org.eventb.core.comment="R46 : All modules are launched from idle" org.eventb.core.label="launch_only_in_idle" org.eventb.core.predicate="beforeLaunch = idle"/>
+</org.eventb.core.machineFile>

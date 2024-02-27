@@ -1,0 +1,232 @@
+\doxysection{C\+:/\+Users/marm/\+Documents/git/rover/navigation/codebase/wheels\+\_\+control/src/\+Motors\+\_\+cmds\+\_\+node.cpp File Reference}
+\hypertarget{_motors__cmds__node_8cpp}{}\label{_motors__cmds__node_8cpp}\index{C:/Users/marm/Documents/git/rover/navigation/codebase/wheels\_control/src/Motors\_cmds\_node.cpp@{C:/Users/marm/Documents/git/rover/navigation/codebase/wheels\_control/src/Motors\_cmds\_node.cpp}}
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+set$>$}\newline
+{\ttfamily \#include "{}definition.\+hpp"{}}\newline
+{\ttfamily \#include "{}motors.\+hpp"{}}\newline
+{\ttfamily \#include "{}rclcpp/rclcpp.\+hpp"{}}\newline
+{\ttfamily \#include $<$rclcpp/timer.\+hpp$>$}\newline
+{\ttfamily \#include "{}std\+\_\+msgs/msg/string.\+hpp"{}}\newline
+{\ttfamily \#include "{}custom\+\_\+msg/msg/motorcmds.\+hpp"{}}\newline
+{\ttfamily \#include "{}custom\+\_\+msg/msg/wheelstatus.\+hpp"{}}\newline
+{\ttfamily \#include "{}custom\+\_\+msg/msg/statussteering.\+hpp"{}}\newline
+Include dependency graph for Motors\+\_\+cmds\+\_\+node.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_motors__cmds__node_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_motor_cmds}{Motor\+Cmds}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{_motors__cmds__node_8cpp_ae2d1eed3c1ea6ac87ba5586bf00d4633}{nb\+\_\+wheels}} (4)
+\item 
+const \+\_\+\+Float64 \mbox{\hyperlink{_motors__cmds__node_8cpp_a3e6212472d91553170c1af5330e1a471}{dist\+\_\+wheels}} (1)
+\item 
+const \+\_\+\+Float64 \mbox{\hyperlink{_motors__cmds__node_8cpp_aedf6f1325e0d92794b270473a13bd1b2}{limit\+\_\+angle}} (0)
+\item 
+const \+\_\+\+Float64 \mbox{\hyperlink{_motors__cmds__node_8cpp_a985fed2194fb8a7d5d88025d81e9d295}{dt}} (0)
+\item 
+const \+\_\+\+Float64 \mbox{\hyperlink{_motors__cmds__node_8cpp_aa58d2d3d9f7ecec05214417291c2b4bf}{limit\+\_\+variation\+\_\+angle}} (0)
+\item 
+const \+\_\+\+Float64 \mbox{\hyperlink{_motors__cmds__node_8cpp_a8cbdb3c3ebdf9d5aec32715ff08fb386}{limit\+\_\+variation\+\_\+drive}} (0)
+\item 
+void \mbox{\hyperlink{_motors__cmds__node_8cpp_a163adc7e1d096fe9fcf53f34c673cc8d}{publish\+\_\+motors\+\_\+position}} ()
+\item 
+int \mbox{\hyperlink{_motors__cmds__node_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{_motors__cmds__node_8cpp_a613c20a034bf626ee88919e8298b41d3}{mode\+\_\+deplacement}} = "{}"{}
+\item 
+bool \mbox{\hyperlink{_motors__cmds__node_8cpp_a4276fc5eb873addd95b8c0656a848501}{depassement\+\_\+courrant}} = 0
+\item 
+bool \mbox{\hyperlink{_motors__cmds__node_8cpp_a678b807b52985d765a4947b8b91042a4}{fault\+\_\+state}} = false
+\item 
+\+\_\+\+Float64 \mbox{\hyperlink{_motors__cmds__node_8cpp_a4797f12ee850da917465e8ee7b3e8745}{motors\+\_\+cmds}} \mbox{[}8\mbox{]}
+\item 
+bool \mbox{\hyperlink{_motors__cmds__node_8cpp_a9719fb0b5000a37cfe68432ce9c52f59}{safemode}} = true
+\item 
+long \mbox{\hyperlink{_motors__cmds__node_8cpp_a0a501fdc2cfc41063db4f5ced85f524a}{current\+\_\+motor\+\_\+stat}} \mbox{[}NB\+\_\+\+MOTORS\mbox{]}
+\item 
+int \mbox{\hyperlink{_motors__cmds__node_8cpp_ae80fc5d535a5f462f8bc9cedc7dc2672}{encoder\+\_\+resolution}}
+\item 
+std\+::vector$<$ NAV\+\_\+\+Motor $>$ \mbox{\hyperlink{_motors__cmds__node_8cpp_a061de867c118b03a219dc49587627092}{motors}}
+\item 
+struct gateway\+\_\+struct \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_motors__cmds__node_8cpp_a3e2111cfb7911d8f185197bdde8d317e}{gateway}}
+\item 
+std\+::vector$<$ unsigned short $>$ \mbox{\hyperlink{_motors__cmds__node_8cpp_a9517411776ffe26e94909c511ccd839a}{motor\+\_\+ids}}
+\item 
+std\+::unordered\+\_\+set$<$ int $>$ \mbox{\hyperlink{_motors__cmds__node_8cpp_a2d0c799a600514fd953c6a2f66c1d107}{DRIVING\+\_\+\+MOTORS}} = \{FRONT\+\_\+\+LEFT\+\_\+\+DRIVE, FRONT\+\_\+\+RIGHT\+\_\+\+DRIVE, BACK\+\_\+\+RIGHT\+\_\+\+DRIVE, BACK\+\_\+\+LEFT\+\_\+\+DRIVE\}
+\item 
+std\+::unordered\+\_\+set$<$ int $>$ \mbox{\hyperlink{_motors__cmds__node_8cpp_ad381db6b10fab7f1a7d9ae718aff5be6}{STEERING\+\_\+\+MOTORS}} = \{FRONT\+\_\+\+LEFT\+\_\+\+STEER, FRONT\+\_\+\+RIGHT\+\_\+\+STEER, BACK\+\_\+\+RIGHT\+\_\+\+STEER, BACK\+\_\+\+LEFT\+\_\+\+STEER\}
+\item 
+std\+::map$<$ unsigned short, int $>$ \mbox{\hyperlink{_motors__cmds__node_8cpp_af45179555acd83684d7b60892f6fe1c4}{mot\+\_\+id2msg\+\_\+idx}}
+\item 
+bool \mbox{\hyperlink{_motors__cmds__node_8cpp_ab3f078684998b83967d507d0f453f454}{verbose}} = true
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_motors__cmds__node_8cpp_a3e6212472d91553170c1af5330e1a471}\label{_motors__cmds__node_8cpp_a3e6212472d91553170c1af5330e1a471} 
+\index{Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}!dist\_wheels@{dist\_wheels}}
+\index{dist\_wheels@{dist\_wheels}!Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{dist\_wheels()}{dist\_wheels()}}
+{\footnotesize\ttfamily const \+\_\+\+Float64 dist\+\_\+wheels (\begin{DoxyParamCaption}\item[{1}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{_motors__cmds__node_8cpp_a985fed2194fb8a7d5d88025d81e9d295}\label{_motors__cmds__node_8cpp_a985fed2194fb8a7d5d88025d81e9d295} 
+\index{Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}!dt@{dt}}
+\index{dt@{dt}!Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{dt()}{dt()}}
+{\footnotesize\ttfamily const \+\_\+\+Float64 dt (\begin{DoxyParamCaption}\item[{0}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{_motors__cmds__node_8cpp_aedf6f1325e0d92794b270473a13bd1b2}\label{_motors__cmds__node_8cpp_aedf6f1325e0d92794b270473a13bd1b2} 
+\index{Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}!limit\_angle@{limit\_angle}}
+\index{limit\_angle@{limit\_angle}!Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{limit\_angle()}{limit\_angle()}}
+{\footnotesize\ttfamily const \+\_\+\+Float64 limit\+\_\+angle (\begin{DoxyParamCaption}\item[{0}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{_motors__cmds__node_8cpp_aa58d2d3d9f7ecec05214417291c2b4bf}\label{_motors__cmds__node_8cpp_aa58d2d3d9f7ecec05214417291c2b4bf} 
+\index{Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}!limit\_variation\_angle@{limit\_variation\_angle}}
+\index{limit\_variation\_angle@{limit\_variation\_angle}!Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{limit\_variation\_angle()}{limit\_variation\_angle()}}
+{\footnotesize\ttfamily const \+\_\+\+Float64 limit\+\_\+variation\+\_\+angle (\begin{DoxyParamCaption}\item[{0}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{_motors__cmds__node_8cpp_a8cbdb3c3ebdf9d5aec32715ff08fb386}\label{_motors__cmds__node_8cpp_a8cbdb3c3ebdf9d5aec32715ff08fb386} 
+\index{Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}!limit\_variation\_drive@{limit\_variation\_drive}}
+\index{limit\_variation\_drive@{limit\_variation\_drive}!Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{limit\_variation\_drive()}{limit\_variation\_drive()}}
+{\footnotesize\ttfamily const \+\_\+\+Float64 limit\+\_\+variation\+\_\+drive (\begin{DoxyParamCaption}\item[{0}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{_motors__cmds__node_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{_motors__cmds__node_8cpp_a0ddf1224851353fc92bfbff6f499fa97} 
+\index{Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}!main@{main}}
+\index{main@{main}!Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+\Hypertarget{_motors__cmds__node_8cpp_ae2d1eed3c1ea6ac87ba5586bf00d4633}\label{_motors__cmds__node_8cpp_ae2d1eed3c1ea6ac87ba5586bf00d4633} 
+\index{Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}!nb\_wheels@{nb\_wheels}}
+\index{nb\_wheels@{nb\_wheels}!Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{nb\_wheels()}{nb\_wheels()}}
+{\footnotesize\ttfamily const int nb\+\_\+wheels (\begin{DoxyParamCaption}\item[{4}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{_motors__cmds__node_8cpp_a163adc7e1d096fe9fcf53f34c673cc8d}\label{_motors__cmds__node_8cpp_a163adc7e1d096fe9fcf53f34c673cc8d} 
+\index{Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}!publish\_motors\_position@{publish\_motors\_position}}
+\index{publish\_motors\_position@{publish\_motors\_position}!Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{publish\_motors\_position()}{publish\_motors\_position()}}
+{\footnotesize\ttfamily void publish\+\_\+motors\+\_\+position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{_motors__cmds__node_8cpp_a0a501fdc2cfc41063db4f5ced85f524a}\label{_motors__cmds__node_8cpp_a0a501fdc2cfc41063db4f5ced85f524a} 
+\index{Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}!current\_motor\_stat@{current\_motor\_stat}}
+\index{current\_motor\_stat@{current\_motor\_stat}!Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{current\_motor\_stat}{current\_motor\_stat}}
+{\footnotesize\ttfamily long current\+\_\+motor\+\_\+stat\mbox{[}NB\+\_\+\+MOTORS\mbox{]}}
+
+\Hypertarget{_motors__cmds__node_8cpp_a4276fc5eb873addd95b8c0656a848501}\label{_motors__cmds__node_8cpp_a4276fc5eb873addd95b8c0656a848501} 
+\index{Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}!depassement\_courrant@{depassement\_courrant}}
+\index{depassement\_courrant@{depassement\_courrant}!Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{depassement\_courrant}{depassement\_courrant}}
+{\footnotesize\ttfamily bool depassement\+\_\+courrant = 0}
+
+\Hypertarget{_motors__cmds__node_8cpp_a2d0c799a600514fd953c6a2f66c1d107}\label{_motors__cmds__node_8cpp_a2d0c799a600514fd953c6a2f66c1d107} 
+\index{Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}!DRIVING\_MOTORS@{DRIVING\_MOTORS}}
+\index{DRIVING\_MOTORS@{DRIVING\_MOTORS}!Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{DRIVING\_MOTORS}{DRIVING\_MOTORS}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+set$<$int$>$ DRIVING\+\_\+\+MOTORS = \{FRONT\+\_\+\+LEFT\+\_\+\+DRIVE, FRONT\+\_\+\+RIGHT\+\_\+\+DRIVE, BACK\+\_\+\+RIGHT\+\_\+\+DRIVE, BACK\+\_\+\+LEFT\+\_\+\+DRIVE\}}
+
+\Hypertarget{_motors__cmds__node_8cpp_ae80fc5d535a5f462f8bc9cedc7dc2672}\label{_motors__cmds__node_8cpp_ae80fc5d535a5f462f8bc9cedc7dc2672} 
+\index{Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}!encoder\_resolution@{encoder\_resolution}}
+\index{encoder\_resolution@{encoder\_resolution}!Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{encoder\_resolution}{encoder\_resolution}}
+{\footnotesize\ttfamily int encoder\+\_\+resolution}
+
+\Hypertarget{_motors__cmds__node_8cpp_a678b807b52985d765a4947b8b91042a4}\label{_motors__cmds__node_8cpp_a678b807b52985d765a4947b8b91042a4} 
+\index{Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}!fault\_state@{fault\_state}}
+\index{fault\_state@{fault\_state}!Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{fault\_state}{fault\_state}}
+{\footnotesize\ttfamily bool NAV\+\_\+\+Motor\+::fault\+\_\+state = false}
+
+\Hypertarget{_motors__cmds__node_8cpp_a3e2111cfb7911d8f185197bdde8d317e}\label{_motors__cmds__node_8cpp_a3e2111cfb7911d8f185197bdde8d317e} 
+\index{Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}!gateway@{gateway}}
+\index{gateway@{gateway}!Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{gateway}{gateway}}
+{\footnotesize\ttfamily struct gateway\+\_\+struct\texorpdfstring{$\ast$}{*} gateway}
+
+\Hypertarget{_motors__cmds__node_8cpp_a613c20a034bf626ee88919e8298b41d3}\label{_motors__cmds__node_8cpp_a613c20a034bf626ee88919e8298b41d3} 
+\index{Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}!mode\_deplacement@{mode\_deplacement}}
+\index{mode\_deplacement@{mode\_deplacement}!Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{mode\_deplacement}{mode\_deplacement}}
+{\footnotesize\ttfamily std\+::string mode\+\_\+deplacement = "{}"{}}
+
+\Hypertarget{_motors__cmds__node_8cpp_af45179555acd83684d7b60892f6fe1c4}\label{_motors__cmds__node_8cpp_af45179555acd83684d7b60892f6fe1c4} 
+\index{Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}!mot\_id2msg\_idx@{mot\_id2msg\_idx}}
+\index{mot\_id2msg\_idx@{mot\_id2msg\_idx}!Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{mot\_id2msg\_idx}{mot\_id2msg\_idx}}
+{\footnotesize\ttfamily std\+::map$<$unsigned short, int$>$ mot\+\_\+id2msg\+\_\+idx}
+
+\Hypertarget{_motors__cmds__node_8cpp_a9517411776ffe26e94909c511ccd839a}\label{_motors__cmds__node_8cpp_a9517411776ffe26e94909c511ccd839a} 
+\index{Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}!motor\_ids@{motor\_ids}}
+\index{motor\_ids@{motor\_ids}!Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{motor\_ids}{motor\_ids}}
+{\footnotesize\ttfamily std\+::vector$<$unsigned short$>$ motor\+\_\+ids}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ FRONT\_LEFT\_DRIVE,}
+\DoxyCodeLine{\ \ \ \ FRONT\_RIGHT\_DRIVE,}
+\DoxyCodeLine{\ \ \ \ BACK\_RIGHT\_DRIVE,}
+\DoxyCodeLine{\ \ \ \ BACK\_LEFT\_DRIVE,}
+\DoxyCodeLine{\ \ \ \ FRONT\_LEFT\_STEER,\ }
+\DoxyCodeLine{\ \ \ \ FRONT\_RIGHT\_STEER,}
+\DoxyCodeLine{\ \ \ \ BACK\_RIGHT\_STEER,}
+\DoxyCodeLine{\ \ \ \ BACK\_LEFT\_STEER\}}
+
+\end{DoxyCode}
+\Hypertarget{_motors__cmds__node_8cpp_a061de867c118b03a219dc49587627092}\label{_motors__cmds__node_8cpp_a061de867c118b03a219dc49587627092} 
+\index{Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}!motors@{motors}}
+\index{motors@{motors}!Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{motors}{motors}}
+{\footnotesize\ttfamily std\+::vector$<$NAV\+\_\+\+Motor$>$ motors}
+
+\Hypertarget{_motors__cmds__node_8cpp_a4797f12ee850da917465e8ee7b3e8745}\label{_motors__cmds__node_8cpp_a4797f12ee850da917465e8ee7b3e8745} 
+\index{Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}!motors\_cmds@{motors\_cmds}}
+\index{motors\_cmds@{motors\_cmds}!Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{motors\_cmds}{motors\_cmds}}
+{\footnotesize\ttfamily \+\_\+\+Float64 motors\+\_\+cmds\mbox{[}8\mbox{]}}
+
+\Hypertarget{_motors__cmds__node_8cpp_a9719fb0b5000a37cfe68432ce9c52f59}\label{_motors__cmds__node_8cpp_a9719fb0b5000a37cfe68432ce9c52f59} 
+\index{Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}!safemode@{safemode}}
+\index{safemode@{safemode}!Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{safemode}{safemode}}
+{\footnotesize\ttfamily bool safemode = true}
+
+\Hypertarget{_motors__cmds__node_8cpp_ad381db6b10fab7f1a7d9ae718aff5be6}\label{_motors__cmds__node_8cpp_ad381db6b10fab7f1a7d9ae718aff5be6} 
+\index{Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}!STEERING\_MOTORS@{STEERING\_MOTORS}}
+\index{STEERING\_MOTORS@{STEERING\_MOTORS}!Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{STEERING\_MOTORS}{STEERING\_MOTORS}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+set$<$int$>$ STEERING\+\_\+\+MOTORS = \{FRONT\+\_\+\+LEFT\+\_\+\+STEER, FRONT\+\_\+\+RIGHT\+\_\+\+STEER, BACK\+\_\+\+RIGHT\+\_\+\+STEER, BACK\+\_\+\+LEFT\+\_\+\+STEER\}}
+
+\Hypertarget{_motors__cmds__node_8cpp_ab3f078684998b83967d507d0f453f454}\label{_motors__cmds__node_8cpp_ab3f078684998b83967d507d0f453f454} 
+\index{Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}!verbose@{verbose}}
+\index{verbose@{verbose}!Motors\_cmds\_node.cpp@{Motors\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{verbose}{verbose}}
+{\footnotesize\ttfamily bool verbose = true}
+

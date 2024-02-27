@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd;de.prob.symbolic.ctxBase" version="3">
+    <org.eventb.core.extendsContext name="'" org.eventb.core.target="navigation_ctx_6"/>
+    <org.eventb.core.carrierSet name="(" org.eventb.core.identifier="MOTOR_FUNCTIONS"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name=")" org.eventb.core.identifier="func_shutdown_motor"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="*" org.eventb.core.identifier="func_destroy_motor"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="+" org.eventb.core.identifier="func_motor_cmd"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="," org.eventb.core.identifier="func_motor_disconnect"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="-" org.eventb.core.identifier="func_cmd_faulty_iter"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="." org.eventb.core.identifier="func_cmd_nfaulty_iter"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="/" org.eventb.core.identifier="func_motor_state"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="0" org.eventb.core.identifier="func_motor_state_iter"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="1" org.eventb.core.identifier="func_connect_motor"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="2" org.eventb.core.identifier="func_try_connect_gateway"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="7" org.eventb.core.identifier="func_connect_motor_iter"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="8" org.eventb.core.identifier="func_setup_motor_iter"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="3" org.eventb.core.identifier="func_open_gateway"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="4" org.eventb.core.identifier="func_close_gateway"/>
+    <org.eventb.core.axiom name="5" org.eventb.core.label="axm1" org.eventb.core.predicate="partition(MOTOR_FUNCTIONS,{func_shutdown_motor},{func_destroy_motor},{func_motor_cmd},{func_motor_disconnect},{func_cmd_faulty_iter},&#13;&#10;{func_cmd_nfaulty_iter},{func_motor_state},{func_motor_state_iter},{func_connect_motor},{func_try_connect_gateway},&#13;&#10;{func_connect_motor_iter},{func_setup_motor_iter},{func_open_gateway},{func_close_gateway}, {func_motor_constructor}, {func_motor_other})"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="9" org.eventb.core.identifier="func_motor_constructor"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="6" org.eventb.core.identifier="func_motor_other"/>
+    <org.eventb.core.carrierSet name=":" org.eventb.core.identifier="MOTOR_FROM"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name=";" org.eventb.core.identifier="motor_from_cs"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="=" org.eventb.core.identifier="motor_from_dsp"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="@" org.eventb.core.identifier="motor_from_self"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="&gt;" org.eventb.core.identifier="motor_from_other"/>
+    <org.eventb.core.axiom name="?" org.eventb.core.label="axm2" org.eventb.core.predicate="partition(MOTOR_FROM, {motor_from_cs}, {motor_from_dsp}, {motor_from_self}, {motor_from_other})"/>
+</org.eventb.core.contextFile>

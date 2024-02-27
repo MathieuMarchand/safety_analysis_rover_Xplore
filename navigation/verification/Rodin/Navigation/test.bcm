@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.scMachineFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd">
+    <org.eventb.core.scInvariant name="'" org.eventb.core.label="inv1" org.eventb.core.predicate="triple∈{0,1,2} → ℤ" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.invariant#)" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scInvariant name="(" org.eventb.core.label="inv2" org.eventb.core.predicate="gotten∈ℤ" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.invariant#," org.eventb.core.theorem="false"/>
+    <org.eventb.core.scInvariant name=")" org.eventb.core.label="inv3" org.eventb.core.predicate="t⊆ℤ" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.invariant#\/" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scVariable name="triple" org.eventb.core.abstract="false" org.eventb.core.concrete="true" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.variable#(" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+    <org.eventb.core.scVariable name="t" org.eventb.core.abstract="false" org.eventb.core.concrete="true" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.variable#." org.eventb.core.type="ℙ(ℤ)"/>
+    <org.eventb.core.scVariable name="gotten" org.eventb.core.abstract="false" org.eventb.core.concrete="true" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.variable#*" org.eventb.core.type="ℤ"/>
+    <org.eventb.core.scEvent name="triplf" org.eventb.core.accurate="true" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.event#'">
+        <org.eventb.core.scAction name="'" org.eventb.core.assignment="triple ≔ {0 ↦ 0,1 ↦ 0,2 ↦ 0}" org.eventb.core.label="act1" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.event#'|org.eventb.core.action#'"/>
+        <org.eventb.core.scAction name="(" org.eventb.core.assignment="gotten ≔ 0" org.eventb.core.label="act2" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.event#'|org.eventb.core.action#("/>
+        <org.eventb.core.scAction name=")" org.eventb.core.assignment="t ≔ {1,2,3}" org.eventb.core.label="act3" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.event#'|org.eventb.core.action#)"/>
+    </org.eventb.core.scEvent>
+    <org.eventb.core.scEvent name="triplg" org.eventb.core.accurate="true" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="getX" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.event#+">
+        <org.eventb.core.scAction name="'" org.eventb.core.assignment="gotten ≔ triple(0)" org.eventb.core.label="act1" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.event#+|org.eventb.core.action#'"/>
+    </org.eventb.core.scEvent>
+    <org.eventb.core.scEvent name="triplh" org.eventb.core.accurate="true" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="setX" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.event#-">
+        <org.eventb.core.scGuard name="'" org.eventb.core.label="grd1" org.eventb.core.predicate="x∈ℤ" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.event#-|org.eventb.core.guard#(" org.eventb.core.theorem="false"/>
+        <org.eventb.core.scParameter name="x" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.event#-|org.eventb.core.parameter#'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.scAction name="y" org.eventb.core.assignment="triple ≔ triple{0 ↦ x}" org.eventb.core.label="act1" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.event#-|org.eventb.core.action#)"/>
+    </org.eventb.core.scEvent>
+    <org.eventb.core.scEvent name="tripli" org.eventb.core.accurate="true" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="remove" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.event#0">
+        <org.eventb.core.scGuard name="'" org.eventb.core.label="grd1" org.eventb.core.predicate="a∈t" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.event#0|org.eventb.core.guard#(" org.eventb.core.theorem="false"/>
+        <org.eventb.core.scParameter name="a" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.event#0|org.eventb.core.parameter#'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.scAction name="b" org.eventb.core.assignment="triple ≔ triple(∅ ⦂ ℙ(ℤ×ℤ))" org.eventb.core.label="act1" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.event#0|org.eventb.core.action#)"/>
+    </org.eventb.core.scEvent>
+</org.eventb.core.scMachineFile>

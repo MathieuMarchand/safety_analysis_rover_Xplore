@@ -1,0 +1,152 @@
+\doxysection{C\+:/\+Users/marm/\+Documents/git/rover/navigation/codebase/wheels\+\_\+control/src/motors.cpp File Reference}
+\hypertarget{motors_8cpp}{}\label{motors_8cpp}\index{C:/Users/marm/Documents/git/rover/navigation/codebase/wheels\_control/src/motors.cpp@{C:/Users/marm/Documents/git/rover/navigation/codebase/wheels\_control/src/motors.cpp}}
+{\ttfamily \#include "{}motors.\+hpp"{}}\newline
+Include dependency graph for motors.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{motors_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{motors_8cpp_a59d59c7fedb7a10272c4f8909bd99a82}{WINDING\+\_\+\+RES}}~0.\+573
+\item 
+\#define \mbox{\hyperlink{motors_8cpp_a008116148345f82df39c84e9f2f27632}{SPEED\+\_\+\+CONSTANT}}~100
+\item 
+\#define \mbox{\hyperlink{motors_8cpp_aa4366799df1c86dc45784430336b8423}{MAX\+\_\+\+DRIVE\+\_\+\+ACCEL}}~900
+\item 
+\#define \mbox{\hyperlink{motors_8cpp_ae6ad98e1ab36f22dfb269e641d96875c}{MAX\+\_\+\+DRIVE\+\_\+\+DECEL}}~3000
+\item 
+\#define \mbox{\hyperlink{motors_8cpp_a145a1ee47ed38591356251e1933f1a76}{MAX\+\_\+\+STEER\+\_\+\+VEL}}~20000
+\item 
+\#define \mbox{\hyperlink{motors_8cpp_a321df6e6f70679fa0ab7b563c257c467}{MAX\+\_\+\+STEER\+\_\+\+ACCEL}}~10000
+\item 
+\#define \mbox{\hyperlink{motors_8cpp_a51ebcfc96c51f557aadab52ddd0cfe89}{CONNECTION\+\_\+\+CHECK}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{motors_8cpp_ae9da7355b945322c74de68bd28561a38}{print\+\_\+\+VCS\+\_\+error}} (unsigned int error\+\_\+code, const char \texorpdfstring{$\ast$}{*}func)
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{motors_8cpp_a518602daacaed16306b7744dcbb3127b}{open\+\_\+gateway}} (void)
+\item 
+void \mbox{\hyperlink{motors_8cpp_af4102b6dcdea0880a3d7c60ecd5538c2}{close\+\_\+gateway}} (void \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_motors__cmds__node_8cpp_a3e2111cfb7911d8f185197bdde8d317e}{gateway}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{motors_8cpp_a51ebcfc96c51f557aadab52ddd0cfe89}\label{motors_8cpp_a51ebcfc96c51f557aadab52ddd0cfe89} 
+\index{motors.cpp@{motors.cpp}!CONNECTION\_CHECK@{CONNECTION\_CHECK}}
+\index{CONNECTION\_CHECK@{CONNECTION\_CHECK}!motors.cpp@{motors.cpp}}
+\doxysubsubsection{\texorpdfstring{CONNECTION\_CHECK}{CONNECTION\_CHECK}}
+{\footnotesize\ttfamily \#define CONNECTION\+\_\+\+CHECK}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (!is\_connected)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}[motors.cpp]\ Node\ "{}}\ <<\ \textcolor{keywordtype}{id}\ <<\ \textcolor{stringliteral}{"{}\ is\ not\ connected"{}}\ <<\ endl;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{motors_8cpp_aa4366799df1c86dc45784430336b8423}\label{motors_8cpp_aa4366799df1c86dc45784430336b8423} 
+\index{motors.cpp@{motors.cpp}!MAX\_DRIVE\_ACCEL@{MAX\_DRIVE\_ACCEL}}
+\index{MAX\_DRIVE\_ACCEL@{MAX\_DRIVE\_ACCEL}!motors.cpp@{motors.cpp}}
+\doxysubsubsection{\texorpdfstring{MAX\_DRIVE\_ACCEL}{MAX\_DRIVE\_ACCEL}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+DRIVE\+\_\+\+ACCEL~900}
+
+\Hypertarget{motors_8cpp_ae6ad98e1ab36f22dfb269e641d96875c}\label{motors_8cpp_ae6ad98e1ab36f22dfb269e641d96875c} 
+\index{motors.cpp@{motors.cpp}!MAX\_DRIVE\_DECEL@{MAX\_DRIVE\_DECEL}}
+\index{MAX\_DRIVE\_DECEL@{MAX\_DRIVE\_DECEL}!motors.cpp@{motors.cpp}}
+\doxysubsubsection{\texorpdfstring{MAX\_DRIVE\_DECEL}{MAX\_DRIVE\_DECEL}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+DRIVE\+\_\+\+DECEL~3000}
+
+\Hypertarget{motors_8cpp_a321df6e6f70679fa0ab7b563c257c467}\label{motors_8cpp_a321df6e6f70679fa0ab7b563c257c467} 
+\index{motors.cpp@{motors.cpp}!MAX\_STEER\_ACCEL@{MAX\_STEER\_ACCEL}}
+\index{MAX\_STEER\_ACCEL@{MAX\_STEER\_ACCEL}!motors.cpp@{motors.cpp}}
+\doxysubsubsection{\texorpdfstring{MAX\_STEER\_ACCEL}{MAX\_STEER\_ACCEL}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+STEER\+\_\+\+ACCEL~10000}
+
+\Hypertarget{motors_8cpp_a145a1ee47ed38591356251e1933f1a76}\label{motors_8cpp_a145a1ee47ed38591356251e1933f1a76} 
+\index{motors.cpp@{motors.cpp}!MAX\_STEER\_VEL@{MAX\_STEER\_VEL}}
+\index{MAX\_STEER\_VEL@{MAX\_STEER\_VEL}!motors.cpp@{motors.cpp}}
+\doxysubsubsection{\texorpdfstring{MAX\_STEER\_VEL}{MAX\_STEER\_VEL}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+STEER\+\_\+\+VEL~20000}
+
+\Hypertarget{motors_8cpp_a008116148345f82df39c84e9f2f27632}\label{motors_8cpp_a008116148345f82df39c84e9f2f27632} 
+\index{motors.cpp@{motors.cpp}!SPEED\_CONSTANT@{SPEED\_CONSTANT}}
+\index{SPEED\_CONSTANT@{SPEED\_CONSTANT}!motors.cpp@{motors.cpp}}
+\doxysubsubsection{\texorpdfstring{SPEED\_CONSTANT}{SPEED\_CONSTANT}}
+{\footnotesize\ttfamily \#define SPEED\+\_\+\+CONSTANT~100}
+
+\Hypertarget{motors_8cpp_a59d59c7fedb7a10272c4f8909bd99a82}\label{motors_8cpp_a59d59c7fedb7a10272c4f8909bd99a82} 
+\index{motors.cpp@{motors.cpp}!WINDING\_RES@{WINDING\_RES}}
+\index{WINDING\_RES@{WINDING\_RES}!motors.cpp@{motors.cpp}}
+\doxysubsubsection{\texorpdfstring{WINDING\_RES}{WINDING\_RES}}
+{\footnotesize\ttfamily \#define WINDING\+\_\+\+RES~0.\+573}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{motors_8cpp_af4102b6dcdea0880a3d7c60ecd5538c2}\label{motors_8cpp_af4102b6dcdea0880a3d7c60ecd5538c2} 
+\index{motors.cpp@{motors.cpp}!close\_gateway@{close\_gateway}}
+\index{close\_gateway@{close\_gateway}!motors.cpp@{motors.cpp}}
+\doxysubsubsection{\texorpdfstring{close\_gateway()}{close\_gateway()}}
+{\footnotesize\ttfamily void close\+\_\+gateway (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{gateway }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{motors_8cpp_af4102b6dcdea0880a3d7c60ecd5538c2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{motors_8cpp_af4102b6dcdea0880a3d7c60ecd5538c2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{motors_8cpp_a518602daacaed16306b7744dcbb3127b}\label{motors_8cpp_a518602daacaed16306b7744dcbb3127b} 
+\index{motors.cpp@{motors.cpp}!open\_gateway@{open\_gateway}}
+\index{open\_gateway@{open\_gateway}!motors.cpp@{motors.cpp}}
+\doxysubsubsection{\texorpdfstring{open\_gateway()}{open\_gateway()}}
+{\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} open\+\_\+gateway (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{motors_8cpp_a518602daacaed16306b7744dcbb3127b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{motors_8cpp_a518602daacaed16306b7744dcbb3127b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{motors_8cpp_ae9da7355b945322c74de68bd28561a38}\label{motors_8cpp_ae9da7355b945322c74de68bd28561a38} 
+\index{motors.cpp@{motors.cpp}!print\_VCS\_error@{print\_VCS\_error}}
+\index{print\_VCS\_error@{print\_VCS\_error}!motors.cpp@{motors.cpp}}
+\doxysubsubsection{\texorpdfstring{print\_VCS\_error()}{print\_VCS\_error()}}
+{\footnotesize\ttfamily void print\+\_\+\+VCS\+\_\+error (\begin{DoxyParamCaption}\item[{unsigned int}]{error\+\_\+code,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{func }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{motors_8cpp_ae9da7355b945322c74de68bd28561a38_icgraph}
+\end{center}
+\end{figure}

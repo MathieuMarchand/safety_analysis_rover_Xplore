@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd;de.prob.symbolic.ctxBase" version="3">
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="'" org.eventb.core.comment="length of the drill [1/100cm]" org.eventb.core.identifier="drill_bit_length"/>
+    <org.eventb.core.axiom name="(" org.eventb.core.comment="drill length is non null" org.eventb.core.label="drill_length_type" org.eventb.core.predicate="drill_bit_length ∈ ℕ1"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name=")" org.eventb.core.comment="default height of the drill [1/100cm]" org.eventb.core.identifier="drill_height"/>
+    <org.eventb.core.axiom name="*" org.eventb.core.comment="drill height is at least at ground (0)" org.eventb.core.label="drill_height_type" org.eventb.core.predicate="drill_height ∈ ℕ"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="+" org.eventb.core.identifier="target_height"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="," org.eventb.core.identifier="target_deployment"/>
+    <org.eventb.core.axiom name="-" org.eventb.core.label="target_height_type" org.eventb.core.predicate="target_height ∈ ℕ"/>
+    <org.eventb.core.axiom name="." org.eventb.core.label="target_deployement_type" org.eventb.core.predicate="target_deployment ∈ ℕ "/>
+    <org.eventb.core.axiom name="/" org.eventb.core.label="target_height_limit" org.eventb.core.predicate="target_height ≤ drill_height"/>
+    <org.eventb.core.axiom name="0" org.eventb.core.label="target_deployement_limit" org.eventb.core.predicate="target_deployment ≤ drill_bit_length"/>
+    <org.eventb.core.axiom name="1" org.eventb.core.label="safety_limit" org.eventb.core.predicate="target_deployment ≥ 0 " org.eventb.core.theorem="true"/>
+</org.eventb.core.contextFile>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+    <org.eventb.core.event name="'" org.eventb.core.comment="Initialisation of the variables" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="gamepad_manager_running ≔ TRUE" org.eventb.core.label="init_gamepad_manager_running"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="gamepad_speed ≔ {0↦0,1↦0,2↦0,3↦0,4↦0,5↦0}" org.eventb.core.label="init_gamepad_speed"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="gamepad_auto_nav ≔ nav_autonomous_other" org.eventb.core.label="init_gamepad_auto_nav"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="filtered_speed_x ≔ 0" org.eventb.core.label="init_filtered_speed_x"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="filtered_speed_z ≔ 0" org.eventb.core.label="init_filtered_speed_z"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="gamepad_twist ≔ {0↦0,1↦0,2↦0,3↦0,4↦0,5↦0}" org.eventb.core.label="init_gamepad_twist"/>
+    </org.eventb.core.event>
+    <org.eventb.core.seesContext name="2" org.eventb.core.target="navigation_ctx"/>
+    <org.eventb.core.event name="3" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="gamepad">
+        <org.eventb.core.guard name="'" org.eventb.core.comment="Event disabled if the node is not running" org.eventb.core.label="grd1" org.eventb.core.predicate="gamepad_manager_running = TRUE"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.comment="Speed received" org.eventb.core.identifier="speed"/>
+        <org.eventb.core.parameter name=")" org.eventb.core.comment="Auto mode button pressed" org.eventb.core.identifier="activate_auto_state"/>
+        <org.eventb.core.guard name="*" org.eventb.core.comment="Joystick 6 value speed" org.eventb.core.label="grd2" org.eventb.core.predicate="speed ∈ 0‥5→ℤ"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd3" org.eventb.core.predicate="activate_auto_state ∈ BOOL"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="gamepad_speed ≔ speed" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="gamepad_auto_nav ≔ auto_nav" org.eventb.core.label="act2"/>
+        <org.eventb.core.parameter name="0" org.eventb.core.comment="Manual mode button pressed" org.eventb.core.identifier="activate_manual_state"/>
+        <org.eventb.core.parameter name="." org.eventb.core.comment="New state for the navigation mode" org.eventb.core.identifier="auto_nav"/>
+        <org.eventb.core.guard name="1" org.eventb.core.label="grd5" org.eventb.core.predicate="activate_manual_state ∈ BOOL" org.eventb.core.theorem="true"/>
+        <org.eventb.core.guard name="/" org.eventb.core.label="grd4" org.eventb.core.predicate="activate_manual_state = TRUE ∧ activate_auto_state = FALSE ⇒ auto_nav = nav_autonomous_end"/>
+        <org.eventb.core.guard name="2" org.eventb.core.label="grd6" org.eventb.core.predicate="activate_auto_state = TRUE ⇒ auto_nav = nav_autonomous_start"/>
+        <org.eventb.core.guard name="3" org.eventb.core.label="grd7" org.eventb.core.predicate="activate_manual_state = FALSE ∧ activate_auto_state = FALSE ⇒ auto_nav = gamepad_auto_nav"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="4" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="shutdown_gamepad">
+        <org.eventb.core.guard name="'" org.eventb.core.comment="Event disabled if the node is not running" org.eventb.core.label="grd1" org.eventb.core.predicate="gamepad_manager_running = TRUE"/>
+        <org.eventb.core.guard name="grd1" org.eventb.core.label="grd2" org.eventb.core.predicate="command ∈ CMD_SHUTDOWN_MSG"/>
+        <org.eventb.core.guard name="grd2" org.eventb.core.comment="If command is shutdown, shuts down the node" org.eventb.core.label="grd3" org.eventb.core.predicate="command = sd_shutdown ⇒ new_running_state = FALSE"/>
+        <org.eventb.core.guard name="grd3" org.eventb.core.label="grd4" org.eventb.core.predicate="command = sd_other ⇒ new_running_state = gamepad_manager_running"/>
+        <org.eventb.core.parameter name="element1" org.eventb.core.comment="Shutdown command" org.eventb.core.identifier="command"/>
+        <org.eventb.core.parameter name="element2" org.eventb.core.comment="New state of the gamepad interface node" org.eventb.core.identifier="new_running_state"/>
+        <org.eventb.core.action name="element3" org.eventb.core.assignment="gamepad_manager_running ≔ new_running_state" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="5" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="destroy_gamepad">
+        <org.eventb.core.parameter name="element1" org.eventb.core.comment="Shutdown command" org.eventb.core.identifier="command"/>
+        <org.eventb.core.parameter name="element2" org.eventb.core.comment="New state of the gamepad interface node" org.eventb.core.identifier="new_running_state"/>
+        <org.eventb.core.guard name="grd1" org.eventb.core.comment="Event disabled if the node is not running" org.eventb.core.label="grd1" org.eventb.core.predicate="gamepad_manager_running = TRUE"/>
+        <org.eventb.core.guard name="grd2" org.eventb.core.label="grd2" org.eventb.core.predicate="command ∈ CMD_DESTROY_MSG"/>
+        <org.eventb.core.guard name="grd3" org.eventb.core.comment="If command is destroy, shuts down the node" org.eventb.core.label="grd3" org.eventb.core.predicate="command = dst_abort ⇒ new_running_state = FALSE"/>
+        <org.eventb.core.guard name="grd4" org.eventb.core.label="grd4" org.eventb.core.predicate="command = dst_other ⇒ new_running_state = gamepad_manager_running"/>
+        <org.eventb.core.action name="act1" org.eventb.core.assignment="gamepad_manager_running ≔ new_running_state" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="6" org.eventb.core.comment="State of the gamepad node" org.eventb.core.identifier="gamepad_manager_running"/>
+    <org.eventb.core.invariant name="7" org.eventb.core.label="inv1" org.eventb.core.predicate="gamepad_manager_running ∈ BOOL"/>
+    <org.eventb.core.event name="8" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="speed_filter">
+        <org.eventb.core.guard name="'" org.eventb.core.comment="Event disabled if the node is not running" org.eventb.core.label="grd1" org.eventb.core.predicate="gamepad_manager_running = TRUE"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="filtered_speed_x ≔ v_x" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="filtered_speed_z ≔ gamepad_speed(0)" org.eventb.core.label="act2"/>
+        <org.eventb.core.parameter name="*" org.eventb.core.identifier="v_x"/>
+        <org.eventb.core.guard name="+" org.eventb.core.comment="Select index 5 if it is positive" org.eventb.core.label="grd2" org.eventb.core.predicate="gamepad_speed(5) &gt; 0 ⇒ v_x = gamepad_speed(5)"/>
+        <org.eventb.core.guard name="," org.eventb.core.comment="Select index 2 if index 5 is not positive" org.eventb.core.label="grd3" org.eventb.core.predicate="¬(gamepad_speed(5) &gt; 0) ⇒ v_x = gamepad_speed(2)"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="9" org.eventb.core.comment="Speed message received" org.eventb.core.identifier="gamepad_speed"/>
+    <org.eventb.core.invariant name=":" org.eventb.core.label="inv2" org.eventb.core.predicate="gamepad_speed ∈ 0‥5→ℤ"/>
+    <org.eventb.core.variable name=";" org.eventb.core.comment="Auto nav message instruction" org.eventb.core.identifier="gamepad_auto_nav"/>
+    <org.eventb.core.invariant name="=" org.eventb.core.label="inv3" org.eventb.core.predicate="gamepad_auto_nav ∈ NAV_AUTO_INSTRUCTION"/>
+    <org.eventb.core.variable name="&gt;" org.eventb.core.comment="Filtered speed value in x" org.eventb.core.identifier="filtered_speed_x"/>
+    <org.eventb.core.invariant name="?" org.eventb.core.label="inv4" org.eventb.core.predicate="filtered_speed_x ∈ ℤ "/>
+    <org.eventb.core.variable name="B" org.eventb.core.comment="Filtered speed value in z" org.eventb.core.identifier="filtered_speed_z"/>
+    <org.eventb.core.variable name="@" org.eventb.core.comment="Twist message for the speed selector" org.eventb.core.identifier="gamepad_twist"/>
+    <org.eventb.core.invariant name="C" org.eventb.core.label="inv6" org.eventb.core.predicate="filtered_speed_z ∈ ℤ "/>
+    <org.eventb.core.invariant name="A" org.eventb.core.label="inv5" org.eventb.core.predicate="gamepad_twist ∈ 0‥5→ ℤ"/>
+    <org.eventb.core.event name="D" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="set_gamepad_twist">
+        <org.eventb.core.guard name="'" org.eventb.core.comment="Event disabled if the node is not running" org.eventb.core.label="grd1" org.eventb.core.predicate="gamepad_manager_running = TRUE"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="gamepad_twist ≔ {0↦filtered_speed_x, 1↦0, 2↦0, 3↦0, 4↦0, 5↦−filtered_speed_z}" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+</org.eventb.core.machineFile>

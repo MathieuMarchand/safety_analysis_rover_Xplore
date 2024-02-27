@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd;de.prob.symbolic.ctxBase" version="3">
+    <org.eventb.core.extendsContext name="'" org.eventb.core.target="navigation_ctx_5"/>
+    <org.eventb.core.carrierSet name="(" org.eventb.core.identifier="MOTORS_ID"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name=")" org.eventb.core.identifier="front_left_drive"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="*" org.eventb.core.identifier="front_right_drive"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="+" org.eventb.core.identifier="back_right_drive"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="," org.eventb.core.identifier="back_left_drive"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="-" org.eventb.core.identifier="front_left_steer"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="." org.eventb.core.identifier="front_right_steer"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="/" org.eventb.core.identifier="back_right_steer"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="0" org.eventb.core.identifier="back_left_steer"/>
+    <org.eventb.core.axiom name="1" org.eventb.core.label="axm1" org.eventb.core.predicate="partition(MOTORS_ID, {front_left_drive}, {front_right_drive}, {back_right_drive}, {back_left_drive}, {front_left_steer}, {front_right_steer}, {back_right_steer}, {back_left_steer}, {motor_id_other})"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="2" org.eventb.core.identifier="motor_id_other"/>
+</org.eventb.core.contextFile>

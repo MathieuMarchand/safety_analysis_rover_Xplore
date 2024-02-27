@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd;de.prob.symbolic.ctxBase" version="3">
+    <org.eventb.core.extendsContext name="'" org.eventb.core.target="navigation_ctx_3"/>
+    <org.eventb.core.carrierSet name="(" org.eventb.core.identifier="KINEMATIC_MESSAGE"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name=")" org.eventb.core.identifier="kin_basic"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="*" org.eventb.core.identifier="kin_normal"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="+" org.eventb.core.identifier="kin_other"/>
+    <org.eventb.core.axiom name="," org.eventb.core.label="axm1" org.eventb.core.predicate="partition(KINEMATIC_MESSAGE, {kin_basic}, {kin_normal}, {kin_other})"/>
+    <org.eventb.core.carrierSet name="-" org.eventb.core.identifier="KINEMATIC_MODE"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="." org.eventb.core.identifier="kin_mode_basic"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="/" org.eventb.core.identifier="kin_mode_normal"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="0" org.eventb.core.identifier="kin_mode_other"/>
+    <org.eventb.core.axiom name="1" org.eventb.core.label="axm2" org.eventb.core.predicate="partition(KINEMATIC_MODE, {kin_mode_basic}, {kin_mode_normal}, {kin_mode_other})"/>
+    <org.eventb.core.carrierSet name="2" org.eventb.core.identifier="DISPLACEMENT_FUNCTIONS"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="3" org.eventb.core.identifier="func_shutdown_dsp"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="4" org.eventb.core.identifier="func_destroy_dsp"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="5" org.eventb.core.identifier="func_abs_enc"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="6" org.eventb.core.identifier="func_send_kin"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="7" org.eventb.core.identifier="func_cmd_vel"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="8" org.eventb.core.identifier="func_wheel_angle"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="9" org.eventb.core.identifier="func_kin_mode"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name=":" org.eventb.core.identifier="func_change_state"/>
+    <org.eventb.core.axiom name=";" org.eventb.core.label="axm3" org.eventb.core.predicate="partition(DISPLACEMENT_FUNCTIONS, {func_dsp_other}, {func_shutdown_dsp}, {func_destroy_dsp}, {func_abs_enc}, {func_send_kin}, {func_cmd_vel}, {func_wheel_angle}, {func_kin_mode}, {func_change_state})"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="=" org.eventb.core.identifier="func_dsp_other"/>
+</org.eventb.core.contextFile>

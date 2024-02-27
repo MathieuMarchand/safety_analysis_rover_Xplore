@@ -1,0 +1,22 @@
+ethercat_master:
+  time_step:                          0.01
+  update_rate_too_low_warn_threshold: 100
+
+ethercat_devices:
+  - type:               Maxon
+    name:               TURN_DRILL
+    configuration_file: device_configurations/maxon.yaml
+    ethercat_bus:       enp0s31f6
+    ethercat_address:   2
+
+  - type:               Maxon
+    name:               SC_MOD2
+    configuration_file: device_configurations/maxon.yaml
+    ethercat_bus:       enp0s31f6
+    ethercat_address:   4
+
+  - type:               Maxon
+    name:               SC_MOD1
+    configuration_file: device_configurations/maxon.yaml
+    ethercat_bus:       enp0s31f6
+    ethercat_address:   1

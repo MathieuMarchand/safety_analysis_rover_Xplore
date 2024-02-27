@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+    <org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="drilling ≔ FALSE" org.eventb.core.label="init_drilling"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="quantity ≔ 0" org.eventb.core.label="init_quantity"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="(" org.eventb.core.comment="is drilling state" org.eventb.core.identifier="drilling"/>
+    <org.eventb.core.invariant name=")" org.eventb.core.label="drill_status" org.eventb.core.predicate="drilling ∈ BOOL"/>
+    <org.eventb.core.event name="*" org.eventb.core.comment="The drill starts drilling" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="start_drill">
+        <org.eventb.core.guard name="'" org.eventb.core.label="grd1" org.eventb.core.predicate="drilling = FALSE"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="drilling ≔ TRUE" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="+" org.eventb.core.comment="quantity of samples collected" org.eventb.core.identifier="quantity"/>
+    <org.eventb.core.invariant name="," org.eventb.core.comment="Quantity is non negative" org.eventb.core.label="quantity_type" org.eventb.core.predicate="quantity ∈ ℕ"/>
+    <org.eventb.core.seesContext name="-" org.eventb.core.target="drill_ctx"/>
+    <org.eventb.core.event name="." org.eventb.core.comment="The drill stops drilling" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="stop_drill">
+        <org.eventb.core.guard name="'" org.eventb.core.label="grd1" org.eventb.core.predicate="drilling = TRUE"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="drilling ≔ FALSE" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="quantity ≔ target_deployment" org.eventb.core.comment="The drill atomically gets all the sample" org.eventb.core.label="get_sample"/>
+    </org.eventb.core.event>
+    <org.eventb.core.invariant name="/" org.eventb.core.comment="physical limit of samples collected" org.eventb.core.label="quantity_limit" org.eventb.core.predicate="quantity ≤ drill_bit_length"/>
+    <org.eventb.core.event name="0" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="abort">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="drilling ≔ FALSE" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+</org.eventb.core.machineFile>

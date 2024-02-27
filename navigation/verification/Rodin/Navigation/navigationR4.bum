@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+    <org.eventb.core.refinesMachine name="'" org.eventb.core.target="navigationR3"/>
+    <org.eventb.core.seesContext name="2" org.eventb.core.target="navigation_ctx_4"/>
+    <org.eventb.core.variable name="G" org.eventb.core.comment="State of the gamepad node" org.eventb.core.identifier="gamepad_manager_running"/>
+    <org.eventb.core.variable name="var2" org.eventb.core.comment="Auto nav message instruction" org.eventb.core.identifier="gamepad_auto_nav"/>
+    <org.eventb.core.variable name="var1" org.eventb.core.comment="Speed message received" org.eventb.core.identifier="gamepad_speed"/>
+    <org.eventb.core.variable name="var3" org.eventb.core.comment="Filtered speed value in x" org.eventb.core.identifier="filtered_speed_x"/>
+    <org.eventb.core.variable name="var7" org.eventb.core.comment="Filtered speed value in z" org.eventb.core.identifier="filtered_speed_z"/>
+    <org.eventb.core.variable name="var6" org.eventb.core.comment="Twist message for the speed selector" org.eventb.core.identifier="gamepad_twist"/>
+    <org.eventb.core.variable name="var4" org.eventb.core.comment="Next event to execute gamepad" org.eventb.core.identifier="gamepad_man_to"/>
+    <org.eventb.core.variable name="var8" org.eventb.core.comment="Asks to clear the temporary variables" org.eventb.core.identifier="clear_gamepad"/>
+    <org.eventb.core.variable name="var9" org.eventb.core.comment="[VERIF]Function to which the flow has been forwarded to" org.eventb.core.identifier="gp_forwarded_to"/>
+    <org.eventb.core.variable name="var10" org.eventb.core.comment="[VERIF] Destroy command received" org.eventb.core.identifier="gamepad_destroy_cmd"/>
+    <org.eventb.core.variable name="var11" org.eventb.core.comment="[VERIF] Shutdown command received" org.eventb.core.identifier="gamepad_shutdown_cmd"/>
+    <org.eventb.core.variable name="var12" org.eventb.core.comment="[VERIF] Auto mode button pressed" org.eventb.core.identifier="gamepad_auto_pressed"/>
+    <org.eventb.core.variable name="var14" org.eventb.core.comment="[VERIF] Manual mode button pressed" org.eventb.core.identifier="gamepad_manual_pressed"/>
+    <org.eventb.core.variable name="var15" org.eventb.core.comment="[VERIF] Sender of the message received" org.eventb.core.identifier="gamepad_msg_from"/>
+    <org.eventb.core.variable name="var16" org.eventb.core.comment="[VERIF] Records if the message has been processed or not by the function" org.eventb.core.identifier="gamepad_message_processed"/>
+    <org.eventb.core.variable name=")" org.eventb.core.comment="State of the velocity manager node (running or stopped)" org.eventb.core.identifier="vel_manager_running"/>
+    <org.eventb.core.variable name="0" org.eventb.core.comment="State of the navigation mode (auto or manual)" org.eventb.core.identifier="autonomous_navigation"/>
+    <org.eventb.core.variable name="3" org.eventb.core.comment="Selected speed" org.eventb.core.identifier="select_speed"/>
+    <org.eventb.core.variable name="var19" org.eventb.core.comment="Asks to clear the temporary variables of velocity manager" org.eventb.core.identifier="clear_vel_man"/>
+    <org.eventb.core.variable name="=" org.eventb.core.comment="Next event to execute velocity manager" org.eventb.core.identifier="vel_man_to"/>
+    <org.eventb.core.variable name="var17" org.eventb.core.comment="[VERIF]Function to which the message has been forwarded" org.eventb.core.identifier="vel_man_forwarded_to"/>
+    <org.eventb.core.variable name="var1&gt;" org.eventb.core.comment="Who sent the message to velman" org.eventb.core.identifier="vel_man_message_from"/>
+    <org.eventb.core.variable name="var1@" org.eventb.core.comment="Has the message been processed" org.eventb.core.identifier="vel_man_message_processed"/>
+    <org.eventb.core.variable name="var1B" org.eventb.core.comment="[VERIF] Shutdown command received velman" org.eventb.core.identifier="vel_man_shutdown_cmd"/>
+    <org.eventb.core.variable name="var1D" org.eventb.core.comment="[VERIF] Destroy command received velman" org.eventb.core.identifier="vel_man_destroy_cmd"/>
+    <org.eventb.core.variable name="var1F" org.eventb.core.comment="[VERIF] Auto command received velman" org.eventb.core.identifier="vel_man_auto_cmd"/>
+    <org.eventb.core.variable name="var1H" org.eventb.core.comment="[VERIF] Auto state before auto velman" org.eventb.core.identifier="vel_man_before_auto"/>
+    <org.eventb.core.variable name="var20" org.eventb.core.comment="[VERIF] Speed before event velman" org.eventb.core.identifier="vel_man_before_vel"/>
+    <org.eventb.core.variable name="var22" org.eventb.core.comment="[VERIF] Input speed velman" org.eventb.core.identifier="vel_man_input_speed"/>
+    <org.eventb.core.variable name="var24" org.eventb.core.comment="[VERIF] Auto mode before" org.eventb.core.identifier="vel_man_before_mode"/>
+    <org.eventb.core.variable name="var26" org.eventb.core.comment="[VERIF] Mode command received velman" org.eventb.core.identifier="vel_man_mode_cmd"/>
+    <org.eventb.core.variable name="var28" org.eventb.core.comment="[VERIF] Message received by other module" org.eventb.core.identifier="vel_man_gamepad_received"/>
+    <org.eventb.core.variable name="var2:" org.eventb.core.comment="[VERIF] Message transmited to other module" org.eventb.core.identifier="vel_man_gamepad_transmition"/>
+    <org.eventb.core.event name="var2;" org.eventb.core.comment="initialisation of the variable&#9;" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="displacement_running ≔ TRUE" org.eventb.core.label="init_displacement_running"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="kinematic_mode ≔ kin_mode_normal" org.eventb.core.label="init_kinematic_state"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="cur_wheels_pos ≔ {0↦0,1↦0,2↦0,3↦0,4↦0,5↦0,6↦0,7↦0}" org.eventb.core.label="init_cur_wheels_pos"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="kinematic_instr ≔ {0↦0,1↦0,2↦0,3↦0,4↦0,5↦0,6↦0,7↦0}" org.eventb.core.label="init_kinematic_instr"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="motor_command ≔ {0↦0,1↦0,2↦0,3↦0,4↦0,5↦0,6↦0,7↦0}" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="wheel_angle_rotation ≔ 0" org.eventb.core.label="init_wheel_angle_rotation"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var2=" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="gamepad">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="gamepad"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var2&gt;" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="shutdown_gamepad">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="shutdown_gamepad"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var2?" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="destroy_gamepad">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="destroy_gamepad"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var2@" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="speed_filter">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="speed_filter"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var2A" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="set_gamepad_twist">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="set_gamepad_twist"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var2B" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="ROS_gamepad">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="ROS_gamepad"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var2C" org.eventb.core.comment="Changes the speed in auto mode" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="vel_auto">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="vel_auto"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var2D" org.eventb.core.comment="Changes the speed in manual mode" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="vel_manual">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="vel_manual"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var2E" org.eventb.core.comment="Set the navigation mode" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="nav_mode">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="nav_mode"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var2F" org.eventb.core.comment="Sets the state of the auto mode" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="nav_auto_state">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="nav_auto_state"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var2G" org.eventb.core.comment="Shutdown the velocity manager node" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="shutdown_vel_manager">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="shutdown_vel_manager"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var2H" org.eventb.core.comment="Destroys the velocity manager node" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="destroy_vel_manager">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="destroy_vel_manager"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var2I" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="ROS_vel_manager">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="ROS_vel_manager"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var2J" org.eventb.core.comment="TODO : special clear for each node" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="need_clear">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="need_clear"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var2K" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="need_clear_velman">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="need_clear_velman"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="var2L" org.eventb.core.comment="State of the displacement node (running or stopped)" org.eventb.core.identifier="displacement_running"/>
+    <org.eventb.core.invariant name="var2M" org.eventb.core.label="type_displacement_running" org.eventb.core.predicate="displacement_running ∈ BOOL"/>
+    <org.eventb.core.event name="var2N" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="shutdown_displacement">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="command"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="new_running_state"/>
+        <org.eventb.core.guard name=")" org.eventb.core.comment="Disabled if node not running" org.eventb.core.label="grd1" org.eventb.core.predicate="displacement_running = TRUE"/>
+        <org.eventb.core.guard name="*" org.eventb.core.comment="Input command" org.eventb.core.label="grd2" org.eventb.core.predicate="command ∈ CMD_SHUTDOWN_MSG"/>
+        <org.eventb.core.guard name="+" org.eventb.core.comment="New running state" org.eventb.core.label="grd3" org.eventb.core.predicate="command = sd_shutdown ⇒ new_running_state = FALSE"/>
+        <org.eventb.core.guard name="," org.eventb.core.comment="New running state" org.eventb.core.label="grd4" org.eventb.core.predicate="command = sd_other ⇒ new_running_state = TRUE"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="displacement_running ≔ new_running_state" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var2O" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="destroy_displacement">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="command"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="new_running_state"/>
+        <org.eventb.core.guard name=")" org.eventb.core.comment="Disabled if node not running" org.eventb.core.label="grd1" org.eventb.core.predicate="displacement_running = TRUE"/>
+        <org.eventb.core.guard name="*" org.eventb.core.comment="input command" org.eventb.core.label="grd2" org.eventb.core.predicate="command ∈ CMD_DESTROY_MSG"/>
+        <org.eventb.core.guard name="+" org.eventb.core.comment="New running state" org.eventb.core.label="grd3" org.eventb.core.predicate="command = dst_abort ⇒ new_running_state = FALSE"/>
+        <org.eventb.core.guard name="," org.eventb.core.comment="New running state" org.eventb.core.label="grd4" org.eventb.core.predicate="command = dst_other ⇒ new_running_state = TRUE"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="displacement_running ≔ new_running_state" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var2P" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="change_state">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="change_req"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="new_state"/>
+        <org.eventb.core.guard name=")" org.eventb.core.comment="Disabled if node not running" org.eventb.core.label="grd1" org.eventb.core.predicate="displacement_running = TRUE"/>
+        <org.eventb.core.guard name="*" org.eventb.core.comment="Change state command" org.eventb.core.label="grd2" org.eventb.core.predicate="change_req ∈ BOOL"/>
+        <org.eventb.core.guard name="+" org.eventb.core.comment="New kinematic state" org.eventb.core.label="grd3" org.eventb.core.predicate="change_req = TRUE ∧ kinematic_mode = kin_mode_normal ⇒ new_state = kin_mode_basic"/>
+        <org.eventb.core.guard name="," org.eventb.core.comment="New kinematic state" org.eventb.core.label="grd4" org.eventb.core.predicate="change_req = TRUE ∧ kinematic_mode = kin_mode_basic ⇒ new_state = kin_mode_normal"/>
+        <org.eventb.core.guard name="/" org.eventb.core.comment="New kinematic state" org.eventb.core.label="grd6" org.eventb.core.predicate="change_req = TRUE ∧ kinematic_mode = kin_mode_other ⇒ new_state = kin_mode_basic"/>
+        <org.eventb.core.guard name="-" org.eventb.core.comment="New kinematic state" org.eventb.core.label="grd5" org.eventb.core.predicate="change_req = FALSE ⇒ new_state = kinematic_mode"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="kinematic_mode ≔ new_state" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="var2Q" org.eventb.core.comment="Current kinematic mode" org.eventb.core.identifier="kinematic_mode"/>
+    <org.eventb.core.invariant name="var2R" org.eventb.core.label="type_kinematic_state" org.eventb.core.predicate="kinematic_mode ∈ KINEMATIC_MODE"/>
+    <org.eventb.core.event name="var2S" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="mode_kinematic">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="command"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="new_state"/>
+        <org.eventb.core.guard name=")" org.eventb.core.comment="Input command" org.eventb.core.label="grd1" org.eventb.core.predicate="command ∈ KINEMATIC_MESSAGE"/>
+        <org.eventb.core.guard name="*" org.eventb.core.comment="New kinematic state" org.eventb.core.label="grd2" org.eventb.core.predicate="command = kin_basic ⇒ new_state = kin_mode_basic"/>
+        <org.eventb.core.guard name="+" org.eventb.core.comment="New kinematic state" org.eventb.core.label="grd3" org.eventb.core.predicate="command = kin_normal ⇒ new_state = kin_mode_normal"/>
+        <org.eventb.core.guard name="," org.eventb.core.comment="New kinematic state" org.eventb.core.label="grd4" org.eventb.core.predicate="command = kin_other ⇒ new_state = kinematic_mode"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="kinematic_mode ≔ new_state" org.eventb.core.label="act1"/>
+        <org.eventb.core.guard name="." org.eventb.core.comment="Disabled if node not running" org.eventb.core.label="grd5" org.eventb.core.predicate="displacement_running = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var2T" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="absolute_encoder">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="motor_pos"/>
+        <org.eventb.core.guard name="(" org.eventb.core.comment="New motor position" org.eventb.core.label="grd1" org.eventb.core.predicate="motor_pos ∈ 0‥7 → ℤ"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="cur_wheels_pos ≔ {0↦0,1↦0,2↦0,3↦0,4↦motor_pos(4),5↦motor_pos(5),6↦motor_pos(6),7↦motor_pos(7)}" org.eventb.core.label="act1"/>
+        <org.eventb.core.guard name="*" org.eventb.core.comment="Disabled if node not running" org.eventb.core.label="grd2" org.eventb.core.predicate="displacement_running = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="var2U" org.eventb.core.comment="Current wheel position" org.eventb.core.identifier="cur_wheels_pos"/>
+    <org.eventb.core.invariant name="var2V" org.eventb.core.label="type_cur_wheels_pos" org.eventb.core.predicate="cur_wheels_pos ∈ 0‥7→ℤ"/>
+    <org.eventb.core.event name="var2W" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="send_kinematic">
+        <org.eventb.core.guard name="'" org.eventb.core.comment="Disabled if node not running" org.eventb.core.label="grd1" org.eventb.core.predicate="displacement_running = TRUE"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="kinematic_instr ≔ {0↦motor_command(0),1↦−motor_command(1),2↦−motor_command(2),3↦motor_command(3),4↦motor_command(4),5↦−motor_command(5),6↦motor_command(6),7↦−motor_command(7)}" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="var2X" org.eventb.core.comment="Speed instruction for the wheels" org.eventb.core.identifier="kinematic_instr"/>
+    <org.eventb.core.invariant name="var2Y" org.eventb.core.label="type_kinematic_instr" org.eventb.core.predicate="kinematic_instr ∈ 0‥7→ℤ"/>
+    <org.eventb.core.variable name="var2Z" org.eventb.core.comment="Input speed instruction from the kinematic model" org.eventb.core.identifier="motor_command"/>
+    <org.eventb.core.invariant name="var2[" org.eventb.core.label="inv1" org.eventb.core.predicate="motor_command ∈ 0‥7→ℤ "/>
+    <org.eventb.core.event name="var2\" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="cmd_vel">
+        <org.eventb.core.guard name="'" org.eventb.core.comment="Disabled if node not running" org.eventb.core.label="grd1" org.eventb.core.predicate="displacement_running = TRUE"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="speed"/>
+        <org.eventb.core.guard name=")" org.eventb.core.comment="Input speed" org.eventb.core.label="grd2" org.eventb.core.predicate="speed ∈ 0‥5→ℤ"/>
+        <org.eventb.core.parameter name="*" org.eventb.core.identifier="normal_kin_req"/>
+        <org.eventb.core.parameter name="+" org.eventb.core.identifier="basic_kin_req"/>
+        <org.eventb.core.guard name="," org.eventb.core.comment="Selects the basic kinematic" org.eventb.core.label="grd3" org.eventb.core.predicate="¬ (kinematic_mode = kin_mode_normal) ⇒ normal_kin_req = FALSE ∧ basic_kin_req = TRUE"/>
+        <org.eventb.core.guard name="-" org.eventb.core.comment="Selects the normal kinematic" org.eventb.core.label="grd4" org.eventb.core.predicate="kinematic_mode = kin_mode_normal ⇒ normal_kin_req = TRUE ∧ basic_kin_req = FALSE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var2]" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="get_wheels_angle">
+        <org.eventb.core.guard name="'" org.eventb.core.comment="Disabled if node not running" org.eventb.core.label="grd1" org.eventb.core.predicate="displacement_running = TRUE"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="angle"/>
+        <org.eventb.core.guard name=")" org.eventb.core.comment="Angles between 0 and 360°" org.eventb.core.label="grd2" org.eventb.core.predicate="angle ∈ 0‥359"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="wheel_angle_rotation ≔ angle" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="var2^" org.eventb.core.comment="Angle of the wheels for rotation" org.eventb.core.identifier="wheel_angle_rotation"/>
+    <org.eventb.core.invariant name="var2_" org.eventb.core.label="type_wheel_angle_rotation" org.eventb.core.predicate="wheel_angle_rotation ∈ ℤ"/>
+</org.eventb.core.machineFile>

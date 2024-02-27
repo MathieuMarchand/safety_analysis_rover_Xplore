@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+    <org.eventb.core.refinesMachine name="'" org.eventb.core.target="navigationR1"/>
+    <org.eventb.core.seesContext name="2" org.eventb.core.target="navigation_ctx1"/>
+    <org.eventb.core.variable name="inv4" org.eventb.core.comment="State of the gamepad node" org.eventb.core.identifier="gamepad_manager_running"/>
+    <org.eventb.core.variable name="var2" org.eventb.core.comment="Auto nav message instruction" org.eventb.core.identifier="gamepad_auto_nav"/>
+    <org.eventb.core.variable name="var1" org.eventb.core.comment="Speed message received" org.eventb.core.identifier="gamepad_speed"/>
+    <org.eventb.core.variable name="var3" org.eventb.core.comment="Filtered speed value in x" org.eventb.core.identifier="filtered_speed_x"/>
+    <org.eventb.core.variable name="var9" org.eventb.core.comment="Filtered speed value in z" org.eventb.core.identifier="filtered_speed_z"/>
+    <org.eventb.core.variable name="var8" org.eventb.core.comment="Twist message for the speed selector" org.eventb.core.identifier="gamepad_twist"/>
+    <org.eventb.core.variable name="var4" org.eventb.core.comment="Next event to execute gamepad" org.eventb.core.identifier="gamepad_man_to"/>
+    <org.eventb.core.variable name="var13" org.eventb.core.comment="[VERIF] Shutdown command received" org.eventb.core.identifier="gamepad_shutdown_cmd"/>
+    <org.eventb.core.variable name="var14" org.eventb.core.comment="[VERIF] Auto mode button pressed" org.eventb.core.identifier="gamepad_auto_pressed"/>
+    <org.eventb.core.variable name="var19" org.eventb.core.comment="[VERIF] Manual mode button pressed" org.eventb.core.identifier="gamepad_manual_pressed"/>
+    <org.eventb.core.variable name="var18" org.eventb.core.comment="[VERIF] Sender of the message received" org.eventb.core.identifier="gamepad_msg_from"/>
+    <org.eventb.core.variable name="var17" org.eventb.core.comment="[VERIF] Records if the message has been processed or not by the function" org.eventb.core.identifier="gamepad_message_processed"/>
+    <org.eventb.core.variable name="var10" org.eventb.core.comment="Asks to clear the temporary variables" org.eventb.core.identifier="clear_gamepad"/>
+    <org.eventb.core.variable name="var11" org.eventb.core.comment="[VERIF]Function to which the flow has been forwarded to" org.eventb.core.identifier="gp_forwarded_to"/>
+    <org.eventb.core.variable name="var12" org.eventb.core.comment="[VERIF] Destroy command received" org.eventb.core.identifier="gamepad_destroy_cmd"/>
+    <org.eventb.core.variable name=")" org.eventb.core.comment="State of the velocity manager node (running or stopped)" org.eventb.core.identifier="vel_manager_running"/>
+    <org.eventb.core.variable name="0" org.eventb.core.comment="State of the navigation mode (auto or manual)" org.eventb.core.identifier="autonomous_navigation"/>
+    <org.eventb.core.variable name="3" org.eventb.core.comment="Selected speed" org.eventb.core.identifier="select_speed"/>
+    <org.eventb.core.event name="&gt;" org.eventb.core.comment="Initialisation of the variables" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="vel_manager_running ≔ TRUE" org.eventb.core.label="init_vel_manager_running"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="autonomous_navigation ≔ default_nav_mode" org.eventb.core.label="init_autonomous_navigation"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="select_speed ≔ {0↦0,1↦0,2↦0,3↦0,4↦0,5↦0}" org.eventb.core.label="init_select_speed"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="inv7" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="gamepad">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="gamepad"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="inv6" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="shutdown_gamepad">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="shutdown_gamepad"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="inv5" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="destroy_gamepad">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="destroy_gamepad"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="inv8" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="speed_filter">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="speed_filter"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var:" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="set_gamepad_twist">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="set_gamepad_twist"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var5" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="ROS_gamepad">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="ROS_gamepad"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="?" org.eventb.core.comment="Changes the speed in auto mode" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="vel_auto">
+        <org.eventb.core.guard name="'" org.eventb.core.comment="Active only when the node is running" org.eventb.core.label="grd1" org.eventb.core.predicate="vel_manager_running = TRUE"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.comment="Requested speed for auto mode" org.eventb.core.identifier="input_speed"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd2" org.eventb.core.predicate="input_speed ∈ 0‥5→ℤ"/>
+        <org.eventb.core.parameter name="*" org.eventb.core.comment="New speed value" org.eventb.core.identifier="new_speed"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd3" org.eventb.core.predicate="autonomous_navigation = TRUE ⇒ new_speed = input_speed"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd4" org.eventb.core.predicate="autonomous_navigation = FALSE ⇒ new_speed = select_speed"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="select_speed ≔ new_speed" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="@" org.eventb.core.comment="Changes the speed in manual mode" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="vel_manual">
+        <org.eventb.core.guard name="'" org.eventb.core.comment="Active only when the node is running" org.eventb.core.label="grd1" org.eventb.core.predicate="vel_manager_running = TRUE"/>
+        <org.eventb.core.parameter name=")" org.eventb.core.comment="New speed value" org.eventb.core.identifier="new_speed"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd3" org.eventb.core.predicate="autonomous_navigation = FALSE ⇒ new_speed = gamepad_twist"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd4" org.eventb.core.predicate="autonomous_navigation = TRUE ⇒ new_speed = select_speed"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="select_speed ≔ new_speed" org.eventb.core.label="act1"/>
+        <org.eventb.core.guard name="." org.eventb.core.label="grd5" org.eventb.core.predicate="new_speed ∈ 0‥5 → ℤ"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="A" org.eventb.core.comment="Set the navigation mode" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="nav_mode">
+        <org.eventb.core.guard name="'" org.eventb.core.comment="Active only when the node is running" org.eventb.core.label="grd1" org.eventb.core.predicate="vel_manager_running = TRUE"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.comment="Requested navigation mode" org.eventb.core.identifier="new_mode"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd2" org.eventb.core.predicate="new_mode ∈ NAVIGATION_MODE"/>
+        <org.eventb.core.parameter name="*" org.eventb.core.comment="New navigation mode" org.eventb.core.identifier="auto_nav_val"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd3" org.eventb.core.predicate="new_mode = nav_auto ⇒ auto_nav_val = TRUE"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd4" org.eventb.core.predicate="new_mode = nav_manual ⇒ auto_nav_val = FALSE"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd5" org.eventb.core.predicate="new_mode = nav_other ⇒ auto_nav_val = autonomous_navigation"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="autonomous_navigation ≔ auto_nav_val" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="B" org.eventb.core.comment="Sets the state of the auto mode" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="nav_auto_state">
+        <org.eventb.core.guard name="'" org.eventb.core.comment="Active only when the node is running" org.eventb.core.label="grd1" org.eventb.core.predicate="vel_manager_running = TRUE"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.comment="Auto navigation instruction" org.eventb.core.identifier="nav_auto_instr"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd2" org.eventb.core.predicate="nav_auto_instr ∈ NAV_AUTO_INSTRUCTION"/>
+        <org.eventb.core.parameter name="*" org.eventb.core.comment="New navigation mode" org.eventb.core.identifier="auto_nav_val"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="autonomous_navigation ≔ auto_nav_val" org.eventb.core.label="act1"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd3" org.eventb.core.predicate="nav_auto_instr = nav_autonomous_start ⇒ auto_nav_val = TRUE"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd4" org.eventb.core.predicate="nav_auto_instr = nav_autonomous_end ⇒ auto_nav_val = FALSE"/>
+        <org.eventb.core.guard name="." org.eventb.core.label="grd5" org.eventb.core.predicate="nav_auto_instr = nav_autonomous_other ⇒ auto_nav_val = autonomous_navigation"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="C" org.eventb.core.comment="Shutdown the velocity manager node" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="shutdown_vel_manager">
+        <org.eventb.core.guard name="'" org.eventb.core.comment="Active only when the node is running" org.eventb.core.label="grd1" org.eventb.core.predicate="vel_manager_running = TRUE"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.comment="Shutdown command" org.eventb.core.identifier="command"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd2" org.eventb.core.predicate="command ∈ CMD_SHUTDOWN_MSG"/>
+        <org.eventb.core.parameter name="*" org.eventb.core.comment="New state of the velocity manager node" org.eventb.core.identifier="new_running_state"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="vel_manager_running ≔ new_running_state" org.eventb.core.label="act1"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd3" org.eventb.core.predicate="command = sd_shutdown ⇒ new_running_state = FALSE"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd4" org.eventb.core.predicate="command = sd_other ⇒ new_running_state = vel_manager_running"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="D" org.eventb.core.comment="Destroys the velocity manager node" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="destroy_vel_manager">
+        <org.eventb.core.action name="act1" org.eventb.core.assignment="vel_manager_running ≔ new_running_state" org.eventb.core.label="act1"/>
+        <org.eventb.core.guard name="grd1" org.eventb.core.label="grd1" org.eventb.core.predicate="vel_manager_running = TRUE"/>
+        <org.eventb.core.parameter name="grd2" org.eventb.core.comment="Shutdown command" org.eventb.core.identifier="command"/>
+        <org.eventb.core.parameter name="grd3" org.eventb.core.comment="New state of the velocity manager node" org.eventb.core.identifier="new_running_state"/>
+        <org.eventb.core.guard name="grd4" org.eventb.core.label="grd2" org.eventb.core.predicate="command ∈ CMD_DESTROY_MSG"/>
+        <org.eventb.core.guard name="grd5" org.eventb.core.label="grd3" org.eventb.core.predicate="command = dst_abort ⇒ new_running_state = FALSE"/>
+        <org.eventb.core.guard name="grd6" org.eventb.core.label="grd4" org.eventb.core.predicate="command = dst_other ⇒ new_running_state = vel_manager_running"/>
+    </org.eventb.core.event>
+    <org.eventb.core.invariant name="inv1" org.eventb.core.label="inv1" org.eventb.core.predicate="vel_manager_running ∈ BOOL "/>
+    <org.eventb.core.invariant name="inv2" org.eventb.core.label="inv2" org.eventb.core.predicate="autonomous_navigation ∈ BOOL "/>
+    <org.eventb.core.invariant name="inv3" org.eventb.core.label="inv3" org.eventb.core.predicate="select_speed ∈ 0‥5→ℤ"/>
+    <org.eventb.core.event name="var16" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="need_clear">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="need_clear"/>
+    </org.eventb.core.event>
+</org.eventb.core.machineFile>

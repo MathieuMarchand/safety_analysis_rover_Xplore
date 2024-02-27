@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+    <org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="drill_height" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="target_height" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="drill_bit_length" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="target_deployment" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poPredicate name="target_deploymenu" org.eventb.core.predicate="drill_bit_length∈ℕ1" org.eventb.core.source="/Drill/drill_ctx.buc|org.eventb.core.contextFile#drill_ctx|org.eventb.core.axiom#("/>
+        <org.eventb.core.poPredicate name="target_deploymenv" org.eventb.core.predicate="drill_height∈ℕ" org.eventb.core.source="/Drill/drill_ctx.buc|org.eventb.core.contextFile#drill_ctx|org.eventb.core.axiom#*"/>
+        <org.eventb.core.poPredicate name="target_deploymenw" org.eventb.core.predicate="target_height∈ℕ" org.eventb.core.source="/Drill/drill_ctx.buc|org.eventb.core.contextFile#drill_ctx|org.eventb.core.axiom#-"/>
+        <org.eventb.core.poPredicate name="target_deploymenx" org.eventb.core.predicate="target_deployment∈ℕ" org.eventb.core.source="/Drill/drill_ctx.buc|org.eventb.core.contextFile#drill_ctx|org.eventb.core.axiom#."/>
+        <org.eventb.core.poPredicate name="target_deploymeny" org.eventb.core.predicate="target_height≤drill_height" org.eventb.core.source="/Drill/drill_ctx.buc|org.eventb.core.contextFile#drill_ctx|org.eventb.core.axiom#\/"/>
+        <org.eventb.core.poPredicate name="target_deploymenz" org.eventb.core.predicate="target_deployment≤drill_bit_length" org.eventb.core.source="/Drill/drill_ctx.buc|org.eventb.core.contextFile#drill_ctx|org.eventb.core.axiom#0"/>
+        <org.eventb.core.poPredicate name="target_deploymen{" org.eventb.core.predicate="target_deployment≥0" org.eventb.core.source="/Drill/drill_ctx.buc|org.eventb.core.contextFile#drill_ctx|org.eventb.core.axiom#1"/>
+        <org.eventb.core.poIdentifier name="STATES" org.eventb.core.type="ℙ(STATES)"/>
+        <org.eventb.core.poIdentifier name="retract" org.eventb.core.type="STATES"/>
+        <org.eventb.core.poIdentifier name="down" org.eventb.core.type="STATES"/>
+        <org.eventb.core.poIdentifier name="drill" org.eventb.core.type="STATES"/>
+        <org.eventb.core.poIdentifier name="up" org.eventb.core.type="STATES"/>
+        <org.eventb.core.poIdentifier name="idle" org.eventb.core.type="STATES"/>
+        <org.eventb.core.poPredicate name="target_deploymen|" org.eventb.core.predicate="partition(STATES,{idle},{down},{drill},{retract},{up})" org.eventb.core.source="/Drill/drill_ctxE1.buc|org.eventb.core.contextFile#drill_ctxE1|org.eventb.core.axiom#."/>
+        <org.eventb.core.poIdentifier name="DIRECTION" org.eventb.core.type="ℙ(DIRECTION)"/>
+        <org.eventb.core.poIdentifier name="down_delta_height" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="drill_delta_height" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="up_dir" org.eventb.core.type="DIRECTION"/>
+        <org.eventb.core.poIdentifier name="retract_delta_height" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="down_dir" org.eventb.core.type="DIRECTION"/>
+        <org.eventb.core.poIdentifier name="up_delta_height" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poPredicate name="retract_delta_heighu" org.eventb.core.predicate="down_delta_height∈ℕ1" org.eventb.core.source="/Drill/drill_ctxE2.buc|org.eventb.core.contextFile#drill_ctxE2|org.eventb.core.axiom#)"/>
+        <org.eventb.core.poPredicate name="retract_delta_heighv" org.eventb.core.predicate="drill_delta_height∈ℕ1" org.eventb.core.source="/Drill/drill_ctxE2.buc|org.eventb.core.contextFile#drill_ctxE2|org.eventb.core.axiom#+"/>
+        <org.eventb.core.poPredicate name="retract_delta_heighw" org.eventb.core.predicate="retract_delta_height∈ℕ1" org.eventb.core.source="/Drill/drill_ctxE2.buc|org.eventb.core.contextFile#drill_ctxE2|org.eventb.core.axiom#-"/>
+        <org.eventb.core.poPredicate name="retract_delta_heighx" org.eventb.core.predicate="up_delta_height∈ℕ1" org.eventb.core.source="/Drill/drill_ctxE2.buc|org.eventb.core.contextFile#drill_ctxE2|org.eventb.core.axiom#\/"/>
+        <org.eventb.core.poPredicate name="retract_delta_heighy" org.eventb.core.predicate="down_delta_height∈1 ‥ drill_height" org.eventb.core.source="/Drill/drill_ctxE2.buc|org.eventb.core.contextFile#drill_ctxE2|org.eventb.core.axiom#0"/>
+        <org.eventb.core.poPredicate name="retract_delta_heighz" org.eventb.core.predicate="drill_delta_height∈1 ‥ drill_bit_length" org.eventb.core.source="/Drill/drill_ctxE2.buc|org.eventb.core.contextFile#drill_ctxE2|org.eventb.core.axiom#1"/>
+        <org.eventb.core.poPredicate name="retract_delta_heigh{" org.eventb.core.predicate="retract_delta_height∈1 ‥ drill_bit_length" org.eventb.core.source="/Drill/drill_ctxE2.buc|org.eventb.core.contextFile#drill_ctxE2|org.eventb.core.axiom#2"/>
+        <org.eventb.core.poPredicate name="retract_delta_heigh|" org.eventb.core.predicate="up_delta_height∈1 ‥ drill_bit_length" org.eventb.core.source="/Drill/drill_ctxE2.buc|org.eventb.core.contextFile#drill_ctxE2|org.eventb.core.axiom#3"/>
+        <org.eventb.core.poPredicate name="retract_delta_heigh}" org.eventb.core.predicate="partition(DIRECTION,{down_dir},{up_dir})" org.eventb.core.source="/Drill/drill_ctxE2.buc|org.eventb.core.contextFile#drill_ctxE2|org.eventb.core.axiom#7"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="curr_height" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="motor_active" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="state" org.eventb.core.type="STATES"/>
+        <org.eventb.core.poIdentifier name="curr_direction" org.eventb.core.type="DIRECTION"/>
+        <org.eventb.core.poIdentifier name="aborted" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="drill_bit_deployment" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="waiting" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="curr_deployment" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="height" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="nb_abort" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="drilling" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="curr_quantity" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="quantity" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymenu" org.eventb.core.predicate="drilling∈BOOL" org.eventb.core.source="/Drill/drill.bum|org.eventb.core.machineFile#drill|org.eventb.core.invariant#)"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymenv" org.eventb.core.predicate="quantity∈ℕ" org.eventb.core.source="/Drill/drill.bum|org.eventb.core.machineFile#drill|org.eventb.core.invariant#,"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymenw" org.eventb.core.predicate="quantity≤drill_bit_length" org.eventb.core.source="/Drill/drill.bum|org.eventb.core.machineFile#drill|org.eventb.core.invariant#\/"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymenx" org.eventb.core.predicate="height∈ℕ" org.eventb.core.source="/Drill/drillR1.bum|org.eventb.core.machineFile#drillR1|org.eventb.core.invariant#2"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymeny" org.eventb.core.predicate="drill_bit_deployment∈ℕ" org.eventb.core.source="/Drill/drillR1.bum|org.eventb.core.machineFile#drillR1|org.eventb.core.invariant#6"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymenz" org.eventb.core.predicate="state∈STATES" org.eventb.core.source="/Drill/drillR1.bum|org.eventb.core.machineFile#drillR1|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymen{" org.eventb.core.predicate="state=idle⇒height=drill_height∧drill_bit_deployment=0" org.eventb.core.source="/Drill/drillR1.bum|org.eventb.core.machineFile#drillR1|org.eventb.core.invariant#9"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymen|" org.eventb.core.predicate="state=down⇒drill_bit_deployment=0" org.eventb.core.source="/Drill/drillR1.bum|org.eventb.core.machineFile#drillR1|org.eventb.core.invariant#:"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymen}" org.eventb.core.predicate="state=drill⇒height=target_height" org.eventb.core.source="/Drill/drillR1.bum|org.eventb.core.machineFile#drillR1|org.eventb.core.invariant#;"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymen~" org.eventb.core.predicate="state=retract⇒height=target_height" org.eventb.core.source="/Drill/drillR1.bum|org.eventb.core.machineFile#drillR1|org.eventb.core.invariant#="/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymeo'" org.eventb.core.predicate="state=up⇒drill_bit_deployment=0" org.eventb.core.source="/Drill/drillR1.bum|org.eventb.core.machineFile#drillR1|org.eventb.core.invariant#&gt;"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymeo(" org.eventb.core.predicate="drill_bit_deployment≤target_deployment" org.eventb.core.source="/Drill/drillR1.bum|org.eventb.core.machineFile#drillR1|org.eventb.core.invariant#C"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymeo)" org.eventb.core.predicate="drill_bit_deployment≤drill_bit_length" org.eventb.core.source="/Drill/drillR1.bum|org.eventb.core.machineFile#drillR1|org.eventb.core.invariant#B"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymeo*" org.eventb.core.predicate="drill_bit_deployment≥0" org.eventb.core.source="/Drill/drillR1.bum|org.eventb.core.machineFile#drillR1|org.eventb.core.invariant#D"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymeo+" org.eventb.core.predicate="height≥target_height" org.eventb.core.source="/Drill/drillR1.bum|org.eventb.core.machineFile#drillR1|org.eventb.core.invariant#E"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymeo," org.eventb.core.predicate="height≥0" org.eventb.core.source="/Drill/drillR1.bum|org.eventb.core.machineFile#drillR1|org.eventb.core.invariant#F"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymeo-" org.eventb.core.predicate="curr_height∈ℕ" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.invariant#&gt;"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymeo." org.eventb.core.predicate="curr_deployment∈ℕ" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.invariant#@"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymeo/" org.eventb.core.predicate="curr_quantity∈ℕ" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.invariant#P"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymeo0" org.eventb.core.predicate="curr_direction∈DIRECTION" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.invariant#Z"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymeo1" org.eventb.core.predicate="state=down⇒curr_deployment=0" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.invariant#K"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymeo2" org.eventb.core.predicate="state=drill⇒curr_height=target_height" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.invariant#L"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymeo3" org.eventb.core.predicate="state=retract⇒curr_height=target_height" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.invariant#M"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymeo4" org.eventb.core.predicate="state=up⇒curr_deployment=0" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.invariant#N"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymeo5" org.eventb.core.predicate="drilling=TRUE⇔state=drill" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.invariant#S"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymeo6" org.eventb.core.predicate="state=idle⇒curr_deployment=0∧curr_height=drill_height" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.invariant#J"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymeo7" org.eventb.core.predicate="curr_deployment≤target_deployment" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.invariant#U"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymeo8" org.eventb.core.predicate="curr_deployment≤drill_bit_length" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.invariant#E"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymeo9" org.eventb.core.predicate="curr_height≤drill_height" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.invariant#D"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymeo:" org.eventb.core.predicate="curr_height≥target_height" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.invariant#V"/>
+        <org.eventb.core.poPredicate name="drill_bit_deploymeo;" org.eventb.core.predicate="curr_height≥0" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.invariant#W"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="INITIALISATION/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenu"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="0∈ℕ" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#n"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#6"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#P"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#n"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#INITIALISATION\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD2"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/abort_req/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenu"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="¬(FALSE=TRUE∧FALSE=TRUE)" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#d"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#6"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#P"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#d"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#INITIALISATION\/abort_req\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD4"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/down_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenu"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="drill_height=target_height∧idle=down⇒FALSE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#e"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#6"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#P"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#e"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#INITIALISATION\/down_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD5"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/drill_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenu"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="0=target_deployment∧idle=drill⇒FALSE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#f"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#6"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#P"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#f"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#INITIALISATION\/drill_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD6"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/retract_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenu"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="0=0∧idle=retract⇒FALSE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#g"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#6"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#P"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#g"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#INITIALISATION\/retract_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD7"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/up_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenu"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="drill_height=drill_height∧idle=up⇒FALSE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#h"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#6"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#P"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#h"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#INITIALISATION\/up_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD8"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/pause_req/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenu"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="¬(FALSE=TRUE∧FALSE=TRUE)" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#`"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#6"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#P"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#`"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#INITIALISATION\/pause_req\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD9"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/idle_nactive_motors/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenu"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="idle=idle⇒FALSE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#i"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#6"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#P"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#i"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#INITIALISATION\/idle_nactive_motors\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD10"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTdrill_bit_deploymenu" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="motor_active'" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="curr_height'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="nb_abort'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="curr_deployment'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="height'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="curr_quantity'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="quantity'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="curr_direction'" org.eventb.core.type="DIRECTION"/>
+        <org.eventb.core.poIdentifier name="waiting'" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="drill_bit_deployment'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="aborted'" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="state'" org.eventb.core.type="STATES"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPdrill_bit_deploymenu" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTIDENTdrill_bit_deploymenu" org.eventb.core.poStamp="0"/>
+    <org.eventb.core.poSequent name="drill_idle/abort_req/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenv"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="¬(FALSE=TRUE∧waiting=TRUE)" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#d"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#R"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#Q"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#d"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#drill_idle\/abort_req\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD4"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="drill_idle/down_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenv"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_height=target_height∧idle=down⇒FALSE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#e"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#R"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#Q"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#e"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#drill_idle\/down_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD5"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="drill_idle/drill_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenv"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_deployment=target_deployment∧idle=drill⇒FALSE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#f"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#R"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#Q"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#f"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#drill_idle\/drill_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD6"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="drill_idle/retract_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenv"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_deployment=0∧idle=retract⇒FALSE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#g"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#R"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#Q"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#g"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#drill_idle\/retract_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD7"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="drill_idle/up_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenv"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_height=drill_height∧idle=up⇒FALSE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#h"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#R"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#Q"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#h"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#drill_idle\/up_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD8"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="drill_idle/pause_req/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenv"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="¬(FALSE=TRUE∧waiting=TRUE)" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#`"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#R"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#Q"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#`"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#drill_idle\/pause_req\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD9"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="drill_idle/idle_nactive_motors/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenv"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="idle=idle⇒FALSE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#i"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#R"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#Q"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#i"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#drill_idle\/idle_nactive_motors\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD10"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTdrill_bit_deploymenv" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="motor_active'" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="height'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="aborted'" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="state'" org.eventb.core.type="STATES"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPdrill_bit_deploymenv" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTIDENTdrill_bit_deploymenv" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="state=up" org.eventb.core.source="/Drill/drillR1.bum|org.eventb.core.machineFile#drillR1|org.eventb.core.event#@|org.eventb.core.guard#'"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="⊥" org.eventb.core.source="/Drill/drillR1.bum|org.eventb.core.machineFile#drillR1|org.eventb.core.event#@|org.eventb.core.guard#*"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="lower/down_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenw"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_height=target_height∧down=down⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#e"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#9"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#R"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#e"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#lower\/down_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD5"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="lower/drill_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenw"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_deployment=target_deployment∧down=drill⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#f"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#9"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#R"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#f"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#lower\/drill_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD6"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="lower/retract_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenw"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_deployment=0∧down=retract⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#g"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#9"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#R"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#g"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#lower\/retract_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD7"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="lower/up_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenw"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_height=drill_height∧down=up⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#h"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#9"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#R"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#h"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#lower\/up_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD8"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="lower/pause_req/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenw"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="¬(TRUE=TRUE∧waiting=TRUE)" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#`"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#9"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#R"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#`"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#lower\/pause_req\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD9"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="lower/idle_nactive_motors/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenw"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="down=idle⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#i"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#9"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#R"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#i"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#lower\/idle_nactive_motors\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD10"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTdrill_bit_deploymenw" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="motor_active'" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="curr_direction'" org.eventb.core.type="DIRECTION"/>
+        <org.eventb.core.poIdentifier name="state'" org.eventb.core.type="STATES"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPdrill_bit_deploymenw" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTIDENTdrill_bit_deploymenw" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="state=idle" org.eventb.core.source="/Drill/drillR1.bum|org.eventb.core.machineFile#drillR1|org.eventb.core.event#7|org.eventb.core.guard#'"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="start_drill/down_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenx"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_height=target_height∧drill=down⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#e"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#7"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#S"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#e"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#start_drill\/down_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD5"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="start_drill/drill_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenx"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_deployment=target_deployment∧drill=drill⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#f"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#7"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#S"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#f"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#start_drill\/drill_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD6"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="start_drill/retract_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenx"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_deployment=0∧drill=retract⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#g"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#7"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#S"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#g"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#start_drill\/retract_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD7"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="start_drill/up_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenx"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_height=drill_height∧drill=up⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#h"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#7"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#S"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#h"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#start_drill\/up_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD8"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="start_drill/pause_req/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenx"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="¬(TRUE=TRUE∧waiting=TRUE)" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#`"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#7"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#S"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#`"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#start_drill\/pause_req\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD9"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="start_drill/idle_nactive_motors/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenx"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="drill=idle⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#i"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#7"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#S"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#i"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#start_drill\/idle_nactive_motors\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD10"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTdrill_bit_deploymenx" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="motor_active'" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="height'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="curr_direction'" org.eventb.core.type="DIRECTION"/>
+        <org.eventb.core.poIdentifier name="state'" org.eventb.core.type="STATES"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPdrill_bit_deploymenx" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTIDENTdrill_bit_deploymenx" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="state=down" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#7|org.eventb.core.guard#*"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="retract_drill/down_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymeny"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_height=target_height∧retract=down⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#e"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#8"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#T"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#e"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#retract_drill\/down_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD5"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="retract_drill/drill_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymeny"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_deployment=target_deployment∧retract=drill⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#f"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#8"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#T"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#f"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#retract_drill\/drill_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD6"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="retract_drill/retract_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymeny"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_deployment=0∧retract=retract⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#g"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#8"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#T"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#g"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#retract_drill\/retract_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD7"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="retract_drill/up_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymeny"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_height=drill_height∧retract=up⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#h"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#8"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#T"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#h"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#retract_drill\/up_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD8"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="retract_drill/pause_req/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymeny"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="¬(TRUE=TRUE∧waiting=TRUE)" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#`"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#8"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#T"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#`"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#retract_drill\/pause_req\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD9"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="retract_drill/idle_nactive_motors/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymeny"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="retract=idle⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#i"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#8"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#T"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#i"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#retract_drill\/idle_nactive_motors\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD10"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTdrill_bit_deploymeny" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="motor_active'" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="quantity'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="curr_direction'" org.eventb.core.type="DIRECTION"/>
+        <org.eventb.core.poIdentifier name="drill_bit_deployment'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="state'" org.eventb.core.type="STATES"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPdrill_bit_deploymeny" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTIDENTdrill_bit_deploymeny" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="state=drill" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#8|org.eventb.core.guard#*"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="drill_up/down_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenz"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_height=target_height∧state=down⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#e"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#:"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#U"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#e"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#drill_up\/down_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD5"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="drill_up/drill_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenz"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_deployment=target_deployment∧state=drill⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#f"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#:"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#U"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#f"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#drill_up\/drill_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD6"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="drill_up/retract_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenz"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_deployment=0∧state=retract⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#g"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#:"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#U"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#g"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#drill_up\/retract_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD7"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="drill_up/up_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenz"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_height=drill_height∧state=up⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#h"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#:"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#U"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#h"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#drill_up\/up_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD8"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="drill_up/pause_req/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenz"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="¬(TRUE=TRUE∧waiting=TRUE)" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#`"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#:"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#U"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#`"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#drill_up\/pause_req\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD9"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="drill_up/idle_nactive_motors/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymenz"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="state=idle⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#i"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#:"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#U"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#i"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#drill_up\/idle_nactive_motors\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD10"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTdrill_bit_deploymenz" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="motor_active'" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="curr_direction'" org.eventb.core.type="DIRECTION"/>
+        <org.eventb.core.poIdentifier name="drill_bit_deployment'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="state'" org.eventb.core.type="STATES"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPdrill_bit_deploymenz" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTIDENTdrill_bit_deploymenz" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="state=retract" org.eventb.core.source="/Drill/drillR1.bum|org.eventb.core.machineFile#drillR1|org.eventb.core.event#8|org.eventb.core.guard#'"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="mod1/down_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen{"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="new_height=target_height∧state=down⇒new_motor=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#e"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#X"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#k"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#e"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#mod1\/down_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD5"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="mod1/drill_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen{"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_deployment=target_deployment∧state=drill⇒new_motor=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#f"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#X"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#k"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#f"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#mod1\/drill_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD6"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="mod1/retract_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen{"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_deployment=0∧state=retract⇒new_motor=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#g"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#X"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#k"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#g"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#mod1\/retract_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD7"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="mod1/up_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen{"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="new_height=drill_height∧state=up⇒new_motor=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#h"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#X"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#k"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#h"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#mod1\/up_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD8"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="mod1/pause_req/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen{"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="¬(new_motor=TRUE∧waiting=TRUE)" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#`"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#X"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#k"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#`"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#mod1\/pause_req\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD9"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="mod1/idle_nactive_motors/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen{"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="state=idle⇒new_motor=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#i"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#X"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#k"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#i"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#mod1\/idle_nactive_motors\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD10"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTdrill_bit_deploymen{" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="new_height" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="motor_active'" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="curr_height'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="new_motor" org.eventb.core.type="BOOL"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPdrill_bit_deploymen{" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTIDENTdrill_bit_deploymen{" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="curr_direction=down_dir⇒new_height=max({target_height}∪{curr_height − down_delta_height})" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#X|org.eventb.core.guard#'"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="curr_direction=up_dir⇒new_height=min({drill_height}∪{curr_height+up_delta_height})" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#X|org.eventb.core.guard#*"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="curr_direction=down_dir⇒new_height≤drill_height" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#X|org.eventb.core.guard#,"/>
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="curr_direction=up_dir⇒new_height≥target_height" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#X|org.eventb.core.guard#-"/>
+        <org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="state=down∨state=up" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#X|org.eventb.core.guard#+"/>
+        <org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="(curr_direction=down_dir∧curr_height≠target_height)∨(curr_direction=up_dir∧curr_height≠drill_height)" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#X|org.eventb.core.guard#."/>
+        <org.eventb.core.poPredicate name="PRD6" org.eventb.core.predicate="(curr_direction=down_dir∧new_height=target_height)∨(curr_direction=up_dir∧new_height=drill_height)⇒new_motor=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#k|org.eventb.core.guard#)"/>
+        <org.eventb.core.poPredicate name="PRD7" org.eventb.core.predicate="¬((curr_direction=down_dir∧new_height=target_height)∨(curr_direction=up_dir∧new_height=drill_height))⇒new_motor=motor_active" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#k|org.eventb.core.guard#*"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="drill/down_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen\|"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_height=target_height∧state=down⇒new_motor=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#e"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#["/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#l"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#e"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#drill\/down_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD5"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="drill/drill_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen\|"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="new_depl=target_deployment∧state=drill⇒new_motor=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#f"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#["/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#l"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#f"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#drill\/drill_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD6"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="drill/retract_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen\|"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="new_depl=0∧state=retract⇒new_motor=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#g"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#["/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#l"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#g"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#drill\/retract_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD7"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="drill/up_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen\|"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_height=drill_height∧state=up⇒new_motor=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#h"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#["/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#l"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#h"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#drill\/up_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD8"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="drill/pause_req/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen\|"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="¬(new_motor=TRUE∧waiting=TRUE)" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#`"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#["/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#l"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#`"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#drill\/pause_req\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD9"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="drill/idle_nactive_motors/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen\|"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="state=idle⇒new_motor=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#i"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#["/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#l"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#i"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#drill\/idle_nactive_motors\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD10"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTdrill_bit_deploymen|" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="motor_active'" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="curr_deployment'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="curr_quantity'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="new_depl" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="new_quant" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="new_motor" org.eventb.core.type="BOOL"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPdrill_bit_deploymen|" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTIDENTdrill_bit_deploymen\|" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="curr_direction=down_dir⇒new_depl=min({target_deployment}∪{curr_deployment+drill_delta_height})" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#[|org.eventb.core.guard#("/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="curr_direction=up_dir⇒new_depl=max({0}∪{curr_deployment − 2∗drill_delta_height})" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#[|org.eventb.core.guard#)"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="state=drill⇒new_quant=min({target_deployment}∪{curr_quantity+drill_delta_height})" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#[|org.eventb.core.guard#-"/>
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="state=retract⇒new_quant=curr_quantity" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#[|org.eventb.core.guard#."/>
+        <org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="state=drill∨state=retract" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#[|org.eventb.core.guard#+"/>
+        <org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="curr_direction=down_dir⇒new_depl≥0" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#[|org.eventb.core.guard#0"/>
+        <org.eventb.core.poPredicate name="PRD6" org.eventb.core.predicate="curr_direction=up_dir⇒new_depl≤target_deployment" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#[|org.eventb.core.guard#1"/>
+        <org.eventb.core.poPredicate name="PRD7" org.eventb.core.predicate="(curr_direction=down_dir∧curr_deployment≠target_deployment)∨(curr_direction=up_dir∧curr_deployment≠0)" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#[|org.eventb.core.guard#2"/>
+        <org.eventb.core.poPredicate name="PRD8" org.eventb.core.predicate="motor_active=TRUE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#l|org.eventb.core.guard#)"/>
+        <org.eventb.core.poPredicate name="PRD9" org.eventb.core.predicate="(curr_direction=down_dir∧new_depl=target_deployment)∨(curr_direction=up_dir∧new_depl=0)⇒new_motor=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#l|org.eventb.core.guard#*"/>
+        <org.eventb.core.poPredicate name="PRD10" org.eventb.core.predicate="¬((curr_direction=down_dir∧new_depl=target_deployment)∨(curr_direction=up_dir∧new_depl=0))⇒new_motor=motor_active" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#l|org.eventb.core.guard#+"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="pause/abort_req/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen}"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="¬(aborted=TRUE∧TRUE=TRUE)" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#d"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#^"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#d"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#pause\/abort_req\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD4"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="pause/down_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen}"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_height=target_height∧state=down⇒FALSE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#e"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#^"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#e"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#pause\/down_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD5"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="pause/drill_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen}"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_deployment=target_deployment∧state=drill⇒FALSE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#f"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#^"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#f"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#pause\/drill_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD6"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="pause/retract_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen}"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_deployment=0∧state=retract⇒FALSE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#g"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#^"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#g"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#pause\/retract_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD7"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="pause/up_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen}"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_height=drill_height∧state=up⇒FALSE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#h"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#^"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#h"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#pause\/up_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD8"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="pause/pause_req/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen}"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="¬(FALSE=TRUE∧TRUE=TRUE)" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#`"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#^"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#`"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#pause\/pause_req\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD9"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="pause/idle_nactive_motors/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen}"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="state=idle⇒FALSE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#i"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#^"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#i"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#pause\/idle_nactive_motors\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD10"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTdrill_bit_deploymen}" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="motor_active'" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="waiting'" org.eventb.core.type="BOOL"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPdrill_bit_deploymen}" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTIDENTdrill_bit_deploymen}" org.eventb.core.poStamp="0"/>
+    <org.eventb.core.poSequent name="resume/abort_req/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen~"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="¬(aborted=TRUE∧FALSE=TRUE)" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#d"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#_"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#d"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#resume\/abort_req\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD4"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="resume/down_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen~"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_height=target_height∧state=down⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#e"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#_"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#e"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#resume\/down_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD5"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="resume/drill_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen~"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_deployment=target_deployment∧state=drill⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#f"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#_"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#f"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#resume\/drill_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD6"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="resume/retract_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen~"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_deployment=0∧state=retract⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#g"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#_"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#g"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#resume\/retract_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD7"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="resume/up_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen~"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_height=drill_height∧state=up⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#h"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#_"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#h"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#resume\/up_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD8"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="resume/pause_req/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen~"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="¬(TRUE=TRUE∧FALSE=TRUE)" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#`"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#_"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#`"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#resume\/pause_req\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD9"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="resume/idle_nactive_motors/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymen~"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="state=idle⇒TRUE=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#i"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#_"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#i"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#resume\/idle_nactive_motors\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD10"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTdrill_bit_deploymen~" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="motor_active'" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="waiting'" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="new_motor" org.eventb.core.type="BOOL"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPdrill_bit_deploymen~" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTIDENTdrill_bit_deploymen~" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="waiting=TRUE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#_|org.eventb.core.guard#)"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="new_motor∈BOOL" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#_|org.eventb.core.guard#+"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="abort/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymeo'"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="new_nb∈ℕ" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#n"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#T"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#a"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#n"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#abort\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD2"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="abort/abort_req/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymeo'"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="¬(TRUE=TRUE∧waiting=TRUE)" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#d"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#T"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#a"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#d"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#abort\/abort_req\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD4"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="abort/down_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymeo'"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_height=target_height∧retract=down⇒motor_active=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#e"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#T"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#a"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#e"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#abort\/down_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD5"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="abort/drill_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymeo'"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_deployment=target_deployment∧retract=drill⇒motor_active=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#f"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#T"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#a"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#f"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#abort\/drill_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD6"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="abort/retract_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymeo'"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_deployment=0∧retract=retract⇒motor_active=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#g"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#T"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#a"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#g"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#abort\/retract_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD7"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="abort/up_at_target/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymeo'"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="curr_height=drill_height∧retract=up⇒motor_active=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#h"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#T"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#a"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#h"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#abort\/up_at_target\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD8"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="abort/idle_nactive_motors/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTALLHYPdrill_bit_deploymeo'"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="retract=idle⇒motor_active=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#i"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Drill/drillR2.bum|org.eventb.core.machineFile#drillR2|org.eventb.core.event#T"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#a"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#i"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poSequent#abort\/idle_nactive_motors\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD10"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTdrill_bit_deploymeo'" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="nb_abort'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="new_nb" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="aborted'" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="state'" org.eventb.core.type="STATES"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPdrill_bit_deploymeo'" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#EVTIDENTdrill_bit_deploymeo'" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="state≠retract⇒new_nb=nb_abort+1" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#a|org.eventb.core.guard#*"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="state=retract⇒new_nb=nb_abort" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.event#a|org.eventb.core.guard#+"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/Drill/drillR3.bpo|org.eventb.core.poFile#drillR3|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="waiting∈BOOL" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#["/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="motor_active∈BOOL" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#]"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="nb_abort∈ℕ" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#n"/>
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="aborted∈BOOL" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#c"/>
+        <org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="¬(aborted=TRUE∧waiting=TRUE)" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#d"/>
+        <org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="curr_height=target_height∧state=down⇒motor_active=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#e"/>
+        <org.eventb.core.poPredicate name="PRD6" org.eventb.core.predicate="curr_deployment=target_deployment∧state=drill⇒motor_active=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#f"/>
+        <org.eventb.core.poPredicate name="PRD7" org.eventb.core.predicate="curr_deployment=0∧state=retract⇒motor_active=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#g"/>
+        <org.eventb.core.poPredicate name="PRD8" org.eventb.core.predicate="curr_height=drill_height∧state=up⇒motor_active=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#h"/>
+        <org.eventb.core.poPredicate name="PRD9" org.eventb.core.predicate="¬(motor_active=TRUE∧waiting=TRUE)" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#`"/>
+        <org.eventb.core.poPredicate name="PRD10" org.eventb.core.predicate="state=idle⇒motor_active=FALSE" org.eventb.core.source="/Drill/drillR3.bum|org.eventb.core.machineFile#drillR3|org.eventb.core.invariant#i"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

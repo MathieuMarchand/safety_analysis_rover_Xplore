@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+    <org.eventb.core.refinesMachine name="'" org.eventb.core.target="drillR1"/>
+    <org.eventb.core.seesContext name="-" org.eventb.core.target="drill_ctxE2"/>
+    <org.eventb.core.variable name="+" org.eventb.core.comment="quantity of samples collected" org.eventb.core.identifier="quantity"/>
+    <org.eventb.core.variable name="1" org.eventb.core.comment="current height of the drill" org.eventb.core.identifier="height"/>
+    <org.eventb.core.variable name="3" org.eventb.core.comment="current state of the drill" org.eventb.core.identifier="state"/>
+    <org.eventb.core.variable name="5" org.eventb.core.comment="current length deployed of the drill" org.eventb.core.identifier="drill_bit_deployment"/>
+    <org.eventb.core.event name="6" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="internal6" org.eventb.core.assignment="quantity ≔ 0" org.eventb.core.label="init_quantity"/>
+        <org.eventb.core.action name="internal7" org.eventb.core.assignment="height ≔ drill_height" org.eventb.core.label="init_height"/>
+        <org.eventb.core.action name="internal8" org.eventb.core.assignment="    state ≔ idle" org.eventb.core.label="init_state"/>
+        <org.eventb.core.action name="internal9" org.eventb.core.assignment="drill_bit_deployment ≔ 0" org.eventb.core.label="init_deployment"/>
+        <org.eventb.core.action name="'" org.eventb.core.assignment="curr_height ≔ drill_height" org.eventb.core.label="init_curr_height"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="curr_deployment ≔ 0" org.eventb.core.label="init_curr_depl"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="curr_quantity ≔ 0" org.eventb.core.label="init_curr_quantity"/>
+        <org.eventb.core.action name="internal:" org.eventb.core.assignment="curr_direction ≔ down_dir" org.eventb.core.label="init_curr_direction"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="R" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="drill_idle">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="drill_idle"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="9" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="lower_drill">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="lower_drill"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="curr_direction ≔ down_dir" org.eventb.core.label="act3"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="7" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="start_drill">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="start_drill"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="aa" org.eventb.core.predicate="state = down"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="state ≔ drill" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="height ≔ target_height" org.eventb.core.label="act4"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="curr_direction ≔ down_dir" org.eventb.core.label="act5"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="8" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="retract_drill">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="retract_drill"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd2" org.eventb.core.predicate="state = drill"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="state ≔ retract" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="drill_bit_deployment ≔ target_deployment" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="quantity ≔ target_deployment" org.eventb.core.label="act4"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="curr_direction ≔ up_dir" org.eventb.core.label="act5"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name=":" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="drill_up">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="drill_up"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="curr_direction ≔ up_dir" org.eventb.core.label="act3"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="X" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="mod1">
+        <org.eventb.core.guard name="'" org.eventb.core.label="grd1" org.eventb.core.predicate="curr_direction = down_dir ⇒ new_height = max({target_height}∪{curr_height − down_delta_height})"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="curr_height ≔ new_height" org.eventb.core.label="act1"/>
+        <org.eventb.core.parameter name=")" org.eventb.core.identifier="new_height"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd2" org.eventb.core.predicate="curr_direction = up_dir ⇒ new_height = min({drill_height}∪{curr_height + up_delta_height})"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd4" org.eventb.core.predicate="curr_direction = down_dir ⇒ new_height ≤ drill_height"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd10" org.eventb.core.predicate="curr_direction = up_dir ⇒ new_height ≥ target_height"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd3" org.eventb.core.predicate="state = down ∨ state = up"/>
+        <org.eventb.core.guard name="." org.eventb.core.label="grd11" org.eventb.core.predicate="(curr_direction = down_dir ∧ curr_height ≠ target_height) ∨ (curr_direction = up_dir ∧ curr_height ≠ drill_height)"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="[" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="drill">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="new_depl"/>
+        <org.eventb.core.guard name="(" org.eventb.core.label="grd1" org.eventb.core.predicate="curr_direction = down_dir ⇒ new_depl = min({target_deployment}∪{curr_deployment + drill_delta_height})"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd2" org.eventb.core.predicate="curr_direction = up_dir ⇒ new_depl = max({0}∪{curr_deployment − 2∗drill_delta_height}) "/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="curr_deployment ≔ new_depl" org.eventb.core.label="act1"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd4" org.eventb.core.predicate="state = drill ⇒ new_quant = min({target_deployment}∪{curr_quantity + drill_delta_height})"/>
+        <org.eventb.core.guard name="." org.eventb.core.label="grd5" org.eventb.core.predicate="state = retract ⇒ new_quant = curr_quantity"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd3" org.eventb.core.predicate="state = drill ∨ state = retract"/>
+        <org.eventb.core.parameter name="," org.eventb.core.identifier="new_quant"/>
+        <org.eventb.core.action name="/" org.eventb.core.assignment="curr_quantity ≔ new_quant" org.eventb.core.label="act2"/>
+        <org.eventb.core.guard name="0" org.eventb.core.label="grd10" org.eventb.core.predicate="curr_direction = down_dir ⇒ new_depl ≥ 0"/>
+        <org.eventb.core.guard name="1" org.eventb.core.label="grd11" org.eventb.core.predicate="curr_direction = up_dir ⇒ new_depl ≤ target_deployment"/>
+        <org.eventb.core.guard name="2" org.eventb.core.label="grd12" org.eventb.core.predicate="(curr_direction = down_dir ∧ curr_deployment ≠ target_deployment) ∨ (curr_direction = up_dir ∧ curr_deployment ≠ 0)"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="=" org.eventb.core.identifier="curr_height"/>
+    <org.eventb.core.invariant name="&gt;" org.eventb.core.label="curr_height_type" org.eventb.core.predicate="curr_height ∈ ℕ"/>
+    <org.eventb.core.variable name="?" org.eventb.core.identifier="curr_deployment"/>
+    <org.eventb.core.invariant name="@" org.eventb.core.label="curr_deployment_type" org.eventb.core.predicate="curr_deployment ∈ ℕ "/>
+    <org.eventb.core.invariant name="P" org.eventb.core.label="curr_quantity_type" org.eventb.core.predicate="curr_quantity ∈ ℕ"/>
+    <org.eventb.core.invariant name="Z" org.eventb.core.label="curr_direction_type" org.eventb.core.predicate="curr_direction ∈ DIRECTION"/>
+    <org.eventb.core.invariant name="K" org.eventb.core.comment="Expexted drill not deployed" org.eventb.core.label="down_curr_pos" org.eventb.core.predicate="    state = down ⇒ curr_deployment = 0"/>
+    <org.eventb.core.invariant name="L" org.eventb.core.comment="Expected drill height at target height" org.eventb.core.label="drill_curr_pos" org.eventb.core.predicate="    state = drill ⇒ curr_height = target_height"/>
+    <org.eventb.core.invariant name="M" org.eventb.core.comment="Expected drill height at target height" org.eventb.core.label="retract_curr_pos" org.eventb.core.predicate="state = retract ⇒ curr_height = target_height"/>
+    <org.eventb.core.invariant name="N" org.eventb.core.comment="Expected drill not deployed" org.eventb.core.label="up_curr_pos" org.eventb.core.predicate="    state = up ⇒ curr_deployment = 0"/>
+    <org.eventb.core.invariant name="S" org.eventb.core.comment="Equivalence check between boolean and state machine" org.eventb.core.label="drilling_equivalence" org.eventb.core.predicate="drilling = TRUE ⇔ state = drill"/>
+    <org.eventb.core.invariant name="J" org.eventb.core.comment="R01 Expected drill not deployed and in default height" org.eventb.core.label="idle_curr_pos" org.eventb.core.predicate="    state = idle ⇒ curr_deployment = 0 ∧ curr_height = drill_height"/>
+    <org.eventb.core.invariant name="U" org.eventb.core.comment="R03 : safety on the deployement length" org.eventb.core.label="target_limit" org.eventb.core.predicate="curr_deployment ≤ target_deployment"/>
+    <org.eventb.core.invariant name="E" org.eventb.core.comment="R03 : safety on the deployement lenght" org.eventb.core.label="curr_deployment_range" org.eventb.core.predicate="curr_deployment ≤ drill_bit_length" org.eventb.core.theorem="true"/>
+    <org.eventb.core.invariant name="D" org.eventb.core.comment="R04 : safety on the height position of the drill" org.eventb.core.label="curr_height_range" org.eventb.core.predicate="curr_height ≤ drill_height"/>
+    <org.eventb.core.variable name="O" org.eventb.core.identifier="curr_quantity"/>
+    <org.eventb.core.event name="T" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="abort">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="abort"/>
+        <org.eventb.core.action name="internal2" org.eventb.core.assignment="state ≔ retract" org.eventb.core.label="act2"/>
+    </org.eventb.core.event>
+    <org.eventb.core.invariant name="V" org.eventb.core.comment="R04 : safety on the height position of the drill" org.eventb.core.label="curr_height_target" org.eventb.core.predicate="curr_height ≥ target_height"/>
+    <org.eventb.core.invariant name="W" org.eventb.core.comment="R04 : safety on the height position of the drill" org.eventb.core.label="height_safety" org.eventb.core.predicate="curr_height ≥ 0" org.eventb.core.theorem="true"/>
+    <org.eventb.core.variable name="Y" org.eventb.core.identifier="curr_direction"/>
+</org.eventb.core.machineFile>

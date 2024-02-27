@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.theory.core.theoryRoot org.eventb.core.configuration="org.eventb.theory.core.thy">
+    <org.eventb.theory.core.newOperatorDefinition name=")" org.eventb.core.label="triple" org.eventb.theory.core.associative="false" org.eventb.theory.core.commutative="false" org.eventb.theory.core.formulaType="true" org.eventb.theory.core.notationType="PREFIX">
+        <org.eventb.theory.core.operatorArgument name="'" org.eventb.core.expression="ℤ " org.eventb.core.identifier="x"/>
+        <org.eventb.theory.core.operatorArgument name="(" org.eventb.core.expression="ℤ " org.eventb.core.identifier="y"/>
+        <org.eventb.theory.core.operatorArgument name=")" org.eventb.core.expression="ℤ " org.eventb.core.identifier="z"/>
+        <org.eventb.theory.core.directOperatorDefinition name="*" org.eventb.theory.core.formula="{0↦x,1↦y,2↦z}"/>
+    </org.eventb.theory.core.newOperatorDefinition>
+    <org.eventb.theory.core.newOperatorDefinition name="(" org.eventb.core.label="setX" org.eventb.theory.core.associative="false" org.eventb.theory.core.commutative="false" org.eventb.theory.core.formulaType="true" org.eventb.theory.core.notationType="PREFIX">
+        <org.eventb.theory.core.operatorArgument name=")" org.eventb.core.expression="ℤ " org.eventb.core.identifier="x"/>
+        <org.eventb.theory.core.operatorArgument name="'" org.eventb.core.expression="triple(0,0,0)" org.eventb.core.identifier="t"/>
+        <org.eventb.theory.core.directOperatorDefinition name="(" org.eventb.theory.core.formula="t"/>
+    </org.eventb.theory.core.newOperatorDefinition>
+    <org.eventb.theory.core.typeParameter name="+" org.eventb.core.identifier="A"/>
+</org.eventb.theory.core.theoryRoot>

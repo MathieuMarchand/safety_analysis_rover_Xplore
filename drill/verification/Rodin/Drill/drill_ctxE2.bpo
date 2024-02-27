@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="drill_height" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="target_height" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="drill_bit_length" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="target_deployment" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poPredicate name="target_deploymenu" org.eventb.core.predicate="drill_bit_length∈ℕ1" org.eventb.core.source="/Drill/drill_ctx.buc|org.eventb.core.contextFile#drill_ctx|org.eventb.core.axiom#("/>
+        <org.eventb.core.poPredicate name="target_deploymenv" org.eventb.core.predicate="drill_height∈ℕ" org.eventb.core.source="/Drill/drill_ctx.buc|org.eventb.core.contextFile#drill_ctx|org.eventb.core.axiom#*"/>
+        <org.eventb.core.poPredicate name="target_deploymenw" org.eventb.core.predicate="target_height∈ℕ" org.eventb.core.source="/Drill/drill_ctx.buc|org.eventb.core.contextFile#drill_ctx|org.eventb.core.axiom#-"/>
+        <org.eventb.core.poPredicate name="target_deploymenx" org.eventb.core.predicate="target_deployment∈ℕ" org.eventb.core.source="/Drill/drill_ctx.buc|org.eventb.core.contextFile#drill_ctx|org.eventb.core.axiom#."/>
+        <org.eventb.core.poPredicate name="target_deploymeny" org.eventb.core.predicate="target_height≤drill_height" org.eventb.core.source="/Drill/drill_ctx.buc|org.eventb.core.contextFile#drill_ctx|org.eventb.core.axiom#\/"/>
+        <org.eventb.core.poPredicate name="target_deploymenz" org.eventb.core.predicate="target_deployment≤drill_bit_length" org.eventb.core.source="/Drill/drill_ctx.buc|org.eventb.core.contextFile#drill_ctx|org.eventb.core.axiom#0"/>
+        <org.eventb.core.poPredicate name="target_deploymen{" org.eventb.core.predicate="target_deployment≥0" org.eventb.core.source="/Drill/drill_ctx.buc|org.eventb.core.contextFile#drill_ctx|org.eventb.core.axiom#1"/>
+        <org.eventb.core.poIdentifier name="STATES" org.eventb.core.type="ℙ(STATES)"/>
+        <org.eventb.core.poIdentifier name="retract" org.eventb.core.type="STATES"/>
+        <org.eventb.core.poIdentifier name="down" org.eventb.core.type="STATES"/>
+        <org.eventb.core.poIdentifier name="drill" org.eventb.core.type="STATES"/>
+        <org.eventb.core.poIdentifier name="up" org.eventb.core.type="STATES"/>
+        <org.eventb.core.poIdentifier name="idle" org.eventb.core.type="STATES"/>
+        <org.eventb.core.poPredicate name="target_deploymen|" org.eventb.core.predicate="partition(STATES,{idle},{down},{drill},{retract},{up})" org.eventb.core.source="/Drill/drill_ctxE1.buc|org.eventb.core.contextFile#drill_ctxE1|org.eventb.core.axiom#."/>
+        <org.eventb.core.poIdentifier name="DIRECTION" org.eventb.core.type="ℙ(DIRECTION)"/>
+        <org.eventb.core.poIdentifier name="down_delta_height" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="drill_delta_height" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="up_dir" org.eventb.core.type="DIRECTION"/>
+        <org.eventb.core.poIdentifier name="retract_delta_height" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="down_dir" org.eventb.core.type="DIRECTION"/>
+        <org.eventb.core.poIdentifier name="up_delta_height" org.eventb.core.type="ℤ"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/Drill/drill_ctxE2.bpo|org.eventb.core.poFile#drill_ctxE2|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="down_delta_height∈ℕ1" org.eventb.core.source="/Drill/drill_ctxE2.buc|org.eventb.core.contextFile#drill_ctxE2|org.eventb.core.axiom#)"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="drill_delta_height∈ℕ1" org.eventb.core.source="/Drill/drill_ctxE2.buc|org.eventb.core.contextFile#drill_ctxE2|org.eventb.core.axiom#+"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="retract_delta_height∈ℕ1" org.eventb.core.source="/Drill/drill_ctxE2.buc|org.eventb.core.contextFile#drill_ctxE2|org.eventb.core.axiom#-"/>
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="up_delta_height∈ℕ1" org.eventb.core.source="/Drill/drill_ctxE2.buc|org.eventb.core.contextFile#drill_ctxE2|org.eventb.core.axiom#\/"/>
+        <org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="down_delta_height∈1 ‥ drill_height" org.eventb.core.source="/Drill/drill_ctxE2.buc|org.eventb.core.contextFile#drill_ctxE2|org.eventb.core.axiom#0"/>
+        <org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="drill_delta_height∈1 ‥ drill_bit_length" org.eventb.core.source="/Drill/drill_ctxE2.buc|org.eventb.core.contextFile#drill_ctxE2|org.eventb.core.axiom#1"/>
+        <org.eventb.core.poPredicate name="PRD6" org.eventb.core.predicate="retract_delta_height∈1 ‥ drill_bit_length" org.eventb.core.source="/Drill/drill_ctxE2.buc|org.eventb.core.contextFile#drill_ctxE2|org.eventb.core.axiom#2"/>
+        <org.eventb.core.poPredicate name="PRD7" org.eventb.core.predicate="up_delta_height∈1 ‥ drill_bit_length" org.eventb.core.source="/Drill/drill_ctxE2.buc|org.eventb.core.contextFile#drill_ctxE2|org.eventb.core.axiom#3"/>
+        <org.eventb.core.poPredicate name="PRD8" org.eventb.core.predicate="partition(DIRECTION,{down_dir},{up_dir})" org.eventb.core.source="/Drill/drill_ctxE2.buc|org.eventb.core.contextFile#drill_ctxE2|org.eventb.core.axiom#7"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

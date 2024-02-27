@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.6//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+
+chan c_destroy, c_shutdown, c_motor_cmd;
+urgent chan c_status;
+int pos_motor[4] = {0,0,0,0};
+int current_motor[8] = {0,0,0,0,0,0,0,0};
+bool fault_state_motor[8] = {false, false, false, false, false, false, false, false};
+</declaration>
+	<template>
+		<name x="5" y="5">Motor</name>
+		<declaration>// Place local declarations her7
+clock T;
+bool motors_connected[8] = {false, false, false, false, false, false, false, false};
+bool motors_dead[8] = {false, false, false, false, false, false, false, false};
+bool motors_faulty[8] = {false, false, false, false, false, false, false, false};
+bool motors_output[8] = {false, false, false, false, false, false, false, false};
+bool motors_homing[8] = {false, false, false, false, false, false, false, false};
+
+int motors_consumption[8] = {0,0,0,0,0,0,0,0};
+int motor_speed[8] = {0,0,0,0,0,0,0,0};
+int motor_pos[8] = {0,0,0,0,0,0,0,0};
+
+bool motors_state = false;
+int motor_instr[8] = {0,0,0,0,0,0,0,0};
+
+bool gateway = false;
+int motor_steering_param[4] = {0,0,0,0};
+
+void open_gateway(){
+    gateway = true;
+}
+
+void close_gateway(){
+    gateway = false;
+}
+
+void connect_motors(){
+    open_gateway();
+    while(gateway == false){
+        open_gateway();
+    }
+
+    for (i : int[0,7])
+    {
+        motors_connected[i] = !motors_dead[i];
+    }
+
+    for (i : int[0,7])
+    {
+        if(motors_connected[i]){
+            motors_output[i] = true;
+            if(i==4 || i==5 || i==6 || i==7){
+                motor_pos[i] = motor_instr[i];
+            }
+        }
+    }
+}
+
+void initialisation(int param)
+{
+    for (i : int[0,7])
+    {
+        motors_connected[i] = false;
+        motor_instr[i] = 0;
+        motors_consumption[i] = 2*param*i;
+    }
+
+    for (i : int[0,3])
+    {
+        motor_steering_param[i] = param*i;
+    }
+    
+    motors_dead[4] = param%2;
+    connect_motors();
+}
+
+void checkMotors(){
+    motors_state = true;
+    for (i : int[0,7])
+    {
+        motors_state = motors_state &amp; motors_connected[i];
+    }
+}
+
+void set_motors(){
+    for(i : int[0,7])
+    {
+        if(motors_connected[i] == true){
+            if(i == 0 || i == 1 || i == 2 || i == 3){
+                motor_speed[i] = motor_instr[i];
+            }else if(i == 4 || i == 5 || i == 6 || i == 7){
+                motor_pos[i] = motor_instr[i];
+            }else{
+                motor_speed[i] = 0;
+            }
+        }
+    }
+}
+
+
+void disconnect_motors(){
+    for (i : int[0,7])
+    {
+        if(motors_connected[i] == true){
+            motors_output[i] = false;
+        }
+    } 
+}
+
+void setup_motors(){
+    for(i : int[1,8])
+    {
+        if(motors_connected[i-1] == true){
+            if(i == 1 || i == 2 || i == 3 || i == 4){
+                motor_speed[i-1] = 0;
+            }else if(i == 5 || i == 6 || i == 7 || i == 8){
+                for(j : int[1,8])
+                {
+                    if(i == 5 || i == 6 || i == 7 || i == 8){
+                        motor_pos[i-1] = -motor_steering_param[i-5];
+                        motors_homing[i-1] = true;
+                    }
+                }
+            }
+        }
+    }
+}
+
+void received(int val){
+    for(i : int[0,7])
+    {
+         motor_instr[i] = i*val;
+    }
+}
+
+void publish_state(){
+    for (i : int[1,8])
+    {
+        fault_state_motor[i-1] = motors_faulty[i-1];
+        current_motor[i-1] = motors_consumption[i-1];
+        if(i &gt; 4){
+            pos_motor[i-5] = motor_pos[i-1];
+        }
+        
+    }
+}</declaration>
+		<location id="id0" x="-68" y="34">
+			<name x="-59" y="-8">wait_msg</name>
+			<label kind="invariant" x="-78" y="51">T &lt;= 100</label>
+		</location>
+		<location id="id1" x="408" y="-195">
+			<name x="398" y="-229">destroy</name>
+			<committed/>
+		</location>
+		<location id="id2" x="102" y="93">
+			<name x="102" y="110">motor_cmd</name>
+			<committed/>
+		</location>
+		<location id="id3" x="-8" y="170">
+			<name x="0" y="170">send_motor</name>
+			<committed/>
+		</location>
+		<location id="id4" x="102" y="-153">
+			<name x="92" y="-187">shutdown</name>
+			<committed/>
+		</location>
+		<location id="id5" x="238" y="93">
+			<committed/>
+		</location>
+		<location id="id6" x="357" y="0">
+			<name x="347" y="-34">disc_motor</name>
+			<committed/>
+		</location>
+		<location id="id7" x="331" y="178">
+			<name x="321" y="144">correct_motor</name>
+			<committed/>
+		</location>
+		<location id="id8" x="-229" y="34">
+			<name x="-239" y="0">Initial_state</name>
+			<label kind="invariant" x="-239" y="51">T &lt;= 0</label>
+		</location>
+		<location id="id9" x="212" y="-85">
+			<name x="202" y="-119">dead</name>
+		</location>
+		<location id="id10" x="484" y="0">
+			<name x="474" y="-34">closed_motor</name>
+			<committed/>
+		</location>
+		<location id="id11" x="586" y="0">
+			<name x="603" y="-34">reconnect_motor</name>
+			<committed/>
+		</location>
+		<location id="id12" x="680" y="85">
+			<name x="670" y="51">faulty_cmd</name>
+			<committed/>
+		</location>
+		<init ref="id8"/>
+		<transition id="id13">
+			<source ref="id12"/>
+			<target ref="id0"/>
+			<nail x="680" y="348"/>
+			<nail x="-246" y="348"/>
+		</transition>
+		<transition id="id14">
+			<source ref="id11"/>
+			<target ref="id12"/>
+			<label kind="assignment" x="595" y="34">setup_motors()</label>
+		</transition>
+		<transition id="id15">
+			<source ref="id10"/>
+			<target ref="id11"/>
+			<label kind="assignment" x="476" y="17">connect_motors()</label>
+		</transition>
+		<transition id="id16">
+			<source ref="id6"/>
+			<target ref="id10"/>
+			<label kind="assignment" x="348" y="17">close_gateway()</label>
+		</transition>
+		<transition id="id17">
+			<source ref="id7"/>
+			<target ref="id0"/>
+			<nail x="331" y="306"/>
+			<nail x="-170" y="306"/>
+		</transition>
+		<transition id="id18">
+			<source ref="id3"/>
+			<target ref="id0"/>
+			<label kind="assignment" x="-58" y="170">T := 0</label>
+			<nail x="-76" y="170"/>
+		</transition>
+		<transition id="id19">
+			<source ref="id1"/>
+			<target ref="id0"/>
+			<nail x="-110" y="-195"/>
+			<nail x="-110" y="-34"/>
+		</transition>
+		<transition id="id20">
+			<source ref="id4"/>
+			<target ref="id0"/>
+			<nail x="17" y="-170"/>
+			<nail x="-68" y="-170"/>
+		</transition>
+		<transition id="id21">
+			<source ref="id1"/>
+			<target ref="id9"/>
+		</transition>
+		<transition id="id22">
+			<source ref="id4"/>
+			<target ref="id9"/>
+		</transition>
+		<transition id="id23">
+			<source ref="id8"/>
+			<target ref="id0"/>
+			<label kind="select" x="-221" y="-17">i: int[-10,10]</label>
+			<label kind="assignment" x="-229" y="42">initialisation(i),
+T := 0</label>
+		</transition>
+		<transition id="id24">
+			<source ref="id5"/>
+			<target ref="id7"/>
+			<label kind="guard" x="212" y="119">motors_state == true</label>
+			<label kind="assignment" x="256" y="135">set_motors()</label>
+		</transition>
+		<transition id="id25">
+			<source ref="id5"/>
+			<target ref="id6"/>
+			<label kind="guard" x="187" y="25">motors_state == false</label>
+			<label kind="assignment" x="187" y="42">disconnect_motors()</label>
+		</transition>
+		<transition id="id26">
+			<source ref="id2"/>
+			<target ref="id5"/>
+			<label kind="assignment" x="120" y="93">checkMotors()</label>
+		</transition>
+		<transition id="id27">
+			<source ref="id0"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="-38" y="85">c_status!</label>
+			<label kind="assignment" x="-38" y="102">publish_state()</label>
+		</transition>
+		<transition id="id28">
+			<source ref="id0"/>
+			<target ref="id2"/>
+			<label kind="select" x="8" y="59">i1: int[-10,10]</label>
+			<label kind="guard" x="17" y="17">T &lt; 100</label>
+			<label kind="synchronisation" x="0" y="25">c_motor_cmd?</label>
+			<label kind="assignment" x="8" y="42">received(i1)</label>
+		</transition>
+		<transition id="id29">
+			<source ref="id0"/>
+			<target ref="id1"/>
+			<label kind="guard" x="110" y="0">T &lt; 100</label>
+			<label kind="synchronisation" x="110" y="-8">c_destroy?</label>
+			<nail x="161" y="34"/>
+		</transition>
+		<transition id="id30">
+			<source ref="id0"/>
+			<target ref="id4"/>
+			<label kind="guard" x="-8" y="-68">T &lt; 100</label>
+			<label kind="synchronisation" x="-8" y="-85">c_shutdown?</label>
+		</transition>
+	</template>
+	<template>
+		<name>Displacement</name>
+		<declaration>bool msg_received = false;</declaration>
+		<location id="id31" x="0" y="8">
+			<name x="-10" y="-26">idle</name>
+		</location>
+		<location id="id32" x="136" y="8">
+			<name x="126" y="-26">updated</name>
+			<committed/>
+		</location>
+		<init ref="id31"/>
+		<transition id="id33">
+			<source ref="id32"/>
+			<target ref="id31"/>
+			<label kind="assignment" x="-8" y="76">msg_received := false</label>
+			<nail x="68" y="76"/>
+		</transition>
+		<transition id="id34">
+			<source ref="id31"/>
+			<target ref="id32"/>
+			<label kind="synchronisation" x="34" y="-76">c_status?</label>
+			<label kind="assignment" x="-25" y="-42">msg_received := true</label>
+			<nail x="68" y="-59"/>
+		</transition>
+		<transition id="id35">
+			<source ref="id31"/>
+			<target ref="id31"/>
+			<label kind="synchronisation" x="-170" y="-59">c_motor_cmd!</label>
+			<nail x="-128" y="-39"/>
+			<nail x="-111" y="79"/>
+		</transition>
+	</template>
+	<template>
+		<name>Message</name>
+		<location id="id36" x="0" y="0">
+		</location>
+		<init ref="id36"/>
+		<transition id="id37">
+			<source ref="id36"/>
+			<target ref="id36"/>
+			<label kind="synchronisation" x="18" y="-59">c_shutdown!</label>
+			<nail x="85" y="-85"/>
+			<nail x="85" y="68"/>
+		</transition>
+		<transition id="id38">
+			<source ref="id36"/>
+			<target ref="id36"/>
+			<label kind="synchronisation" x="-143" y="-68">c_destroy!</label>
+			<nail x="-161" y="-102"/>
+			<nail x="-119" y="42"/>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+motor = Motor();
+displacement = Displacement();
+msg = Message();
+// List one or more processes to be composed into a system.
+system motor, displacement, msg;
+</system>
+	<queries>
+		<option key="--diagnostic" value="2"/>
+		<query>
+			<formula/>
+			<comment/>
+		</query>
+		<query>
+			<formula>A[] motor.disc_motor imply forall (i : int[0,4]) not motor.motors_output[i]</formula>
+			<comment/>
+			<result outcome="success" type="quality" timestamp="2024-01-31 15:29:31 +0100">
+				<option key="--diagnostic" value="2"/>
+			</result>
+		</query>
+		<query>
+			<formula/>
+			<comment/>
+		</query>
+		<query>
+			<formula>A[] motor.send_motor and motor.motors_state imply forall (i : int[0,3])pos_motor[i] == motor.motor_instr[i+4]</formula>
+			<comment>SR5 : When asked, sends the current state of the motors</comment>
+			<result outcome="success" type="quality" timestamp="2024-01-31 15:29:33 +0100">
+				<option key="--diagnostic" value="2"/>
+			</result>
+		</query>
+		<query>
+			<formula>A[] motor.send_motor and motor.motors_state imply forall (i : int[0,7])fault_state_motor[i] == motor.motors_faulty[i]</formula>
+			<comment>SR6 : Status returns the motor faulty state</comment>
+			<result outcome="success" type="quality" timestamp="2024-01-31 15:29:35 +0100">
+				<option key="--diagnostic" value="2"/>
+			</result>
+		</query>
+		<query>
+			<formula>A[] motor.send_motor and motor.motors_state imply forall (i : int[0,7])current_motor[i] == motor.motors_consumption[i]</formula>
+			<comment>SR7 : Status returns the current consumption</comment>
+			<result outcome="success" type="quality" timestamp="2024-01-31 15:29:37 +0100">
+				<option key="--diagnostic" value="2"/>
+			</result>
+		</query>
+		<query>
+			<formula>motor.motor_cmd and not(forall (i : int[0,7])not motor.motors_faulty[i]) --&gt; motor.faulty_cmd and forall (i : int[4,7]) motor.motors_dead[i] or motor.motors_homing[i]</formula>
+			<comment>SR8 : If any motor is faulty, all motors should be homing when we ask to move</comment>
+			<result outcome="success" type="quality" timestamp="2024-01-31 15:29:39 +0100">
+				<option key="--diagnostic" value="2"/>
+			</result>
+		</query>
+		<query>
+			<formula>A[] forall (i : int[0,3]) not motor.motors_homing[i]</formula>
+			<comment>SR8 : If any motor is faulty, all motors should be homing when we ask to move</comment>
+			<result outcome="success" type="quality" timestamp="2024-01-31 15:29:40 +0100">
+				<option key="--diagnostic" value="2"/>
+			</result>
+		</query>
+		<query>
+			<formula>A[] forall (i : int[0,3]) motor.motors_connected[i+4] and motor.faulty_cmd imply motor.motors_homing[i+4]</formula>
+			<comment>SR8 : If any motor is faulty, all motors should be homing when we ask to move</comment>
+			<result outcome="success" type="quality" timestamp="2024-01-31 15:29:42 +0100">
+				<option key="--diagnostic" value="2"/>
+			</result>
+		</query>
+		<query>
+			<formula>A[] motor.faulty_cmd imply forall (i : int[0,7]) motor.motors_connected[i]</formula>
+			<comment>SR16 : When asked to connect the motor, connects the motors</comment>
+			<result outcome="failure" type="quality" timestamp="2024-01-31 15:29:45 +0100">
+				<option key="--diagnostic" value="2"/>
+			</result>
+		</query>
+		<query>
+			<formula>A[] motor.reconnect_motor imply forall (i : int[0,7]) motor.motors_connected[i]</formula>
+			<comment>SR16 : When asked to connect the motor, connects the motors</comment>
+			<result outcome="failure" type="quality" timestamp="2024-01-31 15:29:48 +0100">
+				<option key="--diagnostic" value="2"/>
+			</result>
+		</query>
+		<query>
+			<formula>motor.motor_cmd and motor.motors_state --&gt; motor.correct_motor and forall (i : int[0,3]) motor.motor_speed[i] == motor.motor_instr[i]</formula>
+			<comment>SR17 : When we assign a new position, becomes the new target position</comment>
+			<result outcome="success" type="quality" timestamp="2024-01-31 15:29:50 +0100">
+				<option key="--diagnostic" value="2"/>
+			</result>
+		</query>
+		<query>
+			<formula>motor.motor_cmd and motor.motors_state --&gt; motor.correct_motor and forall (i : int[4,7]) motor.motor_pos[i] == motor.motor_instr[i]</formula>
+			<comment>SR18 : When we assign a new speed, becomes the new speed</comment>
+			<result outcome="success" type="quality" timestamp="2024-01-31 15:29:53 +0100">
+				<option key="--diagnostic" value="2"/>
+			</result>
+		</query>
+		<query>
+			<formula>A[] motor.send_motor and not displacement.idle imply displacement.msg_received == true</formula>
+			<comment>SR19 : When sending a state message, the message is received</comment>
+			<result outcome="success" type="quality" timestamp="2024-01-31 15:29:54 +0100">
+				<option key="--diagnostic" value="2"/>
+			</result>
+		</query>
+		<query>
+			<formula>A[] motor.closed_motor imply not motor.gateway</formula>
+			<comment>SR20 : Gateway is closed when there is faulty motors</comment>
+			<result outcome="success" type="quality" timestamp="2024-01-31 15:29:56 +0100">
+				<option key="--diagnostic" value="2"/>
+			</result>
+		</query>
+		<query>
+			<formula>A[] motor.correct_motor imply forall (i : int[0,3]) motor.motor_speed[i+4] == 0 and motor.motor_pos[i] == 0</formula>
+			<comment>SR21 : Steering motors are never set position and drive motors are never set speed</comment>
+			<result outcome="success" type="quality" timestamp="2024-01-31 15:29:58 +0100">
+				<option key="--diagnostic" value="2"/>
+			</result>
+		</query>
+		<query>
+			<formula>A[] motor.correct_motor imply forall (i : int[0,3]) motor.motor_speed[i] == motor.motor_instr[i] and motor.motor_pos[i+4] == motor.motor_instr[i+4]</formula>
+			<comment/>
+			<result outcome="success" type="quality" timestamp="2024-01-31 15:29:59 +0100">
+				<option key="--diagnostic" value="2"/>
+			</result>
+		</query>
+		<query>
+			<formula>A[] motor.T == 100 and not motor.dead imply motor.send_motor</formula>
+			<comment>SR22 : Sends update after the timeout period</comment>
+			<result outcome="success" type="quality" timestamp="2024-01-31 15:30:27 +0100">
+				<option key="--diagnostic" value="2"/>
+			</result>
+		</query>
+	</queries>
+</nta>

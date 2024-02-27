@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="drill_height" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="target_height" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="drill_bit_length" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="target_deployment" org.eventb.core.type="ℤ"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="safety_limit/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Drill/drill_ctx.bpo|org.eventb.core.poFile#drill_ctx|org.eventb.core.poPredicateSet#HYP,"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="target_deployment≥0" org.eventb.core.source="/Drill/drill_ctx.buc|org.eventb.core.contextFile#drill_ctx|org.eventb.core.axiom#1"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Drill/drill_ctx.buc|org.eventb.core.contextFile#drill_ctx|org.eventb.core.axiom#1"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Drill/drill_ctx.bpo|org.eventb.core.poFile#drill_ctx|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Drill/drill_ctx.bpo|org.eventb.core.poFile#drill_ctx|org.eventb.core.poPredicateSet#HYP,"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="HYP," org.eventb.core.parentSet="/Drill/drill_ctx.bpo|org.eventb.core.poFile#drill_ctx|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="drill_bit_length∈ℕ1" org.eventb.core.source="/Drill/drill_ctx.buc|org.eventb.core.contextFile#drill_ctx|org.eventb.core.axiom#("/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="drill_height∈ℕ" org.eventb.core.source="/Drill/drill_ctx.buc|org.eventb.core.contextFile#drill_ctx|org.eventb.core.axiom#*"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="target_height∈ℕ" org.eventb.core.source="/Drill/drill_ctx.buc|org.eventb.core.contextFile#drill_ctx|org.eventb.core.axiom#-"/>
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="target_deployment∈ℕ" org.eventb.core.source="/Drill/drill_ctx.buc|org.eventb.core.contextFile#drill_ctx|org.eventb.core.axiom#."/>
+        <org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="target_height≤drill_height" org.eventb.core.source="/Drill/drill_ctx.buc|org.eventb.core.contextFile#drill_ctx|org.eventb.core.axiom#\/"/>
+        <org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="target_deployment≤drill_bit_length" org.eventb.core.source="/Drill/drill_ctx.buc|org.eventb.core.contextFile#drill_ctx|org.eventb.core.axiom#0"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/Drill/drill_ctx.bpo|org.eventb.core.poFile#drill_ctx|org.eventb.core.poPredicateSet#HYP," org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD6" org.eventb.core.predicate="target_deployment≥0" org.eventb.core.source="/Drill/drill_ctx.buc|org.eventb.core.contextFile#drill_ctx|org.eventb.core.axiom#1"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

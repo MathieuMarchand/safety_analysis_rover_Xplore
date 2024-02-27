@@ -1,0 +1,107 @@
+\doxysection{C\+:/\+Users/marm/\+Documents/git/rover/navigation/codebase/wheels\+\_\+control/src/\+Displacement\+\_\+cmds\+\_\+node.cpp File Reference}
+\hypertarget{_displacement__cmds__node_8cpp}{}\label{_displacement__cmds__node_8cpp}\index{C:/Users/marm/Documents/git/rover/navigation/codebase/wheels\_control/src/Displacement\_cmds\_node.cpp@{C:/Users/marm/Documents/git/rover/navigation/codebase/wheels\_control/src/Displacement\_cmds\_node.cpp}}
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include "{}utility.\+hpp"{}}\newline
+{\ttfamily \#include "{}rclcpp/rclcpp.\+hpp"{}}\newline
+{\ttfamily \#include "{}std\+\_\+msgs/msg/string.\+hpp"{}}\newline
+{\ttfamily \#include "{}geometry\+\_\+msgs/msg/twist.\+hpp"{}}\newline
+{\ttfamily \#include "{}sensor\+\_\+msgs/msg/joy.\+hpp"{}}\newline
+{\ttfamily \#include "{}custom\+\_\+msg/msg/motorcmds.\+hpp"{}}\newline
+{\ttfamily \#include "{}custom\+\_\+msg/msg/wheelstatus.\+hpp"{}}\newline
+{\ttfamily \#include "{}definition.\+hpp"{}}\newline
+{\ttfamily \#include "{}basic\+\_\+kinematic\+\_\+model.\+hpp"{}}\newline
+{\ttfamily \#include "{}normal\+\_\+kinematic\+\_\+model.\+hpp"{}}\newline
+{\ttfamily \#include "{}normal\+\_\+kinematic\+\_\+model\+\_\+slow.\+hpp"{}}\newline
+Include dependency graph for Displacement\+\_\+cmds\+\_\+node.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_displacement__cmds__node_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_displacement_cmds}{Displacement\+Cmds}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\+\_\+\+Float64 \mbox{\hyperlink{_displacement__cmds__node_8cpp_a920217ec9db3a56620c0605a31f97119}{get\+\_\+wheels\+\_\+angle\+\_\+inc\+\_\+for\+\_\+rotation}} (\+\_\+\+Float64 width=0.\+833, \+\_\+\+Float64 length=0.\+736)
+\item 
+int \mbox{\hyperlink{_displacement__cmds__node_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+motors\+\_\+obj \mbox{\hyperlink{_displacement__cmds__node_8cpp_a16c42371ca6236b0dd0c200e2a5f829e}{current\+\_\+motors\+\_\+cmds}} = \{\{"{}"{}\},\{0,0,0,0\},\{0,0,0,0\}\}
+\item 
+motors\+\_\+obj \mbox{\hyperlink{_displacement__cmds__node_8cpp_a9439ef5829db2884e4132cb50aa711e6}{current\+\_\+motors\+\_\+position}} = \{\{0,0,0,0\},\{0,0,0,0\}\}
+\item 
+int \mbox{\hyperlink{_displacement__cmds__node_8cpp_a0534c6d400c61a856d19c461f5bcfc24}{wheels\+\_\+angle\+\_\+for\+\_\+rotation}} = 0
+\item 
+int \mbox{\hyperlink{_displacement__cmds__node_8cpp_abf9647b4f72ae3e5c23ca7f522d768e8}{wheels\+\_\+angle\+\_\+for\+\_\+rotation\+\_\+with\+\_\+translation}} = 0
+\item 
+string \mbox{\hyperlink{_displacement__cmds__node_8cpp_a3603612ffdc81f80d94a6ea55ac5fa0a}{kinematic\+\_\+state}} = NORMAL\+\_\+\+KINEMATIC
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_displacement__cmds__node_8cpp_a920217ec9db3a56620c0605a31f97119}\label{_displacement__cmds__node_8cpp_a920217ec9db3a56620c0605a31f97119} 
+\index{Displacement\_cmds\_node.cpp@{Displacement\_cmds\_node.cpp}!get\_wheels\_angle\_inc\_for\_rotation@{get\_wheels\_angle\_inc\_for\_rotation}}
+\index{get\_wheels\_angle\_inc\_for\_rotation@{get\_wheels\_angle\_inc\_for\_rotation}!Displacement\_cmds\_node.cpp@{Displacement\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_wheels\_angle\_inc\_for\_rotation()}{get\_wheels\_angle\_inc\_for\_rotation()}}
+{\footnotesize\ttfamily \+\_\+\+Float64 get\+\_\+wheels\+\_\+angle\+\_\+inc\+\_\+for\+\_\+rotation (\begin{DoxyParamCaption}\item[{\+\_\+\+Float64}]{width = {\ttfamily 0.833},  }\item[{\+\_\+\+Float64}]{length = {\ttfamily 0.736} }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_displacement__cmds__node_8cpp_a920217ec9db3a56620c0605a31f97119_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_displacement__cmds__node_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{_displacement__cmds__node_8cpp_a0ddf1224851353fc92bfbff6f499fa97} 
+\index{Displacement\_cmds\_node.cpp@{Displacement\_cmds\_node.cpp}!main@{main}}
+\index{main@{main}!Displacement\_cmds\_node.cpp@{Displacement\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{_displacement__cmds__node_8cpp_a16c42371ca6236b0dd0c200e2a5f829e}\label{_displacement__cmds__node_8cpp_a16c42371ca6236b0dd0c200e2a5f829e} 
+\index{Displacement\_cmds\_node.cpp@{Displacement\_cmds\_node.cpp}!current\_motors\_cmds@{current\_motors\_cmds}}
+\index{current\_motors\_cmds@{current\_motors\_cmds}!Displacement\_cmds\_node.cpp@{Displacement\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{current\_motors\_cmds}{current\_motors\_cmds}}
+{\footnotesize\ttfamily motors\+\_\+obj current\+\_\+motors\+\_\+cmds = \{\{"{}"{}\},\{0,0,0,0\},\{0,0,0,0\}\}}
+
+\Hypertarget{_displacement__cmds__node_8cpp_a9439ef5829db2884e4132cb50aa711e6}\label{_displacement__cmds__node_8cpp_a9439ef5829db2884e4132cb50aa711e6} 
+\index{Displacement\_cmds\_node.cpp@{Displacement\_cmds\_node.cpp}!current\_motors\_position@{current\_motors\_position}}
+\index{current\_motors\_position@{current\_motors\_position}!Displacement\_cmds\_node.cpp@{Displacement\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{current\_motors\_position}{current\_motors\_position}}
+{\footnotesize\ttfamily motors\+\_\+obj current\+\_\+motors\+\_\+position = \{\{0,0,0,0\},\{0,0,0,0\}\}}
+
+\Hypertarget{_displacement__cmds__node_8cpp_a3603612ffdc81f80d94a6ea55ac5fa0a}\label{_displacement__cmds__node_8cpp_a3603612ffdc81f80d94a6ea55ac5fa0a} 
+\index{Displacement\_cmds\_node.cpp@{Displacement\_cmds\_node.cpp}!kinematic\_state@{kinematic\_state}}
+\index{kinematic\_state@{kinematic\_state}!Displacement\_cmds\_node.cpp@{Displacement\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{kinematic\_state}{kinematic\_state}}
+{\footnotesize\ttfamily string kinematic\+\_\+state = NORMAL\+\_\+\+KINEMATIC}
+
+\Hypertarget{_displacement__cmds__node_8cpp_a0534c6d400c61a856d19c461f5bcfc24}\label{_displacement__cmds__node_8cpp_a0534c6d400c61a856d19c461f5bcfc24} 
+\index{Displacement\_cmds\_node.cpp@{Displacement\_cmds\_node.cpp}!wheels\_angle\_for\_rotation@{wheels\_angle\_for\_rotation}}
+\index{wheels\_angle\_for\_rotation@{wheels\_angle\_for\_rotation}!Displacement\_cmds\_node.cpp@{Displacement\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{wheels\_angle\_for\_rotation}{wheels\_angle\_for\_rotation}}
+{\footnotesize\ttfamily int wheels\+\_\+angle\+\_\+for\+\_\+rotation = 0}
+
+\Hypertarget{_displacement__cmds__node_8cpp_abf9647b4f72ae3e5c23ca7f522d768e8}\label{_displacement__cmds__node_8cpp_abf9647b4f72ae3e5c23ca7f522d768e8} 
+\index{Displacement\_cmds\_node.cpp@{Displacement\_cmds\_node.cpp}!wheels\_angle\_for\_rotation\_with\_translation@{wheels\_angle\_for\_rotation\_with\_translation}}
+\index{wheels\_angle\_for\_rotation\_with\_translation@{wheels\_angle\_for\_rotation\_with\_translation}!Displacement\_cmds\_node.cpp@{Displacement\_cmds\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{wheels\_angle\_for\_rotation\_with\_translation}{wheels\_angle\_for\_rotation\_with\_translation}}
+{\footnotesize\ttfamily int wheels\+\_\+angle\+\_\+for\+\_\+rotation\+\_\+with\+\_\+translation = 0}
+

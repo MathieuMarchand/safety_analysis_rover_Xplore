@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+    <org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0"/>
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="triple" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+        <org.eventb.core.poIdentifier name="t" org.eventb.core.type="ℙ(ℤ)"/>
+        <org.eventb.core.poIdentifier name="gotten" org.eventb.core.type="ℤ"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="INITIALISATION/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poPredicateSet#EVTALLHYPtriplf"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{0 ↦ 0,1 ↦ 0,2 ↦ 0}∈{0,1,2} → ℤ" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.invariant#)"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.invariant#)"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poSequent#INITIALISATION\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTtriplf" org.eventb.core.parentSet="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="triple'" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+        <org.eventb.core.poIdentifier name="t'" org.eventb.core.type="ℙ(ℤ)"/>
+        <org.eventb.core.poIdentifier name="gotten'" org.eventb.core.type="ℤ"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPtriplf" org.eventb.core.parentSet="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poPredicateSet#EVTIDENTtriplf" org.eventb.core.poStamp="0"/>
+    <org.eventb.core.poSequent name="getX/act1/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poPredicateSet#EVTALLHYPtriplg"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="0∈dom(triple)∧triple∈ℤ ⇸ ℤ" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.event#+|org.eventb.core.action#'"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.event#+|org.eventb.core.action#'"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poPredicateSet#EVTALLHYPtriplg"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTtriplg" org.eventb.core.parentSet="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="gotten'" org.eventb.core.type="ℤ"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPtriplg" org.eventb.core.parentSet="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poPredicateSet#EVTIDENTtriplg" org.eventb.core.poStamp="0"/>
+    <org.eventb.core.poSequent name="setX/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poPredicateSet#EVTALLHYPtriplh"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="triple{0 ↦ x}∈{0,1,2} → ℤ" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.invariant#)"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.event#-"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.invariant#)"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poSequent#setX\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTtriplh" org.eventb.core.parentSet="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="triple'" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+        <org.eventb.core.poIdentifier name="x" org.eventb.core.type="ℤ"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPtriplh" org.eventb.core.parentSet="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poPredicateSet#EVTIDENTtriplh" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="x∈ℤ" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.event#-|org.eventb.core.guard#("/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="remove/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poPredicateSet#EVTALLHYPtripli"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="triple(∅ ⦂ ℙ(ℤ×ℤ))∈{0,1,2} → ℤ" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.invariant#)"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.event#0"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.invariant#)"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poSequent#remove\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTtripli" org.eventb.core.parentSet="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="triple'" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+        <org.eventb.core.poIdentifier name="a" org.eventb.core.type="ℤ"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPtripli" org.eventb.core.parentSet="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poPredicateSet#EVTIDENTtripli" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="a∈t" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.event#0|org.eventb.core.guard#("/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/Navigation/test.bpo|org.eventb.core.poFile#test|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="triple∈{0,1,2} → ℤ" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.invariant#)"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="gotten∈ℤ" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.invariant#,"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="t⊆ℤ" org.eventb.core.source="/Navigation/test.bum|org.eventb.core.machineFile#test|org.eventb.core.invariant#\/"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

@@ -1,0 +1,181 @@
+\doxysection{Gamepad\+Interface Class Reference}
+\hypertarget{class_gamepad_interface}{}\label{class_gamepad_interface}\index{GamepadInterface@{GamepadInterface}}
+
+
+Inheritance diagram for Gamepad\+Interface\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=175pt]{class_gamepad_interface__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Gamepad\+Interface\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=175pt]{class_gamepad_interface__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_gamepad_interface_ac5ef245aac5f936ef3ea1e18645cb02d}{Gamepad\+Interface}} ()
+\item 
+double \mbox{\hyperlink{class_gamepad_interface_a780a9d34cb5b4c791d83b1b72fd53853}{filter}} (double new\+Value, std\+::vector$<$ double $>$ buffer)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_gamepad_interface_a455c120badc70d7dff44636888643bcd}{callback\+\_\+shutdown}} (std\+\_\+msgs\+::msg\+::\+String\+::\+Shared\+Ptr msg)
+\item 
+void \mbox{\hyperlink{class_gamepad_interface_a3386e08bc8705565da86e508b5452180}{destroy\+\_\+callback}} (const std\+\_\+msgs\+::msg\+::\+String\+::\+Shared\+Ptr msg)
+\item 
+void \mbox{\hyperlink{class_gamepad_interface_ac64d166423ef1bcf8f1fec540887f4db}{callback\+\_\+gamepad}} (const sensor\+\_\+msgs\+::msg\+::\+Joy\+::\+Shared\+Ptr msg)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+rclcpp\+::\+Publisher$<$ geometry\+\_\+msgs\+::msg\+::\+Twist $>$\+::\+Shared\+Ptr \mbox{\hyperlink{class_gamepad_interface_af3ec562cc578babd1d98e1b5cdbe7b4a}{pub\+\_\+cmd\+\_\+vel\+\_\+manual}}
+\item 
+rclcpp\+::\+Publisher$<$ std\+\_\+msgs\+::msg\+::\+String $>$\+::\+Shared\+Ptr \mbox{\hyperlink{class_gamepad_interface_a222d5eb232df4feef81f371f9cfd1305}{pub\+\_\+nav\+\_\+auto\+\_\+state}}
+\item 
+rclcpp\+::\+Subscription$<$ sensor\+\_\+msgs\+::msg\+::\+Joy $>$\+::\+Shared\+Ptr \mbox{\hyperlink{class_gamepad_interface_a7987e2223b542ab6340d370708e1704b}{sub\+\_\+cs\+\_\+gamepad}}
+\item 
+rclcpp\+::\+Subscription$<$ std\+\_\+msgs\+::msg\+::\+String $>$\+::\+Shared\+Ptr \mbox{\hyperlink{class_gamepad_interface_ae3ac3fbe19968b7fc276f2d1f3e5c9e2}{sub\+\_\+cmds\+\_\+shutdown}}
+\item 
+rclcpp\+::\+Subscription$<$ std\+\_\+msgs\+::msg\+::\+String $>$\+::\+Shared\+Ptr \mbox{\hyperlink{class_gamepad_interface_afd1209e9e7ef1965129087fc6dfb5c47}{destroy\+\_\+sub\+\_\+}}
+\item 
+size\+\_\+t \mbox{\hyperlink{class_gamepad_interface_a5a39b5867141282d805974c0e9126fb5}{count\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_gamepad_interface_ac5ef245aac5f936ef3ea1e18645cb02d}\label{class_gamepad_interface_ac5ef245aac5f936ef3ea1e18645cb02d} 
+\index{GamepadInterface@{GamepadInterface}!GamepadInterface@{GamepadInterface}}
+\index{GamepadInterface@{GamepadInterface}!GamepadInterface@{GamepadInterface}}
+\doxysubsubsection{\texorpdfstring{GamepadInterface()}{GamepadInterface()}}
+{\footnotesize\ttfamily Gamepad\+Interface\+::\+Gamepad\+Interface (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_gamepad_interface_ac5ef245aac5f936ef3ea1e18645cb02d_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_gamepad_interface_ac64d166423ef1bcf8f1fec540887f4db}\label{class_gamepad_interface_ac64d166423ef1bcf8f1fec540887f4db} 
+\index{GamepadInterface@{GamepadInterface}!callback\_gamepad@{callback\_gamepad}}
+\index{callback\_gamepad@{callback\_gamepad}!GamepadInterface@{GamepadInterface}}
+\doxysubsubsection{\texorpdfstring{callback\_gamepad()}{callback\_gamepad()}}
+{\footnotesize\ttfamily void Gamepad\+Interface\+::callback\+\_\+gamepad (\begin{DoxyParamCaption}\item[{const sensor\+\_\+msgs\+::msg\+::\+Joy\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_gamepad_interface_ac64d166423ef1bcf8f1fec540887f4db_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_gamepad_interface_ac64d166423ef1bcf8f1fec540887f4db_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_gamepad_interface_a455c120badc70d7dff44636888643bcd}\label{class_gamepad_interface_a455c120badc70d7dff44636888643bcd} 
+\index{GamepadInterface@{GamepadInterface}!callback\_shutdown@{callback\_shutdown}}
+\index{callback\_shutdown@{callback\_shutdown}!GamepadInterface@{GamepadInterface}}
+\doxysubsubsection{\texorpdfstring{callback\_shutdown()}{callback\_shutdown()}}
+{\footnotesize\ttfamily void Gamepad\+Interface\+::callback\+\_\+shutdown (\begin{DoxyParamCaption}\item[{std\+\_\+msgs\+::msg\+::\+String\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_gamepad_interface_a455c120badc70d7dff44636888643bcd_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_gamepad_interface_a3386e08bc8705565da86e508b5452180}\label{class_gamepad_interface_a3386e08bc8705565da86e508b5452180} 
+\index{GamepadInterface@{GamepadInterface}!destroy\_callback@{destroy\_callback}}
+\index{destroy\_callback@{destroy\_callback}!GamepadInterface@{GamepadInterface}}
+\doxysubsubsection{\texorpdfstring{destroy\_callback()}{destroy\_callback()}}
+{\footnotesize\ttfamily void Gamepad\+Interface\+::destroy\+\_\+callback (\begin{DoxyParamCaption}\item[{const std\+\_\+msgs\+::msg\+::\+String\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_gamepad_interface_a3386e08bc8705565da86e508b5452180_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_gamepad_interface_a780a9d34cb5b4c791d83b1b72fd53853}\label{class_gamepad_interface_a780a9d34cb5b4c791d83b1b72fd53853} 
+\index{GamepadInterface@{GamepadInterface}!filter@{filter}}
+\index{filter@{filter}!GamepadInterface@{GamepadInterface}}
+\doxysubsubsection{\texorpdfstring{filter()}{filter()}}
+{\footnotesize\ttfamily double Gamepad\+Interface\+::filter (\begin{DoxyParamCaption}\item[{double}]{new\+Value,  }\item[{std\+::vector$<$ double $>$}]{buffer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_gamepad_interface_a780a9d34cb5b4c791d83b1b72fd53853_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_gamepad_interface_a5a39b5867141282d805974c0e9126fb5}\label{class_gamepad_interface_a5a39b5867141282d805974c0e9126fb5} 
+\index{GamepadInterface@{GamepadInterface}!count\_@{count\_}}
+\index{count\_@{count\_}!GamepadInterface@{GamepadInterface}}
+\doxysubsubsection{\texorpdfstring{count\_}{count\_}}
+{\footnotesize\ttfamily size\+\_\+t Gamepad\+Interface\+::count\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_gamepad_interface_afd1209e9e7ef1965129087fc6dfb5c47}\label{class_gamepad_interface_afd1209e9e7ef1965129087fc6dfb5c47} 
+\index{GamepadInterface@{GamepadInterface}!destroy\_sub\_@{destroy\_sub\_}}
+\index{destroy\_sub\_@{destroy\_sub\_}!GamepadInterface@{GamepadInterface}}
+\doxysubsubsection{\texorpdfstring{destroy\_sub\_}{destroy\_sub\_}}
+{\footnotesize\ttfamily rclcpp\+::\+Subscription$<$std\+\_\+msgs\+::msg\+::\+String$>$\+::\+Shared\+Ptr Gamepad\+Interface\+::destroy\+\_\+sub\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_gamepad_interface_af3ec562cc578babd1d98e1b5cdbe7b4a}\label{class_gamepad_interface_af3ec562cc578babd1d98e1b5cdbe7b4a} 
+\index{GamepadInterface@{GamepadInterface}!pub\_cmd\_vel\_manual@{pub\_cmd\_vel\_manual}}
+\index{pub\_cmd\_vel\_manual@{pub\_cmd\_vel\_manual}!GamepadInterface@{GamepadInterface}}
+\doxysubsubsection{\texorpdfstring{pub\_cmd\_vel\_manual}{pub\_cmd\_vel\_manual}}
+{\footnotesize\ttfamily rclcpp\+::\+Publisher$<$geometry\+\_\+msgs\+::msg\+::\+Twist$>$\+::\+Shared\+Ptr Gamepad\+Interface\+::pub\+\_\+cmd\+\_\+vel\+\_\+manual\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_gamepad_interface_a222d5eb232df4feef81f371f9cfd1305}\label{class_gamepad_interface_a222d5eb232df4feef81f371f9cfd1305} 
+\index{GamepadInterface@{GamepadInterface}!pub\_nav\_auto\_state@{pub\_nav\_auto\_state}}
+\index{pub\_nav\_auto\_state@{pub\_nav\_auto\_state}!GamepadInterface@{GamepadInterface}}
+\doxysubsubsection{\texorpdfstring{pub\_nav\_auto\_state}{pub\_nav\_auto\_state}}
+{\footnotesize\ttfamily rclcpp\+::\+Publisher$<$std\+\_\+msgs\+::msg\+::\+String$>$\+::\+Shared\+Ptr Gamepad\+Interface\+::pub\+\_\+nav\+\_\+auto\+\_\+state\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_gamepad_interface_ae3ac3fbe19968b7fc276f2d1f3e5c9e2}\label{class_gamepad_interface_ae3ac3fbe19968b7fc276f2d1f3e5c9e2} 
+\index{GamepadInterface@{GamepadInterface}!sub\_cmds\_shutdown@{sub\_cmds\_shutdown}}
+\index{sub\_cmds\_shutdown@{sub\_cmds\_shutdown}!GamepadInterface@{GamepadInterface}}
+\doxysubsubsection{\texorpdfstring{sub\_cmds\_shutdown}{sub\_cmds\_shutdown}}
+{\footnotesize\ttfamily rclcpp\+::\+Subscription$<$std\+\_\+msgs\+::msg\+::\+String$>$\+::\+Shared\+Ptr Gamepad\+Interface\+::sub\+\_\+cmds\+\_\+shutdown\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_gamepad_interface_a7987e2223b542ab6340d370708e1704b}\label{class_gamepad_interface_a7987e2223b542ab6340d370708e1704b} 
+\index{GamepadInterface@{GamepadInterface}!sub\_cs\_gamepad@{sub\_cs\_gamepad}}
+\index{sub\_cs\_gamepad@{sub\_cs\_gamepad}!GamepadInterface@{GamepadInterface}}
+\doxysubsubsection{\texorpdfstring{sub\_cs\_gamepad}{sub\_cs\_gamepad}}
+{\footnotesize\ttfamily rclcpp\+::\+Subscription$<$sensor\+\_\+msgs\+::msg\+::\+Joy$>$\+::\+Shared\+Ptr Gamepad\+Interface\+::sub\+\_\+cs\+\_\+gamepad\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/marm/\+Documents/git/rover/navigation/codebase/wheels\+\_\+control/src/\mbox{\hyperlink{_gamepad__interface__node_8cpp}{Gamepad\+\_\+interface\+\_\+node.\+cpp}}\end{DoxyCompactItemize}

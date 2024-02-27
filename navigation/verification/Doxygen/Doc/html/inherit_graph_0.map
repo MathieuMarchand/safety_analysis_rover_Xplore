@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,81,100,108"/>
+<area shape="rect" id="Node000001" href="$class_cmdvel_manager.html" title=" " alt="" coords="158,5,272,32"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="90,71,147,42,174,30,176,35,149,46,92,76"/>
+<area shape="rect" id="Node000002" href="$class_displacement_cmds.html" title=" " alt="" coords="148,56,282,83"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="115,82,147,77,148,82,115,88"/>
+<area shape="rect" id="Node000003" href="$class_gamepad_interface.html" title=" " alt="" coords="152,107,278,133"/>
+<area shape="poly" id="edge3_Node000000_Node000003" title=" " alt="" coords="115,102,152,108,151,113,114,107"/>
+<area shape="rect" id="Node000004" href="$class_motor_cmds.html" title=" " alt="" coords="171,157,259,184"/>
+<area shape="poly" id="edge4_Node000000_Node000004" title=" " alt="" coords="92,114,149,143,176,154,174,159,147,148,90,119"/>
+</map>

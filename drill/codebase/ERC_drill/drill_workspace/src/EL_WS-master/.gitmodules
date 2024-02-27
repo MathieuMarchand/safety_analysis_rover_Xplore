@@ -1,0 +1,4 @@
+[submodule "src/BRoCo"]
+	path = src/BRoCo
+	url = git@github.com:EPFLXplore/BRoCo.git
+	branch = EL-BRoCo

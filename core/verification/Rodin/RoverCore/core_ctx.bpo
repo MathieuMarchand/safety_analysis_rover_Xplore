@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="INSTRUCTIONS" org.eventb.core.type="ℙ(INSTRUCTIONS)"/>
+        <org.eventb.core.poIdentifier name="TASKS" org.eventb.core.type="ℙ(TASKS)"/>
+        <org.eventb.core.poIdentifier name="science" org.eventb.core.type="TASKS"/>
+        <org.eventb.core.poIdentifier name="manual" org.eventb.core.type="TASKS"/>
+        <org.eventb.core.poIdentifier name="resume" org.eventb.core.type="INSTRUCTIONS"/>
+        <org.eventb.core.poIdentifier name="undefined_instr" org.eventb.core.type="INSTRUCTIONS"/>
+        <org.eventb.core.poIdentifier name="wait" org.eventb.core.type="INSTRUCTIONS"/>
+        <org.eventb.core.poIdentifier name="maintenance" org.eventb.core.type="TASKS"/>
+        <org.eventb.core.poIdentifier name="undefined_task" org.eventb.core.type="TASKS"/>
+        <org.eventb.core.poIdentifier name="retry" org.eventb.core.type="INSTRUCTIONS"/>
+        <org.eventb.core.poIdentifier name="navigation" org.eventb.core.type="TASKS"/>
+        <org.eventb.core.poIdentifier name="launch" org.eventb.core.type="INSTRUCTIONS"/>
+        <org.eventb.core.poIdentifier name="abort" org.eventb.core.type="INSTRUCTIONS"/>
+        <org.eventb.core.poIdentifier name="idle" org.eventb.core.type="TASKS"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/RoverCore/core_ctx.bpo|org.eventb.core.poFile#core_ctx|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="partition(TASKS,{idle},{science},{maintenance},{navigation},{manual},{undefined_task})" org.eventb.core.source="/RoverCore/core_ctx.buc|org.eventb.core.contextFile#core_ctx|org.eventb.core.axiom#-"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="partition(INSTRUCTIONS,{launch},{abort},{wait},{resume},{retry},{undefined_instr})" org.eventb.core.source="/RoverCore/core_ctx.buc|org.eventb.core.contextFile#core_ctx|org.eventb.core.axiom#4"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

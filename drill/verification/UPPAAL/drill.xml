@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.6//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+chan abort, launch, pause, resume;
+clock clk;
+int drill_height := 10;
+int bit_length := 10;
+int th = 0;
+int td = 10;</declaration>
+	<template>
+		<name x="5" y="5">FSM</name>
+		<parameter>int[0, 1000] target_height, int[0, 1000] target_deployment</parameter>
+		<declaration>// Place local declarations here.
+clock t;
+int height;
+int deployment;
+bool waiting;
+bool motor_active;
+int aborted;
+int direction;
+int deployment_speed := 1;
+int height_speed := 1;
+ 
+void increment_abort(){
+    aborted := 2 &lt;? aborted + 1;
+}
+
+void initialisation()
+{
+    height := drill_height;
+    deployment := 0;
+    waiting := false;
+    motor_active := false;
+    aborted := 0;
+    t:=0;
+    direction := 0;
+}
+
+
+
+void decrement_height()
+{
+    
+    if(height-1 &lt;= target_height){
+        motor_active := false;
+        height := target_height;
+    }else{
+        height := height - height_speed;
+    }
+}
+
+void deploy_drill()
+{
+    
+    if(deployment+1 &gt;= target_deployment){
+        motor_active := false;
+        deployment := target_deployment;
+    }else{
+        deployment := deployment + deployment_speed;
+    }
+}
+
+void retract_drill()
+{
+    
+    if(deployment-1 &lt;= 0){
+        motor_active := false;
+        deployment := 0;
+    }else{
+       deployment := deployment - 2 * deployment_speed;
+    }
+}
+
+void increment_height()
+{
+    
+    if(height+1 &gt;= drill_height){
+        motor_active := false;
+        height := drill_height;
+    }else{
+        height := height + height_speed;
+    }
+}
+
+void mod1(int dir){
+    direction := dir;
+    if(direction == 0){
+        decrement_height();
+    }else if(direction == 1){
+        increment_height();
+    }
+}
+
+void drilll(int dir){
+    direction := dir;
+    if(direction == 0){
+        deploy_drill();
+    }else if(direction == 1){
+        retract_drill();
+    }
+}</declaration>
+		<location id="id0" x="-178" y="-399">
+			<name x="-204" y="-382">idle</name>
+		</location>
+		<location id="id1" x="-569" y="-306">
+			<name x="-544" y="-306">down</name>
+			<label kind="invariant" x="-579" y="-289">t &lt;= 10</label>
+		</location>
+		<location id="id2" x="-569" y="195">
+			<name x="-544" y="170">drill</name>
+			<label kind="invariant" x="-579" y="212">t&lt;=10</label>
+		</location>
+		<location id="id3" x="119" y="221">
+			<name x="51" y="179">retract</name>
+			<label kind="invariant" x="109" y="238">t &lt;= 10</label>
+		</location>
+		<location id="id4" x="136" y="-297">
+			<name x="93" y="-297">up</name>
+			<label kind="invariant" x="126" y="-280">t &lt;= 10</label>
+		</location>
+		<location id="id5" x="-119" y="-799">
+			<name x="-129" y="-833">Init</name>
+		</location>
+		<location id="id6" x="-814" y="-229">
+			<name x="-901" y="-255">down_wait</name>
+		</location>
+		<location id="id7" x="-952" y="153">
+			<name x="-962" y="119">drill_wait</name>
+		</location>
+		<location id="id8" x="93" y="680">
+			<name x="102" y="697">retract_wait</name>
+		</location>
+		<location id="id9" x="833" y="-374">
+			<name x="823" y="-408">up_wait</name>
+		</location>
+		<location id="id10" x="-306" y="-518">
+			<name x="-316" y="-552">idle_wait</name>
+		</location>
+		<init ref="id5"/>
+		<transition id="id11">
+			<source ref="id5"/>
+			<target ref="id0"/>
+			<label kind="assignment" x="-212" y="-680">initialisation()</label>
+		</transition>
+		<transition id="id12">
+			<source ref="id9"/>
+			<target ref="id8"/>
+			<label kind="synchronisation" x="782" y="119">abort?</label>
+			<label kind="assignment" x="731" y="136">increment_abort()</label>
+			<nail x="833" y="680"/>
+		</transition>
+		<transition id="id13">
+			<source ref="id10"/>
+			<target ref="id8"/>
+			<label kind="synchronisation" x="-603" y="-544">abort?</label>
+			<label kind="assignment" x="-671" y="-518">increment_abort()</label>
+			<nail x="-807" y="-518"/>
+			<nail x="-1079" y="59"/>
+			<nail x="-1079" y="714"/>
+			<nail x="93" y="714"/>
+		</transition>
+		<transition id="id14">
+			<source ref="id6"/>
+			<target ref="id8"/>
+			<label kind="synchronisation" x="-952" y="-68">abort?</label>
+			<label kind="assignment" x="-986" y="-51">increment_abort()</label>
+			<nail x="-977" y="127"/>
+			<nail x="-977" y="697"/>
+			<nail x="76" y="697"/>
+		</transition>
+		<transition id="id15">
+			<source ref="id7"/>
+			<target ref="id8"/>
+			<label kind="synchronisation" x="-943" y="408">abort?</label>
+			<label kind="assignment" x="-969" y="425">increment_abort()</label>
+			<nail x="-952" y="680"/>
+		</transition>
+		<transition id="id16">
+			<source ref="id10"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="-527" y="-416">launch?</label>
+			<label kind="assignment" x="-569" y="-399">motor_active := true,
+direction := 0</label>
+		</transition>
+		<transition id="id17">
+			<source ref="id10"/>
+			<target ref="id0"/>
+			<label kind="synchronisation" x="-288" y="-514">resume?</label>
+			<label kind="assignment" x="-288" y="-497">waiting := false,
+motor_active := true</label>
+			<nail x="-221" y="-476"/>
+		</transition>
+		<transition id="id18">
+			<source ref="id0"/>
+			<target ref="id10"/>
+			<label kind="synchronisation" x="-340" y="-450">pause?</label>
+			<label kind="assignment" x="-348" y="-425">waiting := true,
+motor_active := false</label>
+			<nail x="-297" y="-433"/>
+		</transition>
+		<transition id="id19">
+			<source ref="id1"/>
+			<target ref="id6"/>
+			<label kind="synchronisation" x="-722" y="-246">pause?</label>
+			<label kind="assignment" x="-773" y="-229">waiting := true,
+motor_active := false</label>
+		</transition>
+		<transition id="id20">
+			<source ref="id4"/>
+			<target ref="id9"/>
+			<label kind="synchronisation" x="467" y="-433">pause?</label>
+			<label kind="assignment" x="442" y="-416">waiting := true,
+motor_active := false</label>
+			<nail x="365" y="-391"/>
+		</transition>
+		<transition id="id21">
+			<source ref="id9"/>
+			<target ref="id4"/>
+			<label kind="synchronisation" x="450" y="-331">resume?</label>
+			<label kind="assignment" x="416" y="-306">waiting := false,
+motor_active := true</label>
+		</transition>
+		<transition id="id22">
+			<source ref="id8"/>
+			<target ref="id8"/>
+			<label kind="synchronisation" x="382" y="459">launch?</label>
+			<label kind="assignment" x="357" y="476">motor_active := true,
+direction := 1</label>
+			<nail x="365" y="535"/>
+			<nail x="348" y="425"/>
+		</transition>
+		<transition id="id23">
+			<source ref="id8"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="-25" y="527">resume?</label>
+			<label kind="assignment" x="-85" y="544">waiting := false,
+motor_active := true</label>
+			<nail x="25" y="450"/>
+		</transition>
+		<transition id="id24">
+			<source ref="id3"/>
+			<target ref="id8"/>
+			<label kind="synchronisation" x="119" y="493">pause?</label>
+			<label kind="assignment" x="119" y="510">waiting := true,
+motor_active := false</label>
+		</transition>
+		<transition id="id25">
+			<source ref="id7"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="-467" y="391">launch?</label>
+			<label kind="assignment" x="-501" y="408">motor_active := true,
+direction := 1</label>
+			<nail x="-731" y="433"/>
+			<nail x="-17" y="382"/>
+		</transition>
+		<transition id="id26">
+			<source ref="id7"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="-824" y="76">resume?</label>
+			<label kind="assignment" x="-824" y="93">waiting := false,
+motor_active := true</label>
+			<nail x="-705" y="110"/>
+		</transition>
+		<transition id="id27">
+			<source ref="id2"/>
+			<target ref="id7"/>
+			<label kind="synchronisation" x="-807" y="178">pause?</label>
+			<label kind="assignment" x="-824" y="195">waiting := true,
+motor_active := false</label>
+		</transition>
+		<transition id="id28">
+			<source ref="id6"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="-748" y="-42">launch?</label>
+			<label kind="assignment" x="-796" y="-17">motor_active := true,
+direction := 0</label>
+		</transition>
+		<transition id="id29">
+			<source ref="id6"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="-790" y="-314">resume?</label>
+			<label kind="assignment" x="-824" y="-297">waiting := false,
+motor_active := true</label>
+			<nail x="-722" y="-297"/>
+		</transition>
+		<transition id="id30">
+			<source ref="id4"/>
+			<target ref="id4"/>
+			<label kind="guard" x="144" y="-485">motor_active == true and t&gt;= 10</label>
+			<label kind="assignment" x="144" y="-468">mod1(1),t=0</label>
+			<nail x="136" y="-442"/>
+			<nail x="221" y="-425"/>
+		</transition>
+		<transition id="id31">
+			<source ref="id3"/>
+			<target ref="id3"/>
+			<label kind="guard" x="136" y="315">motor_active == true and t &gt;= 10</label>
+			<label kind="assignment" x="127" y="340">drilll(1),t=0</label>
+			<nail x="195" y="306"/>
+			<nail x="153" y="315"/>
+		</transition>
+		<transition id="id32">
+			<source ref="id2"/>
+			<target ref="id2"/>
+			<label kind="guard" x="-688" y="314">motor_active == true and t &gt;= 10</label>
+			<label kind="assignment" x="-688" y="340">drilll(0),t=0</label>
+			<nail x="-637" y="314"/>
+			<nail x="-688" y="280"/>
+		</transition>
+		<transition id="id33">
+			<source ref="id1"/>
+			<target ref="id1"/>
+			<label kind="guard" x="-731" y="-467">motor_active == true and t &gt;= 10</label>
+			<label kind="assignment" x="-747" y="-425">mod1(0),
+t=0</label>
+			<nail x="-697" y="-374"/>
+			<nail x="-663" y="-399"/>
+		</transition>
+		<transition id="id34">
+			<source ref="id3"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="146" y="169">abort?</label>
+			<label kind="assignment" x="136" y="187">aborted := 1</label>
+			<nail x="213" y="170"/>
+			<nail x="238" y="204"/>
+		</transition>
+		<transition id="id35">
+			<source ref="id4"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="365" y="-102">abort?</label>
+			<label kind="assignment" x="314" y="-86">increment_abort()</label>
+			<nail x="425" y="-187"/>
+			<nail x="365" y="246"/>
+		</transition>
+		<transition id="id36">
+			<source ref="id0"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="-110" y="-127">abort?</label>
+			<label kind="assignment" x="-119" y="-110">increment_abort()</label>
+		</transition>
+		<transition id="id37">
+			<source ref="id1"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="-314" y="-42">abort?</label>
+			<label kind="assignment" x="-357" y="-17">increment_abort()</label>
+		</transition>
+		<transition id="id38">
+			<source ref="id2"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="-297" y="229">launch?</label>
+			<label kind="assignment" x="-314" y="187">motor_active := true,
+direction := 1</label>
+		</transition>
+		<transition id="id39">
+			<source ref="id2"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="-314" y="297">abort?</label>
+			<label kind="assignment" x="-314" y="314">increment_abort()</label>
+			<nail x="-374" y="272"/>
+			<nail x="-51" y="340"/>
+		</transition>
+		<transition id="id40">
+			<source ref="id3"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="76" y="-34">launch?</label>
+			<label kind="assignment" x="76" y="-17">motor_active := true,
+direction := 1</label>
+			<nail x="178" y="34"/>
+			<nail x="119" y="25"/>
+		</transition>
+		<transition id="id41">
+			<source ref="id1"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="-586" y="-68">launch?</label>
+			<label kind="assignment" x="-629" y="-51">motor_active := true,
+direction := 0</label>
+		</transition>
+		<transition id="id42">
+			<source ref="id0"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="-425" y="-357">launch?</label>
+			<label kind="assignment" x="-467" y="-340">motor_active := true,
+direction := 0</label>
+		</transition>
+	</template>
+	<template>
+		<name>Control_Station</name>
+		<declaration>clock time;</declaration>
+		<location id="id43" x="-1139" y="-425">
+			<name x="-1173" y="-476">Start</name>
+		</location>
+		<init ref="id43"/>
+		<transition id="id44">
+			<source ref="id43"/>
+			<target ref="id43"/>
+			<label kind="synchronisation" x="-1028" y="-340">resume!</label>
+			<nail x="-986" y="-366"/>
+			<nail x="-1063" y="-315"/>
+		</transition>
+		<transition id="id45">
+			<source ref="id43"/>
+			<target ref="id43"/>
+			<label kind="synchronisation" x="-960" y="-450">pause!</label>
+			<nail x="-969" y="-467"/>
+			<nail x="-977" y="-416"/>
+		</transition>
+		<transition id="id46">
+			<source ref="id43"/>
+			<target ref="id43"/>
+			<label kind="synchronisation" x="-1266" y="-408">abort!</label>
+			<nail x="-1284" y="-357"/>
+			<nail x="-1156" y="-323"/>
+		</transition>
+		<transition id="id47">
+			<source ref="id43"/>
+			<target ref="id43"/>
+			<label kind="synchronisation" x="-1377" y="-527">launch!</label>
+			<nail x="-1293" y="-535"/>
+			<nail x="-1344" y="-450"/>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+Process = FSM(0, 10);
+CS = Control_Station();
+// List one or more processes to be composed into a system.
+system Process,CS;</system>
+	<queries>
+		<option key="--diagnostic" value="1"/>
+		<query>
+			<formula/>
+			<comment>====safety properties</comment>
+		</query>
+		<query>
+			<formula>A[] Process.idle imply (Process.deployment == 0 and Process.height == drill_height)</formula>
+			<comment>R01 : If the drill is in idle, the drill is undeployed and at initial position</comment>
+			<result outcome="success" type="quality" timestamp="2024-01-08 14:29:23 +0100">
+				<option key="--diagnostic" value="1"/>
+			</result>
+		</query>
+		<query>
+			<formula>A[] not(Process.waiting and Process.aborted)</formula>
+			<comment>R02 : The process is not paused and aborted at the same time</comment>
+			<result outcome="failure" type="quality" timestamp="2023-12-11 13:27:29 +0100">
+				<option key="--diagnostic" value="1"/>
+			</result>
+		</query>
+		<query>
+			<formula>A[]Process.deployment &gt;= 0 and Process.deployment &lt;= bit_length</formula>
+			<comment>R03 : Drill bit deployment stays in the range of motion of the motor</comment>
+			<result outcome="success" type="quality" timestamp="2024-01-08 14:25:57 +0100">
+				<option key="--diagnostic" value="1"/>
+			</result>
+		</query>
+		<query>
+			<formula>A[]Process.height &gt;= 0 and Process.height &lt;=drill_height
+</formula>
+			<comment>R04 : Drill height stays in the range of motion of the motor</comment>
+			<result outcome="success" type="quality" timestamp="2024-01-08 14:25:58 +0100">
+				<option key="--diagnostic" value="1"/>
+			</result>
+		</query>
+		<query>
+			<formula>A[] Process.retract and Process.deployment == 0 imply not Process.motor_active</formula>
+			<comment>R05 : Motors are not active when the target of the state has been reached (retract)</comment>
+			<result outcome="failure" type="quality" timestamp="2024-01-08 14:26:12 +0100">
+				<option key="--diagnostic" value="1"/>
+			</result>
+		</query>
+		<query>
+			<formula>A[] Process.up and Process.height == drill_height imply not Process.motor_active</formula>
+			<comment>R05 : Motors are not active when the target of the state has been reached (up)</comment>
+			<result outcome="failure" type="quality" timestamp="2023-12-11 13:27:39 +0100">
+				<option key="--diagnostic" value="1"/>
+			</result>
+		</query>
+		<query>
+			<formula>A[] Process.down and Process.height == th imply not Process.motor_active</formula>
+			<comment>R05 : Motors are not active when the target of the state has been reached (down)</comment>
+			<result outcome="failure" type="quality" timestamp="2023-12-11 13:27:42 +0100">
+				<option key="--diagnostic" value="1"/>
+			</result>
+		</query>
+		<query>
+			<formula>A[] Process.down and Process.deployment == td imply not Process.motor_active</formula>
+			<comment>R05 : Motors are not active when the target of the state has been reached (retract)</comment>
+			<result outcome="failure" type="quality" timestamp="2023-12-11 13:27:45 +0100">
+				<option key="--diagnostic" value="1"/>
+			</result>
+		</query>
+		<query>
+			<formula>A[] not(Process.motor_active and Process.waiting)</formula>
+			<comment>R06 : Motor are not active while the drill is in pause</comment>
+			<result outcome="failure" type="quality" timestamp="2023-12-11 13:27:48 +0100">
+				<option key="--diagnostic" value="1"/>
+			</result>
+		</query>
+		<query>
+			<formula>A[]Process.idle imply Process.motor_active == false</formula>
+			<comment>R07 : Motor is not active when the drill is in idle</comment>
+			<result outcome="failure" type="quality" timestamp="2023-12-11 13:27:51 +0100">
+				<option key="--diagnostic" value="1"/>
+			</result>
+		</query>
+		<query>
+			<formula>A[](not Process.idle and not Process.waiting == true
+and ((Process.retract and not Process.deployment == 0)
+or (Process.up and not Process.height == drill_height)
+or (Process.down and not Process.height == th)
+or (Process.drill and not Process.deployment == td))
+imply Process.motor_active == true)</formula>
+			<comment>R08 : Motors should be active if the drill is not paused or if it has not reached its goal</comment>
+			<result outcome="failure" type="quality" timestamp="2023-12-11 13:27:55 +0100">
+				<option key="--diagnostic" value="1"/>
+			</result>
+		</query>
+		<query>
+			<formula>A[] Process.aborted &lt;= 1</formula>
+			<comment>R09 : After the first abort, the others are not processed</comment>
+			<option key="--diagnostic" value="0"/>
+			<result outcome="failure" type="quality" timestamp="2023-12-11 13:41:32 +0100">
+				<option key="--diagnostic" value="0"/>
+			</result>
+		</query>
+		<query>
+			<formula>E&lt;&gt;Process.up</formula>
+			<comment>R10 : All states can be reached</comment>
+		</query>
+		<query>
+			<formula/>
+			<comment>===================</comment>
+		</query>
+		<query>
+			<formula>Process.down --&gt; not(Process.down)</formula>
+			<comment/>
+			<result outcome="success" type="quality" timestamp="2024-01-08 14:26:02 +0100">
+				<option key="--diagnostic" value="1"/>
+			</result>
+		</query>
+		<query>
+			<formula/>
+			<comment>=====</comment>
+			<option key="--diagnostic" value="1"/>
+		</query>
+		<query>
+			<formula>A[] not deadlock</formula>
+			<comment/>
+			<result outcome="failure" type="quality" timestamp="2023-12-11 13:28:06 +0100">
+				<option key="--diagnostic" value="1"/>
+			</result>
+		</query>
+		<query>
+			<formula/>
+			<comment/>
+		</query>
+	</queries>
+</nta>

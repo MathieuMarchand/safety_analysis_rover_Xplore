@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+    <org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="CMD_DESTROY_MSG" org.eventb.core.type="ℙ(CMD_DESTROY_MSG)"/>
+        <org.eventb.core.poIdentifier name="NAVIGATION_MODE" org.eventb.core.type="ℙ(NAVIGATION_MODE)"/>
+        <org.eventb.core.poIdentifier name="NAV_AUTO_INSTRUCTION" org.eventb.core.type="ℙ(NAV_AUTO_INSTRUCTION)"/>
+        <org.eventb.core.poIdentifier name="CMD_SHUTDOWN_MSG" org.eventb.core.type="ℙ(CMD_SHUTDOWN_MSG)"/>
+        <org.eventb.core.poIdentifier name="nav_other" org.eventb.core.type="NAVIGATION_MODE"/>
+        <org.eventb.core.poIdentifier name="dst_abort" org.eventb.core.type="CMD_DESTROY_MSG"/>
+        <org.eventb.core.poIdentifier name="nav_autonomous_start" org.eventb.core.type="NAV_AUTO_INSTRUCTION"/>
+        <org.eventb.core.poIdentifier name="sd_other" org.eventb.core.type="CMD_SHUTDOWN_MSG"/>
+        <org.eventb.core.poIdentifier name="nav_autonomous_other" org.eventb.core.type="NAV_AUTO_INSTRUCTION"/>
+        <org.eventb.core.poIdentifier name="dst_other" org.eventb.core.type="CMD_DESTROY_MSG"/>
+        <org.eventb.core.poIdentifier name="default_nav_mode" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="nav_manual" org.eventb.core.type="NAVIGATION_MODE"/>
+        <org.eventb.core.poIdentifier name="sd_shutdown" org.eventb.core.type="CMD_SHUTDOWN_MSG"/>
+        <org.eventb.core.poIdentifier name="nav_autonomous_end" org.eventb.core.type="NAV_AUTO_INSTRUCTION"/>
+        <org.eventb.core.poIdentifier name="nav_auto" org.eventb.core.type="NAVIGATION_MODE"/>
+        <org.eventb.core.poPredicate name="nav_autonomous_staru" org.eventb.core.predicate="default_nav_mode∈BOOL" org.eventb.core.source="/Navigation/navigation_ctx.buc|org.eventb.core.contextFile#navigation_ctx|org.eventb.core.axiom#("/>
+        <org.eventb.core.poPredicate name="nav_autonomous_starv" org.eventb.core.predicate="partition(NAVIGATION_MODE,{nav_auto},{nav_manual},{nav_other})" org.eventb.core.source="/Navigation/navigation_ctx.buc|org.eventb.core.contextFile#navigation_ctx|org.eventb.core.axiom#-"/>
+        <org.eventb.core.poPredicate name="nav_autonomous_starw" org.eventb.core.predicate="partition(CMD_SHUTDOWN_MSG,{sd_shutdown},{sd_other})" org.eventb.core.source="/Navigation/navigation_ctx.buc|org.eventb.core.contextFile#navigation_ctx|org.eventb.core.axiom#1"/>
+        <org.eventb.core.poPredicate name="nav_autonomous_starx" org.eventb.core.predicate="partition(NAV_AUTO_INSTRUCTION,{nav_autonomous_start},{nav_autonomous_end},{nav_autonomous_other})" org.eventb.core.source="/Navigation/navigation_ctx.buc|org.eventb.core.contextFile#navigation_ctx|org.eventb.core.axiom#6"/>
+        <org.eventb.core.poPredicate name="nav_autonomous_stary" org.eventb.core.predicate="partition(CMD_DESTROY_MSG,{dst_abort},{dst_other})" org.eventb.core.source="/Navigation/navigation_ctx.buc|org.eventb.core.contextFile#navigation_ctx|org.eventb.core.axiom#:"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="gamepad_twist" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+        <org.eventb.core.poIdentifier name="gamepad_speed" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+        <org.eventb.core.poIdentifier name="gamepad_manager_running" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="gamepad_auto_nav" org.eventb.core.type="NAV_AUTO_INSTRUCTION"/>
+        <org.eventb.core.poIdentifier name="filtered_speed_x" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="filtered_speed_z" org.eventb.core.type="ℤ"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="INITIALISATION/inv2/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#EVTALLHYPgamepad_manager_runninh"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{0 ↦ 0,1 ↦ 0,2 ↦ 0,3 ↦ 0,4 ↦ 0,5 ↦ 0}∈0 ‥ 5 → ℤ" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.invariant#:"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.invariant#:"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poSequent#INITIALISATION\/inv2\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/inv5/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#EVTALLHYPgamepad_manager_runninh"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{0 ↦ 0,1 ↦ 0,2 ↦ 0,3 ↦ 0,4 ↦ 0,5 ↦ 0}∈0 ‥ 5 → ℤ" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.invariant#A"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.invariant#A"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poSequent#INITIALISATION\/inv5\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD5"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTgamepad_manager_runninh" org.eventb.core.parentSet="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="gamepad_auto_nav'" org.eventb.core.type="NAV_AUTO_INSTRUCTION"/>
+        <org.eventb.core.poIdentifier name="gamepad_manager_running'" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="gamepad_twist'" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+        <org.eventb.core.poIdentifier name="filtered_speed_z'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="filtered_speed_x'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="gamepad_speed'" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPgamepad_manager_runninh" org.eventb.core.parentSet="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#EVTIDENTgamepad_manager_runninh" org.eventb.core.poStamp="0"/>
+    <org.eventb.core.poSequent name="gamepad/inv2/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#EVTALLHYPgamepad_manager_runnini"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="speed∈0 ‥ 5 → ℤ" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.invariant#:"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#3"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.invariant#:"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poSequent#gamepad\/inv2\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTgamepad_manager_runnini" org.eventb.core.parentSet="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="activate_auto_state" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="gamepad_auto_nav'" org.eventb.core.type="NAV_AUTO_INSTRUCTION"/>
+        <org.eventb.core.poIdentifier name="activate_manual_state" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="speed" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+        <org.eventb.core.poIdentifier name="auto_nav" org.eventb.core.type="NAV_AUTO_INSTRUCTION"/>
+        <org.eventb.core.poIdentifier name="gamepad_speed'" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPgamepad_manager_runnini" org.eventb.core.parentSet="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#EVTIDENTgamepad_manager_runnini" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="gamepad_manager_running=TRUE" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#3|org.eventb.core.guard#'"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="speed∈0 ‥ 5 → ℤ" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#3|org.eventb.core.guard#*"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="activate_auto_state∈BOOL" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#3|org.eventb.core.guard#+"/>
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="activate_manual_state∈BOOL" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#3|org.eventb.core.guard#1"/>
+        <org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="activate_manual_state=TRUE∧activate_auto_state=FALSE⇒auto_nav=nav_autonomous_end" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#3|org.eventb.core.guard#\/"/>
+        <org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="activate_auto_state=TRUE⇒auto_nav=nav_autonomous_start" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#3|org.eventb.core.guard#2"/>
+        <org.eventb.core.poPredicate name="PRD6" org.eventb.core.predicate="activate_manual_state=FALSE∧activate_auto_state=FALSE⇒auto_nav=gamepad_auto_nav" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#3|org.eventb.core.guard#3"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTIDENTgamepad_manager_runninj" org.eventb.core.parentSet="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="gamepad_manager_running'" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="new_running_state" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="command" org.eventb.core.type="CMD_SHUTDOWN_MSG"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPgamepad_manager_runninj" org.eventb.core.parentSet="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#EVTIDENTgamepad_manager_runninj" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="gamepad_manager_running=TRUE" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#4|org.eventb.core.guard#'"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="command∈CMD_SHUTDOWN_MSG" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#4|org.eventb.core.guard#grd1"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="command=sd_shutdown⇒new_running_state=FALSE" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#4|org.eventb.core.guard#grd2"/>
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="command=sd_other⇒new_running_state=gamepad_manager_running" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#4|org.eventb.core.guard#grd3"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTIDENTgamepad_manager_runnink" org.eventb.core.parentSet="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="gamepad_manager_running'" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="new_running_state" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="command" org.eventb.core.type="CMD_DESTROY_MSG"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPgamepad_manager_runnink" org.eventb.core.parentSet="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#EVTIDENTgamepad_manager_runnink" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="gamepad_manager_running=TRUE" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#5|org.eventb.core.guard#grd1"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="command∈CMD_DESTROY_MSG" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#5|org.eventb.core.guard#grd2"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="command=dst_abort⇒new_running_state=FALSE" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#5|org.eventb.core.guard#grd3"/>
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="command=dst_other⇒new_running_state=gamepad_manager_running" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#5|org.eventb.core.guard#grd4"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="speed_filter/grd2/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#EVTHYPgamepad_manager_runninl'"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="5∈dom(gamepad_speed)∧gamepad_speed∈ℤ ⇸ ℤ" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#8|org.eventb.core.guard#+"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#8|org.eventb.core.guard#+"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#EVTHYPgamepad_manager_runninl'"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="speed_filter/grd3/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#EVTHYPgamepad_manager_runninl("/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="5∈dom(gamepad_speed)∧gamepad_speed∈ℤ ⇸ ℤ∧(¬gamepad_speed(5)&gt;0⇒2∈dom(gamepad_speed))" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#8|org.eventb.core.guard#,"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#8|org.eventb.core.guard#,"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#EVTHYPgamepad_manager_runninl("/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="speed_filter/act2/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#EVTALLHYPgamepad_manager_runninl"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="0∈dom(gamepad_speed)∧gamepad_speed∈ℤ ⇸ ℤ" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#8|org.eventb.core.action#)"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#8|org.eventb.core.action#)"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#EVTALLHYPgamepad_manager_runninl"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTgamepad_manager_runninl" org.eventb.core.parentSet="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="filtered_speed_z'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="filtered_speed_x'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="v_x" org.eventb.core.type="ℤ"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTHYPgamepad_manager_runninl'" org.eventb.core.parentSet="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#EVTIDENTgamepad_manager_runninl" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="gamepad_manager_running=TRUE" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#8|org.eventb.core.guard#'"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTHYPgamepad_manager_runninl(" org.eventb.core.parentSet="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#EVTHYPgamepad_manager_runninl'" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="gamepad_speed(5)&gt;0⇒v_x=gamepad_speed(5)" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#8|org.eventb.core.guard#+"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPgamepad_manager_runninl" org.eventb.core.parentSet="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#EVTHYPgamepad_manager_runninl(" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="¬gamepad_speed(5)&gt;0⇒v_x=gamepad_speed(2)" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#8|org.eventb.core.guard#,"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="set_gamepad_twist/inv5/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#EVTALLHYPgamepad_manager_runninm"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{0 ↦ filtered_speed_x,1 ↦ 0,2 ↦ 0,3 ↦ 0,4 ↦ 0,5 ↦ −filtered_speed_z}∈0 ‥ 5 → ℤ" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.invariant#A"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#D"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.invariant#A"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poSequent#set_gamepad_twist\/inv5\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD5"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTgamepad_manager_runninm" org.eventb.core.parentSet="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="gamepad_twist'" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPgamepad_manager_runninm" org.eventb.core.parentSet="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#EVTIDENTgamepad_manager_runninm" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="gamepad_manager_running=TRUE" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.event#D|org.eventb.core.guard#'"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/Navigation/navigation.bpo|org.eventb.core.poFile#navigation|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="gamepad_manager_running∈BOOL" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.invariant#7"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="gamepad_speed∈0 ‥ 5 → ℤ" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.invariant#:"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="gamepad_auto_nav∈NAV_AUTO_INSTRUCTION" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.invariant#="/>
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="filtered_speed_x∈ℤ" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.invariant#?"/>
+        <org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="filtered_speed_z∈ℤ" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.invariant#C"/>
+        <org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="gamepad_twist∈0 ‥ 5 → ℤ" org.eventb.core.source="/Navigation/navigation.bum|org.eventb.core.machineFile#navigation|org.eventb.core.invariant#A"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

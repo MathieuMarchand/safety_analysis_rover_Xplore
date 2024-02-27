@@ -1,0 +1,7 @@
+<map id="MotorCmds::connect_motors" name="MotorCmds::connect_motors">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,148,48"/>
+<area shape="rect" id="Node000002" href="$motors_8cpp.html#a518602daacaed16306b7744dcbb3127b" title=" " alt="" coords="196,13,300,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,24,180,24,180,29,148,29"/>
+<area shape="rect" id="Node000003" href="$motors_8cpp.html#ae9da7355b945322c74de68bd28561a38" title=" " alt="" coords="348,13,461,40"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="301,24,332,24,332,29,301,29"/>
+</map>

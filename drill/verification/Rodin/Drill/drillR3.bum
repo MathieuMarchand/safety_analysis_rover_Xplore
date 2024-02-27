@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+    <org.eventb.core.refinesMachine name="'" org.eventb.core.target="drillR2"/>
+    <org.eventb.core.seesContext name="-" org.eventb.core.target="drill_ctxE2"/>
+    <org.eventb.core.variable name="+" org.eventb.core.comment="quantity of samples collected" org.eventb.core.identifier="quantity"/>
+    <org.eventb.core.variable name="1" org.eventb.core.comment="current height of the drill" org.eventb.core.identifier="height"/>
+    <org.eventb.core.variable name="3" org.eventb.core.comment="current state of the drill" org.eventb.core.identifier="state"/>
+    <org.eventb.core.variable name="5" org.eventb.core.comment="current length deployed of the drill" org.eventb.core.identifier="drill_bit_deployment"/>
+    <org.eventb.core.variable name="=" org.eventb.core.identifier="curr_height"/>
+    <org.eventb.core.variable name="?" org.eventb.core.identifier="curr_deployment"/>
+    <org.eventb.core.variable name="O" org.eventb.core.identifier="curr_quantity"/>
+    <org.eventb.core.event name="P" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="waiting ≔ FALSE" org.eventb.core.label="init_waiting"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="motor_active ≔ FALSE" org.eventb.core.label="init_motor_active"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="aborted ≔ FALSE" org.eventb.core.label="init_aborted"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="nb_abort ≔ 0" org.eventb.core.label="init_nb_abort"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="Q" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="drill_idle">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="drill_idle"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="motor_active ≔ FALSE" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="aborted ≔ FALSE" org.eventb.core.label="act4"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="R" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="lower">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="lower_drill"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="motor_active ≔ TRUE" org.eventb.core.label="act4"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="S" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="start_drill">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="start_drill"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="motor_active ≔ TRUE" org.eventb.core.label="act6"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="T" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="retract_drill">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="retract_drill"/>
+        <org.eventb.core.action name="0" org.eventb.core.assignment="motor_active ≔ TRUE" org.eventb.core.label="act6"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="U" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="drill_up">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="drill_up"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="motor_active ≔ TRUE" org.eventb.core.label="act4"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="k" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="mod1">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="mod1"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd5" org.eventb.core.predicate="(curr_direction = down_dir ∧ new_height = target_height) ∨ (curr_direction = up_dir ∧ new_height = drill_height) ⇒ new_motor = FALSE"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd6" org.eventb.core.predicate="¬((curr_direction = down_dir ∧ new_height = target_height) ∨ (curr_direction = up_dir ∧ new_height = drill_height)) ⇒ new_motor = motor_active"/>
+        <org.eventb.core.parameter name="+" org.eventb.core.identifier="new_motor"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="motor_active ≔ new_motor" org.eventb.core.label="act2"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="l" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="drill">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="drill"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="new_motor"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd6" org.eventb.core.predicate="motor_active = TRUE"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd7" org.eventb.core.predicate="(curr_direction = down_dir ∧ new_depl = target_deployment) ∨ (curr_direction = up_dir ∧ new_depl = 0) ⇒ new_motor = FALSE"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd8" org.eventb.core.predicate="¬((curr_direction = down_dir ∧ new_depl = target_deployment) ∨ (curr_direction = up_dir ∧ new_depl = 0)) ⇒ new_motor = motor_active"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="motor_active ≔ new_motor" org.eventb.core.label="act3"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="Z" org.eventb.core.identifier="waiting"/>
+    <org.eventb.core.invariant name="[" org.eventb.core.label="waiting_type" org.eventb.core.predicate="waiting ∈ BOOL"/>
+    <org.eventb.core.variable name="\" org.eventb.core.identifier="motor_active"/>
+    <org.eventb.core.invariant name="]" org.eventb.core.label="active_type" org.eventb.core.predicate="motor_active ∈ BOOL"/>
+    <org.eventb.core.event name="^" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="pause">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="waiting ≔ TRUE" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="motor_active ≔ FALSE" org.eventb.core.label="act2"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="resume">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="waiting ≔ FALSE" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="motor_active ≔ TRUE" org.eventb.core.label="act2"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd1" org.eventb.core.predicate="waiting = TRUE"/>
+        <org.eventb.core.parameter name="*" org.eventb.core.identifier="new_motor"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd2" org.eventb.core.predicate="new_motor ∈ BOOL"/>
+    </org.eventb.core.event>
+    <org.eventb.core.invariant name="n" org.eventb.core.label="inv1" org.eventb.core.predicate="nb_abort ∈ ℕ"/>
+    <org.eventb.core.invariant name="c" org.eventb.core.label="abort_type" org.eventb.core.predicate="aborted ∈ BOOL"/>
+    <org.eventb.core.invariant name="d" org.eventb.core.comment="R02 : The rover should never be paused and aborted" org.eventb.core.label="abort_req" org.eventb.core.predicate="¬(aborted = TRUE ∧ waiting = TRUE)"/>
+    <org.eventb.core.invariant name="e" org.eventb.core.comment="R05 : Motors are not active when the target is reached" org.eventb.core.label="down_at_target" org.eventb.core.predicate="curr_height = target_height ∧ state = down ⇒ motor_active = FALSE"/>
+    <org.eventb.core.invariant name="f" org.eventb.core.comment="R05 : Motors are not active when the target is reached" org.eventb.core.label="drill_at_target" org.eventb.core.predicate="curr_deployment = target_deployment ∧ state = drill ⇒ motor_active = FALSE"/>
+    <org.eventb.core.invariant name="g" org.eventb.core.comment="R05 : Motors are not active when the target is reached" org.eventb.core.label="retract_at_target" org.eventb.core.predicate="curr_deployment = 0 ∧ state = retract ⇒ motor_active = FALSE"/>
+    <org.eventb.core.invariant name="h" org.eventb.core.comment="R05 : Motors are not active when the target is reached" org.eventb.core.label="up_at_target" org.eventb.core.predicate="curr_height = drill_height ∧ state = up ⇒ motor_active = FALSE"/>
+    <org.eventb.core.invariant name="`" org.eventb.core.comment="R06 : Motors are not active while rover in pause" org.eventb.core.label="pause_req" org.eventb.core.predicate="¬(motor_active = TRUE ∧ waiting = TRUE)"/>
+    <org.eventb.core.event name="a" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="abort">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="abort"/>
+        <org.eventb.core.action name="'" org.eventb.core.assignment="state ≔ retract" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="aborted ≔ TRUE" org.eventb.core.label="act2"/>
+        <org.eventb.core.parameter name=")" org.eventb.core.identifier="new_nb"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd1" org.eventb.core.predicate="state ≠ retract ⇒ new_nb = nb_abort + 1"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd2" org.eventb.core.predicate="state = retract ⇒ new_nb = nb_abort"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="nb_abort ≔ new_nb" org.eventb.core.label="act3"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="b" org.eventb.core.identifier="aborted"/>
+    <org.eventb.core.invariant name="i" org.eventb.core.comment="R07 : Motors are not active in idle" org.eventb.core.label="idle_nactive_motors" org.eventb.core.predicate="state = idle ⇒ motor_active = FALSE"/>
+    <org.eventb.core.variable name="j" org.eventb.core.identifier="curr_direction"/>
+    <org.eventb.core.variable name="m" org.eventb.core.identifier="nb_abort"/>
+</org.eventb.core.machineFile>

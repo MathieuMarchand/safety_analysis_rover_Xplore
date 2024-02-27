@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+    <org.eventb.core.refinesMachine name="'" org.eventb.core.target="navigationR2"/>
+    <org.eventb.core.seesContext name="2" org.eventb.core.target="navigation_ctx_3"/>
+    <org.eventb.core.variable name="G" org.eventb.core.comment="State of the gamepad node" org.eventb.core.identifier="gamepad_manager_running"/>
+    <org.eventb.core.variable name="var2" org.eventb.core.comment="Auto nav message instruction" org.eventb.core.identifier="gamepad_auto_nav"/>
+    <org.eventb.core.variable name="var1" org.eventb.core.comment="Speed message received" org.eventb.core.identifier="gamepad_speed"/>
+    <org.eventb.core.variable name="var3" org.eventb.core.comment="Filtered speed value in x" org.eventb.core.identifier="filtered_speed_x"/>
+    <org.eventb.core.variable name="var7" org.eventb.core.comment="Filtered speed value in z" org.eventb.core.identifier="filtered_speed_z"/>
+    <org.eventb.core.variable name="var6" org.eventb.core.comment="Twist message for the speed selector" org.eventb.core.identifier="gamepad_twist"/>
+    <org.eventb.core.variable name="var4" org.eventb.core.comment="Next event to execute gamepad" org.eventb.core.identifier="gamepad_man_to"/>
+    <org.eventb.core.variable name="var8" org.eventb.core.comment="Asks to clear the temporary variables" org.eventb.core.identifier="clear_gamepad"/>
+    <org.eventb.core.variable name="var9" org.eventb.core.comment="[VERIF]Function to which the flow has been forwarded to" org.eventb.core.identifier="gp_forwarded_to"/>
+    <org.eventb.core.variable name="var10" org.eventb.core.comment="[VERIF] Destroy command received" org.eventb.core.identifier="gamepad_destroy_cmd"/>
+    <org.eventb.core.variable name="var11" org.eventb.core.comment="[VERIF] Shutdown command received" org.eventb.core.identifier="gamepad_shutdown_cmd"/>
+    <org.eventb.core.variable name="var12" org.eventb.core.comment="[VERIF] Auto mode button pressed" org.eventb.core.identifier="gamepad_auto_pressed"/>
+    <org.eventb.core.variable name="var14" org.eventb.core.comment="[VERIF] Manual mode button pressed" org.eventb.core.identifier="gamepad_manual_pressed"/>
+    <org.eventb.core.variable name="var15" org.eventb.core.comment="[VERIF] Sender of the message received" org.eventb.core.identifier="gamepad_msg_from"/>
+    <org.eventb.core.variable name="var16" org.eventb.core.comment="[VERIF] Records if the message has been processed or not by the function" org.eventb.core.identifier="gamepad_message_processed"/>
+    <org.eventb.core.variable name=")" org.eventb.core.comment="State of the velocity manager node (running or stopped)" org.eventb.core.identifier="vel_manager_running"/>
+    <org.eventb.core.variable name="0" org.eventb.core.comment="State of the navigation mode (auto or manual)" org.eventb.core.identifier="autonomous_navigation"/>
+    <org.eventb.core.variable name="3" org.eventb.core.comment="Selected speed" org.eventb.core.identifier="select_speed"/>
+    <org.eventb.core.event name="&gt;" org.eventb.core.comment="initialisation of the variable&#9;" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="vel_man_to ≔ {func_vel_other ↦ FALSE, func_vel_auto ↦ FALSE, func_vel_manual ↦ FALSE, func_nav_mode ↦ FALSE, func_auto_state ↦ FALSE, func_shutdown_vel_manager ↦ FALSE, func_destroy_vel_manager ↦ FALSE}" org.eventb.core.label="init_vel_man_to"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="vel_man_forwarded_to ≔ func_vel_other" org.eventb.core.label="init_vel_man_forwarded_to"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="clear_vel_man ≔ FALSE" org.eventb.core.label="init_clear_vel_man"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="vel_man_message_from ≔ vel_man_from_other" org.eventb.core.label="init_vel_man_message_from"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="vel_man_message_processed ≔ {func_vel_other ↦ FALSE, func_vel_auto ↦ FALSE, func_vel_manual ↦ FALSE, func_nav_mode ↦ FALSE, func_auto_state ↦ FALSE, func_shutdown_vel_manager ↦ FALSE, func_destroy_vel_manager ↦ FALSE}" org.eventb.core.label="init_vel_man_message_processed"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="vel_man_shutdown_cmd ≔ sd_other" org.eventb.core.label="init_vel_man_shutdown_cmd"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="vel_man_destroy_cmd ≔ dst_abort" org.eventb.core.label="init_vel_man_destroy_cmd"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="vel_man_auto_cmd ≔ nav_autonomous_other" org.eventb.core.label="init_vel_man_auto_cmd"/>
+        <org.eventb.core.action name="/" org.eventb.core.assignment="vel_man_before_auto ≔ FALSE" org.eventb.core.label="init_vel_man_before_auto"/>
+        <org.eventb.core.action name="0" org.eventb.core.assignment="vel_man_before_vel ≔ {0↦0,1↦0,2↦0,3↦0,4↦0,5↦0}" org.eventb.core.label="init_vel_man_before_vel"/>
+        <org.eventb.core.action name="act2" org.eventb.core.assignment="vel_man_input_speed ≔ {0↦0,1↦0,2↦0,3↦0,4↦0,5↦0}" org.eventb.core.label="init_vel_man_input_seed"/>
+        <org.eventb.core.action name="act3" org.eventb.core.assignment="vel_man_before_mode ≔ FALSE" org.eventb.core.label="init_vel_man_before_manual"/>
+        <org.eventb.core.action name="act4" org.eventb.core.assignment="vel_man_mode_cmd ≔ nav_other" org.eventb.core.label="Init_vel_man_mode_cmd&#9;"/>
+        <org.eventb.core.action name="act5" org.eventb.core.assignment="vel_man_gamepad_received ≔ FALSE" org.eventb.core.label="init_vel_man_gamepad_received"/>
+        <org.eventb.core.action name="act6" org.eventb.core.assignment="vel_man_gamepad_transmition ≔ FALSE" org.eventb.core.label="init_vel_man_gamepad_transmition"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="J" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="gamepad">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="gamepad"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="I" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="shutdown_gamepad">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="shutdown_gamepad"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="H" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="destroy_gamepad">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="destroy_gamepad"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="K" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="speed_filter">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="speed_filter"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var8" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="set_gamepad_twist">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="set_gamepad_twist"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="vel_man_to ≔ vel_man_to  {func_auto_state ↦ TRUE, func_vel_manual ↦ TRUE}" org.eventb.core.label="act5"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="vel_man_gamepad_transmition ≔ TRUE" org.eventb.core.label="act6"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var5" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="ROS_gamepad">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="ROS_gamepad"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="?" org.eventb.core.comment="Changes the speed in auto mode" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="vel_auto">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="vel_auto"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="vel_man_to(func_vel_auto) ≔ FALSE" org.eventb.core.label="act2"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd5" org.eventb.core.predicate="vel_man_to(func_vel_auto) = TRUE"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="vel_man_forwarded_to ≔ func_vel_auto" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="clear_vel_man ≔ TRUE" org.eventb.core.label="act4"/>
+        <org.eventb.core.action name="act1" org.eventb.core.assignment="vel_man_message_from ≔ from" org.eventb.core.label="act5"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd6" org.eventb.core.predicate="from ∈ VEL_MAN_FROM"/>
+        <org.eventb.core.parameter name="-" org.eventb.core.comment="Sender of the message" org.eventb.core.identifier="from"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="vel_man_message_processed(func_vel_auto) ≔ TRUE" org.eventb.core.label="act6"/>
+        <org.eventb.core.guard name="/" org.eventb.core.label="grd7" org.eventb.core.predicate="clear_vel_man = FALSE"/>
+        <org.eventb.core.action name="0" org.eventb.core.assignment="vel_man_before_vel ≔ select_speed" org.eventb.core.label="act7"/>
+        <org.eventb.core.action name="1" org.eventb.core.assignment="vel_man_input_speed ≔ input_speed" org.eventb.core.label="act8"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="@" org.eventb.core.comment="Changes the speed in manual mode" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="vel_manual">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="vel_manual"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="vel_man_to(func_vel_manual) ≔ FALSE" org.eventb.core.label="act2"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd6" org.eventb.core.predicate="vel_man_to(func_vel_manual) = TRUE"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="vel_man_forwarded_to ≔ func_vel_manual" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="clear_vel_man ≔ TRUE" org.eventb.core.label="act4"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd7" org.eventb.core.predicate="from ∈ VEL_MAN_FROM"/>
+        <org.eventb.core.parameter name="-" org.eventb.core.comment="Sender of the message" org.eventb.core.identifier="from"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="vel_man_message_from ≔ from" org.eventb.core.label="act5"/>
+        <org.eventb.core.action name="/" org.eventb.core.assignment="vel_man_message_processed(func_vel_manual) ≔ TRUE" org.eventb.core.label="act6"/>
+        <org.eventb.core.guard name="0" org.eventb.core.label="grd8" org.eventb.core.predicate="clear_vel_man = FALSE"/>
+        <org.eventb.core.action name="1" org.eventb.core.assignment="vel_man_before_vel ≔ select_speed" org.eventb.core.label="act7"/>
+        <org.eventb.core.action name="2" org.eventb.core.assignment="vel_man_input_speed ≔ gamepad_twist" org.eventb.core.label="act8"/>
+        <org.eventb.core.action name="act1" org.eventb.core.assignment="vel_man_gamepad_received ≔ TRUE" org.eventb.core.label="act10"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="A" org.eventb.core.comment="Set the navigation mode" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="nav_mode">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="nav_mode"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="vel_man_to(func_nav_mode) ≔ FALSE" org.eventb.core.label="act3"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd6" org.eventb.core.predicate="vel_man_to(func_nav_mode) = TRUE"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="vel_man_forwarded_to ≔ func_nav_mode" org.eventb.core.label="act4"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="clear_vel_man ≔ TRUE" org.eventb.core.label="act5"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd7" org.eventb.core.predicate="from ∈ VEL_MAN_FROM"/>
+        <org.eventb.core.parameter name="-" org.eventb.core.comment="Sender of the message" org.eventb.core.identifier="from"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="vel_man_message_from ≔ from" org.eventb.core.label="act6"/>
+        <org.eventb.core.action name="/" org.eventb.core.assignment="vel_man_message_processed(func_nav_mode) ≔ TRUE" org.eventb.core.label="act7"/>
+        <org.eventb.core.guard name="0" org.eventb.core.label="grd8" org.eventb.core.predicate="clear_vel_man = FALSE"/>
+        <org.eventb.core.action name="1" org.eventb.core.assignment="vel_man_before_mode ≔ autonomous_navigation" org.eventb.core.label="act8"/>
+        <org.eventb.core.action name="2" org.eventb.core.assignment="vel_man_mode_cmd ≔ new_mode" org.eventb.core.label="act9"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="B" org.eventb.core.comment="Sets the state of the auto mode" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="nav_auto_state">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="nav_auto_state"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="vel_man_to(func_auto_state) ≔ FALSE" org.eventb.core.label="act3"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd7" org.eventb.core.predicate="vel_man_to(func_auto_state) = TRUE"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="vel_man_forwarded_to ≔ func_auto_state" org.eventb.core.label="act4"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="clear_vel_man ≔ TRUE" org.eventb.core.label="act5"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd8" org.eventb.core.predicate="from ∈ VEL_MAN_FROM"/>
+        <org.eventb.core.parameter name="-" org.eventb.core.comment="Sender of the message" org.eventb.core.identifier="from"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="vel_man_message_from ≔ from" org.eventb.core.label="act6"/>
+        <org.eventb.core.action name="/" org.eventb.core.assignment="vel_man_message_processed(func_auto_state) ≔ TRUE" org.eventb.core.label="act7"/>
+        <org.eventb.core.guard name="0" org.eventb.core.label="grd9" org.eventb.core.predicate="clear_vel_man = FALSE"/>
+        <org.eventb.core.action name="1" org.eventb.core.assignment="vel_man_auto_cmd ≔ nav_auto_instr" org.eventb.core.label="act8"/>
+        <org.eventb.core.action name="2" org.eventb.core.assignment="vel_man_before_auto ≔ autonomous_navigation" org.eventb.core.label="act9"/>
+        <org.eventb.core.action name="3" org.eventb.core.assignment="vel_man_gamepad_received ≔ TRUE" org.eventb.core.label="act10"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="C" org.eventb.core.comment="Shutdown the velocity manager node" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="shutdown_vel_manager">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="shutdown_vel_manager"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="vel_man_to(func_shutdown_vel_manager) ≔ FALSE" org.eventb.core.label="act2"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd5" org.eventb.core.predicate="vel_man_to(func_shutdown_vel_manager) = TRUE"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="vel_man_forwarded_to ≔ func_shutdown_vel_manager" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="clear_vel_man ≔ TRUE" org.eventb.core.label="act4"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd6" org.eventb.core.predicate="from ∈ VEL_MAN_FROM"/>
+        <org.eventb.core.parameter name="-" org.eventb.core.comment="Sender of the message" org.eventb.core.identifier="from"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="vel_man_message_from ≔ from" org.eventb.core.label="act5"/>
+        <org.eventb.core.action name="/" org.eventb.core.assignment="vel_man_message_processed(func_shutdown_vel_manager) ≔ TRUE" org.eventb.core.label="act6"/>
+        <org.eventb.core.action name="0" org.eventb.core.assignment="vel_man_shutdown_cmd ≔ command" org.eventb.core.label="act7"/>
+        <org.eventb.core.guard name="1" org.eventb.core.label="grd7" org.eventb.core.predicate="clear_vel_man = FALSE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="D" org.eventb.core.comment="Destroys the velocity manager node" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="destroy_vel_manager">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="destroy_vel_manager"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="vel_man_to(func_destroy_vel_manager) ≔ FALSE" org.eventb.core.label="act2"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd5" org.eventb.core.predicate="vel_man_to(func_destroy_vel_manager) = TRUE"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="vel_man_forwarded_to ≔ func_destroy_vel_manager" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="clear_vel_man ≔ TRUE" org.eventb.core.label="act4"/>
+        <org.eventb.core.parameter name="," org.eventb.core.comment="Sender of the message" org.eventb.core.identifier="from"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd6" org.eventb.core.predicate="from ∈ VEL_MAN_FROM"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="vel_man_message_from ≔ from" org.eventb.core.label="act5"/>
+        <org.eventb.core.action name="/" org.eventb.core.assignment="vel_man_message_processed(func_destroy_vel_manager) ≔ TRUE" org.eventb.core.label="act6"/>
+        <org.eventb.core.action name="0" org.eventb.core.assignment="vel_man_destroy_cmd ≔ command" org.eventb.core.label="act7"/>
+        <org.eventb.core.guard name="1" org.eventb.core.label="grd7" org.eventb.core.predicate="clear_vel_man = FALSE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="E" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="ROS_vel_manager">
+        <org.eventb.core.parameter name="'" org.eventb.core.comment="Destination function" org.eventb.core.identifier="to"/>
+        <org.eventb.core.guard name="(" org.eventb.core.label="grd1" org.eventb.core.predicate="to ∈ VEL_MANAGER_FUNCTIONS∖{func_vel_other}"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd2" org.eventb.core.predicate="vel_manager_running = TRUE"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd3" org.eventb.core.predicate="¬(TRUE ∈ ran(vel_man_to))"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="vel_man_to(to) ≔ TRUE" org.eventb.core.label="act1"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd4" org.eventb.core.predicate="clear_vel_man = FALSE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.invariant name="F" org.eventb.core.label="type_vel_man_to" org.eventb.core.predicate="vel_man_to ∈ VEL_MANAGER_FUNCTIONS → BOOL"/>
+    <org.eventb.core.event name="var14" org.eventb.core.comment="TODO : special clear for each node" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="need_clear">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="need_clear"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="vel_man_gamepad_transmition ≔ FALSE" org.eventb.core.label="act9"/>
+    </org.eventb.core.event>
+    <org.eventb.core.invariant name="var18" org.eventb.core.label="type_vel_man_forwarded_to" org.eventb.core.predicate="vel_man_forwarded_to ∈ VEL_MANAGER_FUNCTIONS "/>
+    <org.eventb.core.variable name="var19" org.eventb.core.comment="Asks to clear the temporary variables of velocity manager" org.eventb.core.identifier="clear_vel_man"/>
+    <org.eventb.core.invariant name="var1:" org.eventb.core.label="type_clear_vel_man" org.eventb.core.predicate="clear_vel_man ∈ BOOL"/>
+    <org.eventb.core.event name="var1;" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="need_clear_velman">
+        <org.eventb.core.guard name="'" org.eventb.core.label="grd1" org.eventb.core.predicate="clear_vel_man = TRUE"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="clear_vel_man ≔ FALSE" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="vel_man_forwarded_to ≔ func_vel_other" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="act1" org.eventb.core.assignment="vel_man_shutdown_cmd ≔ sd_other" org.eventb.core.label="init_vel_man_shutdown_cmd"/>
+        <org.eventb.core.action name="act2" org.eventb.core.assignment="vel_man_destroy_cmd ≔ dst_abort" org.eventb.core.label="init_vel_man_destroy_cmd"/>
+        <org.eventb.core.action name="act3" org.eventb.core.assignment="vel_man_auto_cmd ≔ nav_autonomous_other" org.eventb.core.label="init_vel_man_auto_cmd"/>
+        <org.eventb.core.action name="act4" org.eventb.core.assignment="vel_man_before_auto ≔ FALSE" org.eventb.core.label="init_vel_man_before_auto"/>
+        <org.eventb.core.action name="act5" org.eventb.core.assignment="vel_man_before_vel ≔ {0↦0,1↦0,2↦0,3↦0,4↦0,5↦0}" org.eventb.core.label="init_vel_man_before_vel"/>
+        <org.eventb.core.action name="act6" org.eventb.core.assignment="vel_man_input_speed ≔ {0↦0,1↦0,2↦0,3↦0,4↦0,5↦0}" org.eventb.core.label="init_vel_man_input_seed"/>
+        <org.eventb.core.action name="act7" org.eventb.core.assignment="vel_man_before_mode ≔ FALSE" org.eventb.core.label="init_vel_man_before_manual"/>
+        <org.eventb.core.action name="act8" org.eventb.core.assignment="vel_man_mode_cmd ≔ nav_other" org.eventb.core.label="Init_vel_man_mode_cmd&#9;"/>
+        <org.eventb.core.action name="act9" org.eventb.core.assignment="vel_man_gamepad_received ≔ FALSE" org.eventb.core.label="init_vel_man_gamepad_received"/>
+        <org.eventb.core.action name="act11" org.eventb.core.assignment="vel_man_message_processed ≔ {func_vel_other ↦ FALSE, func_vel_auto ↦ FALSE, func_vel_manual ↦ FALSE, func_nav_mode ↦ FALSE, func_auto_state ↦ FALSE, func_shutdown_vel_manager ↦ FALSE, func_destroy_vel_manager ↦ FALSE}" org.eventb.core.label="init_vel_man_message_processed"/>
+    </org.eventb.core.event>
+    <org.eventb.core.invariant name="var1?" org.eventb.core.label="type_vel_man_message_from" org.eventb.core.predicate="vel_man_message_from ∈ VEL_MAN_FROM"/>
+    <org.eventb.core.invariant name="var1A" org.eventb.core.label="type_vel_man_message_processed" org.eventb.core.predicate="vel_man_message_processed ∈ VEL_MANAGER_FUNCTIONS → BOOL"/>
+    <org.eventb.core.invariant name="var1C" org.eventb.core.label="type_vel_man_shutdown_cmd" org.eventb.core.predicate="vel_man_shutdown_cmd ∈ CMD_SHUTDOWN_MSG"/>
+    <org.eventb.core.invariant name="var1E" org.eventb.core.label="type_vel_man_destroy_cmd" org.eventb.core.predicate="vel_man_destroy_cmd ∈ CMD_DESTROY_MSG "/>
+    <org.eventb.core.invariant name="var1G" org.eventb.core.label="type_vel_man_auto_cmd" org.eventb.core.predicate="vel_man_auto_cmd ∈ NAV_AUTO_INSTRUCTION"/>
+    <org.eventb.core.invariant name="var1I" org.eventb.core.label="type_vel_man_before_auto" org.eventb.core.predicate="vel_man_before_auto ∈ BOOL"/>
+    <org.eventb.core.variable name="=" org.eventb.core.comment="Next event to execute velocity manager" org.eventb.core.identifier="vel_man_to"/>
+    <org.eventb.core.variable name="var17" org.eventb.core.comment="[VERIF]Function to which the message has been forwarded" org.eventb.core.identifier="vel_man_forwarded_to"/>
+    <org.eventb.core.variable name="var1&gt;" org.eventb.core.comment="Who sent the message to velman" org.eventb.core.identifier="vel_man_message_from"/>
+    <org.eventb.core.variable name="var1@" org.eventb.core.comment="Has the message been processed" org.eventb.core.identifier="vel_man_message_processed"/>
+    <org.eventb.core.variable name="var1B" org.eventb.core.comment="[VERIF] Shutdown command received velman" org.eventb.core.identifier="vel_man_shutdown_cmd"/>
+    <org.eventb.core.variable name="var1D" org.eventb.core.comment="[VERIF] Destroy command received velman" org.eventb.core.identifier="vel_man_destroy_cmd"/>
+    <org.eventb.core.variable name="var1F" org.eventb.core.comment="[VERIF] Auto command received velman" org.eventb.core.identifier="vel_man_auto_cmd"/>
+    <org.eventb.core.variable name="var1H" org.eventb.core.comment="[VERIF] Auto state before auto velman" org.eventb.core.identifier="vel_man_before_auto"/>
+    <org.eventb.core.variable name="var20" org.eventb.core.comment="[VERIF] Speed before event velman" org.eventb.core.identifier="vel_man_before_vel"/>
+    <org.eventb.core.invariant name="var1N" org.eventb.core.label="type_man_before_vel" org.eventb.core.predicate="vel_man_before_vel ∈ 0‥5→ℤ"/>
+    <org.eventb.core.invariant name="var23" org.eventb.core.label="type_man_input_speed" org.eventb.core.predicate="vel_man_input_speed ∈ 0‥5→ℤ"/>
+    <org.eventb.core.invariant name="var25" org.eventb.core.label="type_vel_man_before_mode" org.eventb.core.predicate="vel_man_before_mode ∈ BOOL"/>
+    <org.eventb.core.invariant name="var27" org.eventb.core.label="type_vel_man_mode_cmd" org.eventb.core.predicate="vel_man_mode_cmd ∈ NAVIGATION_MODE"/>
+    <org.eventb.core.invariant name="var2;" org.eventb.core.label="type_vel_man_gamepad_transmition" org.eventb.core.predicate="vel_man_gamepad_transmition ∈ BOOL"/>
+    <org.eventb.core.invariant name="var29" org.eventb.core.label="type_vel_gamepad_received" org.eventb.core.predicate="vel_man_gamepad_received ∈ BOOL"/>
+    <org.eventb.core.invariant name="inv8" org.eventb.core.comment="SR1" org.eventb.core.label="vel_man_vmanual_processed" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_vel_manual ∧ vel_man_message_from = vel_man_from_gamepad ⇒ vel_man_message_processed(func_vel_manual) = TRUE"/>
+    <org.eventb.core.invariant name="inv11" org.eventb.core.comment="SR1" org.eventb.core.label="vel_man_vmanual_not_processed" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_vel_manual ∧ ¬ vel_man_message_from = vel_man_from_gamepad ⇒ vel_man_message_processed(func_vel_manual) = FALSE"/>
+    <org.eventb.core.invariant name="inv6" org.eventb.core.comment="SR2" org.eventb.core.label="vel_man_vauto_processed" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_vel_auto ∧ vel_man_message_from = vel_man_from_nav2 ⇒ vel_man_message_processed(func_vel_auto) = TRUE"/>
+    <org.eventb.core.invariant name="inv7" org.eventb.core.comment="SR2" org.eventb.core.label="vel_man_vauto_not_processed" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_vel_auto ∧ ¬ vel_man_message_from = vel_man_from_nav2 ⇒ vel_man_message_processed(func_vel_auto) = FALSE"/>
+    <org.eventb.core.invariant name="var1=" org.eventb.core.comment="SR3" org.eventb.core.label="vel_man_shutdown_processed" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_shutdown_vel_manager ∧ vel_man_message_from = vel_man_from_cs ⇒ vel_man_message_processed(func_shutdown_vel_manager) = TRUE"/>
+    <org.eventb.core.invariant name="inv5" org.eventb.core.comment="SR3" org.eventb.core.label="vel_man_shutdown_not_processed" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_shutdown_vel_manager ∧ ¬ vel_man_message_from = vel_man_from_cs ⇒ vel_man_message_processed(func_shutdown_vel_manager) = FALSE"/>
+    <org.eventb.core.invariant name="inv4" org.eventb.core.comment="SR4" org.eventb.core.label="vel_man_destroy_processed" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_destroy_vel_manager ∧ vel_man_message_from = vel_man_from_cs ⇒ vel_man_message_processed(func_destroy_vel_manager) = TRUE"/>
+    <org.eventb.core.invariant name="inv3" org.eventb.core.comment="SR4" org.eventb.core.label="vel_man_destroy_not_processed" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_destroy_vel_manager ∧ ¬ vel_man_message_from = vel_man_from_cs ⇒ vel_man_message_processed(func_destroy_vel_manager) = FALSE"/>
+    <org.eventb.core.invariant name="inv16" org.eventb.core.comment="SR5" org.eventb.core.label="vel_man_mode_processed" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_nav_mode ∧ vel_man_message_from = vel_man_from_cs ⇒ vel_man_message_processed(func_nav_mode) = TRUE"/>
+    <org.eventb.core.invariant name="inv14" org.eventb.core.comment="SR5" org.eventb.core.label="vel_man_mode_not_processed" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_nav_mode ∧ ¬ vel_man_message_from = vel_man_from_cs ⇒ vel_man_message_processed(func_nav_mode) = FALSE"/>
+    <org.eventb.core.invariant name="inv10" org.eventb.core.comment="SR6" org.eventb.core.label="vel_man_sauto_processed" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_auto_state ∧ vel_man_message_from = vel_man_from_gamepad ⇒ vel_man_message_processed(func_auto_state) = TRUE"/>
+    <org.eventb.core.invariant name="inv13" org.eventb.core.comment="SR6" org.eventb.core.label="vel_man_sauto_not_processed" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_auto_state ∧ ¬ vel_man_message_from = vel_man_from_gamepad ⇒ vel_man_message_processed(func_auto_state) = FALSE"/>
+    <org.eventb.core.invariant name="inv19" org.eventb.core.comment="SR7" org.eventb.core.label="shutdown_stops_node" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_shutdown_vel_manager ∧ vel_man_shutdown_cmd = sd_shutdown ⇒ vel_manager_running = FALSE"/>
+    <org.eventb.core.invariant name="inv20" org.eventb.core.comment="SR8" org.eventb.core.label="not_shutdown_node_not_stopped" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_shutdown_vel_manager ∧ vel_man_shutdown_cmd = sd_other ⇒ vel_manager_running = TRUE"/>
+    <org.eventb.core.invariant name="inv17" org.eventb.core.comment="SR9" org.eventb.core.label="destroy_stops_node" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_destroy_vel_manager ∧ vel_man_destroy_cmd = dst_abort ⇒ vel_manager_running = FALSE"/>
+    <org.eventb.core.invariant name="inv18" org.eventb.core.comment="SR10" org.eventb.core.label="not_destroy_node_not_stopped" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_destroy_vel_manager ∧ vel_man_destroy_cmd = dst_other ⇒ vel_manager_running = TRUE"/>
+    <org.eventb.core.invariant name="inv25" org.eventb.core.comment="SR11" org.eventb.core.label="mode_other_instr_does_nothing" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_nav_mode ∧ vel_man_mode_cmd = nav_other ⇒ autonomous_navigation = vel_man_before_mode"/>
+    <org.eventb.core.invariant name="inv26" org.eventb.core.comment="SR11" org.eventb.core.label="mode_start_auto" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_nav_mode ∧ vel_man_mode_cmd = nav_auto ⇒ autonomous_navigation = TRUE"/>
+    <org.eventb.core.invariant name="inv27" org.eventb.core.comment="SR11" org.eventb.core.label="mode_start_manual" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_nav_mode ∧ vel_man_mode_cmd = nav_manual ⇒ autonomous_navigation = FALSE"/>
+    <org.eventb.core.invariant name="var1K" org.eventb.core.comment="SR12" org.eventb.core.label="auto_start_start_auto" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_auto_state ∧ vel_man_auto_cmd = nav_autonomous_start ⇒ autonomous_navigation = TRUE"/>
+    <org.eventb.core.invariant name="var1L" org.eventb.core.comment="SR12" org.eventb.core.label="auto_end_end_auto" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_auto_state ∧ vel_man_auto_cmd = nav_autonomous_end ⇒ autonomous_navigation = FALSE"/>
+    <org.eventb.core.invariant name="var1J" org.eventb.core.comment="SR13" org.eventb.core.label="auto_other_instr_does_nothing" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_auto_state ∧ vel_man_auto_cmd = nav_autonomous_other ⇒ autonomous_navigation = vel_man_before_auto"/>
+    <org.eventb.core.invariant name="var21" org.eventb.core.comment="SR14" org.eventb.core.label="auto_vel_updates" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_vel_auto ∧ autonomous_navigation = TRUE ⇒ select_speed = vel_man_input_speed"/>
+    <org.eventb.core.invariant name="inv22" org.eventb.core.comment="SR15" org.eventb.core.label="not_auto_vel_no_update" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_vel_auto ∧ autonomous_navigation = FALSE ⇒ select_speed = vel_man_before_vel"/>
+    <org.eventb.core.invariant name="inv23" org.eventb.core.comment="SR16" org.eventb.core.label="manual_vel_updates" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_vel_manual ∧ autonomous_navigation = TRUE ⇒ select_speed = vel_man_before_vel"/>
+    <org.eventb.core.invariant name="inv24" org.eventb.core.comment="SR17" org.eventb.core.label="not_manual_vel_no_update" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_vel_manual ∧ autonomous_navigation = FALSE ⇒ select_speed = vel_man_input_speed"/>
+    <org.eventb.core.variable name="var22" org.eventb.core.comment="[VERIF] Input speed velman" org.eventb.core.identifier="vel_man_input_speed"/>
+    <org.eventb.core.variable name="var24" org.eventb.core.comment="[VERIF] Auto mode before" org.eventb.core.identifier="vel_man_before_mode"/>
+    <org.eventb.core.variable name="var26" org.eventb.core.comment="[VERIF] Mode command received velman" org.eventb.core.identifier="vel_man_mode_cmd"/>
+    <org.eventb.core.variable name="var28" org.eventb.core.comment="[VERIF] Message received by other module" org.eventb.core.identifier="vel_man_gamepad_received"/>
+    <org.eventb.core.variable name="var2:" org.eventb.core.comment="[VERIF] Message transmited to other module" org.eventb.core.identifier="vel_man_gamepad_transmition"/>
+    <org.eventb.core.invariant name="var2&gt;" org.eventb.core.label="helper_message_transmition1" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_auto_state ⇒ vel_man_gamepad_received = TRUE"/>
+    <org.eventb.core.invariant name="inv29" org.eventb.core.label="helper_message_transmition2" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_forwarded_to = func_vel_manual ⇒ vel_man_gamepad_received = TRUE"/>
+    <org.eventb.core.invariant name="var2=" org.eventb.core.comment="velman SR7" org.eventb.core.label="auto_state_receives_message" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_gamepad_transmition = TRUE ∧ vel_man_forwarded_to = func_auto_state ⇒ vel_man_gamepad_received = TRUE"/>
+    <org.eventb.core.invariant name="inv28" org.eventb.core.comment="velman SR7" org.eventb.core.label="vel_manual_receives_message" org.eventb.core.predicate="clear_vel_man = TRUE ∧ vel_man_gamepad_transmition = TRUE ∧ vel_man_forwarded_to = func_vel_manual ⇒ vel_man_gamepad_received = TRUE"/>
+    <org.eventb.core.invariant name="var2@" org.eventb.core.label="helper_processed_messages" org.eventb.core.predicate="∀f · f∈VEL_MANAGER_FUNCTIONS ∧ clear_vel_man = FALSE ⇒ vel_man_message_processed(f) = FALSE"/>
+    <org.eventb.core.invariant name="var2?" org.eventb.core.comment="SR1-6" org.eventb.core.label="processed_messages_should_be_processed" org.eventb.core.predicate="∀f · f∈VEL_MANAGER_FUNCTIONS ∧ clear_vel_man = TRUE ∧ vel_man_message_processed(f) = TRUE ⇒ vel_man_forwarded_to = f"/>
+    <org.eventb.core.invariant name="var2A" org.eventb.core.comment="velman SR5" org.eventb.core.label="gamepad_sends_speed" org.eventb.core.predicate="clear_gamepad = TRUE ∧ gp_forwarded_to = func_gamepad_twist ⇒ vel_man_gamepad_transmition = TRUE"/>
+</org.eventb.core.machineFile>

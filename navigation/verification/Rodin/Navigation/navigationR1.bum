@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+    <org.eventb.core.refinesMachine name="'" org.eventb.core.target="navigation"/>
+    <org.eventb.core.seesContext name="2" org.eventb.core.target="navigation_ctx1"/>
+    <org.eventb.core.variable name="var2" org.eventb.core.comment="Speed message received" org.eventb.core.identifier="gamepad_speed"/>
+    <org.eventb.core.variable name="var3" org.eventb.core.comment="Auto nav message instruction" org.eventb.core.identifier="gamepad_auto_nav"/>
+    <org.eventb.core.event name="4" org.eventb.core.comment="Initialisation of the variables" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="gamepad_man_to ≔ {func_gamepad_none ↦ FALSE, func_gamepad ↦ FALSE, func_shutdown_gamepad ↦ FALSE, func_destroy_gamepad ↦ FALSE, func_speed_filter ↦ FALSE, func_gamepad_twist ↦ FALSE}" org.eventb.core.label="init_gamepad_man_to"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="clear_gamepad ≔ FALSE" org.eventb.core.label="init_clear_gamepad"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="gp_forwarded_to ≔ func_gamepad_none" org.eventb.core.label="init_gp_forwarded_to"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="gamepad_destroy_cmd ≔ dst_other" org.eventb.core.label="init_gamepad_destroy_cmd"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="gamepad_shutdown_cmd ≔ sd_other" org.eventb.core.label="init_gamepad_shutdown_cmd"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="gamepad_auto_pressed ≔ FALSE" org.eventb.core.label="init_gamepad_auto_pressed"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="gamepad_manual_pressed ≔ FALSE" org.eventb.core.label="init_gamepad_manual_pressed"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="gamepad_msg_from ≔ gamepad_from_other" org.eventb.core.label="init_gamepad_msg_from"/>
+        <org.eventb.core.action name="/" org.eventb.core.assignment="gamepad_message_processed ≔ {func_gamepad_none ↦ FALSE, func_gamepad ↦ FALSE, func_shutdown_gamepad ↦ FALSE, func_destroy_gamepad ↦ FALSE, func_speed_filter ↦ FALSE, func_gamepad_twist ↦ FALSE}" org.eventb.core.label="init_gamepad_message_processed"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="var1" org.eventb.core.comment="State of the gamepad node" org.eventb.core.identifier="gamepad_manager_running"/>
+    <org.eventb.core.event name="var2" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="gamepad">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="gamepad"/>
+        <org.eventb.core.guard name="(" org.eventb.core.label="grd8" org.eventb.core.predicate="gamepad_man_to(func_gamepad) = TRUE"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="gamepad_man_to ≔ gamepad_man_to {func_gamepad ↦ FALSE, func_speed_filter ↦ TRUE}" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="clear_gamepad ≔ TRUE" org.eventb.core.label="act4"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd9" org.eventb.core.predicate="clear_gamepad = FALSE"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="gp_forwarded_to ≔ func_gamepad" org.eventb.core.label="act5"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="gamepad_auto_pressed ≔ activate_auto_state" org.eventb.core.label="act6"/>
+        <org.eventb.core.action name="/" org.eventb.core.assignment="gamepad_manual_pressed ≔ activate_manual_state" org.eventb.core.label="act7"/>
+        <org.eventb.core.parameter name="0" org.eventb.core.comment="Sender of the message" org.eventb.core.identifier="from"/>
+        <org.eventb.core.guard name="1" org.eventb.core.label="grd10" org.eventb.core.predicate="from ∈ GAMEPAD_SPEED_FROM"/>
+        <org.eventb.core.action name="2" org.eventb.core.assignment="gamepad_message_processed(func_gamepad) ≔ TRUE" org.eventb.core.label="act8"/>
+        <org.eventb.core.action name="3" org.eventb.core.assignment="gamepad_msg_from ≔ from" org.eventb.core.label="act9"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var3" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="shutdown_gamepad">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="shutdown_gamepad"/>
+        <org.eventb.core.guard name="'" org.eventb.core.label="grd5" org.eventb.core.predicate="gamepad_manager_running = TRUE"/>
+        <org.eventb.core.guard name="grd2" org.eventb.core.label="grd6" org.eventb.core.predicate="command = sd_shutdown ⇒ new_running_state = FALSE"/>
+        <org.eventb.core.guard name="(" org.eventb.core.label="grd7" org.eventb.core.predicate="gamepad_man_to(func_shutdown_gamepad) = TRUE"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="gamepad_man_to(func_shutdown_gamepad) ≔ FALSE" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="clear_gamepad ≔ TRUE" org.eventb.core.label="act3"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd8" org.eventb.core.predicate="clear_gamepad = FALSE"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="gp_forwarded_to ≔ func_shutdown_gamepad" org.eventb.core.label="act4"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="gamepad_shutdown_cmd ≔ command" org.eventb.core.label="act5"/>
+        <org.eventb.core.action name="element4" org.eventb.core.assignment="gamepad_message_processed(func_shutdown_gamepad) ≔ TRUE" org.eventb.core.label="act6"/>
+        <org.eventb.core.action name="element5" org.eventb.core.assignment="gamepad_msg_from ≔ from" org.eventb.core.label="act7"/>
+        <org.eventb.core.guard name="element6" org.eventb.core.label="grd9" org.eventb.core.predicate="from ∈ GAMEPAD_SPEED_FROM"/>
+        <org.eventb.core.parameter name="element7" org.eventb.core.comment="Sender of the message" org.eventb.core.identifier="from"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var4" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="destroy_gamepad">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="destroy_gamepad"/>
+        <org.eventb.core.guard name="(" org.eventb.core.label="grd5" org.eventb.core.predicate="gamepad_man_to(func_destroy_gamepad) = TRUE"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="gamepad_man_to(func_destroy_gamepad) ≔ FALSE" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="clear_gamepad ≔ TRUE" org.eventb.core.label="act3"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd6" org.eventb.core.predicate="clear_gamepad = FALSE"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="gp_forwarded_to ≔ func_destroy_gamepad" org.eventb.core.label="act4"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="gamepad_destroy_cmd ≔ command" org.eventb.core.label="act5"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="gamepad_message_processed(func_destroy_gamepad) ≔ TRUE" org.eventb.core.label="act6"/>
+        <org.eventb.core.action name="/" org.eventb.core.assignment="gamepad_msg_from ≔ from" org.eventb.core.label="act7"/>
+        <org.eventb.core.parameter name="0" org.eventb.core.comment="Sender of the message" org.eventb.core.identifier="from"/>
+        <org.eventb.core.guard name="1" org.eventb.core.label="grd7" org.eventb.core.predicate="from ∈ GAMEPAD_SPEED_FROM"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var5" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="speed_filter">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="speed_filter"/>
+        <org.eventb.core.guard name="(" org.eventb.core.label="grd4" org.eventb.core.predicate="gamepad_man_to(func_speed_filter) = TRUE"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="gamepad_man_to ≔ gamepad_man_to  {func_speed_filter ↦ FALSE, func_gamepad_twist ↦ TRUE}" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="clear_gamepad ≔ TRUE" org.eventb.core.label="act4"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd5" org.eventb.core.predicate="clear_gamepad = FALSE"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="gp_forwarded_to ≔  func_speed_filter" org.eventb.core.label="act5"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="var4" org.eventb.core.comment="Filtered speed value in x" org.eventb.core.identifier="filtered_speed_x"/>
+    <org.eventb.core.variable name="var:" org.eventb.core.comment="Filtered speed value in z" org.eventb.core.identifier="filtered_speed_z"/>
+    <org.eventb.core.variable name="var9" org.eventb.core.comment="Twist message for the speed selector" org.eventb.core.identifier="gamepad_twist"/>
+    <org.eventb.core.variable name="var6" org.eventb.core.comment="Next event to execute" org.eventb.core.identifier="gamepad_man_to"/>
+    <org.eventb.core.invariant name="var7" org.eventb.core.label="type_gamepad_man_to" org.eventb.core.predicate="gamepad_man_to ∈ GAMEPAD_FUNCTIONS → BOOL"/>
+    <org.eventb.core.event name="var;" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="set_gamepad_twist">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="set_gamepad_twist"/>
+        <org.eventb.core.guard name="(" org.eventb.core.label="grd2" org.eventb.core.predicate="gamepad_man_to(func_gamepad_twist) = TRUE"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="gamepad_man_to(func_gamepad_twist) ≔ FALSE" org.eventb.core.label="act2"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd3" org.eventb.core.predicate="clear_gamepad = FALSE"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="clear_gamepad ≔ TRUE" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="gp_forwarded_to ≔ func_gamepad_twist" org.eventb.core.label="act4"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="var8" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="ROS_gamepad">
+        <org.eventb.core.guard name="'" org.eventb.core.label="grd1" org.eventb.core.predicate="gamepad_manager_running = TRUE"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="gamepad_man_to(to) ≔ TRUE" org.eventb.core.label="act1"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd2" org.eventb.core.predicate="to ∈ GAMEPAD_FUNCTIONS∖{func_speed_filter, func_gamepad_twist, func_gamepad_none}"/>
+        <org.eventb.core.parameter name="*" org.eventb.core.identifier="to"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd3" org.eventb.core.predicate="¬(TRUE ∈ ran(gamepad_man_to))"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd4" org.eventb.core.predicate="clear_gamepad = FALSE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="var=" org.eventb.core.comment="Asks to clear the temporary variables" org.eventb.core.identifier="clear_gamepad"/>
+    <org.eventb.core.invariant name="var&gt;" org.eventb.core.label="type_clear_gamepad" org.eventb.core.predicate="clear_gamepad ∈ BOOL"/>
+    <org.eventb.core.event name="var?" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="need_clear">
+        <org.eventb.core.guard name="'" org.eventb.core.label="grd1" org.eventb.core.predicate="clear_gamepad = TRUE"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="clear_gamepad ≔ FALSE" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="gp_forwarded_to ≔ func_gamepad_none" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="gamepad_destroy_cmd ≔ dst_other" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="gamepad_shutdown_cmd ≔ sd_other" org.eventb.core.label="act4"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="gamepad_auto_pressed ≔ FALSE" org.eventb.core.label="act5"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="gamepad_manual_pressed ≔ FALSE" org.eventb.core.label="act6"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="gamepad_msg_from ≔ gamepad_from_other" org.eventb.core.label="act7"/>
+        <org.eventb.core.action name="/" org.eventb.core.assignment="gamepad_man_to ≔ {func_gamepad_none ↦ FALSE, func_gamepad ↦ FALSE, func_shutdown_gamepad ↦ FALSE, func_destroy_gamepad ↦ FALSE, func_speed_filter ↦ FALSE, func_gamepad_twist ↦ FALSE}" org.eventb.core.label="act8"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="var@" org.eventb.core.comment="[VERIF]Function to which the flow has been forwarded to" org.eventb.core.identifier="gp_forwarded_to"/>
+    <org.eventb.core.invariant name="varA" org.eventb.core.label="type_gp_forward_to" org.eventb.core.predicate="gp_forwarded_to ∈ GAMEPAD_FUNCTIONS"/>
+    <org.eventb.core.variable name="varB" org.eventb.core.comment="[VERIF] Destroy command received" org.eventb.core.identifier="gamepad_destroy_cmd"/>
+    <org.eventb.core.invariant name="varC" org.eventb.core.label="type_gamepad_destroy_cmd" org.eventb.core.predicate="gamepad_destroy_cmd ∈ CMD_DESTROY_MSG "/>
+    <org.eventb.core.invariant name="varG" org.eventb.core.label="type_gamepad_shutdown_cmd" org.eventb.core.predicate="gamepad_shutdown_cmd ∈ CMD_SHUTDOWN_MSG"/>
+    <org.eventb.core.invariant name="varN" org.eventb.core.label="type_gamepad_auto_pressed" org.eventb.core.predicate="gamepad_auto_pressed ∈ BOOL"/>
+    <org.eventb.core.invariant name="varP" org.eventb.core.label="type_gamepad_manual_pressed" org.eventb.core.predicate="gamepad_manual_pressed ∈ BOOL"/>
+    <org.eventb.core.invariant name="varT" org.eventb.core.label="type_gamepad_msg_from" org.eventb.core.predicate="gamepad_msg_from ∈ GAMEPAD_SPEED_FROM"/>
+    <org.eventb.core.invariant name="varW" org.eventb.core.label="type_gamepad_message_processed" org.eventb.core.predicate="gamepad_message_processed ∈ GAMEPAD_FUNCTIONS → BOOL"/>
+    <org.eventb.core.invariant name="varX" org.eventb.core.comment="SR1" org.eventb.core.label="destroy_from_CS_processed" org.eventb.core.predicate="clear_gamepad = TRUE ∧ gp_forwarded_to = func_destroy_gamepad ∧ gamepad_msg_from = gamepad_control_station ⇒ gamepad_message_processed(func_destroy_gamepad) = TRUE"/>
+    <org.eventb.core.invariant name="inv3" org.eventb.core.comment="SR1" org.eventb.core.label="speed_from_CS_processed" org.eventb.core.predicate="clear_gamepad = TRUE ∧ gp_forwarded_to = func_gamepad ∧ gamepad_msg_from = gamepad_control_station ⇒ gamepad_message_processed(func_gamepad) = TRUE"/>
+    <org.eventb.core.invariant name="inv1" org.eventb.core.comment="SR1" org.eventb.core.label="shutdown_from_CS_processed" org.eventb.core.predicate="clear_gamepad = TRUE ∧ gp_forwarded_to = func_shutdown_gamepad ∧ gamepad_msg_from = gamepad_control_station ⇒ gamepad_message_processed(func_shutdown_gamepad) = TRUE"/>
+    <org.eventb.core.invariant name="varY" org.eventb.core.comment="SR2" org.eventb.core.label="destroy_not_from_CS_not_processed" org.eventb.core.predicate="clear_gamepad = TRUE ∧ gp_forwarded_to = func_destroy_gamepad ∧ gamepad_msg_from = gamepad_from_other ⇒ gamepad_message_processed(func_destroy_gamepad) = FALSE"/>
+    <org.eventb.core.invariant name="inv2" org.eventb.core.comment="SR2" org.eventb.core.label="speed_not_from_CS_not_processed" org.eventb.core.predicate="clear_gamepad = TRUE ∧ gp_forwarded_to = func_gamepad ∧ gamepad_msg_from = gamepad_from_other ⇒ gamepad_message_processed(func_gamepad) = FALSE"/>
+    <org.eventb.core.invariant name="inv4" org.eventb.core.comment="SR2" org.eventb.core.label="shutdown_not_from_CS_not_processed" org.eventb.core.predicate="clear_gamepad = TRUE ∧ gp_forwarded_to = func_shutdown_gamepad ∧ gamepad_msg_from = gamepad_from_other ⇒ gamepad_message_processed(func_shutdown_gamepad) = FALSE"/>
+    <org.eventb.core.invariant name="varQ" org.eventb.core.comment="SR3" org.eventb.core.label="auto_mode_pressed" org.eventb.core.predicate="clear_gamepad = TRUE ∧ gp_forwarded_to = func_gamepad ∧ gamepad_auto_pressed = TRUE ⇒ gamepad_auto_nav = nav_autonomous_start"/>
+    <org.eventb.core.invariant name="varR" org.eventb.core.comment="SR4" org.eventb.core.label="manual_mode_pressed" org.eventb.core.predicate="clear_gamepad = TRUE ∧ gp_forwarded_to = func_gamepad ∧ gamepad_auto_pressed = FALSE ∧ gamepad_manual_pressed = TRUE ⇒ gamepad_auto_nav = nav_autonomous_end"/>
+    <org.eventb.core.invariant name="varJ" org.eventb.core.comment="SR9" org.eventb.core.label="filter_x_index5_taken" org.eventb.core.predicate="clear_gamepad = TRUE ∧ gp_forwarded_to = func_speed_filter ∧  ¬ gamepad_speed(5) &gt; 0 ⇒ filtered_speed_x = gamepad_speed(2)"/>
+    <org.eventb.core.invariant name="varK" org.eventb.core.comment="SR9" org.eventb.core.label="filter_x_index2_taken" org.eventb.core.predicate="clear_gamepad = TRUE ∧ gp_forwarded_to = func_speed_filter ∧ gamepad_speed(5) &gt; 0 ⇒ filtered_speed_x = gamepad_speed(5)"/>
+    <org.eventb.core.invariant name="varL" org.eventb.core.comment="SR9" org.eventb.core.label="filter_z_index_0" org.eventb.core.predicate="clear_gamepad = TRUE ∧ gp_forwarded_to = func_speed_filter ⇒ filtered_speed_z = gamepad_speed(0)"/>
+    <org.eventb.core.invariant name="varI" org.eventb.core.comment="SR10" org.eventb.core.label="shutdown_stops_node" org.eventb.core.predicate="clear_gamepad = TRUE ∧ gp_forwarded_to = func_shutdown_gamepad ∧ gamepad_shutdown_cmd = sd_shutdown ⇒ gamepad_manager_running = FALSE"/>
+    <org.eventb.core.invariant name="varH" org.eventb.core.comment="SR10" org.eventb.core.label="not_shutdown_node_not_stopped" org.eventb.core.predicate="clear_gamepad = TRUE ∧ gp_forwarded_to = func_shutdown_gamepad ∧ gamepad_shutdown_cmd = sd_other ⇒ gamepad_manager_running = TRUE"/>
+    <org.eventb.core.invariant name="varD" org.eventb.core.comment="SR11" org.eventb.core.label="destroy_stops_node" org.eventb.core.predicate="clear_gamepad = TRUE ∧ gp_forwarded_to = func_destroy_gamepad ∧ gamepad_destroy_cmd = dst_abort ⇒ gamepad_manager_running = FALSE"/>
+    <org.eventb.core.invariant name="varE" org.eventb.core.comment="SR12" org.eventb.core.label="not_destroy_node_not_stopped" org.eventb.core.predicate="clear_gamepad = TRUE ∧ gp_forwarded_to = func_destroy_gamepad ∧ gamepad_destroy_cmd = dst_other ⇒ gamepad_manager_running = TRUE"/>
+    <org.eventb.core.variable name="varF" org.eventb.core.comment="[VERIF] Shutdown command received" org.eventb.core.identifier="gamepad_shutdown_cmd"/>
+    <org.eventb.core.invariant name="varZ" org.eventb.core.comment="SR13" org.eventb.core.label="twist_correctly_set_x5" org.eventb.core.predicate="clear_gamepad = TRUE ∧ gp_forwarded_to = func_gamepad_twist ∧ gamepad_speed(5) &gt; 0 ⇒ gamepad_twist(0) = gamepad_speed(5) ∧ gamepad_twist(5) = −gamepad_speed(0)"/>
+    <org.eventb.core.invariant name="var^" org.eventb.core.comment="SR13" org.eventb.core.label="twist_correctly_set_x2" org.eventb.core.predicate="clear_gamepad = TRUE ∧ gp_forwarded_to = func_gamepad_twist ∧ ¬ gamepad_speed(5) &gt; 0 ⇒ gamepad_twist(0) = gamepad_speed(2) ∧ gamepad_twist(5) = −gamepad_speed(0)"/>
+    <org.eventb.core.variable name="varM" org.eventb.core.comment="[VERIF] Auto mode button pressed" org.eventb.core.identifier="gamepad_auto_pressed"/>
+    <org.eventb.core.variable name="varO" org.eventb.core.comment="[VERIF] Manual mode button pressed" org.eventb.core.identifier="gamepad_manual_pressed"/>
+    <org.eventb.core.variable name="varS" org.eventb.core.comment="[VERIF] Sender of the message received" org.eventb.core.identifier="gamepad_msg_from"/>
+    <org.eventb.core.variable name="varV" org.eventb.core.comment="[VERIF] Records if the message has been processed or not by the function" org.eventb.core.identifier="gamepad_message_processed"/>
+    <org.eventb.core.invariant name="var[" org.eventb.core.label="helper_twist_2" org.eventb.core.predicate="clear_gamepad = FALSE ∧ gamepad_man_to(func_gamepad_twist) = TRUE ⇒ gamepad_speed(0) = filtered_speed_z"/>
+    <org.eventb.core.invariant name="var\" org.eventb.core.label="helper_twist_x5" org.eventb.core.predicate="clear_gamepad = FALSE ∧ gamepad_man_to(func_gamepad_twist) = TRUE ∧ gamepad_speed(5) &gt; 0 ⇒ filtered_speed_x = gamepad_speed(5)"/>
+    <org.eventb.core.invariant name="var]" org.eventb.core.label="helper_twist_x2" org.eventb.core.predicate="clear_gamepad = FALSE ∧ gamepad_man_to(func_gamepad_twist) = TRUE ∧ ¬ gamepad_speed(5) &gt; 0 ⇒ filtered_speed_x = gamepad_speed(2)"/>
+</org.eventb.core.machineFile>

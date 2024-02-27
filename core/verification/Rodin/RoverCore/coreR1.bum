@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+    <org.eventb.core.refinesMachine name="'" org.eventb.core.target="core"/>
+    <org.eventb.core.seesContext name="*" org.eventb.core.target="core_ctx"/>
+    <org.eventb.core.variable name="(" org.eventb.core.comment="current task executing on the rover" org.eventb.core.identifier="cur_task"/>
+    <org.eventb.core.variable name="," org.eventb.core.comment="list of the number of instances of each module" org.eventb.core.identifier="instances"/>
+    <org.eventb.core.variable name="7" org.eventb.core.comment="Total number of modules (except idle)" org.eventb.core.identifier="nbModules"/>
+    <org.eventb.core.variable name="B" org.eventb.core.comment="Which module has been aborted" org.eventb.core.identifier="moduleAborted"/>
+    <org.eventb.core.event name="C" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="CS_connected ≔ FALSE" org.eventb.core.label="init_CS_connected"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="moduleOperating ≔ {idle↦FALSE, science↦FALSE, maintenance↦FALSE, navigation↦FALSE, manual↦FALSE, undefined_task↦FALSE}" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="moduleCanceled ≔ {idle↦FALSE, science↦FALSE, maintenance↦FALSE, navigation↦FALSE, manual↦FALSE, undefined_task↦FALSE}" org.eventb.core.label="act4"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="moduleInInitPos ≔ {idle↦TRUE, science↦TRUE, maintenance↦TRUE, navigation↦TRUE, manual↦TRUE, undefined_task↦TRUE}" org.eventb.core.label="act5"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="D" org.eventb.core.comment="Launch task event" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="launchTask">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="launchTask"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="E" org.eventb.core.comment="Abort task event" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="abortTask">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="abortTask"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="F" org.eventb.core.comment="Manual launch of the science module" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="manualLaunchScience">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="manualLaunchScience"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="G" org.eventb.core.comment="Manual launch of the maintenance module" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="manualLaunchMaintenance">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="manualLaunchMaintenance"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="H" org.eventb.core.comment="Manual launch of the navigation module" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="manualLaunchNavigation">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="manualLaunchNavigation"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="I" org.eventb.core.comment="Manual launch of the manual module" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="manualLaunchManual">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="manualLaunchManual"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="J" org.eventb.core.comment="Manual launch of the undefined module" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="manualLaunchUndefinedTask">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="manualLaunchUndefinedTask"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="K" org.eventb.core.comment="Cancel task instruction" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="cancelTask">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="task"/>
+        <org.eventb.core.guard name="(" org.eventb.core.label="grd1" org.eventb.core.predicate="task ∈ TASKS∖{idle}"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd2" org.eventb.core.predicate="task ∈ {science, manual, undefined_task} ⇒ newBool = moduleOperating(task) ∧ canceled = FALSE"/>
+        <org.eventb.core.parameter name="*" org.eventb.core.identifier="newBool"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd3" org.eventb.core.predicate="task ∈ {navigation, maintenance} ⇒ newBool = FALSE ∧ canceled = TRUE"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="moduleOperating(task) ≔ newBool" org.eventb.core.comment="Cancel the task" org.eventb.core.label="act1"/>
+        <org.eventb.core.parameter name="-" org.eventb.core.identifier="canceled"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="moduleCanceled(task) ≔ canceled" org.eventb.core.comment="Record the canceled task" org.eventb.core.label="act2"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="`" org.eventb.core.comment="Which module was running before the abort" org.eventb.core.identifier="beforeAbort"/>
+    <org.eventb.core.variable name="L" org.eventb.core.comment="Boolean : Is the control station connected" org.eventb.core.identifier="CS_connected"/>
+    <org.eventb.core.invariant name="M" org.eventb.core.label="type_CS_connected" org.eventb.core.predicate="CS_connected ∈ BOOL"/>
+    <org.eventb.core.event name="N" org.eventb.core.comment="Connection to the control station event" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="connectionRequestCS">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="CS_connected ≔ TRUE" org.eventb.core.comment="Connect the control station to the core" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="S" org.eventb.core.comment="Forward of the navigation goal to the nav module" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="forwardNavigationGoal">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="newBool"/>
+        <org.eventb.core.guard name="(" org.eventb.core.label="grd1" org.eventb.core.predicate="newBool ∈ BOOL"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd2" org.eventb.core.predicate="instances(navigation) &gt; 0 ⇒ newBool = TRUE"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd3" org.eventb.core.predicate="¬(instances(navigation) &gt; 0) ⇒ newBool = FALSE"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="moduleOperating(navigation) ≔ newBool" org.eventb.core.comment="Start the execution of the navigation" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="moduleCanceled(navigation) ≔ FALSE" org.eventb.core.comment="Reset cancel state" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="moduleInInitPos(navigation) ≔ FALSE" org.eventb.core.comment="Wheels not in init pos" org.eventb.core.label="act3"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="T" org.eventb.core.comment="List of modules, keeps track of which module is currently doing something" org.eventb.core.identifier="moduleOperating"/>
+    <org.eventb.core.invariant name="U" org.eventb.core.label="type_moduleOperating" org.eventb.core.predicate="moduleOperating ∈ TASKS→BOOL"/>
+    <org.eventb.core.variable name="V" org.eventb.core.comment="List of modules, keeps track of which module is currently canceled" org.eventb.core.identifier="moduleCanceled"/>
+    <org.eventb.core.invariant name="W" org.eventb.core.label="type_moduleCanceled" org.eventb.core.predicate="moduleCanceled ∈ TASKS→BOOL"/>
+    <org.eventb.core.invariant name="\" org.eventb.core.label="type_moduleInInitPos" org.eventb.core.predicate="moduleInInitPos ∈ TASKS→BOOL"/>
+    <org.eventb.core.invariant name="Y" org.eventb.core.comment="Tasks that cannot operate are not canceled" org.eventb.core.label="not_cancelable_modules_never_canceled" org.eventb.core.predicate="∀task·task∈{science,manual,idle,undefined_task} ∧ moduleOperating(task) = FALSE ⇒ moduleCanceled(task) = FALSE"/>
+    <org.eventb.core.invariant name="X" org.eventb.core.comment="SR15,SR16 : Asking to cancel a task cancels the task" org.eventb.core.label="cancel_goal_does_cancel" org.eventb.core.predicate="∀task·task∈TASKS ∧ moduleCanceled(task) = TRUE ⇒ moduleOperating(task) = FALSE"/>
+    <org.eventb.core.event name="Z" org.eventb.core.comment="Forward of the maintenance goal to the maintenance module" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="forwardHDID">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="newBool"/>
+        <org.eventb.core.guard name="(" org.eventb.core.label="grd1" org.eventb.core.predicate="newBool ∈ BOOL"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd2" org.eventb.core.predicate="instances(maintenance) &gt; 0 ⇒ newBool = TRUE"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd3" org.eventb.core.predicate="¬(instances(maintenance) &gt; 0) ⇒ newBool = FALSE"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="moduleOperating(maintenance) ≔ newBool" org.eventb.core.comment="Start the execution of the maintenance" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="moduleCanceled(maintenance) ≔ FALSE" org.eventb.core.comment="Reset cancel status" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="moduleInInitPos(maintenance) ≔ nNewBool" org.eventb.core.comment="HD not in init position anymore" org.eventb.core.label="act3"/>
+        <org.eventb.core.parameter name="." org.eventb.core.identifier="nNewBool"/>
+        <org.eventb.core.guard name="/" org.eventb.core.label="grd4" org.eventb.core.predicate="newBool = TRUE ⇒ nNewBool = FALSE"/>
+        <org.eventb.core.guard name="0" org.eventb.core.label="grd5" org.eventb.core.predicate="newBool = FALSE ⇒ nNewBool = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="[" org.eventb.core.comment="List of all tasks saying if the module is in initial state" org.eventb.core.identifier="moduleInInitPos"/>
+    <org.eventb.core.invariant name="g" org.eventb.core.comment="SR17 : Maintenance does not run at the same time as navigation" org.eventb.core.label="hd_not_op_with_nav" org.eventb.core.predicate="moduleOperating(maintenance) = TRUE ⇒ moduleOperating(navigation) = FALSE"/>
+    <org.eventb.core.invariant name="h" org.eventb.core.comment="SR18 : Navigation does not run at the same time as maintenance" org.eventb.core.label="nav_not_op_with_hd" org.eventb.core.predicate="moduleOperating(navigation) = TRUE ⇒ moduleOperating(maintenance) = FALSE"/>
+    <org.eventb.core.invariant name="k" org.eventb.core.comment="SR19 : Navigation does not run at the same time as science" org.eventb.core.label="nav_not_op_with_drill" org.eventb.core.predicate="moduleOperating(navigation) = TRUE ⇒ moduleOperating(science) = FALSE"/>
+    <org.eventb.core.invariant name="l" org.eventb.core.comment="SR20 : Science does not run at the same time as navigation" org.eventb.core.label="drill_not_op_with_nav" org.eventb.core.predicate="moduleOperating(science) = TRUE ⇒ moduleOperating(navigation) = FALSE"/>
+    <org.eventb.core.invariant name="c" org.eventb.core.comment="SR21 : The science module is in initial position when the rover is in idle" org.eventb.core.label="drill_retracted_in_idle" org.eventb.core.predicate="cur_task = idle ⇒ moduleInInitPos(science) = TRUE"/>
+    <org.eventb.core.invariant name="]" org.eventb.core.comment="SR21,SR22 : When the rover is in idle, all modules are in initial position" org.eventb.core.label="init_implies_init_pos" org.eventb.core.predicate="∀task·task∈TASKS ∧ cur_task = idle ⇒ moduleInInitPos(task) = TRUE"/>
+    <org.eventb.core.invariant name="e" org.eventb.core.comment="SR22 : HD is in initial position when the rover is in idle" org.eventb.core.label="hd_retracted_in_idle" org.eventb.core.predicate="cur_task = idle ⇒ moduleInInitPos(maintenance) = TRUE"/>
+    <org.eventb.core.invariant name="^" org.eventb.core.comment="SR23 : No module is operating while the rover is in idle" org.eventb.core.label="init_implies_not_operating" org.eventb.core.predicate="∀task·task∈TASKS ∧ cur_task = idle ⇒ moduleOperating(task) = FALSE"/>
+    <org.eventb.core.event name="_" org.eventb.core.comment="Start the drill" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="launchDrill">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="newBool"/>
+        <org.eventb.core.guard name="(" org.eventb.core.label="grd1" org.eventb.core.predicate="instances(science) &gt; 0 ⇒ newBool = TRUE"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd2" org.eventb.core.predicate="¬(instances(science) &gt; 0) ⇒ newBool = FALSE"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="moduleOperating(science) ≔ newBool" org.eventb.core.comment="Start the execution of the science" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="moduleInInitPos(science) ≔ nNewBool" org.eventb.core.comment="Drill not in init position anymore" org.eventb.core.label="act2"/>
+        <org.eventb.core.parameter name="," org.eventb.core.identifier="nNewBool"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd3" org.eventb.core.predicate="newBool = TRUE ⇒ nNewBool = FALSE"/>
+        <org.eventb.core.guard name="." org.eventb.core.label="grd4" org.eventb.core.predicate="newBool = FALSE ⇒ nNewBool = TRUE"/>
+        <org.eventb.core.action name="/" org.eventb.core.assignment="moduleCanceled(science) ≔ FALSE" org.eventb.core.comment="Reset cancel status" org.eventb.core.label="act3"/>
+        <org.eventb.core.guard name="0" org.eventb.core.label="grd5" org.eventb.core.predicate="cur_task = science"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="a" org.eventb.core.comment="List of modules, keeps track of which module is currently launched" org.eventb.core.identifier="launchedModule"/>
+    <org.eventb.core.event name="b" org.eventb.core.comment="At an arbitrary time, the drill finished his job" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="drillEnded">
+        <org.eventb.core.guard name="'" org.eventb.core.label="grd1" org.eventb.core.predicate="moduleOperating(science) = TRUE"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="moduleOperating(science) ≔ FALSE" org.eventb.core.comment="Stops the science execution" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="moduleInInitPos(science) ≔ TRUE" org.eventb.core.comment="Reset drill position" org.eventb.core.label="act2"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="d" org.eventb.core.comment="At an arbitrary time, the hd finished his job" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="hdToInit">
+        <org.eventb.core.guard name="'" org.eventb.core.label="grd1" org.eventb.core.predicate="moduleOperating(maintenance) = TRUE"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="moduleOperating(maintenance) ≔ FALSE" org.eventb.core.comment="Stops the maintenance execution" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="moduleInInitPos(maintenance) ≔ TRUE" org.eventb.core.comment="Reset hd position" org.eventb.core.label="act2"/>
+    </org.eventb.core.event>
+</org.eventb.core.machineFile>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.theory.core.theoryRoot org.eventb.core.comment="Real Theory&#10;&#10;@author Jean-Raymond Abrial, Michael Butler&#10;@June 2014" org.eventb.core.configuration="org.eventb.theory.core.thy">
+<org.eventb.theory.core.axiomaticDefinitionsBlock name=")" org.eventb.core.label="real_def">
+<org.eventb.theory.core.axiomaticTypeDefinition name="'" org.eventb.core.identifier="REAL"/>
+<org.eventb.theory.core.axiomaticOperatorDefinition name="(" org.eventb.core.label="plus" org.eventb.theory.core.associative="false" org.eventb.theory.core.commutative="false" org.eventb.theory.core.formulaType="true" org.eventb.theory.core.notationType="INFIX" org.eventb.theory.core.type="REAL">
+<org.eventb.theory.core.operatorArgument name="'" org.eventb.core.expression="REAL" org.eventb.core.identifier="a"/>
+<org.eventb.theory.core.operatorArgument name="(" org.eventb.core.expression="REAL" org.eventb.core.identifier="b"/>
+</org.eventb.theory.core.axiomaticOperatorDefinition>
+<org.eventb.theory.core.axiomaticDefinitionAxiom name=")" org.eventb.core.comment="addition is commutative" org.eventb.core.label="axm1" org.eventb.core.predicate="∀x,y· (x plus y) = (y plus x)"/>
+<org.eventb.theory.core.axiomaticDefinitionAxiom name="*" org.eventb.core.comment="addition is associative" org.eventb.core.label="axm2" org.eventb.core.predicate="∀x,y,z·((x plus y) plus z) = (x plus (y plus z))"/>
+<org.eventb.theory.core.axiomaticOperatorDefinition name="+" org.eventb.core.label="zero" org.eventb.theory.core.associative="false" org.eventb.theory.core.commutative="false" org.eventb.theory.core.formulaType="true" org.eventb.theory.core.notationType="PREFIX" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.axiomaticDefinitionAxiom name="," org.eventb.core.comment="addition has an identity" org.eventb.core.label="axm3" org.eventb.core.predicate="∀x·(x plus zero) = x"/>
+<org.eventb.theory.core.axiomaticOperatorDefinition name="-" org.eventb.core.label="minus" org.eventb.theory.core.associative="false" org.eventb.theory.core.commutative="false" org.eventb.theory.core.formulaType="true" org.eventb.theory.core.notationType="PREFIX" org.eventb.theory.core.type="REAL">
+<org.eventb.theory.core.operatorArgument name="'" org.eventb.core.expression="REAL" org.eventb.core.identifier="a"/>
+</org.eventb.theory.core.axiomaticOperatorDefinition>
+<org.eventb.theory.core.axiomaticDefinitionAxiom name="." org.eventb.core.comment="addition has an inverse" org.eventb.core.label="axm4" org.eventb.core.predicate="∀x·(x plus (minus (x))) = zero"/>
+<org.eventb.theory.core.axiomaticOperatorDefinition name="/" org.eventb.core.label="mult" org.eventb.theory.core.associative="false" org.eventb.theory.core.commutative="false" org.eventb.theory.core.formulaType="true" org.eventb.theory.core.notationType="INFIX" org.eventb.theory.core.type="REAL">
+<org.eventb.theory.core.operatorArgument name="'" org.eventb.core.expression="REAL" org.eventb.core.identifier="a"/>
+<org.eventb.theory.core.operatorArgument name="(" org.eventb.core.expression="REAL" org.eventb.core.identifier="b"/>
+</org.eventb.theory.core.axiomaticOperatorDefinition>
+<org.eventb.theory.core.axiomaticDefinitionAxiom name="0" org.eventb.core.comment="multiplication is commutative" org.eventb.core.label="axm5" org.eventb.core.predicate="∀x,y·(x mult y) = (y mult x)"/>
+<org.eventb.theory.core.axiomaticDefinitionAxiom name="1" org.eventb.core.comment="multiplication is associative" org.eventb.core.label="axm6" org.eventb.core.predicate="∀x,y,z·((x mult y) mult z) = (x mult (y mult z))"/>
+<org.eventb.theory.core.axiomaticOperatorDefinition name="2" org.eventb.core.label="one" org.eventb.theory.core.associative="false" org.eventb.theory.core.commutative="false" org.eventb.theory.core.formulaType="true" org.eventb.theory.core.notationType="PREFIX" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.axiomaticDefinitionAxiom name="3" org.eventb.core.comment="multiplication has an identity" org.eventb.core.label="axm7" org.eventb.core.predicate="∀x·(x mult one) = x"/>
+<org.eventb.theory.core.axiomaticOperatorDefinition name="4" org.eventb.core.label="inv" org.eventb.theory.core.associative="false" org.eventb.theory.core.commutative="false" org.eventb.theory.core.formulaType="true" org.eventb.theory.core.notationType="PREFIX" org.eventb.theory.core.type="REAL">
+<org.eventb.theory.core.operatorArgument name="'" org.eventb.core.expression="REAL" org.eventb.core.identifier="a"/>
+<org.eventb.theory.core.operatorWDcondition name="(" org.eventb.core.predicate="a ≠ zero"/>
+</org.eventb.theory.core.axiomaticOperatorDefinition>
+<org.eventb.theory.core.axiomaticDefinitionAxiom name="5" org.eventb.core.comment="multiplication has an inverse (except for zero)" org.eventb.core.label="axm8" org.eventb.core.predicate="∀x·x≠zero ⇒ (x mult (inv (x))) = one "/>
+<org.eventb.theory.core.axiomaticDefinitionAxiom name="6" org.eventb.core.comment="zero different from one" org.eventb.core.label="axm9" org.eventb.core.predicate="zero ≠ one"/>
+<org.eventb.theory.core.axiomaticDefinitionAxiom name="7" org.eventb.core.comment=" multiplication is  distributive &#10; over addition" org.eventb.core.label="axm10" org.eventb.core.predicate="∀x,y,z·(x mult (y plus z)) = ((x mult y) plus (x mult z))"/>
+<org.eventb.theory.core.axiomaticOperatorDefinition name="8" org.eventb.core.label="leq" org.eventb.theory.core.associative="false" org.eventb.theory.core.commutative="false" org.eventb.theory.core.formulaType="false" org.eventb.theory.core.notationType="PREFIX" org.eventb.theory.core.type="">
+<org.eventb.theory.core.operatorArgument name="'" org.eventb.core.expression="REAL" org.eventb.core.identifier="a"/>
+<org.eventb.theory.core.operatorArgument name="(" org.eventb.core.expression="REAL" org.eventb.core.identifier="b"/>
+</org.eventb.theory.core.axiomaticOperatorDefinition>
+<org.eventb.theory.core.axiomaticDefinitionAxiom name="9" org.eventb.core.comment="order is reflexive" org.eventb.core.label="axm11" org.eventb.core.predicate="∀x· leq(x,x)"/>
+<org.eventb.theory.core.axiomaticDefinitionAxiom name=":" org.eventb.core.comment="order is antisymmetric" org.eventb.core.label="axm12" org.eventb.core.predicate="∀x,y· leq(x,y) ∧ leq(y,x) ⇒ x=y"/>
+<org.eventb.theory.core.axiomaticDefinitionAxiom name=";" org.eventb.core.comment="order is transitive" org.eventb.core.label="axm13" org.eventb.core.predicate="∀x,y,z· leq(x,y) ∧ leq(y,z) ⇒ leq(x,z)"/>
+<org.eventb.theory.core.axiomaticDefinitionAxiom name="=" org.eventb.core.comment="order is total" org.eventb.core.label="axm14" org.eventb.core.predicate="∀x,y· leq(x,y) ∨ leq(y,x)"/>
+<org.eventb.theory.core.axiomaticDefinitionAxiom name="&gt;" org.eventb.core.comment="order is compatible with addition" org.eventb.core.label="axm15" org.eventb.core.predicate="∀x,y,z· leq(x,y) ⇒ leq(x plus z, y plus z)"/>
+<org.eventb.theory.core.axiomaticDefinitionAxiom name="?" org.eventb.core.comment="order is compatible with &#10;positive multiplication" org.eventb.core.label="axm16" org.eventb.core.predicate="∀x,y,z· leq(x,y) ∧ leq(zero,z) ∧ z≠zero ⇒ leq(x mult z, y mult z)"/>
+<org.eventb.theory.core.axiomaticDefinitionAxiom name="@" org.eventb.core.comment="sup(A) is an upper bound of A&#10; &#10; &#10; &#10; &#10; &#10;&#10; &#10; " org.eventb.core.label="axm17" org.eventb.core.predicate="∀A· A⊆REAL ∧&#10;    A≠∅ ∧&#10;   (∃m·m∈REAL ∧ (∀x·x∈A ⇒ leq(x,m)))&#10;   ⇒&#10;   (∀x·x∈A ⇒ leq(x,sup(A)))&#10;   &#10;"/>
+<org.eventb.theory.core.axiomaticOperatorDefinition name="A" org.eventb.core.label="sup" org.eventb.theory.core.associative="false" org.eventb.theory.core.commutative="false" org.eventb.theory.core.formulaType="true" org.eventb.theory.core.notationType="PREFIX" org.eventb.theory.core.type="REAL">
+<org.eventb.theory.core.operatorArgument name="'" org.eventb.core.expression="ℙ(REAL)" org.eventb.core.identifier="A"/>
+<org.eventb.theory.core.operatorWDcondition name="(" org.eventb.core.comment="A is not empty" org.eventb.core.predicate="A≠∅"/>
+<org.eventb.theory.core.operatorWDcondition name=")" org.eventb.core.comment="A has an upper bound" org.eventb.core.predicate="∃m·m∈REAL ∧ (∀x·x∈A ⇒ leq(x,m))"/>
+</org.eventb.theory.core.axiomaticOperatorDefinition>
+<org.eventb.theory.core.axiomaticDefinitionAxiom name="B" org.eventb.core.comment="sup(A) is the least upper bound of A" org.eventb.core.label="axm18" org.eventb.core.predicate="∀A,v· A⊆REAL ∧&#10;      A≠∅ ∧&#10;     (∃m·m∈REAL ∧ (∀x·x∈A ⇒ leq(x,m))) ∧&#10;     (∀x·x∈A ⇒ leq(x,v))&#10;     ⇒&#10;      leq(sup(A),v)&#10; &#10; &#10; "/>
+<org.eventb.theory.core.axiomaticOperatorDefinition name="C" org.eventb.core.label="inf" org.eventb.theory.core.associative="false" org.eventb.theory.core.commutative="false" org.eventb.theory.core.formulaType="true" org.eventb.theory.core.notationType="PREFIX" org.eventb.theory.core.type="REAL">
+<org.eventb.theory.core.operatorArgument name="'" org.eventb.core.expression="ℙ(REAL)" org.eventb.core.identifier="A"/>
+<org.eventb.theory.core.operatorWDcondition name="(" org.eventb.core.comment="A is not empty" org.eventb.core.predicate="A≠∅"/>
+<org.eventb.theory.core.operatorWDcondition name=")" org.eventb.core.comment="A has a lower bound" org.eventb.core.predicate="∃m·m∈REAL ∧ (∀x·x∈A ⇒ leq(m,x))"/>
+</org.eventb.theory.core.axiomaticOperatorDefinition>
+<org.eventb.theory.core.axiomaticDefinitionAxiom name="D" org.eventb.core.comment="inf(A) is a lower bound of A" org.eventb.core.label="axm19" org.eventb.core.predicate="∀A· A⊆REAL ∧&#10;    A≠∅ ∧&#10;   (∃m·m∈REAL ∧ (∀x·x∈A ⇒ leq(m,x)))&#10;   ⇒&#10;   (∀x·x∈A ⇒ leq(inf(A),x))&#10;   &#10;"/>
+<org.eventb.theory.core.axiomaticDefinitionAxiom name="E" org.eventb.core.comment="inf(A) is the greatest lower bound of A" org.eventb.core.label="axm20" org.eventb.core.predicate="∀A,v· A⊆REAL ∧&#10;      A≠∅ ∧&#10;     (∃m·m∈REAL ∧ (∀x·x∈A ⇒ leq(m,x))) ∧&#10;     (∀x·x∈A ⇒ leq(v,x))&#10;     ⇒&#10;      leq(v,inf(A))"/>
+<org.eventb.theory.core.axiomaticOperatorDefinition name="F" org.eventb.core.label="smr" org.eventb.theory.core.associative="false" org.eventb.theory.core.commutative="false" org.eventb.theory.core.formulaType="false" org.eventb.theory.core.notationType="PREFIX" org.eventb.theory.core.type="">
+<org.eventb.theory.core.operatorArgument name="'" org.eventb.core.expression="REAL" org.eventb.core.identifier="a"/>
+<org.eventb.theory.core.operatorArgument name="(" org.eventb.core.expression="REAL" org.eventb.core.identifier="b"/>
+</org.eventb.theory.core.axiomaticOperatorDefinition>
+<org.eventb.theory.core.axiomaticOperatorDefinition name="J" org.eventb.core.label="sub" org.eventb.theory.core.associative="false" org.eventb.theory.core.commutative="false" org.eventb.theory.core.formulaType="true" org.eventb.theory.core.notationType="INFIX" org.eventb.theory.core.type="REAL">
+<org.eventb.theory.core.operatorArgument name="'" org.eventb.core.expression="REAL" org.eventb.core.identifier="a"/>
+<org.eventb.theory.core.operatorArgument name="(" org.eventb.core.expression="REAL" org.eventb.core.identifier="b"/>
+</org.eventb.theory.core.axiomaticOperatorDefinition>
+<org.eventb.theory.core.axiomaticDefinitionAxiom name="G" org.eventb.core.comment="Definition of relation &quot;strictly smaller&quot;" org.eventb.core.label="axm21" org.eventb.core.predicate="∀x,y·smr(x,y) ⇔ leq(x,y) ∧ x≠y"/>
+<org.eventb.theory.core.axiomaticDefinitionAxiom name="M" org.eventb.core.comment="Definition of relation &quot;strictly greater&quot;" org.eventb.core.label="axm24" org.eventb.core.predicate="∀x,y·gtr(x,y)⇔ leq(y,x) ∧ x≠y"/>
+<org.eventb.theory.core.axiomaticOperatorDefinition name="H" org.eventb.core.label="cnt" org.eventb.theory.core.associative="false" org.eventb.theory.core.commutative="false" org.eventb.theory.core.formulaType="false" org.eventb.theory.core.notationType="PREFIX" org.eventb.theory.core.type="">
+<org.eventb.theory.core.operatorArgument name="'" org.eventb.core.expression="ℙ(REAL×REAL)" org.eventb.core.identifier="f"/>
+<org.eventb.theory.core.operatorArgument name="(" org.eventb.core.expression="REAL" org.eventb.core.identifier="x"/>
+<org.eventb.theory.core.operatorWDcondition name=")" org.eventb.core.predicate="f ∈ REAL→REAL"/>
+</org.eventb.theory.core.axiomaticOperatorDefinition>
+<org.eventb.theory.core.axiomaticDefinitionAxiom name="K" org.eventb.core.comment="Definition of subtraction" org.eventb.core.label="axm22" org.eventb.core.predicate="∀x,y·(x sub y) = (x plus minus(y))"/>
+<org.eventb.theory.core.axiomaticDefinitionAxiom name="I" org.eventb.core.comment="Definition of &#10;continuity" org.eventb.core.label="axm23" org.eventb.core.predicate="∀f,c·f∈REAL→REAL ∧ c∈REAL ∧ cnt(f,c) ⇒ (∀e· smr(zero,e) &#10;                                               ⇒ &#10;                                                (∃d·smr(zero,d) ∧ &#10;                                                    (∀x· smr(c sub d,x) ∧ &#10;                                                         smr(x,c plus d) &#10;                                                        ⇒ &#10;                                                         smr(f(c) sub e,f(x)) ∧ &#10;                                                         smr(f(x),f(c) plus e)&#10;                                                    )&#10;                                                 )&#10;                                           )&#10;                     "/>
+<org.eventb.theory.core.axiomaticOperatorDefinition name="L" org.eventb.core.label="gtr" org.eventb.theory.core.associative="false" org.eventb.theory.core.commutative="false" org.eventb.theory.core.formulaType="false" org.eventb.theory.core.notationType="PREFIX" org.eventb.theory.core.type="">
+<org.eventb.theory.core.operatorArgument name="'" org.eventb.core.expression="REAL" org.eventb.core.identifier="a"/>
+<org.eventb.theory.core.operatorArgument name="(" org.eventb.core.expression="REAL" org.eventb.core.identifier="b"/>
+</org.eventb.theory.core.axiomaticOperatorDefinition>
+</org.eventb.theory.core.axiomaticDefinitionsBlock>
+<org.eventb.theory.core.proofRulesBlock name="+" org.eventb.core.label="add_com">
+<org.eventb.theory.core.metaVariable name="'" org.eventb.core.identifier="a" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.metaVariable name="(" org.eventb.core.identifier="b" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.rewriteRule name=")" org.eventb.core.label="rew1" org.eventb.theory.core.applicability="interactive" org.eventb.theory.core.complete="false" org.eventb.theory.core.desc="add_com" org.eventb.theory.core.formula="a plus b">
+<org.eventb.theory.core.rewriteRuleRHS name="'" org.eventb.core.label="rhs1" org.eventb.core.predicate="⊤" org.eventb.theory.core.formula="b plus a"/>
+</org.eventb.theory.core.rewriteRule>
+</org.eventb.theory.core.proofRulesBlock>
+<org.eventb.theory.core.proofRulesBlock name="," org.eventb.core.label="add_assoc">
+<org.eventb.theory.core.metaVariable name="'" org.eventb.core.identifier="x" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.metaVariable name="(" org.eventb.core.identifier="y" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.metaVariable name=")" org.eventb.core.identifier="z" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.rewriteRule name="*" org.eventb.core.label="rew2" org.eventb.theory.core.applicability="interactive" org.eventb.theory.core.complete="false" org.eventb.theory.core.desc="add_assoc" org.eventb.theory.core.formula="(x plus y) plus z">
+<org.eventb.theory.core.rewriteRuleRHS name="'" org.eventb.core.label="rhs1" org.eventb.core.predicate="⊤" org.eventb.theory.core.formula="x plus (y plus z)"/>
+</org.eventb.theory.core.rewriteRule>
+</org.eventb.theory.core.proofRulesBlock>
+<org.eventb.theory.core.proofRulesBlock name="-" org.eventb.core.label="add_id">
+<org.eventb.theory.core.metaVariable name="'" org.eventb.core.identifier="x" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.rewriteRule name="(" org.eventb.core.label="rew3" org.eventb.theory.core.applicability="interactive" org.eventb.theory.core.complete="false" org.eventb.theory.core.desc="add_id" org.eventb.theory.core.formula="x plus zero">
+<org.eventb.theory.core.rewriteRuleRHS name="'" org.eventb.core.label="rhs1" org.eventb.core.predicate="⊤" org.eventb.theory.core.formula="x"/>
+</org.eventb.theory.core.rewriteRule>
+</org.eventb.theory.core.proofRulesBlock>
+<org.eventb.theory.core.proofRulesBlock name="/" org.eventb.core.label="add_inv">
+<org.eventb.theory.core.metaVariable name="'" org.eventb.core.identifier="x" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.rewriteRule name="(" org.eventb.core.label="rew4" org.eventb.theory.core.applicability="interactive" org.eventb.theory.core.complete="false" org.eventb.theory.core.desc="add_inv" org.eventb.theory.core.formula="x plus minus(x)">
+<org.eventb.theory.core.rewriteRuleRHS name="'" org.eventb.core.label="rhs1" org.eventb.core.predicate="⊤" org.eventb.theory.core.formula="zero"/>
+</org.eventb.theory.core.rewriteRule>
+</org.eventb.theory.core.proofRulesBlock>
+<org.eventb.theory.core.proofRulesBlock name="0" org.eventb.core.label="add_assoc2">
+<org.eventb.theory.core.metaVariable name="'" org.eventb.core.identifier="x" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.metaVariable name="(" org.eventb.core.identifier="y" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.rewriteRule name=")" org.eventb.core.label="rew5" org.eventb.theory.core.applicability="interactive" org.eventb.theory.core.complete="false" org.eventb.theory.core.desc="add_assoc2" org.eventb.theory.core.formula="x plus (y plus z)">
+<org.eventb.theory.core.rewriteRuleRHS name="'" org.eventb.core.label="rhs1" org.eventb.core.predicate="⊤" org.eventb.theory.core.formula="(x plus y) plus z"/>
+</org.eventb.theory.core.rewriteRule>
+<org.eventb.theory.core.metaVariable name="*" org.eventb.core.identifier="z" org.eventb.theory.core.type="REAL"/>
+</org.eventb.theory.core.proofRulesBlock>
+<org.eventb.theory.core.proofRulesBlock name="1" org.eventb.core.label="add_id2">
+<org.eventb.theory.core.metaVariable name="'" org.eventb.core.identifier="x" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.rewriteRule name="(" org.eventb.core.label="rew6" org.eventb.theory.core.applicability="interactive" org.eventb.theory.core.complete="false" org.eventb.theory.core.desc="add_id2" org.eventb.theory.core.formula="zero plus x">
+<org.eventb.theory.core.rewriteRuleRHS name="'" org.eventb.core.label="rhs1" org.eventb.core.predicate="⊤" org.eventb.theory.core.formula="x"/>
+</org.eventb.theory.core.rewriteRule>
+</org.eventb.theory.core.proofRulesBlock>
+<org.eventb.theory.core.proofRulesBlock name="2" org.eventb.core.label="add_inv2">
+<org.eventb.theory.core.metaVariable name="'" org.eventb.core.identifier="x" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.rewriteRule name="(" org.eventb.core.label="rew7" org.eventb.theory.core.applicability="interactive" org.eventb.theory.core.complete="false" org.eventb.theory.core.desc="add_inv2" org.eventb.theory.core.formula="minus(x) plus x">
+<org.eventb.theory.core.rewriteRuleRHS name="'" org.eventb.core.label="rhs1" org.eventb.core.predicate="⊤" org.eventb.theory.core.formula="zero"/>
+</org.eventb.theory.core.rewriteRule>
+</org.eventb.theory.core.proofRulesBlock>
+<org.eventb.theory.core.proofRulesBlock name="3" org.eventb.core.label="mult_com">
+<org.eventb.theory.core.metaVariable name="'" org.eventb.core.identifier="x" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.metaVariable name="(" org.eventb.core.identifier="y" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.rewriteRule name=")" org.eventb.core.label="rew8" org.eventb.theory.core.applicability="interactive" org.eventb.theory.core.complete="false" org.eventb.theory.core.desc="mult_com" org.eventb.theory.core.formula="x mult y">
+<org.eventb.theory.core.rewriteRuleRHS name="'" org.eventb.core.label="rhs1" org.eventb.core.predicate="⊤" org.eventb.theory.core.formula="y mult x"/>
+</org.eventb.theory.core.rewriteRule>
+</org.eventb.theory.core.proofRulesBlock>
+<org.eventb.theory.core.proofRulesBlock name="4" org.eventb.core.label="mult_assoc">
+<org.eventb.theory.core.metaVariable name="'" org.eventb.core.identifier="x" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.metaVariable name="(" org.eventb.core.identifier="y" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.metaVariable name=")" org.eventb.core.identifier="z" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.rewriteRule name="*" org.eventb.core.label="rew9" org.eventb.theory.core.applicability="interactive" org.eventb.theory.core.complete="false" org.eventb.theory.core.desc="mult_assoc" org.eventb.theory.core.formula="(x mult y) mult z">
+<org.eventb.theory.core.rewriteRuleRHS name="'" org.eventb.core.label="rhs1" org.eventb.core.predicate="⊤" org.eventb.theory.core.formula="x mult (y mult z)"/>
+</org.eventb.theory.core.rewriteRule>
+</org.eventb.theory.core.proofRulesBlock>
+<org.eventb.theory.core.proofRulesBlock name="5" org.eventb.core.label="mult_id">
+<org.eventb.theory.core.metaVariable name="'" org.eventb.core.identifier="x" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.rewriteRule name="(" org.eventb.core.label="rew10" org.eventb.theory.core.applicability="interactive" org.eventb.theory.core.complete="false" org.eventb.theory.core.desc="mult_id" org.eventb.theory.core.formula="x mult one">
+<org.eventb.theory.core.rewriteRuleRHS name="'" org.eventb.core.label="rhs1" org.eventb.core.predicate="⊤ " org.eventb.theory.core.formula="x"/>
+</org.eventb.theory.core.rewriteRule>
+</org.eventb.theory.core.proofRulesBlock>
+<org.eventb.theory.core.proofRulesBlock name="6" org.eventb.core.label="mult_inv">
+<org.eventb.theory.core.metaVariable name="'" org.eventb.core.identifier="x" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.rewriteRule name="(" org.eventb.core.label="rew11" org.eventb.theory.core.applicability="interactive" org.eventb.theory.core.complete="false" org.eventb.theory.core.desc="mult_inv" org.eventb.theory.core.formula="x mult inv(x)">
+<org.eventb.theory.core.rewriteRuleRHS name="'" org.eventb.core.label="rhs1" org.eventb.core.predicate="x≠zero" org.eventb.theory.core.formula="one"/>
+</org.eventb.theory.core.rewriteRule>
+</org.eventb.theory.core.proofRulesBlock>
+<org.eventb.theory.core.proofRulesBlock name="7" org.eventb.core.label="mult_assoc2">
+<org.eventb.theory.core.metaVariable name="'" org.eventb.core.identifier="x" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.metaVariable name="(" org.eventb.core.identifier="y" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.metaVariable name=")" org.eventb.core.identifier="z" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.rewriteRule name="*" org.eventb.core.label="rew12" org.eventb.theory.core.applicability="interactive" org.eventb.theory.core.complete="false" org.eventb.theory.core.desc="mult_assoc2" org.eventb.theory.core.formula="x mult (y mult z)">
+<org.eventb.theory.core.rewriteRuleRHS name="'" org.eventb.core.label="rhs1" org.eventb.core.predicate="⊤" org.eventb.theory.core.formula="(x mult y) mult z"/>
+</org.eventb.theory.core.rewriteRule>
+</org.eventb.theory.core.proofRulesBlock>
+<org.eventb.theory.core.proofRulesBlock name="8" org.eventb.core.label="mult_id2">
+<org.eventb.theory.core.metaVariable name="'" org.eventb.core.identifier="x" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.rewriteRule name="(" org.eventb.core.label="rew13" org.eventb.theory.core.applicability="interactive" org.eventb.theory.core.complete="false" org.eventb.theory.core.desc="mult_id2" org.eventb.theory.core.formula="one mult x">
+<org.eventb.theory.core.rewriteRuleRHS name="'" org.eventb.core.label="rhs1" org.eventb.core.predicate="⊤" org.eventb.theory.core.formula="x"/>
+</org.eventb.theory.core.rewriteRule>
+</org.eventb.theory.core.proofRulesBlock>
+<org.eventb.theory.core.proofRulesBlock name="9" org.eventb.core.label="mult_inv2">
+<org.eventb.theory.core.metaVariable name="'" org.eventb.core.identifier="x" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.rewriteRule name="(" org.eventb.core.label="rew14" org.eventb.theory.core.applicability="interactive" org.eventb.theory.core.complete="false" org.eventb.theory.core.desc="mult_inv2" org.eventb.theory.core.formula="inv(x) mult x">
+<org.eventb.theory.core.rewriteRuleRHS name="'" org.eventb.core.label="rhs1" org.eventb.core.predicate="x≠zero" org.eventb.theory.core.formula="one"/>
+</org.eventb.theory.core.rewriteRule>
+</org.eventb.theory.core.proofRulesBlock>
+<org.eventb.theory.core.proofRulesBlock name=":" org.eventb.core.label="mult_distrib">
+<org.eventb.theory.core.metaVariable name="'" org.eventb.core.identifier="x" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.metaVariable name="(" org.eventb.core.identifier="y" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.metaVariable name=")" org.eventb.core.identifier="z" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.rewriteRule name="*" org.eventb.core.label="rew15" org.eventb.theory.core.applicability="interactive" org.eventb.theory.core.complete="false" org.eventb.theory.core.desc="mult_distrib" org.eventb.theory.core.formula="x mult (y plus z)">
+<org.eventb.theory.core.rewriteRuleRHS name="'" org.eventb.core.label="rhs1" org.eventb.core.predicate="⊤" org.eventb.theory.core.formula="(x mult y) plus (x mult z)"/>
+</org.eventb.theory.core.rewriteRule>
+</org.eventb.theory.core.proofRulesBlock>
+<org.eventb.theory.core.proofRulesBlock name=";" org.eventb.core.label="mult_distrib2">
+<org.eventb.theory.core.metaVariable name="'" org.eventb.core.identifier="x" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.metaVariable name="(" org.eventb.core.identifier="y" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.metaVariable name=")" org.eventb.core.identifier="z" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.rewriteRule name="*" org.eventb.core.label="rew16" org.eventb.theory.core.applicability="interactive" org.eventb.theory.core.complete="false" org.eventb.theory.core.desc="mult_distrib2" org.eventb.theory.core.formula="(x plus y) mult z">
+<org.eventb.theory.core.rewriteRuleRHS name="'" org.eventb.core.label="rhs1" org.eventb.core.predicate="⊤" org.eventb.theory.core.formula="(x mult z) plus (y mult z)"/>
+</org.eventb.theory.core.rewriteRule>
+</org.eventb.theory.core.proofRulesBlock>
+<org.eventb.theory.core.proofRulesBlock name="?" org.eventb.core.label="sub_plus">
+<org.eventb.theory.core.metaVariable name="'" org.eventb.core.identifier="x" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.metaVariable name="(" org.eventb.core.identifier="y" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.rewriteRule name=")" org.eventb.core.label="rew19" org.eventb.theory.core.applicability="interactive" org.eventb.theory.core.complete="false" org.eventb.theory.core.desc="sub_plus" org.eventb.theory.core.formula="x sub y">
+<org.eventb.theory.core.rewriteRuleRHS name="'" org.eventb.core.label="rhs1" org.eventb.core.predicate="⊤" org.eventb.theory.core.formula="x plus minus(y)"/>
+</org.eventb.theory.core.rewriteRule>
+</org.eventb.theory.core.proofRulesBlock>
+<org.eventb.theory.core.proofRulesBlock name="@" org.eventb.core.label="gtr_smr">
+<org.eventb.theory.core.metaVariable name="'" org.eventb.core.identifier="x" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.metaVariable name="(" org.eventb.core.identifier="y" org.eventb.theory.core.type="REAL"/>
+<org.eventb.theory.core.rewriteRule name=")" org.eventb.core.label="rew20" org.eventb.theory.core.applicability="interactive" org.eventb.theory.core.complete="false" org.eventb.theory.core.desc="gtr_smr" org.eventb.theory.core.formula="gtr(x,y)">
+<org.eventb.theory.core.rewriteRuleRHS name="'" org.eventb.core.label="rhs1" org.eventb.core.predicate="⊤" org.eventb.theory.core.formula="smr(y,x)"/>
+</org.eventb.theory.core.rewriteRule>
+</org.eventb.theory.core.proofRulesBlock>
+</org.eventb.theory.core.theoryRoot>

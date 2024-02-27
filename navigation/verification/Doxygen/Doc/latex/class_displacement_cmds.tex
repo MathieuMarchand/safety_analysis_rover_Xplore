@@ -1,0 +1,261 @@
+\doxysection{Displacement\+Cmds Class Reference}
+\hypertarget{class_displacement_cmds}{}\label{class_displacement_cmds}\index{DisplacementCmds@{DisplacementCmds}}
+
+
+Inheritance diagram for Displacement\+Cmds\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{class_displacement_cmds__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Displacement\+Cmds\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{class_displacement_cmds__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_displacement_cmds_a669eb35ade11508266fbfd2db0dcc7c5}{Displacement\+Cmds}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_displacement_cmds_af951f6a549335709a0b8160d7bb73d81}{callback\+\_\+abort}} (std\+\_\+msgs\+::msg\+::\+String\+::\+Shared\+Ptr msg)
+\item 
+void \mbox{\hyperlink{class_displacement_cmds_afcf4fc901964369809e7dcd35a8baff0}{callback\+\_\+mode\+\_\+kinematic}} (std\+\_\+msgs\+::msg\+::\+String\+::\+Shared\+Ptr msg)
+\item 
+void \mbox{\hyperlink{class_displacement_cmds_a8700faa09eec5a5f5236a45cfa545fc2}{callback\+\_\+cmd\+\_\+vel}} (const geometry\+\_\+msgs\+::msg\+::\+Twist\+::\+Shared\+Ptr msg)
+\item 
+void \mbox{\hyperlink{class_displacement_cmds_af13cf7f59eb4e35d21a54472061f2643}{send\+\_\+kinematic\+\_\+msg}} () const
+\item 
+void \mbox{\hyperlink{class_displacement_cmds_afb8fdedaecd9d169e64ee61bc905a231}{callback\+\_\+gamepad}} (const sensor\+\_\+msgs\+::msg\+::\+Joy\+::\+Shared\+Ptr msg)
+\item 
+void \mbox{\hyperlink{class_displacement_cmds_aa67c82111b916b92db93cda998223b4a}{destroy\+\_\+callback}} (const std\+\_\+msgs\+::msg\+::\+String\+::\+Shared\+Ptr msg)
+\item 
+void \mbox{\hyperlink{class_displacement_cmds_ab585d0161a575a50ecd0f976eb71dca4}{callback\+\_\+absolute\+\_\+encoders}} (const custom\+\_\+msg\+::msg\+::\+Wheelstatus\+::\+Shared\+Ptr msg)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Rover\+Basic\+Kinematic\+Model \mbox{\hyperlink{class_displacement_cmds_a19b9c42933e69c5fa6cf17e4416914d6}{basic\+Kinematic\+Model}}
+\item 
+Rover\+Normal\+Kinematic\+Model \mbox{\hyperlink{class_displacement_cmds_a90c8436afa277dff253e43b877dac8bb}{normal\+Kinematic\+Model}}
+\item 
+rclcpp\+::\+Publisher$<$ custom\+\_\+msg\+::msg\+::\+Motorcmds $>$\+::\+Shared\+Ptr \mbox{\hyperlink{class_displacement_cmds_a6c4ba70f2230484a2ce20d2c722c1c08}{pub\+\_\+kinematic}}
+\item 
+size\+\_\+t \mbox{\hyperlink{class_displacement_cmds_a00506e36aee8c1cb19bfb12e47f99f06}{count\+\_\+}}
+\item 
+rclcpp\+::\+Subscription$<$ geometry\+\_\+msgs\+::msg\+::\+Twist $>$\+::\+Shared\+Ptr \mbox{\hyperlink{class_displacement_cmds_a4b6aac2e3a5e831a0641afe33c9e560d}{sub\+\_\+cmd\+\_\+vel}}
+\item 
+rclcpp\+::\+Subscription$<$ sensor\+\_\+msgs\+::msg\+::\+Joy $>$\+::\+Shared\+Ptr \mbox{\hyperlink{class_displacement_cmds_a640ed49f70649e4b0e6489aaf6f90321}{sub\+\_\+cs\+\_\+gamepad}}
+\item 
+rclcpp\+::\+Subscription$<$ std\+\_\+msgs\+::msg\+::\+String $>$\+::\+Shared\+Ptr \mbox{\hyperlink{class_displacement_cmds_a2b67c9e5e6d7224594688725bd59c294}{sub\+\_\+cmds\+\_\+shutdown}}
+\item 
+rclcpp\+::\+Subscription$<$ std\+\_\+msgs\+::msg\+::\+String $>$\+::\+Shared\+Ptr \mbox{\hyperlink{class_displacement_cmds_a01a75f8a1445e883a6214ef17297fd02}{sub\+\_\+kinematic\+\_\+state}}
+\item 
+rclcpp\+::\+Subscription$<$ custom\+\_\+msg\+::msg\+::\+Wheelstatus $>$\+::\+Shared\+Ptr \mbox{\hyperlink{class_displacement_cmds_a910cc087da4446599a6f1ff402db854d}{sub\+\_\+topic\+\_\+absolute\+\_\+encoders}}
+\item 
+rclcpp\+::\+Subscription$<$ std\+\_\+msgs\+::msg\+::\+String $>$\+::\+Shared\+Ptr \mbox{\hyperlink{class_displacement_cmds_a2a444788673c8f73e8293a916c5c24ac}{destroy\+\_\+sub\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_displacement_cmds_a669eb35ade11508266fbfd2db0dcc7c5}\label{class_displacement_cmds_a669eb35ade11508266fbfd2db0dcc7c5} 
+\index{DisplacementCmds@{DisplacementCmds}!DisplacementCmds@{DisplacementCmds}}
+\index{DisplacementCmds@{DisplacementCmds}!DisplacementCmds@{DisplacementCmds}}
+\doxysubsubsection{\texorpdfstring{DisplacementCmds()}{DisplacementCmds()}}
+{\footnotesize\ttfamily Displacement\+Cmds\+::\+Displacement\+Cmds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_displacement_cmds_a669eb35ade11508266fbfd2db0dcc7c5_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_displacement_cmds_af951f6a549335709a0b8160d7bb73d81}\label{class_displacement_cmds_af951f6a549335709a0b8160d7bb73d81} 
+\index{DisplacementCmds@{DisplacementCmds}!callback\_abort@{callback\_abort}}
+\index{callback\_abort@{callback\_abort}!DisplacementCmds@{DisplacementCmds}}
+\doxysubsubsection{\texorpdfstring{callback\_abort()}{callback\_abort()}}
+{\footnotesize\ttfamily void Displacement\+Cmds\+::callback\+\_\+abort (\begin{DoxyParamCaption}\item[{std\+\_\+msgs\+::msg\+::\+String\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_displacement_cmds_af951f6a549335709a0b8160d7bb73d81_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_displacement_cmds_ab585d0161a575a50ecd0f976eb71dca4}\label{class_displacement_cmds_ab585d0161a575a50ecd0f976eb71dca4} 
+\index{DisplacementCmds@{DisplacementCmds}!callback\_absolute\_encoders@{callback\_absolute\_encoders}}
+\index{callback\_absolute\_encoders@{callback\_absolute\_encoders}!DisplacementCmds@{DisplacementCmds}}
+\doxysubsubsection{\texorpdfstring{callback\_absolute\_encoders()}{callback\_absolute\_encoders()}}
+{\footnotesize\ttfamily void Displacement\+Cmds\+::callback\+\_\+absolute\+\_\+encoders (\begin{DoxyParamCaption}\item[{const custom\+\_\+msg\+::msg\+::\+Wheelstatus\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_displacement_cmds_ab585d0161a575a50ecd0f976eb71dca4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_displacement_cmds_a8700faa09eec5a5f5236a45cfa545fc2}\label{class_displacement_cmds_a8700faa09eec5a5f5236a45cfa545fc2} 
+\index{DisplacementCmds@{DisplacementCmds}!callback\_cmd\_vel@{callback\_cmd\_vel}}
+\index{callback\_cmd\_vel@{callback\_cmd\_vel}!DisplacementCmds@{DisplacementCmds}}
+\doxysubsubsection{\texorpdfstring{callback\_cmd\_vel()}{callback\_cmd\_vel()}}
+{\footnotesize\ttfamily void Displacement\+Cmds\+::callback\+\_\+cmd\+\_\+vel (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Twist\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_displacement_cmds_a8700faa09eec5a5f5236a45cfa545fc2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_displacement_cmds_a8700faa09eec5a5f5236a45cfa545fc2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_displacement_cmds_afb8fdedaecd9d169e64ee61bc905a231}\label{class_displacement_cmds_afb8fdedaecd9d169e64ee61bc905a231} 
+\index{DisplacementCmds@{DisplacementCmds}!callback\_gamepad@{callback\_gamepad}}
+\index{callback\_gamepad@{callback\_gamepad}!DisplacementCmds@{DisplacementCmds}}
+\doxysubsubsection{\texorpdfstring{callback\_gamepad()}{callback\_gamepad()}}
+{\footnotesize\ttfamily void Displacement\+Cmds\+::callback\+\_\+gamepad (\begin{DoxyParamCaption}\item[{const sensor\+\_\+msgs\+::msg\+::\+Joy\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_displacement_cmds_afb8fdedaecd9d169e64ee61bc905a231_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_displacement_cmds_afcf4fc901964369809e7dcd35a8baff0}\label{class_displacement_cmds_afcf4fc901964369809e7dcd35a8baff0} 
+\index{DisplacementCmds@{DisplacementCmds}!callback\_mode\_kinematic@{callback\_mode\_kinematic}}
+\index{callback\_mode\_kinematic@{callback\_mode\_kinematic}!DisplacementCmds@{DisplacementCmds}}
+\doxysubsubsection{\texorpdfstring{callback\_mode\_kinematic()}{callback\_mode\_kinematic()}}
+{\footnotesize\ttfamily void Displacement\+Cmds\+::callback\+\_\+mode\+\_\+kinematic (\begin{DoxyParamCaption}\item[{std\+\_\+msgs\+::msg\+::\+String\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_displacement_cmds_afcf4fc901964369809e7dcd35a8baff0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_displacement_cmds_aa67c82111b916b92db93cda998223b4a}\label{class_displacement_cmds_aa67c82111b916b92db93cda998223b4a} 
+\index{DisplacementCmds@{DisplacementCmds}!destroy\_callback@{destroy\_callback}}
+\index{destroy\_callback@{destroy\_callback}!DisplacementCmds@{DisplacementCmds}}
+\doxysubsubsection{\texorpdfstring{destroy\_callback()}{destroy\_callback()}}
+{\footnotesize\ttfamily void Displacement\+Cmds\+::destroy\+\_\+callback (\begin{DoxyParamCaption}\item[{const std\+\_\+msgs\+::msg\+::\+String\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_displacement_cmds_aa67c82111b916b92db93cda998223b4a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_displacement_cmds_af13cf7f59eb4e35d21a54472061f2643}\label{class_displacement_cmds_af13cf7f59eb4e35d21a54472061f2643} 
+\index{DisplacementCmds@{DisplacementCmds}!send\_kinematic\_msg@{send\_kinematic\_msg}}
+\index{send\_kinematic\_msg@{send\_kinematic\_msg}!DisplacementCmds@{DisplacementCmds}}
+\doxysubsubsection{\texorpdfstring{send\_kinematic\_msg()}{send\_kinematic\_msg()}}
+{\footnotesize\ttfamily void Displacement\+Cmds\+::send\+\_\+kinematic\+\_\+msg (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_displacement_cmds_af13cf7f59eb4e35d21a54472061f2643_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_displacement_cmds_a19b9c42933e69c5fa6cf17e4416914d6}\label{class_displacement_cmds_a19b9c42933e69c5fa6cf17e4416914d6} 
+\index{DisplacementCmds@{DisplacementCmds}!basicKinematicModel@{basicKinematicModel}}
+\index{basicKinematicModel@{basicKinematicModel}!DisplacementCmds@{DisplacementCmds}}
+\doxysubsubsection{\texorpdfstring{basicKinematicModel}{basicKinematicModel}}
+{\footnotesize\ttfamily Rover\+Basic\+Kinematic\+Model Displacement\+Cmds\+::basic\+Kinematic\+Model\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_displacement_cmds_a00506e36aee8c1cb19bfb12e47f99f06}\label{class_displacement_cmds_a00506e36aee8c1cb19bfb12e47f99f06} 
+\index{DisplacementCmds@{DisplacementCmds}!count\_@{count\_}}
+\index{count\_@{count\_}!DisplacementCmds@{DisplacementCmds}}
+\doxysubsubsection{\texorpdfstring{count\_}{count\_}}
+{\footnotesize\ttfamily size\+\_\+t Displacement\+Cmds\+::count\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_displacement_cmds_a2a444788673c8f73e8293a916c5c24ac}\label{class_displacement_cmds_a2a444788673c8f73e8293a916c5c24ac} 
+\index{DisplacementCmds@{DisplacementCmds}!destroy\_sub\_@{destroy\_sub\_}}
+\index{destroy\_sub\_@{destroy\_sub\_}!DisplacementCmds@{DisplacementCmds}}
+\doxysubsubsection{\texorpdfstring{destroy\_sub\_}{destroy\_sub\_}}
+{\footnotesize\ttfamily rclcpp\+::\+Subscription$<$std\+\_\+msgs\+::msg\+::\+String$>$\+::\+Shared\+Ptr Displacement\+Cmds\+::destroy\+\_\+sub\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_displacement_cmds_a90c8436afa277dff253e43b877dac8bb}\label{class_displacement_cmds_a90c8436afa277dff253e43b877dac8bb} 
+\index{DisplacementCmds@{DisplacementCmds}!normalKinematicModel@{normalKinematicModel}}
+\index{normalKinematicModel@{normalKinematicModel}!DisplacementCmds@{DisplacementCmds}}
+\doxysubsubsection{\texorpdfstring{normalKinematicModel}{normalKinematicModel}}
+{\footnotesize\ttfamily Rover\+Normal\+Kinematic\+Model Displacement\+Cmds\+::normal\+Kinematic\+Model\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_displacement_cmds_a6c4ba70f2230484a2ce20d2c722c1c08}\label{class_displacement_cmds_a6c4ba70f2230484a2ce20d2c722c1c08} 
+\index{DisplacementCmds@{DisplacementCmds}!pub\_kinematic@{pub\_kinematic}}
+\index{pub\_kinematic@{pub\_kinematic}!DisplacementCmds@{DisplacementCmds}}
+\doxysubsubsection{\texorpdfstring{pub\_kinematic}{pub\_kinematic}}
+{\footnotesize\ttfamily rclcpp\+::\+Publisher$<$custom\+\_\+msg\+::msg\+::\+Motorcmds$>$\+::\+Shared\+Ptr Displacement\+Cmds\+::pub\+\_\+kinematic\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_displacement_cmds_a4b6aac2e3a5e831a0641afe33c9e560d}\label{class_displacement_cmds_a4b6aac2e3a5e831a0641afe33c9e560d} 
+\index{DisplacementCmds@{DisplacementCmds}!sub\_cmd\_vel@{sub\_cmd\_vel}}
+\index{sub\_cmd\_vel@{sub\_cmd\_vel}!DisplacementCmds@{DisplacementCmds}}
+\doxysubsubsection{\texorpdfstring{sub\_cmd\_vel}{sub\_cmd\_vel}}
+{\footnotesize\ttfamily rclcpp\+::\+Subscription$<$geometry\+\_\+msgs\+::msg\+::\+Twist$>$\+::\+Shared\+Ptr Displacement\+Cmds\+::sub\+\_\+cmd\+\_\+vel\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_displacement_cmds_a2b67c9e5e6d7224594688725bd59c294}\label{class_displacement_cmds_a2b67c9e5e6d7224594688725bd59c294} 
+\index{DisplacementCmds@{DisplacementCmds}!sub\_cmds\_shutdown@{sub\_cmds\_shutdown}}
+\index{sub\_cmds\_shutdown@{sub\_cmds\_shutdown}!DisplacementCmds@{DisplacementCmds}}
+\doxysubsubsection{\texorpdfstring{sub\_cmds\_shutdown}{sub\_cmds\_shutdown}}
+{\footnotesize\ttfamily rclcpp\+::\+Subscription$<$std\+\_\+msgs\+::msg\+::\+String$>$\+::\+Shared\+Ptr Displacement\+Cmds\+::sub\+\_\+cmds\+\_\+shutdown\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_displacement_cmds_a640ed49f70649e4b0e6489aaf6f90321}\label{class_displacement_cmds_a640ed49f70649e4b0e6489aaf6f90321} 
+\index{DisplacementCmds@{DisplacementCmds}!sub\_cs\_gamepad@{sub\_cs\_gamepad}}
+\index{sub\_cs\_gamepad@{sub\_cs\_gamepad}!DisplacementCmds@{DisplacementCmds}}
+\doxysubsubsection{\texorpdfstring{sub\_cs\_gamepad}{sub\_cs\_gamepad}}
+{\footnotesize\ttfamily rclcpp\+::\+Subscription$<$sensor\+\_\+msgs\+::msg\+::\+Joy$>$\+::\+Shared\+Ptr Displacement\+Cmds\+::sub\+\_\+cs\+\_\+gamepad\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_displacement_cmds_a01a75f8a1445e883a6214ef17297fd02}\label{class_displacement_cmds_a01a75f8a1445e883a6214ef17297fd02} 
+\index{DisplacementCmds@{DisplacementCmds}!sub\_kinematic\_state@{sub\_kinematic\_state}}
+\index{sub\_kinematic\_state@{sub\_kinematic\_state}!DisplacementCmds@{DisplacementCmds}}
+\doxysubsubsection{\texorpdfstring{sub\_kinematic\_state}{sub\_kinematic\_state}}
+{\footnotesize\ttfamily rclcpp\+::\+Subscription$<$std\+\_\+msgs\+::msg\+::\+String$>$\+::\+Shared\+Ptr Displacement\+Cmds\+::sub\+\_\+kinematic\+\_\+state\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_displacement_cmds_a910cc087da4446599a6f1ff402db854d}\label{class_displacement_cmds_a910cc087da4446599a6f1ff402db854d} 
+\index{DisplacementCmds@{DisplacementCmds}!sub\_topic\_absolute\_encoders@{sub\_topic\_absolute\_encoders}}
+\index{sub\_topic\_absolute\_encoders@{sub\_topic\_absolute\_encoders}!DisplacementCmds@{DisplacementCmds}}
+\doxysubsubsection{\texorpdfstring{sub\_topic\_absolute\_encoders}{sub\_topic\_absolute\_encoders}}
+{\footnotesize\ttfamily rclcpp\+::\+Subscription$<$custom\+\_\+msg\+::msg\+::\+Wheelstatus$>$\+::\+Shared\+Ptr Displacement\+Cmds\+::sub\+\_\+topic\+\_\+absolute\+\_\+encoders\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/marm/\+Documents/git/rover/navigation/codebase/wheels\+\_\+control/src/\mbox{\hyperlink{_displacement__cmds__node_8cpp}{Displacement\+\_\+cmds\+\_\+node.\+cpp}}\end{DoxyCompactItemize}

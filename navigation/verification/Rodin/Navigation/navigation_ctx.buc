@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd;de.prob.symbolic.ctxBase" version="3">
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="'" org.eventb.core.identifier="default_nav_mode"/>
+    <org.eventb.core.axiom name="(" org.eventb.core.label="axm1" org.eventb.core.predicate="default_nav_mode ∈ BOOL"/>
+    <org.eventb.core.carrierSet name=")" org.eventb.core.identifier="NAVIGATION_MODE"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="*" org.eventb.core.identifier="nav_auto"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="+" org.eventb.core.identifier="nav_manual"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="," org.eventb.core.identifier="nav_other"/>
+    <org.eventb.core.axiom name="-" org.eventb.core.label="axm2" org.eventb.core.predicate="partition(NAVIGATION_MODE, {nav_auto}, {nav_manual}, {nav_other})"/>
+    <org.eventb.core.carrierSet name="." org.eventb.core.comment="Commands of the shutdown topic" org.eventb.core.identifier="CMD_SHUTDOWN_MSG"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="/" org.eventb.core.identifier="sd_shutdown"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="0" org.eventb.core.identifier="sd_other"/>
+    <org.eventb.core.axiom name="1" org.eventb.core.label="axm3" org.eventb.core.predicate="partition(CMD_SHUTDOWN_MSG, {sd_shutdown}, {sd_other})"/>
+    <org.eventb.core.carrierSet name="2" org.eventb.core.comment="Instructions for the auto navigation" org.eventb.core.identifier="NAV_AUTO_INSTRUCTION"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="3" org.eventb.core.identifier="nav_autonomous_start"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="4" org.eventb.core.identifier="nav_autonomous_end"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="5" org.eventb.core.identifier="nav_autonomous_other"/>
+    <org.eventb.core.axiom name="6" org.eventb.core.label="axm4" org.eventb.core.predicate="partition(NAV_AUTO_INSTRUCTION, {nav_autonomous_start}, {nav_autonomous_end}, {nav_autonomous_other})"/>
+    <org.eventb.core.carrierSet name="7" org.eventb.core.identifier="CMD_DESTROY_MSG"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="8" org.eventb.core.identifier="dst_abort"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="9" org.eventb.core.identifier="dst_other"/>
+    <org.eventb.core.axiom name=":" org.eventb.core.label="axm5" org.eventb.core.predicate="partition(CMD_DESTROY_MSG, {dst_abort}, {dst_other})"/>
+</org.eventb.core.contextFile>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="CMD_DESTROY_MSG" org.eventb.core.type="ℙ(CMD_DESTROY_MSG)"/>
+        <org.eventb.core.poIdentifier name="NAVIGATION_MODE" org.eventb.core.type="ℙ(NAVIGATION_MODE)"/>
+        <org.eventb.core.poIdentifier name="NAV_AUTO_INSTRUCTION" org.eventb.core.type="ℙ(NAV_AUTO_INSTRUCTION)"/>
+        <org.eventb.core.poIdentifier name="CMD_SHUTDOWN_MSG" org.eventb.core.type="ℙ(CMD_SHUTDOWN_MSG)"/>
+        <org.eventb.core.poIdentifier name="nav_other" org.eventb.core.type="NAVIGATION_MODE"/>
+        <org.eventb.core.poIdentifier name="dst_abort" org.eventb.core.type="CMD_DESTROY_MSG"/>
+        <org.eventb.core.poIdentifier name="nav_autonomous_start" org.eventb.core.type="NAV_AUTO_INSTRUCTION"/>
+        <org.eventb.core.poIdentifier name="sd_other" org.eventb.core.type="CMD_SHUTDOWN_MSG"/>
+        <org.eventb.core.poIdentifier name="nav_autonomous_other" org.eventb.core.type="NAV_AUTO_INSTRUCTION"/>
+        <org.eventb.core.poIdentifier name="dst_other" org.eventb.core.type="CMD_DESTROY_MSG"/>
+        <org.eventb.core.poIdentifier name="default_nav_mode" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="nav_manual" org.eventb.core.type="NAVIGATION_MODE"/>
+        <org.eventb.core.poIdentifier name="sd_shutdown" org.eventb.core.type="CMD_SHUTDOWN_MSG"/>
+        <org.eventb.core.poIdentifier name="nav_autonomous_end" org.eventb.core.type="NAV_AUTO_INSTRUCTION"/>
+        <org.eventb.core.poIdentifier name="nav_auto" org.eventb.core.type="NAVIGATION_MODE"/>
+        <org.eventb.core.poPredicate name="nav_autonomous_staru" org.eventb.core.predicate="default_nav_mode∈BOOL" org.eventb.core.source="/Navigation/navigation_ctx.buc|org.eventb.core.contextFile#navigation_ctx|org.eventb.core.axiom#("/>
+        <org.eventb.core.poPredicate name="nav_autonomous_starv" org.eventb.core.predicate="partition(NAVIGATION_MODE,{nav_auto},{nav_manual},{nav_other})" org.eventb.core.source="/Navigation/navigation_ctx.buc|org.eventb.core.contextFile#navigation_ctx|org.eventb.core.axiom#-"/>
+        <org.eventb.core.poPredicate name="nav_autonomous_starw" org.eventb.core.predicate="partition(CMD_SHUTDOWN_MSG,{sd_shutdown},{sd_other})" org.eventb.core.source="/Navigation/navigation_ctx.buc|org.eventb.core.contextFile#navigation_ctx|org.eventb.core.axiom#1"/>
+        <org.eventb.core.poPredicate name="nav_autonomous_starx" org.eventb.core.predicate="partition(NAV_AUTO_INSTRUCTION,{nav_autonomous_start},{nav_autonomous_end},{nav_autonomous_other})" org.eventb.core.source="/Navigation/navigation_ctx.buc|org.eventb.core.contextFile#navigation_ctx|org.eventb.core.axiom#6"/>
+        <org.eventb.core.poPredicate name="nav_autonomous_stary" org.eventb.core.predicate="partition(CMD_DESTROY_MSG,{dst_abort},{dst_other})" org.eventb.core.source="/Navigation/navigation_ctx.buc|org.eventb.core.contextFile#navigation_ctx|org.eventb.core.axiom#:"/>
+        <org.eventb.core.poIdentifier name="GAMEPAD_FUNCTIONS" org.eventb.core.type="ℙ(GAMEPAD_FUNCTIONS)"/>
+        <org.eventb.core.poIdentifier name="GAMEPAD_SPEED_FROM" org.eventb.core.type="ℙ(GAMEPAD_SPEED_FROM)"/>
+        <org.eventb.core.poIdentifier name="func_gamepad" org.eventb.core.type="GAMEPAD_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_destroy_gamepad" org.eventb.core.type="GAMEPAD_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_shutdown_gamepad" org.eventb.core.type="GAMEPAD_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="gamepad_control_station" org.eventb.core.type="GAMEPAD_SPEED_FROM"/>
+        <org.eventb.core.poIdentifier name="func_gamepad_twist" org.eventb.core.type="GAMEPAD_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="gamepad_from_other" org.eventb.core.type="GAMEPAD_SPEED_FROM"/>
+        <org.eventb.core.poIdentifier name="func_gamepad_none" org.eventb.core.type="GAMEPAD_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_speed_filter" org.eventb.core.type="GAMEPAD_FUNCTIONS"/>
+        <org.eventb.core.poPredicate name="gamepad_control_statioo" org.eventb.core.predicate="partition(GAMEPAD_FUNCTIONS,{func_gamepad_none},{func_gamepad},{func_shutdown_gamepad},{func_destroy_gamepad},{func_speed_filter},{func_gamepad_twist})" org.eventb.core.source="/Navigation/navigation_ctx1.buc|org.eventb.core.contextFile#navigation_ctx1|org.eventb.core.axiom#-"/>
+        <org.eventb.core.poPredicate name="gamepad_control_statiop" org.eventb.core.predicate="partition(GAMEPAD_SPEED_FROM,{gamepad_control_station},{gamepad_from_other})" org.eventb.core.source="/Navigation/navigation_ctx1.buc|org.eventb.core.contextFile#navigation_ctx1|org.eventb.core.axiom#3"/>
+        <org.eventb.core.poIdentifier name="VEL_MANAGER_FUNCTIONS" org.eventb.core.type="ℙ(VEL_MANAGER_FUNCTIONS)"/>
+        <org.eventb.core.poIdentifier name="func_vel_manual" org.eventb.core.type="VEL_MANAGER_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_auto_state" org.eventb.core.type="VEL_MANAGER_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_nav_mode" org.eventb.core.type="VEL_MANAGER_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_destroy_vel_manager" org.eventb.core.type="VEL_MANAGER_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_vel_auto" org.eventb.core.type="VEL_MANAGER_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_vel_other" org.eventb.core.type="VEL_MANAGER_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_shutdown_vel_manager" org.eventb.core.type="VEL_MANAGER_FUNCTIONS"/>
+        <org.eventb.core.poPredicate name="func_shutdown_vel_manages" org.eventb.core.predicate="partition(VEL_MANAGER_FUNCTIONS,{func_vel_other},{func_vel_auto},{func_vel_manual},{func_nav_mode},{func_auto_state},{func_shutdown_vel_manager},{func_destroy_vel_manager})" org.eventb.core.source="/Navigation/navigation_ctx_2.buc|org.eventb.core.contextFile#navigation_ctx_2|org.eventb.core.axiom#."/>
+        <org.eventb.core.poIdentifier name="VEL_MAN_FROM" org.eventb.core.type="ℙ(VEL_MAN_FROM)"/>
+        <org.eventb.core.poIdentifier name="vel_man_from_cs" org.eventb.core.type="VEL_MAN_FROM"/>
+        <org.eventb.core.poIdentifier name="vel_man_from_other" org.eventb.core.type="VEL_MAN_FROM"/>
+        <org.eventb.core.poIdentifier name="vel_man_from_gamepad" org.eventb.core.type="VEL_MAN_FROM"/>
+        <org.eventb.core.poIdentifier name="vel_man_from_nav2" org.eventb.core.type="VEL_MAN_FROM"/>
+        <org.eventb.core.poPredicate name="func_shutdown_vel_managet" org.eventb.core.predicate="partition(VEL_MAN_FROM,{vel_man_from_cs},{vel_man_from_gamepad},{vel_man_from_nav2},{vel_man_from_other})" org.eventb.core.source="/Navigation/navigation_ctx_3.buc|org.eventb.core.contextFile#navigation_ctx_3|org.eventb.core.axiom#-"/>
+        <org.eventb.core.poIdentifier name="KINEMATIC_MESSAGE" org.eventb.core.type="ℙ(KINEMATIC_MESSAGE)"/>
+        <org.eventb.core.poIdentifier name="DISPLACEMENT_FUNCTIONS" org.eventb.core.type="ℙ(DISPLACEMENT_FUNCTIONS)"/>
+        <org.eventb.core.poIdentifier name="KINEMATIC_MODE" org.eventb.core.type="ℙ(KINEMATIC_MODE)"/>
+        <org.eventb.core.poIdentifier name="kin_mode_other" org.eventb.core.type="KINEMATIC_MODE"/>
+        <org.eventb.core.poIdentifier name="kin_normal" org.eventb.core.type="KINEMATIC_MESSAGE"/>
+        <org.eventb.core.poIdentifier name="func_send_kin" org.eventb.core.type="DISPLACEMENT_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_destroy_dsp" org.eventb.core.type="DISPLACEMENT_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_shutdown_dsp" org.eventb.core.type="DISPLACEMENT_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="kin_other" org.eventb.core.type="KINEMATIC_MESSAGE"/>
+        <org.eventb.core.poIdentifier name="func_kin_mode" org.eventb.core.type="DISPLACEMENT_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_cmd_vel" org.eventb.core.type="DISPLACEMENT_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_change_state" org.eventb.core.type="DISPLACEMENT_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="kin_mode_normal" org.eventb.core.type="KINEMATIC_MODE"/>
+        <org.eventb.core.poIdentifier name="kin_mode_basic" org.eventb.core.type="KINEMATIC_MODE"/>
+        <org.eventb.core.poIdentifier name="func_abs_enc" org.eventb.core.type="DISPLACEMENT_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_dsp_other" org.eventb.core.type="DISPLACEMENT_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="kin_basic" org.eventb.core.type="KINEMATIC_MESSAGE"/>
+        <org.eventb.core.poIdentifier name="func_wheel_angle" org.eventb.core.type="DISPLACEMENT_FUNCTIONS"/>
+        <org.eventb.core.poPredicate name="func_shutdown_vel_manageu" org.eventb.core.predicate="partition(KINEMATIC_MESSAGE,{kin_basic},{kin_normal},{kin_other})" org.eventb.core.source="/Navigation/navigation_ctx_4.buc|org.eventb.core.contextFile#navigation_ctx_4|org.eventb.core.axiom#,"/>
+        <org.eventb.core.poPredicate name="func_shutdown_vel_managev" org.eventb.core.predicate="partition(KINEMATIC_MODE,{kin_mode_basic},{kin_mode_normal},{kin_mode_other})" org.eventb.core.source="/Navigation/navigation_ctx_4.buc|org.eventb.core.contextFile#navigation_ctx_4|org.eventb.core.axiom#1"/>
+        <org.eventb.core.poPredicate name="func_shutdown_vel_managew" org.eventb.core.predicate="partition(DISPLACEMENT_FUNCTIONS,{func_dsp_other},{func_shutdown_dsp},{func_destroy_dsp},{func_abs_enc},{func_send_kin},{func_cmd_vel},{func_wheel_angle},{func_kin_mode},{func_change_state})" org.eventb.core.source="/Navigation/navigation_ctx_4.buc|org.eventb.core.contextFile#navigation_ctx_4|org.eventb.core.axiom#;"/>
+        <org.eventb.core.poIdentifier name="DISPLACEMENT_FROM" org.eventb.core.type="ℙ(DISPLACEMENT_FROM)"/>
+        <org.eventb.core.poIdentifier name="dsp_from_cs" org.eventb.core.type="DISPLACEMENT_FROM"/>
+        <org.eventb.core.poIdentifier name="dsp_from_motor_man" org.eventb.core.type="DISPLACEMENT_FROM"/>
+        <org.eventb.core.poIdentifier name="dsp_from_gamepad" org.eventb.core.type="DISPLACEMENT_FROM"/>
+        <org.eventb.core.poIdentifier name="dsp_from_other" org.eventb.core.type="DISPLACEMENT_FROM"/>
+        <org.eventb.core.poIdentifier name="dsp_from_cmd_vel" org.eventb.core.type="DISPLACEMENT_FROM"/>
+        <org.eventb.core.poPredicate name="func_shutdown_vel_managex" org.eventb.core.predicate="partition(DISPLACEMENT_FROM,{dsp_from_cs},{dsp_from_gamepad},{dsp_from_cmd_vel},{dsp_from_motor_man},{dsp_from_other})" org.eventb.core.source="/Navigation/navigation_ctx_5.buc|org.eventb.core.contextFile#navigation_ctx_5|org.eventb.core.axiom#,"/>
+        <org.eventb.core.poIdentifier name="MOTORS_ID" org.eventb.core.type="ℙ(MOTORS_ID)"/>
+        <org.eventb.core.poIdentifier name="front_left_steer" org.eventb.core.type="MOTORS_ID"/>
+        <org.eventb.core.poIdentifier name="front_left_drive" org.eventb.core.type="MOTORS_ID"/>
+        <org.eventb.core.poIdentifier name="front_right_drive" org.eventb.core.type="MOTORS_ID"/>
+        <org.eventb.core.poIdentifier name="back_left_drive" org.eventb.core.type="MOTORS_ID"/>
+        <org.eventb.core.poIdentifier name="front_right_steer" org.eventb.core.type="MOTORS_ID"/>
+        <org.eventb.core.poIdentifier name="back_right_steer" org.eventb.core.type="MOTORS_ID"/>
+        <org.eventb.core.poIdentifier name="motor_id_other" org.eventb.core.type="MOTORS_ID"/>
+        <org.eventb.core.poIdentifier name="back_left_steer" org.eventb.core.type="MOTORS_ID"/>
+        <org.eventb.core.poIdentifier name="back_right_drive" org.eventb.core.type="MOTORS_ID"/>
+        <org.eventb.core.poPredicate name="func_shutdown_vel_managey" org.eventb.core.predicate="partition(MOTORS_ID,{front_left_drive},{front_right_drive},{back_right_drive},{back_left_drive},{front_left_steer},{front_right_steer},{back_right_steer},{back_left_steer},{motor_id_other})" org.eventb.core.source="/Navigation/navigation_ctx_6.buc|org.eventb.core.contextFile#navigation_ctx_6|org.eventb.core.axiom#1"/>
+        <org.eventb.core.poIdentifier name="MOTOR_FROM" org.eventb.core.type="ℙ(MOTOR_FROM)"/>
+        <org.eventb.core.poIdentifier name="MOTOR_FUNCTIONS" org.eventb.core.type="ℙ(MOTOR_FUNCTIONS)"/>
+        <org.eventb.core.poIdentifier name="func_try_connect_gateway" org.eventb.core.type="MOTOR_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_motor_other" org.eventb.core.type="MOTOR_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="motor_from_dsp" org.eventb.core.type="MOTOR_FROM"/>
+        <org.eventb.core.poIdentifier name="func_open_gateway" org.eventb.core.type="MOTOR_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="motor_from_other" org.eventb.core.type="MOTOR_FROM"/>
+        <org.eventb.core.poIdentifier name="motor_from_self" org.eventb.core.type="MOTOR_FROM"/>
+        <org.eventb.core.poIdentifier name="func_setup_motor_iter" org.eventb.core.type="MOTOR_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_shutdown_motor" org.eventb.core.type="MOTOR_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_motor_disconnect" org.eventb.core.type="MOTOR_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_motor_cmd" org.eventb.core.type="MOTOR_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_close_gateway" org.eventb.core.type="MOTOR_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_cmd_faulty_iter" org.eventb.core.type="MOTOR_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_destroy_motor" org.eventb.core.type="MOTOR_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_motor_state_iter" org.eventb.core.type="MOTOR_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="motor_from_cs" org.eventb.core.type="MOTOR_FROM"/>
+        <org.eventb.core.poIdentifier name="func_connect_motor_iter" org.eventb.core.type="MOTOR_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_cmd_nfaulty_iter" org.eventb.core.type="MOTOR_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_motor_state" org.eventb.core.type="MOTOR_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_connect_motor" org.eventb.core.type="MOTOR_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_motor_constructor" org.eventb.core.type="MOTOR_FUNCTIONS"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/Navigation/navigation_ctx_7.bpo|org.eventb.core.poFile#navigation_ctx_7|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="partition(MOTOR_FUNCTIONS,{func_shutdown_motor},{func_destroy_motor},{func_motor_cmd},{func_motor_disconnect},{func_cmd_faulty_iter},{func_cmd_nfaulty_iter},{func_motor_state},{func_motor_state_iter},{func_connect_motor},{func_try_connect_gateway},{func_connect_motor_iter},{func_setup_motor_iter},{func_open_gateway},{func_close_gateway},{func_motor_constructor},{func_motor_other})" org.eventb.core.source="/Navigation/navigation_ctx_7.buc|org.eventb.core.contextFile#navigation_ctx_7|org.eventb.core.axiom#5"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="partition(MOTOR_FROM,{motor_from_cs},{motor_from_dsp},{motor_from_self},{motor_from_other})" org.eventb.core.source="/Navigation/navigation_ctx_7.buc|org.eventb.core.contextFile#navigation_ctx_7|org.eventb.core.axiom#?"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

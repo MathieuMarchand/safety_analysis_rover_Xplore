@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="CMD_DESTROY_MSG" org.eventb.core.type="ℙ(CMD_DESTROY_MSG)"/>
+        <org.eventb.core.poIdentifier name="NAVIGATION_MODE" org.eventb.core.type="ℙ(NAVIGATION_MODE)"/>
+        <org.eventb.core.poIdentifier name="NAV_AUTO_INSTRUCTION" org.eventb.core.type="ℙ(NAV_AUTO_INSTRUCTION)"/>
+        <org.eventb.core.poIdentifier name="CMD_SHUTDOWN_MSG" org.eventb.core.type="ℙ(CMD_SHUTDOWN_MSG)"/>
+        <org.eventb.core.poIdentifier name="nav_other" org.eventb.core.type="NAVIGATION_MODE"/>
+        <org.eventb.core.poIdentifier name="dst_abort" org.eventb.core.type="CMD_DESTROY_MSG"/>
+        <org.eventb.core.poIdentifier name="nav_autonomous_start" org.eventb.core.type="NAV_AUTO_INSTRUCTION"/>
+        <org.eventb.core.poIdentifier name="sd_other" org.eventb.core.type="CMD_SHUTDOWN_MSG"/>
+        <org.eventb.core.poIdentifier name="nav_autonomous_other" org.eventb.core.type="NAV_AUTO_INSTRUCTION"/>
+        <org.eventb.core.poIdentifier name="dst_other" org.eventb.core.type="CMD_DESTROY_MSG"/>
+        <org.eventb.core.poIdentifier name="default_nav_mode" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="nav_manual" org.eventb.core.type="NAVIGATION_MODE"/>
+        <org.eventb.core.poIdentifier name="sd_shutdown" org.eventb.core.type="CMD_SHUTDOWN_MSG"/>
+        <org.eventb.core.poIdentifier name="nav_autonomous_end" org.eventb.core.type="NAV_AUTO_INSTRUCTION"/>
+        <org.eventb.core.poIdentifier name="nav_auto" org.eventb.core.type="NAVIGATION_MODE"/>
+        <org.eventb.core.poPredicate name="nav_autonomous_staru" org.eventb.core.predicate="default_nav_mode∈BOOL" org.eventb.core.source="/Navigation/navigation_ctx.buc|org.eventb.core.contextFile#navigation_ctx|org.eventb.core.axiom#("/>
+        <org.eventb.core.poPredicate name="nav_autonomous_starv" org.eventb.core.predicate="partition(NAVIGATION_MODE,{nav_auto},{nav_manual},{nav_other})" org.eventb.core.source="/Navigation/navigation_ctx.buc|org.eventb.core.contextFile#navigation_ctx|org.eventb.core.axiom#-"/>
+        <org.eventb.core.poPredicate name="nav_autonomous_starw" org.eventb.core.predicate="partition(CMD_SHUTDOWN_MSG,{sd_shutdown},{sd_other})" org.eventb.core.source="/Navigation/navigation_ctx.buc|org.eventb.core.contextFile#navigation_ctx|org.eventb.core.axiom#1"/>
+        <org.eventb.core.poPredicate name="nav_autonomous_starx" org.eventb.core.predicate="partition(NAV_AUTO_INSTRUCTION,{nav_autonomous_start},{nav_autonomous_end},{nav_autonomous_other})" org.eventb.core.source="/Navigation/navigation_ctx.buc|org.eventb.core.contextFile#navigation_ctx|org.eventb.core.axiom#6"/>
+        <org.eventb.core.poPredicate name="nav_autonomous_stary" org.eventb.core.predicate="partition(CMD_DESTROY_MSG,{dst_abort},{dst_other})" org.eventb.core.source="/Navigation/navigation_ctx.buc|org.eventb.core.contextFile#navigation_ctx|org.eventb.core.axiom#:"/>
+        <org.eventb.core.poIdentifier name="GAMEPAD_FUNCTIONS" org.eventb.core.type="ℙ(GAMEPAD_FUNCTIONS)"/>
+        <org.eventb.core.poIdentifier name="GAMEPAD_SPEED_FROM" org.eventb.core.type="ℙ(GAMEPAD_SPEED_FROM)"/>
+        <org.eventb.core.poIdentifier name="func_gamepad" org.eventb.core.type="GAMEPAD_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_destroy_gamepad" org.eventb.core.type="GAMEPAD_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_shutdown_gamepad" org.eventb.core.type="GAMEPAD_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="gamepad_control_station" org.eventb.core.type="GAMEPAD_SPEED_FROM"/>
+        <org.eventb.core.poIdentifier name="func_gamepad_twist" org.eventb.core.type="GAMEPAD_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="gamepad_from_other" org.eventb.core.type="GAMEPAD_SPEED_FROM"/>
+        <org.eventb.core.poIdentifier name="func_gamepad_none" org.eventb.core.type="GAMEPAD_FUNCTIONS"/>
+        <org.eventb.core.poIdentifier name="func_speed_filter" org.eventb.core.type="GAMEPAD_FUNCTIONS"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/Navigation/navigation_ctx1.bpo|org.eventb.core.poFile#navigation_ctx1|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="partition(GAMEPAD_FUNCTIONS,{func_gamepad_none},{func_gamepad},{func_shutdown_gamepad},{func_destroy_gamepad},{func_speed_filter},{func_gamepad_twist})" org.eventb.core.source="/Navigation/navigation_ctx1.buc|org.eventb.core.contextFile#navigation_ctx1|org.eventb.core.axiom#-"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="partition(GAMEPAD_SPEED_FROM,{gamepad_control_station},{gamepad_from_other})" org.eventb.core.source="/Navigation/navigation_ctx1.buc|org.eventb.core.contextFile#navigation_ctx1|org.eventb.core.axiom#3"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

@@ -1,0 +1,221 @@
+\doxysection{Motor\+Cmds Class Reference}
+\hypertarget{class_motor_cmds}{}\label{class_motor_cmds}\index{MotorCmds@{MotorCmds}}
+
+
+Inheritance diagram for Motor\+Cmds\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=151pt]{class_motor_cmds__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Motor\+Cmds\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=151pt]{class_motor_cmds__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_motor_cmds_a61aeac57c65fb868b8cc703f0fcdaf5a}{Motor\+Cmds}} ()
+\item 
+\mbox{\hyperlink{class_motor_cmds_aba20af7c6677b1dd6528c4be1a7b4a37}{\texorpdfstring{$\sim$}{\string~}\+Motor\+Cmds}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_motor_cmds_a815e3213ac2f61b913ab4b6a7f55d8b3}{callback\+\_\+shutdown}} (std\+\_\+msgs\+::msg\+::\+String\+::\+Shared\+Ptr msg)
+\item 
+void \mbox{\hyperlink{class_motor_cmds_a96c3a7ff1ffcf5fcb40994342457e990}{motor\+\_\+cmds\+\_\+callback}} (const custom\+\_\+msg\+::msg\+::\+Motorcmds\+::\+Shared\+Ptr msg)
+\item 
+void \mbox{\hyperlink{class_motor_cmds_ab5aaeb66eee2525e68c24018e367da8c}{motors\+\_\+param\+\_\+callback}} ()
+\item 
+bool \mbox{\hyperlink{class_motor_cmds_a3c028f94898b1fe07427f1e6935a954f}{connect\+\_\+motors}} (rclcpp\+::\+Logger logger, rclcpp\+::\+Clock\+::\+Shared\+Ptr clock, bool homing) const
+\item 
+void \mbox{\hyperlink{class_motor_cmds_a80f0bd119932b3f6b96546126f6f4b5a}{destroy\+\_\+callback}} (const std\+\_\+msgs\+::msg\+::\+String\+::\+Shared\+Ptr msg)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+rclcpp\+::\+Timer\+Base\+::\+Shared\+Ptr \mbox{\hyperlink{class_motor_cmds_a1876b45fd70b79521b2b441862b7d587}{timer\+\_\+}}
+\item 
+rclcpp\+::\+Publisher$<$ custom\+\_\+msg\+::msg\+::\+Wheelstatus $>$\+::\+Shared\+Ptr \mbox{\hyperlink{class_motor_cmds_a7cccf71e4c1910e20602a419cac793c9}{pub\+\_\+absolute\+\_\+encoders}}
+\item 
+rclcpp\+::\+Subscription$<$ custom\+\_\+msg\+::msg\+::\+Motorcmds $>$\+::\+Shared\+Ptr \mbox{\hyperlink{class_motor_cmds_a6d1b2f4c77f880a43fedce8c9f894594}{sub\+\_\+motors\+\_\+displacement}}
+\item 
+rclcpp\+::\+Subscription$<$ std\+\_\+msgs\+::msg\+::\+String $>$\+::\+Shared\+Ptr \mbox{\hyperlink{class_motor_cmds_add8cc6bc40340127b729691c693b3fb7}{sub\+\_\+cmds\+\_\+shutdown}}
+\item 
+rclcpp\+::\+Subscription$<$ std\+\_\+msgs\+::msg\+::\+String $>$\+::\+Shared\+Ptr \mbox{\hyperlink{class_motor_cmds_af4735169c3d969a5b8c86252a6e87d1b}{destroy\+\_\+sub\+\_\+}}
+\item 
+size\+\_\+t \mbox{\hyperlink{class_motor_cmds_abe952dd737053a09c2f2141fe124e8bb}{count\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_motor_cmds_a61aeac57c65fb868b8cc703f0fcdaf5a}\label{class_motor_cmds_a61aeac57c65fb868b8cc703f0fcdaf5a} 
+\index{MotorCmds@{MotorCmds}!MotorCmds@{MotorCmds}}
+\index{MotorCmds@{MotorCmds}!MotorCmds@{MotorCmds}}
+\doxysubsubsection{\texorpdfstring{MotorCmds()}{MotorCmds()}}
+{\footnotesize\ttfamily Motor\+Cmds\+::\+Motor\+Cmds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_motor_cmds_a61aeac57c65fb868b8cc703f0fcdaf5a_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_motor_cmds_aba20af7c6677b1dd6528c4be1a7b4a37}\label{class_motor_cmds_aba20af7c6677b1dd6528c4be1a7b4a37} 
+\index{MotorCmds@{MotorCmds}!````~MotorCmds@{\texorpdfstring{$\sim$}{\string~}MotorCmds}}
+\index{````~MotorCmds@{\texorpdfstring{$\sim$}{\string~}MotorCmds}!MotorCmds@{MotorCmds}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}MotorCmds()}{\string~MotorCmds()}}
+{\footnotesize\ttfamily Motor\+Cmds\+::\texorpdfstring{$\sim$}{\string~}\+Motor\+Cmds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_motor_cmds_aba20af7c6677b1dd6528c4be1a7b4a37_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_motor_cmds_a815e3213ac2f61b913ab4b6a7f55d8b3}\label{class_motor_cmds_a815e3213ac2f61b913ab4b6a7f55d8b3} 
+\index{MotorCmds@{MotorCmds}!callback\_shutdown@{callback\_shutdown}}
+\index{callback\_shutdown@{callback\_shutdown}!MotorCmds@{MotorCmds}}
+\doxysubsubsection{\texorpdfstring{callback\_shutdown()}{callback\_shutdown()}}
+{\footnotesize\ttfamily void Motor\+Cmds\+::callback\+\_\+shutdown (\begin{DoxyParamCaption}\item[{std\+\_\+msgs\+::msg\+::\+String\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{class_motor_cmds_a815e3213ac2f61b913ab4b6a7f55d8b3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_motor_cmds_a3c028f94898b1fe07427f1e6935a954f}\label{class_motor_cmds_a3c028f94898b1fe07427f1e6935a954f} 
+\index{MotorCmds@{MotorCmds}!connect\_motors@{connect\_motors}}
+\index{connect\_motors@{connect\_motors}!MotorCmds@{MotorCmds}}
+\doxysubsubsection{\texorpdfstring{connect\_motors()}{connect\_motors()}}
+{\footnotesize\ttfamily bool Motor\+Cmds\+::connect\+\_\+motors (\begin{DoxyParamCaption}\item[{rclcpp\+::\+Logger}]{logger,  }\item[{rclcpp\+::\+Clock\+::\+Shared\+Ptr}]{clock,  }\item[{bool}]{homing }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_motor_cmds_a3c028f94898b1fe07427f1e6935a954f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_motor_cmds_a3c028f94898b1fe07427f1e6935a954f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_motor_cmds_a80f0bd119932b3f6b96546126f6f4b5a}\label{class_motor_cmds_a80f0bd119932b3f6b96546126f6f4b5a} 
+\index{MotorCmds@{MotorCmds}!destroy\_callback@{destroy\_callback}}
+\index{destroy\_callback@{destroy\_callback}!MotorCmds@{MotorCmds}}
+\doxysubsubsection{\texorpdfstring{destroy\_callback()}{destroy\_callback()}}
+{\footnotesize\ttfamily void Motor\+Cmds\+::destroy\+\_\+callback (\begin{DoxyParamCaption}\item[{const std\+\_\+msgs\+::msg\+::\+String\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=343pt]{class_motor_cmds_a80f0bd119932b3f6b96546126f6f4b5a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_motor_cmds_a96c3a7ff1ffcf5fcb40994342457e990}\label{class_motor_cmds_a96c3a7ff1ffcf5fcb40994342457e990} 
+\index{MotorCmds@{MotorCmds}!motor\_cmds\_callback@{motor\_cmds\_callback}}
+\index{motor\_cmds\_callback@{motor\_cmds\_callback}!MotorCmds@{MotorCmds}}
+\doxysubsubsection{\texorpdfstring{motor\_cmds\_callback()}{motor\_cmds\_callback()}}
+{\footnotesize\ttfamily void Motor\+Cmds\+::motor\+\_\+cmds\+\_\+callback (\begin{DoxyParamCaption}\item[{const custom\+\_\+msg\+::msg\+::\+Motorcmds\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_motor_cmds_a96c3a7ff1ffcf5fcb40994342457e990_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_motor_cmds_a96c3a7ff1ffcf5fcb40994342457e990_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_motor_cmds_ab5aaeb66eee2525e68c24018e367da8c}\label{class_motor_cmds_ab5aaeb66eee2525e68c24018e367da8c} 
+\index{MotorCmds@{MotorCmds}!motors\_param\_callback@{motors\_param\_callback}}
+\index{motors\_param\_callback@{motors\_param\_callback}!MotorCmds@{MotorCmds}}
+\doxysubsubsection{\texorpdfstring{motors\_param\_callback()}{motors\_param\_callback()}}
+{\footnotesize\ttfamily void Motor\+Cmds\+::motors\+\_\+param\+\_\+callback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_motor_cmds_ab5aaeb66eee2525e68c24018e367da8c_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_motor_cmds_abe952dd737053a09c2f2141fe124e8bb}\label{class_motor_cmds_abe952dd737053a09c2f2141fe124e8bb} 
+\index{MotorCmds@{MotorCmds}!count\_@{count\_}}
+\index{count\_@{count\_}!MotorCmds@{MotorCmds}}
+\doxysubsubsection{\texorpdfstring{count\_}{count\_}}
+{\footnotesize\ttfamily size\+\_\+t Motor\+Cmds\+::count\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_motor_cmds_af4735169c3d969a5b8c86252a6e87d1b}\label{class_motor_cmds_af4735169c3d969a5b8c86252a6e87d1b} 
+\index{MotorCmds@{MotorCmds}!destroy\_sub\_@{destroy\_sub\_}}
+\index{destroy\_sub\_@{destroy\_sub\_}!MotorCmds@{MotorCmds}}
+\doxysubsubsection{\texorpdfstring{destroy\_sub\_}{destroy\_sub\_}}
+{\footnotesize\ttfamily rclcpp\+::\+Subscription$<$std\+\_\+msgs\+::msg\+::\+String$>$\+::\+Shared\+Ptr Motor\+Cmds\+::destroy\+\_\+sub\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_motor_cmds_a7cccf71e4c1910e20602a419cac793c9}\label{class_motor_cmds_a7cccf71e4c1910e20602a419cac793c9} 
+\index{MotorCmds@{MotorCmds}!pub\_absolute\_encoders@{pub\_absolute\_encoders}}
+\index{pub\_absolute\_encoders@{pub\_absolute\_encoders}!MotorCmds@{MotorCmds}}
+\doxysubsubsection{\texorpdfstring{pub\_absolute\_encoders}{pub\_absolute\_encoders}}
+{\footnotesize\ttfamily rclcpp\+::\+Publisher$<$custom\+\_\+msg\+::msg\+::\+Wheelstatus$>$\+::\+Shared\+Ptr Motor\+Cmds\+::pub\+\_\+absolute\+\_\+encoders\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_motor_cmds_add8cc6bc40340127b729691c693b3fb7}\label{class_motor_cmds_add8cc6bc40340127b729691c693b3fb7} 
+\index{MotorCmds@{MotorCmds}!sub\_cmds\_shutdown@{sub\_cmds\_shutdown}}
+\index{sub\_cmds\_shutdown@{sub\_cmds\_shutdown}!MotorCmds@{MotorCmds}}
+\doxysubsubsection{\texorpdfstring{sub\_cmds\_shutdown}{sub\_cmds\_shutdown}}
+{\footnotesize\ttfamily rclcpp\+::\+Subscription$<$std\+\_\+msgs\+::msg\+::\+String$>$\+::\+Shared\+Ptr Motor\+Cmds\+::sub\+\_\+cmds\+\_\+shutdown\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_motor_cmds_a6d1b2f4c77f880a43fedce8c9f894594}\label{class_motor_cmds_a6d1b2f4c77f880a43fedce8c9f894594} 
+\index{MotorCmds@{MotorCmds}!sub\_motors\_displacement@{sub\_motors\_displacement}}
+\index{sub\_motors\_displacement@{sub\_motors\_displacement}!MotorCmds@{MotorCmds}}
+\doxysubsubsection{\texorpdfstring{sub\_motors\_displacement}{sub\_motors\_displacement}}
+{\footnotesize\ttfamily rclcpp\+::\+Subscription$<$custom\+\_\+msg\+::msg\+::\+Motorcmds$>$\+::\+Shared\+Ptr Motor\+Cmds\+::sub\+\_\+motors\+\_\+displacement\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_motor_cmds_a1876b45fd70b79521b2b441862b7d587}\label{class_motor_cmds_a1876b45fd70b79521b2b441862b7d587} 
+\index{MotorCmds@{MotorCmds}!timer\_@{timer\_}}
+\index{timer\_@{timer\_}!MotorCmds@{MotorCmds}}
+\doxysubsubsection{\texorpdfstring{timer\_}{timer\_}}
+{\footnotesize\ttfamily rclcpp\+::\+Timer\+Base\+::\+Shared\+Ptr Motor\+Cmds\+::timer\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/marm/\+Documents/git/rover/navigation/codebase/wheels\+\_\+control/src/\mbox{\hyperlink{_motors__cmds__node_8cpp}{Motors\+\_\+cmds\+\_\+node.\+cpp}}\end{DoxyCompactItemize}

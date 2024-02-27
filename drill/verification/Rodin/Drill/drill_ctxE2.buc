@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd;de.prob.symbolic.ctxBase" version="3">
+    <org.eventb.core.extendsContext name="'" org.eventb.core.target="drill_ctxE1"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="(" org.eventb.core.comment="delta h per called event" org.eventb.core.identifier="down_delta_height"/>
+    <org.eventb.core.axiom name=")" org.eventb.core.label="down_type" org.eventb.core.predicate="down_delta_height ∈ ℕ1"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="*" org.eventb.core.identifier="drill_delta_height"/>
+    <org.eventb.core.axiom name="+" org.eventb.core.label="drill_type" org.eventb.core.predicate="drill_delta_height ∈ ℕ1 "/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="," org.eventb.core.identifier="retract_delta_height"/>
+    <org.eventb.core.axiom name="-" org.eventb.core.label="retract_type" org.eventb.core.predicate="retract_delta_height ∈ ℕ1 "/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="." org.eventb.core.identifier="up_delta_height"/>
+    <org.eventb.core.axiom name="/" org.eventb.core.label="up_type" org.eventb.core.predicate="up_delta_height ∈ ℕ1"/>
+    <org.eventb.core.axiom name="0" org.eventb.core.comment="down delta h range" org.eventb.core.label="down_range" org.eventb.core.predicate="down_delta_height ∈ 1‥drill_height"/>
+    <org.eventb.core.axiom name="1" org.eventb.core.comment="drill delta h range" org.eventb.core.label="drill_range" org.eventb.core.predicate="drill_delta_height∈1‥drill_bit_length"/>
+    <org.eventb.core.axiom name="2" org.eventb.core.comment="retract delta h range" org.eventb.core.label="retract_range" org.eventb.core.predicate="retract_delta_height∈1‥drill_bit_length"/>
+    <org.eventb.core.axiom name="3" org.eventb.core.comment="up delta h range" org.eventb.core.label="up_range" org.eventb.core.predicate="up_delta_height∈1‥drill_bit_length"/>
+    <org.eventb.core.carrierSet name="4" org.eventb.core.identifier="DIRECTION"/>
+    <org.eventb.core.axiom name="7" org.eventb.core.label="partition_direction" org.eventb.core.predicate="partition(DIRECTION, {down_dir}, {up_dir})"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="8" org.eventb.core.identifier="down_dir"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="9" org.eventb.core.identifier="up_dir"/>
+</org.eventb.core.contextFile>

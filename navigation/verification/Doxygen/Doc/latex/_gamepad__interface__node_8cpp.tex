@@ -1,0 +1,73 @@
+\doxysection{C\+:/\+Users/marm/\+Documents/git/rover/navigation/codebase/wheels\+\_\+control/src/\+Gamepad\+\_\+interface\+\_\+node.cpp File Reference}
+\hypertarget{_gamepad__interface__node_8cpp}{}\label{_gamepad__interface__node_8cpp}\index{C:/Users/marm/Documents/git/rover/navigation/codebase/wheels\_control/src/Gamepad\_interface\_node.cpp@{C:/Users/marm/Documents/git/rover/navigation/codebase/wheels\_control/src/Gamepad\_interface\_node.cpp}}
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include "{}utility.\+hpp"{}}\newline
+{\ttfamily \#include "{}rclcpp/rclcpp.\+hpp"{}}\newline
+{\ttfamily \#include "{}std\+\_\+msgs/msg/string.\+hpp"{}}\newline
+{\ttfamily \#include "{}std\+\_\+msgs/msg/bool.\+hpp"{}}\newline
+{\ttfamily \#include "{}geometry\+\_\+msgs/msg/twist.\+hpp"{}}\newline
+{\ttfamily \#include "{}sensor\+\_\+msgs/msg/joy.\+hpp"{}}\newline
+{\ttfamily \#include "{}custom\+\_\+msg/msg/motorcmds.\+hpp"{}}\newline
+{\ttfamily \#include "{}custom\+\_\+msg/msg/wheelstatus.\+hpp"{}}\newline
+{\ttfamily \#include "{}definition.\+hpp"{}}\newline
+Include dependency graph for Gamepad\+\_\+interface\+\_\+node.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_gamepad__interface__node_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_gamepad_interface}{Gamepad\+Interface}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{_gamepad__interface__node_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{_gamepad__interface__node_8cpp_ac9d295b6b68339ac488d95e3039193f2}{window\+Size}} = 10
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{_gamepad__interface__node_8cpp_a59f17a45c0f36df09317a0a5d2871acd}{buffer\+\_\+x}}
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{_gamepad__interface__node_8cpp_aab3e0130e2fefd67b4dfd9d3f5029224}{buffer\+\_\+z}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_gamepad__interface__node_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{_gamepad__interface__node_8cpp_a0ddf1224851353fc92bfbff6f499fa97} 
+\index{Gamepad\_interface\_node.cpp@{Gamepad\_interface\_node.cpp}!main@{main}}
+\index{main@{main}!Gamepad\_interface\_node.cpp@{Gamepad\_interface\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{_gamepad__interface__node_8cpp_a59f17a45c0f36df09317a0a5d2871acd}\label{_gamepad__interface__node_8cpp_a59f17a45c0f36df09317a0a5d2871acd} 
+\index{Gamepad\_interface\_node.cpp@{Gamepad\_interface\_node.cpp}!buffer\_x@{buffer\_x}}
+\index{buffer\_x@{buffer\_x}!Gamepad\_interface\_node.cpp@{Gamepad\_interface\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{buffer\_x}{buffer\_x}}
+{\footnotesize\ttfamily std\+::vector$<$double$>$ buffer\+\_\+x}
+
+\Hypertarget{_gamepad__interface__node_8cpp_aab3e0130e2fefd67b4dfd9d3f5029224}\label{_gamepad__interface__node_8cpp_aab3e0130e2fefd67b4dfd9d3f5029224} 
+\index{Gamepad\_interface\_node.cpp@{Gamepad\_interface\_node.cpp}!buffer\_z@{buffer\_z}}
+\index{buffer\_z@{buffer\_z}!Gamepad\_interface\_node.cpp@{Gamepad\_interface\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{buffer\_z}{buffer\_z}}
+{\footnotesize\ttfamily std\+::vector$<$double$>$ buffer\+\_\+z}
+
+\Hypertarget{_gamepad__interface__node_8cpp_ac9d295b6b68339ac488d95e3039193f2}\label{_gamepad__interface__node_8cpp_ac9d295b6b68339ac488d95e3039193f2} 
+\index{Gamepad\_interface\_node.cpp@{Gamepad\_interface\_node.cpp}!windowSize@{windowSize}}
+\index{windowSize@{windowSize}!Gamepad\_interface\_node.cpp@{Gamepad\_interface\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{windowSize}{windowSize}}
+{\footnotesize\ttfamily int window\+Size = 10}
+
